@@ -65,7 +65,8 @@ export const PremiumHero: React.FC<HeroProps> = ({
           {backgroundImage && (
             <>
               <img src={backgroundImage} alt="Hero background" className="absolute inset-0 w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+              {/* Top-weighted overlay only — keep image bottom clear to avoid a visible dark band */}
+              <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(180deg,rgba(0,0,0,0.28)_0%,rgba(0,0,0,0)_30%)]" />
             </>
           )}
 

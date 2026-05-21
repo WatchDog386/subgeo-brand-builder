@@ -27,16 +27,16 @@ export function TestimonialsSection() {
   return (
     <PremiumSection
       variant="dark"
-      className="hero-magazine-inner section-subgeo-blue"
+      className="section-subgeo-blue !py-10 md:!py-12"
       title={"Trusted by Our Community"}
       subtitle="Real experiences from people who've made Subgeo part of their wellness journey."
-      titleStyle={{ fontSize: "clamp(3.5rem, 6vw, 5.5rem)", lineHeight: 0.9, letterSpacing: "-0.04em" }}
+      titleStyle={{ fontSize: "clamp(2.5rem, 4.5vw, 4rem)", lineHeight: 0.95, letterSpacing: "-0.04em" }}
     >
-      <GridContainer columns={3} gap="lg">
+      <GridContainer columns={3} gap="md">
         {testimonials.map((testimonial, index) => (
           <RevealOnScroll key={index} delay={index * 0.15} direction="up">
-            <div className="glass-dark rounded-sm p-8 h-full flex flex-col justify-between">
-              <p className="text-white/90 text-xl md:text-2xl leading-snug mb-6 italic">{testimonial.quote}</p>
+            <div className="glass-dark rounded-sm p-6 md:p-7 h-full flex flex-col justify-between">
+              <p className="text-white/90 text-lg md:text-xl leading-snug mb-5 italic">{testimonial.quote}</p>
 
               <div className="mt-4">
                 <p className="font-semibold text-white">{testimonial.author}</p>

@@ -8,6 +8,7 @@ import { ServicesSection } from "@/components/home/ServicesSection";
 import { ImpactStatsSection } from "@/components/home/ImpactStatsSection";
 import { StorySection } from "@/components/home/StorySection";
 import { BranchesGridSection } from "@/components/home/BranchesGridSection";
+import { VisitUsTodaySection } from "@/components/home/VisitUsTodaySection";
 import { PillarsSection } from "@/components/home/PillarsSection";
 import { ValuesMissionSection } from "@/components/home/ValuesMissionSection";
 import { FAQSection } from "@/components/home/FAQSection";
@@ -45,6 +46,7 @@ function Home() {
       <ImpactStatsSection />
       <StorySection />
       <BranchesGridSection />
+      <VisitUsTodaySection />
       <PillarsSection />
       <ValuesMissionSection />
       <FAQSection />

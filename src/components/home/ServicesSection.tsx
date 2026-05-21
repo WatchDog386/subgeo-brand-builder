@@ -40,23 +40,23 @@ const serviceFeatures = [
 
 export function ServicesSection() {
   return (
-    <section className="py-20 md:py-28 bg-[linear-gradient(180deg,var(--hero-bg-start),var(--hero-bg-end))] overflow-hidden relative font-sans text-[#111111]">
+    <section className="py-20 md:py-28 bg-[#dfe1e3] overflow-hidden relative font-sans text-[#111111]">
       <div className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
           <RevealOnScroll direction="right" delay={0.1}>
             <div className="relative overflow-hidden w-full px-4 md:px-8 lg:px-16">
-              <img
-                src={serviceImg}
-                alt="Service"
-                className="relative z-30 h-[340px] md:h-[480px] w-full object-cover shadow-2xl"
-                style={{ filter: "grayscale(100%) contrast(120%)" }}
-              />
+                <img
+                  src={serviceImg}
+                  alt="Service"
+                  className="relative z-30 h-[340px] md:h-[480px] w-full object-cover shadow-2xl"
+                  style={{ filter: "grayscale(100%) contrast(120%)" }}
+                />
             </div>
           </RevealOnScroll>
 
           <RevealOnScroll direction="left">
             <div className="w-full flex justify-center">
-              <div className="max-w-xl text-center px-6 lg:px-0">
+                <div className="max-w-xl text-center px-6 lg:px-0">
                 <h2 className="text-3xl md:text-5xl font-semibold leading-tight tracking-tight text-[#111827]">
                   Professional Services Designed Around Subgeo Communities
                 </h2>
@@ -91,11 +91,11 @@ export function ServicesSection() {
               {serviceFeatures.map((feature, index) => (
                 <RevealOnScroll key={feature.title} delay={index * 0.05}>
                   <div
-                    className={`rounded-[10px] bg-[#e7decf] border border-[#d8cbb3] p-5 md:p-6 shadow-[0_8px_24px_rgba(18,28,63,0.04)] h-full ${
+                    className={`group h-full rounded-[24px] border border-black/10 bg-white/70 p-6 shadow-[0_14px_34px_rgba(17,24,39,0.07)] backdrop-blur-sm transition-all duration-300 hover:border-[#f36a2c]/30 hover:shadow-[0_20px_48px_rgba(243,106,44,0.14)] ${
                       index >= 3 ? "lg:col-span-1 lg:mx-auto" : ""
                     }`}
                   >
-                    <div className={`w-10 h-10 rounded-full ${feature.accent} text-white flex items-center justify-center mb-4`}>
+                    <div className={`h-12 w-12 rounded-2xl ${feature.accent} text-white flex items-center justify-center mb-4`}>
                       <feature.icon className="w-5 h-5" />
                     </div>
                     <h4 className="text-lg md:text-xl font-medium text-[#111827] leading-tight">

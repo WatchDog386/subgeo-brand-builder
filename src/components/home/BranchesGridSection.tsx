@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Calendar, Clock } from "lucide-react";
 import pharmacyImg from "@/assets/pharmacy.jpg";
 import clinicImg from "@/assets/clinic.jpg";
 import labImg from "@/assets/lab.jpg";
@@ -18,6 +18,8 @@ const branches = [
     category: "Healthcare",
     tagline: "Quality-assured medications & expert advice.",
     image: pharmacyImg,
+    date: "15 November, 2022",
+    readTime: "4 mins read",
   },
   {
     slug: "clinic",
@@ -25,6 +27,8 @@ const branches = [
     category: "Healthcare",
     tagline: "Comprehensive care from registered clinicians.",
     image: clinicImg,
+    date: "20 October, 2022",
+    readTime: "4 mins read",
   },
   {
     slug: "diagnostics",
@@ -32,6 +36,8 @@ const branches = [
     category: "Healthcare",
     tagline: "Accurate testing with rapid, same-day outcomes.",
     image: labImg,
+    date: "15 November, 2022",
+    readTime: "4 mins read",
   },
   {
     slug: "wellness",
@@ -39,6 +45,8 @@ const branches = [
     category: "Lifestyle",
     tagline: "Holistic health counseling & lifestyle management.",
     image: wellnessImg,
+    date: "10 September, 2022",
+    readTime: "3 mins read",
   },
   {
     slug: "beauty",
@@ -46,6 +54,8 @@ const branches = [
     category: "Lifestyle",
     tagline: "Premium beauty therapies and skincare routines.",
     image: beautyImg,
+    date: "01 August, 2022",
+    readTime: "5 mins read",
   },
   {
     slug: "barber",
@@ -53,6 +63,8 @@ const branches = [
     category: "Lifestyle",
     tagline: "Sharp grooming and executive shaving setups.",
     image: barberImg,
+    date: "22 July, 2022",
+    readTime: "2 mins read",
   },
 ];
 
@@ -92,11 +104,17 @@ export function BranchesGridSection() {
   };
 
   return (
-    <section id="branches" className="py-24 md:py-32 section-hero-match">
-      <div className="container-x">
+    <section id="branches" className="relative overflow-hidden bg-[#dfe1e3] py-12 md:py-16 section-hero-match font-sans">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-16 right-[10%] w-[28rem] h-[28rem] rounded-full bg-[#244f86]/10 blur-3xl" />
+        <div className="absolute bottom-10 left-[-8rem] w-72 h-72 rounded-full bg-[#f36a2c]/10 blur-3xl" />
+        <div className="absolute top-20 left-[52%] w-[32rem] h-px bg-[#f36a2c]/30 rotate-[-56deg] origin-left" />
+      </div>
+
+      <div className="container-x relative z-10">
         <CenteredContent
           eyebrow="OUR BRANCHES"
-          title="Six Specialised Divisions, One Subgeo Standard"
+          title="Our branches country wide"
           description="Each branch combines professional expertise with community care, connected by shared values of excellence and accessibility."
           maxWidth="max-w-2xl"
         />
@@ -114,7 +132,7 @@ export function BranchesGridSection() {
             </div>
           </div>
 
-          <ParallaxSection offset={18} className="overflow-hidden">
+          <ParallaxSection offset={18} className="relative">
             <AnimatePresence initial={false} custom={dir} mode="wait">
               <motion.div
                 key={page}
@@ -124,7 +142,7 @@ export function BranchesGridSection() {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.45, ease: [0.2, 0.8, 0.2, 1] }}
-                className="flex flex-col md:flex-row gap-8 justify-center"
+                className="flex flex-col md:flex-row gap-8 justify-center items-stretch"
                 onMouseEnter={() => {
                   isPaused.current = true;
                 }}
@@ -133,22 +151,71 @@ export function BranchesGridSection() {
                 }}
               >
                 {branches.slice(page * perPage, page * perPage + perPage).map((branch, index) => (
-                  <div key={branch.slug} className="w-full md:w-[32%]">
+                  <div key={branch.slug} className="w-full md:w-1/3">
                     <RevealOnScroll delay={index * 0.06}>
                       <Link to="/branches/$slug" params={{ slug: branch.slug }} className="block h-full no-underline">
-                        <ImageCard
-                          image={branch.image}
-                          title={branch.name}
-                          subtitle={branch.category}
-                          description={branch.tagline}
-                          cta={{ label: "Explore Branch", onClick: () => {} }}
-                        />
+                        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm h-full flex flex-col">
+                          <div className="overflow-hidden">
+                            <img src={branch.image} alt={branch.name} className="w-full h-48 md:h-56 object-cover" />
+                          </div>
+
+                          <div className="p-6 flex-1 flex flex-col">
+                            <h3 className="text-xl font-semibold text-primary mb-3 hover:underline">
+                              {branch.name}
+                            </h3>
+
+                            <div className="flex items-center gap-6 text-sm text-gray-500 mb-3">
+                              <div className="flex items-center gap-2">
+                                <Calendar className="w-4 h-4 text-primary" />
+                                <span className="text-xs">{branch.date}</span>
+                              </div>
+
+                              <div className="flex items-center gap-2 ml-auto">
+                                <Clock className="w-4 h-4 text-primary" />
+                                <span className="text-xs">{branch.readTime}</span>
+                              </div>
+                            </div>
+
+                            <p className="text-sm text-gray-700 leading-relaxed line-clamp-3 mb-4">{branch.tagline}</p>
+
+                            <div className="mt-auto">
+                              <span className="text-sm text-primary font-semibold inline-flex items-center gap-2">READ MORE <ArrowUpRight className="w-3 h-3" /></span>
+                            </div>
+                          </div>
+                        </div>
                       </Link>
                     </RevealOnScroll>
                   </div>
                 ))}
               </motion.div>
             </AnimatePresence>
+
+            {/* Left/Right arrows positioned center */}
+            <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none md:pl-6">
+              <button onClick={prev} aria-label="Previous" className="pointer-events-auto p-3 rounded-full bg-white shadow-elevation-2 transition-transform hover:scale-105">
+                <ArrowLeft className="w-5 h-5 text-gray-700" />
+              </button>
+            </div>
+
+            <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none md:pr-6">
+              <button onClick={next} aria-label="Next" className="pointer-events-auto p-3 rounded-full bg-white shadow-elevation-2 transition-transform hover:scale-105">
+                <ArrowRight className="w-5 h-5 text-gray-700" />
+              </button>
+            </div>
+
+            {/* Pagination dots */}
+            <div className="mt-6 flex justify-center w-full">
+              <div className="flex items-center gap-3">
+                {Array.from({ length: pages }).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setPage(i)}
+                    aria-label={`Go to page ${i + 1}`}
+                    className={`w-3 h-3 rounded-full ${i === page ? 'bg-primary' : 'bg-gray-300'} transition-all`}
+                  />
+                ))}
+              </div>
+            </div>
           </ParallaxSection>
         </div>
 

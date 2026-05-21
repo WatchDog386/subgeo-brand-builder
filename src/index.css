@@ -275,11 +275,11 @@
 .nav-main nav a *,
 .nav-main nav button * {
   color: #ffffff !important;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-weight: 500;
   font-size: 0.875rem; /* match CTA text-sm */
-  font-family: var(--font-display);
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   white-space: nowrap;
 }
 
@@ -296,7 +296,7 @@
 .nav-main .font-display { font-size: 1.25rem; /* logo size within navbar */ }
 .nav-main .container-x { height: auto; }
 .nav-main .container-x.h-20,
-.nav-main .h-20 { height: 5rem; }
+.nav-main .h-20 { height: 4.5rem; }
 .bg-nav-gradient { background: linear-gradient(180deg,#0f2b53,#1b476f); }
 .bg-submit-green { background: #22c55e; }
 .bg-submit-green:hover { filter: brightness(0.95); }
@@ -372,34 +372,6 @@
 .section-hero-match p { color: var(--color-foreground); }
 .section-hero-match .eyebrow { color: var(--color-brand); }
 
-/* Apply navbar typography (font family + sizes) to all sections except the hero
-   but *exclude* sections that explicitly want a dark/nav look (.section-dark-nav). */
-section:not(.is-hero):not(.section-dark-nav) {
-  font-family: var(--font-display);
-  font-size: 1.125rem; /* match navbar list size (~18px) */
-  color: var(--color-foreground);
-  background: transparent;
-}
-
-section:not(.is-hero) h2 {
-  font-family: var(--font-display);
-  font-size: 1.25rem; /* text-xl */
-  font-weight: 700;
-}
-
-section:not(.is-hero) h3 {
-  font-family: var(--font-display);
-  font-size: 1.125rem; /* match navbar list size for subsection headings */
-  font-weight: 600;
-}
-
-section:not(.is-hero) p {
-  font-size: 1.125rem; /* match navbar list size (~18px) */
-  line-height: 1.6;
-}
-
-
-
 /* Magazine hero styles */
 .hero-magazine-inner { position: relative; padding: 5rem 0 3rem; }
 .hero-magazine-title {
@@ -457,11 +429,11 @@ header.fixed {
 /* Top strip for social icons */
 .nav-topstrip {
   background: transparent;
-  height: 32px;
+  height: 24px;
 }
 
 .nav-topstrip .container-x {
-  max-height: 32px;
+  max-height: 24px;
 }
 
 .nav-main .container-x {
@@ -555,17 +527,19 @@ header.fixed {
 }
 
 .is-hero + section {
-  margin-top: -24px;
-  padding-top: 48px;
+  /* Remove the decorative colored band under the hero by cancelling the negative offset.
+     Keep some top padding so content doesn't sit flush against the hero. */
+  margin-top: 0;
+  padding-top: 24px;
   background: transparent !important;
 }
 
 @media (max-width: 1024px) {
-  .is-hero + section { margin-top: -20px; padding-top: 40px; }
+  .is-hero + section { margin-top: 0; padding-top: 24px; }
 }
 
 @media (max-width: 768px) {
-  .is-hero + section { margin-top: -16px; padding-top: 32px; }
+  .is-hero + section { margin-top: 0; padding-top: 20px; }
 }
 
 /* Apply warm beige gradient and soften headline color to match reference */
