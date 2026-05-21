@@ -1,0 +1,51 @@
+import { PremiumSection } from "@/components/premium/PremiumLayout";
+import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
+import { GridContainer } from "@/components/premium/PremiumGrid";
+
+const testimonials = [
+  {
+    quote:
+      "Subgeo has transformed how we access quality healthcare. The professionalism across all their branches is remarkable.",
+    author: "Sarah Mwangi",
+    title: "Community Member",
+  },
+  {
+    quote:
+      "Working with Subgeo means working with a team that understands healthcare excellence and community care.",
+    author: "Dr. James Kipchoge",
+    title: "Medical Professional",
+  },
+  {
+    quote:
+      "Every visit to Subgeo feels premium but accessible. That's the difference they bring to our neighborhood.",
+    author: "Amina Hassan",
+    title: "Regular Client",
+  },
+];
+
+export function TestimonialsSection() {
+  return (
+    <PremiumSection
+      variant="dark"
+      className="hero-magazine-inner section-subgeo-blue"
+      title={"Trusted by Our Community"}
+      subtitle="Real experiences from people who've made Subgeo part of their wellness journey."
+      titleStyle={{ fontSize: "clamp(3.5rem, 6vw, 5.5rem)", lineHeight: 0.9, letterSpacing: "-0.04em" }}
+    >
+      <GridContainer columns={3} gap="lg">
+        {testimonials.map((testimonial, index) => (
+          <RevealOnScroll key={index} delay={index * 0.15} direction="up">
+            <div className="glass-dark rounded-sm p-8 h-full flex flex-col justify-between">
+              <p className="text-white/90 text-xl md:text-2xl leading-snug mb-6 italic">{testimonial.quote}</p>
+
+              <div className="mt-4">
+                <p className="font-semibold text-white">{testimonial.author}</p>
+                <p className="text-sm text-white/80">{testimonial.title}</p>
+              </div>
+            </div>
+          </RevealOnScroll>
+        ))}
+      </GridContainer>
+    </PremiumSection>
+  );
+}
