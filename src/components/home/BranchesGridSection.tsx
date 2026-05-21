@@ -104,13 +104,11 @@ export function BranchesGridSection() {
   };
 
   return (
-    <section id="branches" className="relative overflow-hidden bg-[#dfe1e3] py-12 md:py-16 section-hero-match font-sans">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-16 right-[10%] w-[28rem] h-[28rem] rounded-full bg-[#244f86]/10 blur-3xl" />
-        <div className="absolute bottom-10 left-[-8rem] w-72 h-72 rounded-full bg-[#f36a2c]/10 blur-3xl" />
-        <div className="absolute top-20 left-[52%] w-[32rem] h-px bg-[#f36a2c]/30 rotate-[-56deg] origin-left" />
-      </div>
-
+    <section
+      id="branches"
+      className="relative overflow-hidden py-12 md:py-16 section-hero-match font-sans"
+      style={{ background: "#dfe1e3" }}
+    >
       <div className="container-x relative z-10">
         <CenteredContent
           eyebrow="OUR BRANCHES"

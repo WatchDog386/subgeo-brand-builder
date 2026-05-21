@@ -26,10 +26,10 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-6 inset-x-0 z-50">
+    <header className="fixed top-0 inset-x-0 z-50">
       {/* Top thin strip with social icons */}
       <div className="nav-topstrip text-xs text-white/80">
-        <div className="container-x flex items-center justify-between h-8">
+        <div className="container-x flex items-center justify-between h-6">
           <div />
           <div className="flex items-center gap-4">
             <a href="#" className="hover:underline hidden sm:inline-flex items-center gap-2">
@@ -47,14 +47,14 @@ export function Navbar() {
 
       {/* Main navigation */}
       <div className={`nav-main transition-all duration-300 ${scrolled ? 'shadow-elevation-2' : ''}`}>
-        <div className="container-x grid grid-cols-3 items-center h-20">
+        <div className="container-x grid grid-cols-3 items-center h-16">
         {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group" aria-label="Home">
           <motion.img
             whileHover={{ scale: 1.02 }}
             src={logoSrc}
             alt="Subgeo logo"
-            className="w-56 h-14 md:w-72 md:h-20 object-contain -mb-3"
+            className="w-44 h-10 md:w-64 md:h-16 object-contain -mb-1"
             style={{ zIndex: 60 }}
           />
         </Link>
@@ -162,7 +162,7 @@ export function Navbar() {
                   >
                     <Link
                       to="/contact"
-                      className="hidden md:inline-flex h-12 px-7 rounded-full bg-[#f36a2c] text-white font-semibold shadow-[0_12px_30px_rgba(243,106,44,0.28)] transition-all hover:bg-[#e85e1d] hover:shadow-[0_16px_34px_rgba(243,106,44,0.36)] no-underline items-center justify-center"
+                      className="hidden md:inline-flex h-10 px-6 rounded-full bg-[#f36a2c] text-white font-semibold shadow-[0_10px_24px_rgba(243,106,44,0.24)] transition-all hover:bg-[#e85e1d] hover:shadow-[0_12px_28px_rgba(243,106,44,0.32)] no-underline items-center justify-center"
                     >
                       <motion.span className="flex items-center gap-2" whileHover={{ scale: 1.02 }} transition={{ duration: 0.15 }}>
                         <span className="text-sm">Book</span>

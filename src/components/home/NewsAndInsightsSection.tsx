@@ -29,6 +29,7 @@ export function NewsAndInsightsSection() {
   return (
     <PremiumSection
       variant="default"
+      className="bg-[#dfe1e3] font-sans"
       title="Latest From Subgeo"
       subtitle="News, updates, and insights from across our branches."
     >

@@ -29,7 +29,7 @@ export function PillarsSection() {
   return (
     <PremiumSection
       variant="default"
-      className="hero-magazine-inner !py-28 md:!py-36"
+      className="hero-magazine-inner !py-28 md:!py-36 bg-[#dfe1e3] font-sans"
       title={
         <>
           <span className="text-2xl md:text-3xl">

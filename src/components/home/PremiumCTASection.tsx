@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function PremiumCTASection() {
   return (
-    <section className="py-20 md:py-24 px-4">
+    <section className="bg-[#dfe1e3] py-20 md:py-24 px-4 font-sans">
       <div className="container-x">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

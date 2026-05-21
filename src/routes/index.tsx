@@ -46,12 +46,12 @@ function Home() {
       <ImpactStatsSection />
       <StorySection />
       <BranchesGridSection />
-      <VisitUsTodaySection />
       <PillarsSection />
       <ValuesMissionSection />
       <FAQSection />
       <NewsAndInsightsSection />
       <PremiumCTASection />
+      <VisitUsTodaySection />
       <Footer />
     </PageTransition>
   );
