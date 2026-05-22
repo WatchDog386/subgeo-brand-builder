@@ -63,10 +63,10 @@ export function WhyUsSection() {
                     transition={{ duration: 0.5, delay: 0.16 + index * 0.06 }}
                     viewport={{ once: true }}
                     whileHover={{ y: -2 }}
-                    className="group rounded-2xl border border-black/10 bg-white/70 px-4 py-4 shadow-[0_12px_30px_rgba(17,24,39,0.06)] backdrop-blur-sm transition-all duration-300 hover:border-[#f36a2c]/30 hover:shadow-[0_18px_45px_rgba(243,106,44,0.12)]"
+                    className="group rounded-2xl border border-black/10 bg-white/70 px-4 py-4 shadow-[0_12px_30px_rgba(17,24,39,0.06)] backdrop-blur-sm transition-all duration-300 hover:border-[#d32f2f]/30 hover:shadow-[0_18px_45px_rgba(211,47,47,0.12)]"
                   >
                     <div className="flex items-start gap-3">
-                      <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#f36a2c] transition-transform duration-300 group-hover:scale-125" />
+                      <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#d32f2f] transition-transform duration-300 group-hover:scale-125" />
                       <p className="text-[13px] md:text-[14px] leading-relaxed text-[#222] font-normal">{item}</p>
                     </div>
                   </motion.div>
@@ -77,7 +77,7 @@ export function WhyUsSection() {
                 <motion.div whileHover={{ y: -3, scale: 1.01 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.2 }}>
                   <Link
                     to="/branches"
-                    className="inline-flex h-10 items-center justify-center rounded-full bg-[#f36a2c] px-7 text-sm font-medium text-white no-underline shadow-[0_12px_30px_rgba(243,106,44,0.28)] transition-all hover:bg-[#e85e1d] hover:shadow-[0_16px_34px_rgba(243,106,44,0.36)]"
+                    className="inline-flex h-10 items-center justify-center rounded-full bg-[#d32f2f] px-7 text-sm font-medium text-white no-underline shadow-[0_12px_30px_rgba(211,47,47,0.28)] transition-all hover:bg-[#b71c1c] hover:shadow-[0_16px_34px_rgba(211,47,47,0.36)]"
                   >
                     Explore Branches
                   </Link>
@@ -86,7 +86,7 @@ export function WhyUsSection() {
                 <motion.div whileHover={{ y: -3, scale: 1.01 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.2 }}>
                   <Link
                     to="/contact"
-                    className="inline-flex h-10 items-center justify-center rounded-full border border-black/10 bg-white/85 px-7 text-sm font-medium tracking-tight text-[#111111] no-underline shadow-sm backdrop-blur transition-all hover:border-[#f36a2c]/35 hover:bg-white hover:shadow-[0_12px_28px_rgba(17,24,39,0.08)]"
+                    className="inline-flex h-10 items-center justify-center rounded-full border border-black/10 bg-white/85 px-7 text-sm font-medium tracking-tight text-[#111111] no-underline shadow-sm backdrop-blur transition-all hover:border-[#d32f2f]/35 hover:bg-white hover:shadow-[0_12px_28px_rgba(17,24,39,0.08)]"
                   >
                     Contact Us
                   </Link>
@@ -116,9 +116,9 @@ export function WhyUsSection() {
               <motion.article
                 whileHover={{ y: -8, scale: 1.01 }}
                 transition={{ duration: 0.25 }}
-                className="group h-full rounded-[24px] border border-black/10 bg-white/70 p-6 shadow-[0_14px_34px_rgba(17,24,39,0.07)] backdrop-blur-sm transition-all duration-300 hover:border-[#f36a2c]/30 hover:shadow-[0_20px_48px_rgba(243,106,44,0.14)]"
+                className="group h-full rounded-[24px] border border-black/10 bg-white/70 p-6 shadow-[0_14px_34px_rgba(17,24,39,0.07)] backdrop-blur-sm transition-all duration-300 hover:border-[#d32f2f]/30 hover:shadow-[0_20px_48px_rgba(211,47,47,0.14)]"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#111827] text-white transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#f36a2c]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#111827] text-white transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#d32f2f]">
                   <reason.icon className="h-5 w-5" />
                 </div>
                 <h4 className="mt-5 text-[16px] md:text-[18px] font-medium text-[#222]">{reason.title}</h4>

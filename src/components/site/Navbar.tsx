@@ -29,7 +29,7 @@ export function Navbar() {
     <header className="fixed top-0 inset-x-0 z-50">
       {/* Top thin strip with social icons */}
       <div className="nav-topstrip text-xs text-white/80">
-        <div className="container-x flex items-center justify-between h-6">
+        <div className="container-x flex items-center justify-between h-8 md:h-10">
           <div />
           <div className="flex items-center gap-4">
             <a href="#" className="hover:underline hidden sm:inline-flex items-center gap-2">

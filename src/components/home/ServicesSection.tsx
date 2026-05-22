@@ -8,7 +8,7 @@ const serviceFeatures = [
     description:
       "Professional pharmaceutical care with quality-assured medications and expert consultation.",
     icon: Pill,
-    accent: "bg-[#f36a2c]",
+    accent: "bg-[#d32f2f]",
   },
   {
     title: "Medical Clinic",
@@ -66,7 +66,7 @@ export function ServicesSection() {
                   Subgeo delivers trusted services with consistent quality across every branch.
                 </p>
                 <div className="mt-6 flex justify-center">
-                  <button className="bg-[#f36a2c] text-white px-5 py-3 rounded-md font-semibold">Explore Services</button>
+                  <button className="bg-[#d32f2f] text-white px-5 py-3 rounded-md font-semibold">Explore Services</button>
                 </div>
               </div>
             </div>
@@ -91,7 +91,7 @@ export function ServicesSection() {
               {serviceFeatures.map((feature, index) => (
                 <RevealOnScroll key={feature.title} delay={index * 0.05}>
                   <div
-                    className={`group h-full rounded-[24px] border border-black/10 bg-white/70 p-6 shadow-[0_14px_34px_rgba(17,24,39,0.07)] backdrop-blur-sm transition-all duration-300 hover:border-[#f36a2c]/30 hover:shadow-[0_20px_48px_rgba(243,106,44,0.14)] ${
+                    className={`group h-full rounded-[24px] border border-black/10 bg-white/70 p-6 shadow-[0_14px_34px_rgba(17,24,39,0.07)] backdrop-blur-sm transition-all duration-300 hover:border-[#d32f2f]/30 hover:shadow-[0_20px_48px_rgba(211,47,47,0.14)] ${
                       index >= 3 ? "lg:col-span-1 lg:mx-auto" : ""
                     }`}
                   >

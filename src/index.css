@@ -241,9 +241,9 @@
 
 /* Ensure nav links and buttons remain visible when navbar is on dark/navy background */
 .nav-main {
-  background: linear-gradient(180deg,#0d3558 0%, #123a5f 60%);
-  border-top: 1px solid rgba(255,255,255,0.04);
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  background: #111827;
+  border-top: 1px solid rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
   backdrop-filter: blur(6px);
 }
 
@@ -378,7 +378,7 @@
 .hero-magazine-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(48px, 7.5vw, 110px);
+  font-size: clamp(44px, 6.8vw, 98px);
   line-height: 0.95;
   letter-spacing: -0.02em;
   margin: 0;
@@ -396,11 +396,11 @@
   margin: 0 auto;
 }
 
-/* Navbar visuals (now transparent to blend with background) */
+/* Navbar visuals (solid hero-dark so the full header uses one dark tone) */
 .nav-main {
-  background: linear-gradient(180deg,#0d3558 0%, #123a5f 60%);
-  border-top: 1px solid rgba(255,255,255,0.04);
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  background: #111827;
+  border-top: 1px solid rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
   backdrop-filter: blur(6px);
 }
 
@@ -432,13 +432,13 @@ header.fixed {
 
 /* Top strip for social icons */
 .nav-topstrip {
-  background: linear-gradient(180deg,#0b2230 0%, #0c2734 100%);
-  height: 28px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  background: #111827;
+  height: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 
 .nav-topstrip .container-x {
-  height: 28px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -472,7 +472,7 @@ header.fixed {
   display: block;
   font-family: 'Big Shoulders Display', var(--font-display);
   font-weight: 900;
-  font-size: clamp(72px, 9vw, 160px);
+  font-size: clamp(66px, 8.2vw, 144px);
   line-height: 0.82;
   letter-spacing: -0.055em;
   color: var(--color-foreground);
@@ -506,7 +506,7 @@ header.fixed {
   text-align: center;
   font-family: 'Big Shoulders Display', var(--font-display);
   font-weight: 900;
-  font-size: clamp(56px, 8.8vw, 120px);
+  font-size: clamp(50px, 7.8vw, 108px);
   line-height: 0.84;
   letter-spacing: -0.05em;
   color: var(--color-foreground);

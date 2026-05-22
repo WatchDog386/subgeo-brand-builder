@@ -9,8 +9,8 @@ export function StorySection() {
     <section className="relative overflow-hidden bg-[#dfe1e3] py-24 md:py-32 font-sans">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-16 right-[10%] w-[28rem] h-[28rem] rounded-full bg-[#244f86]/10 blur-3xl" />
-        <div className="absolute bottom-10 left-[-8rem] w-72 h-72 rounded-full bg-[#f36a2c]/10 blur-3xl" />
-        <div className="absolute top-20 left-[52%] w-[32rem] h-px bg-[#f36a2c]/30 rotate-[-56deg] origin-left" />
+        <div className="absolute bottom-10 left-[-8rem] w-72 h-72 rounded-full bg-[#d32f2f]/10 blur-3xl" />
+        <div className="absolute top-20 left-[52%] w-[32rem] h-px bg-[#d32f2f]/30 rotate-[-56deg] origin-left" />
       </div>
 
       <div className="relative z-10 w-full px-[5cm]">
@@ -19,7 +19,7 @@ export function StorySection() {
             <div className="max-w-xl">
               <p className="text-[#244f86] font-semibold tracking-tight text-sm md:text-base mb-2 uppercase">OUR PURPOSE</p>
               <h2 className="font-hero text-4xl md:text-6xl leading-tight tracking-tight text-[#111827] mb-4">
-                A Holding Company Built for <span className="text-[#f36a2c]">Many Services</span>
+                A Holding Company Built for <span className="text-[#d32f2f]">Many Services</span>
               </h2>
 
               <p className="mt-4 text-lg md:text-lg text-slate-700 leading-relaxed max-w-prose">

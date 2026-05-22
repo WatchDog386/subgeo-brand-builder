@@ -6,7 +6,8 @@ import backImg from "@/assets/back.png";
 
 export function HeroSection() {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden bg-[#111827]">
+      <div className="absolute inset-x-0 top-0 h-[140px] bg-[#111827]" />
       <Navbar />
       
       <PremiumHero
