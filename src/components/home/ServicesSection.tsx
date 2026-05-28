@@ -91,7 +91,7 @@ export function ServicesSection() {
               {serviceFeatures.map((feature, index) => (
                 <RevealOnScroll key={feature.title} delay={index * 0.05}>
                   <div
-                    className={`group h-full rounded-[24px] border border-black/10 bg-white/70 p-6 shadow-[0_14px_34px_rgba(17,24,39,0.07)] backdrop-blur-sm transition-all duration-300 hover:border-[#d32f2f]/30 hover:shadow-[0_20px_48px_rgba(211,47,47,0.14)] ${
+                    className={`group h-full rounded-[24px] border border-black/10 bg-[#dfe1e3] p-6 shadow-[0_14px_34px_rgba(17,24,39,0.07)] backdrop-blur-sm transition-all duration-300 hover:border-[#d32f2f]/30 hover:shadow-[0_20px_48px_rgba(211,47,47,0.14)] ${
                       index >= 3 ? "lg:col-span-1 lg:mx-auto" : ""
                     }`}
                   >

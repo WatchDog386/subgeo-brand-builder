@@ -53,7 +53,7 @@ export function StorySection() {
                   className="h-[340px] md:h-[520px] w-full object-cover rounded-none shadow-xl"
                 />
 
-                <div className="absolute left-6 bottom-6 bg-white/80 backdrop-blur-sm rounded-md px-4 py-2">
+                <div className="absolute left-6 bottom-6 bg-[#dfe1e3]/80 backdrop-blur-sm rounded-md px-4 py-2">
                   <p className="text-lg md:text-2xl font-semibold text-slate-800">Purpose built for communities</p>
                 </div>
               </div>

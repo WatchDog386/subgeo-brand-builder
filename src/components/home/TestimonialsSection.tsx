@@ -26,8 +26,8 @@ const testimonials = [
 export function TestimonialsSection() {
   return (
     <PremiumSection
-      variant="dark"
-      className="section-subgeo-blue !py-10 md:!py-12"
+      variant="default"
+      className="bg-[#dfe1e3] !py-10 md:!py-12"
       title={"Trusted by Our Community"}
       subtitle="Real experiences from people who've made Subgeo part of their wellness journey."
       titleStyle={{ fontSize: "clamp(2.5rem, 4.5vw, 4rem)", lineHeight: 0.95, letterSpacing: "-0.04em" }}
@@ -35,12 +35,12 @@ export function TestimonialsSection() {
       <GridContainer columns={3} gap="md">
         {testimonials.map((testimonial, index) => (
           <RevealOnScroll key={index} delay={index * 0.15} direction="up">
-            <div className="glass-dark rounded-sm p-6 md:p-7 h-full flex flex-col justify-between">
-              <p className="text-white/90 text-lg md:text-xl leading-snug mb-5 italic">{testimonial.quote}</p>
+            <div className="bg-[#dfe1e3] border border-gray-200 rounded-sm p-6 md:p-7 h-full flex flex-col justify-between shadow-sm">
+              <p className="text-gray-700 text-lg md:text-xl leading-snug mb-5 italic">{testimonial.quote}</p>
 
               <div className="mt-4">
-                <p className="font-semibold text-white">{testimonial.author}</p>
-                <p className="text-sm text-white/80">{testimonial.title}</p>
+                <p className="font-semibold text-gray-900">{testimonial.author}</p>
+                <p className="text-sm text-gray-600">{testimonial.title}</p>
               </div>
             </div>
           </RevealOnScroll>

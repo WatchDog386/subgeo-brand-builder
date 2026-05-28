@@ -43,7 +43,7 @@ export function FAQSection() {
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
         {faqs.map((faq, index) => (
           <RevealOnScroll key={faq.q} delay={index * 0.06}>
-            <details className="rounded-2xl border border-black/10 bg-white/70 p-6 shadow-[0_12px_30px_rgba(17,24,39,0.06)] backdrop-blur-sm cursor-pointer">
+            <details className="rounded-2xl border border-black/10 bg-[#dfe1e3] p-6 shadow-[0_12px_30px_rgba(17,24,39,0.06)] backdrop-blur-sm cursor-pointer">
               <summary className="font-semibold text-lg mb-2">{faq.q}</summary>
               <div className="mt-3 text-gray-600 leading-relaxed">{faq.a}</div>
             </details>

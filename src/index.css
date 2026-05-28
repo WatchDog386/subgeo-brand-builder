@@ -241,7 +241,7 @@
 
 /* Ensure nav links and buttons remain visible when navbar is on dark/navy background */
 .nav-main {
-  background: #111827;
+  background: #123f75;
   border-top: 1px solid rgba(255,255,255,0.03);
   border-bottom: 1px solid rgba(255,255,255,0.03);
   backdrop-filter: blur(6px);
@@ -398,7 +398,7 @@
 
 /* Navbar visuals (solid hero-dark so the full header uses one dark tone) */
 .nav-main {
-  background: #111827;
+  background: #123f75;
   border-top: 1px solid rgba(255,255,255,0.03);
   border-bottom: 1px solid rgba(255,255,255,0.03);
   backdrop-filter: blur(6px);
@@ -432,7 +432,7 @@ header.fixed {
 
 /* Top strip for social icons */
 .nav-topstrip {
-  background: #111827;
+  background: #123f75;
   height: 40px;
   border-bottom: 1px solid rgba(255,255,255,0.03);
 }

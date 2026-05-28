@@ -27,40 +27,31 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50">
-      {/* Top thin strip with social icons */}
-      <div className="nav-topstrip text-xs text-white/80">
-        <div className="container-x flex items-center justify-between h-8 md:h-10">
-          <div />
-          <div className="flex items-center gap-4">
-            <a href="#" className="hover:underline hidden sm:inline-flex items-center gap-2">
-              <Facebook className="w-4 h-4" />
-            </a>
-            <a href="#" className="hover:underline hidden sm:inline-flex items-center gap-2">
-              <Twitter className="w-4 h-4" />
-            </a>
-            <a href="#" className="hover:underline hidden sm:inline-flex items-center gap-2">
-              <Linkedin className="w-4 h-4" />
-            </a>
+      {/* Top announcement strip */}
+      <div className="bg-[#072235] text-sm text-white/90">
+        <div className="container-x flex items-center justify-center h-9">
+          <div className="text-xs">
+            🚀 Register your business and get a corporate bank account — <a href="#" className="underline">fast</a>
           </div>
         </div>
       </div>
 
       {/* Main navigation */}
-      <div className={`nav-main transition-all duration-300 ${scrolled ? 'shadow-elevation-2' : ''}`}>
-        <div className="container-x grid grid-cols-3 items-center h-16">
-        {/* Logo */}
+      <div className={`nav-main transition-all duration-300 bg-white/5 ${scrolled ? 'shadow-elevation-2 backdrop-blur-sm' : ''}`}>
+        <div className="container-x grid grid-cols-[auto_1fr_auto] items-center h-20">
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group" aria-label="Home">
-          <motion.img
-            whileHover={{ scale: 1.02 }}
-            src={logoSrc}
-            alt="Subgeo logo"
-            className="w-44 h-10 md:w-64 md:h-16 object-contain -mb-1"
-            style={{ zIndex: 60 }}
-          />
-        </Link>
+            <motion.img
+              whileHover={{ scale: 1.02 }}
+              src={logoSrc}
+              alt="Subgeo logo"
+              className="w-40 h-10 md:w-48 md:h-12 object-contain"
+              style={{ zIndex: 60 }}
+            />
+          </Link>
 
           {/* Centered Desktop Navigation */}
-          <nav className="hidden lg:flex items-center justify-center gap-8 text-sm uppercase tracking-widest">
+          <nav className="hidden lg:flex items-center justify-start gap-8 ml-10 text-sm font-semibold text-gray-800">
           {nav.map((item, idx) =>
             item.hasMenu ? (
               <div
@@ -70,7 +61,7 @@ export function Navbar() {
                 onMouseLeave={() => setBranchOpen(false)}
               >
                 <motion.button
-                  className="px-4 py-2 inline-flex items-center gap-1.5 text-white hover:opacity-90 transition-colors font-medium"
+                  className="px-4 py-2 inline-flex items-center gap-1.5 text-gray-800 hover:opacity-90 transition-colors font-medium"
                   whileHover={{ y: -2 }}
                 >
                   {item.label}
@@ -140,7 +131,7 @@ export function Navbar() {
               <motion.div key={item.to} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1, duration: 0.4 }}>
                 <Link
                   to={item.to}
-                  className="px-4 py-2 text-white hover:opacity-90 transition-colors font-medium no-underline block"
+                  className="px-4 py-2 text-gray-800 hover:opacity-90 transition-colors font-medium no-underline block"
                   activeOptions={{ exact: item.to === "/" }}
                   activeProps={{ className: "text-white" }}
                 >
@@ -162,11 +153,11 @@ export function Navbar() {
                   >
                     <Link
                       to="/contact"
-                      className="hidden md:inline-flex h-10 px-6 rounded-full bg-[#f36a2c] text-white font-semibold shadow-[0_10px_24px_rgba(243,106,44,0.24)] transition-all hover:bg-[#e85e1d] hover:shadow-[0_12px_28px_rgba(243,106,44,0.32)] no-underline items-center justify-center"
+                      className="hidden md:inline-flex h-10 px-5 rounded-full bg-[#28b463] text-white font-semibold shadow-[0_10px_24px_rgba(40,180,99,0.16)] transition-all hover:bg-[#1f9a4f] no-underline items-center justify-center"
                     >
                       <motion.span className="flex items-center gap-2" whileHover={{ scale: 1.02 }} transition={{ duration: 0.15 }}>
-                        <span className="text-sm">Book</span>
-                        <span className="text-sm font-semibold">Appointment</span>
+                        <span className="text-sm">Create free</span>
+                        <span className="text-sm font-semibold">account</span>
                       </motion.span>
                     </Link>
                   </motion.div>

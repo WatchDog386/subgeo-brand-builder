@@ -121,10 +121,10 @@ export function BranchesGridSection() {
           <div className="flex items-center justify-between mb-6">
             <div />
             <div className="flex items-center gap-3">
-              <button onClick={prev} aria-label="Previous" className="p-2 rounded-full bg-white shadow-elevation-2 transition-transform hover:scale-105">
+              <button onClick={prev} aria-label="Previous" className="p-2 rounded-full bg-[#dfe1e3] shadow-elevation-2 transition-transform hover:scale-105">
                 <ArrowLeft className="w-5 h-5 text-gray-700" />
               </button>
-              <button onClick={next} aria-label="Next" className="p-2 rounded-full bg-white shadow-elevation-2 transition-transform hover:scale-105">
+              <button onClick={next} aria-label="Next" className="p-2 rounded-full bg-[#dfe1e3] shadow-elevation-2 transition-transform hover:scale-105">
                 <ArrowRight className="w-5 h-5 text-gray-700" />
               </button>
             </div>
@@ -152,7 +152,7 @@ export function BranchesGridSection() {
                   <div key={branch.slug} className="w-full md:w-1/3">
                     <RevealOnScroll delay={index * 0.06}>
                       <Link to="/branches/$slug" params={{ slug: branch.slug }} className="block h-full no-underline">
-                        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm h-full flex flex-col">
+                        <div className="bg-[#dfe1e3] border border-gray-200 rounded-lg overflow-hidden shadow-sm h-full flex flex-col">
                           <div className="overflow-hidden">
                             <img src={branch.image} alt={branch.name} className="w-full h-48 md:h-56 object-cover" />
                           </div>
@@ -190,13 +190,13 @@ export function BranchesGridSection() {
 
             {/* Left/Right arrows positioned center */}
             <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none md:pl-6">
-              <button onClick={prev} aria-label="Previous" className="pointer-events-auto p-3 rounded-full bg-white shadow-elevation-2 transition-transform hover:scale-105">
+              <button onClick={prev} aria-label="Previous" className="pointer-events-auto p-3 rounded-full bg-[#dfe1e3] shadow-elevation-2 transition-transform hover:scale-105">
                 <ArrowLeft className="w-5 h-5 text-gray-700" />
               </button>
             </div>
 
             <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none md:pr-6">
-              <button onClick={next} aria-label="Next" className="pointer-events-auto p-3 rounded-full bg-white shadow-elevation-2 transition-transform hover:scale-105">
+              <button onClick={next} aria-label="Next" className="pointer-events-auto p-3 rounded-full bg-[#dfe1e3] shadow-elevation-2 transition-transform hover:scale-105">
                 <ArrowRight className="w-5 h-5 text-gray-700" />
               </button>
             </div>

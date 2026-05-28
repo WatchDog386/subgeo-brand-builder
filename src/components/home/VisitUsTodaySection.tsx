@@ -9,7 +9,7 @@ export function VisitUsTodaySection() {
   if (!branch) return null;
 
   return (
-    <PremiumSection title={"Visit Us Today"} subtitle={"Get the pharmaceutical care you deserve"}>
+    <PremiumSection variant="default" className="bg-[#dfe1e3]" title={"Visit Us Today"} subtitle={"Get the pharmaceutical care you deserve"}>
       <div className="container-x grid md:grid-cols-2 gap-8">
         <div>
           <h3 className="mb-4 font-semibold">Contact Information</h3>
