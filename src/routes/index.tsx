@@ -14,6 +14,7 @@ import { ValuesMissionSection } from "@/components/home/ValuesMissionSection";
 import { FAQSection } from "@/components/home/FAQSection";
 import { NewsAndInsightsSection } from "@/components/home/NewsAndInsightsSection";
 import { PremiumCTASection } from "@/components/home/PremiumCTASection";
+// (Removed Subgeo Industrial imports)
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -52,6 +53,8 @@ function Home() {
       <NewsAndInsightsSection />
       <PremiumCTASection />
       <VisitUsTodaySection />
+
+      
       <Footer />
     </PageTransition>
   );

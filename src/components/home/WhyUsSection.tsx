@@ -24,106 +24,111 @@ const reasons = [
 
 export function WhyUsSection() {
   return (
-    <section className="relative overflow-hidden bg-[#dfe1e3] py-4 md:py-6 font-sans">
+    <section className="section-hero-match relative overflow-hidden py-12 md:py-16">
       <div className="container-x relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-center gap-8 md:gap-12">
-          <RevealOnScroll direction="left">
-            <div className="max-w-[760px]">
-              <motion.h2
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.05 }}
-                viewport={{ once: true }}
-                className="mt-2 font-hero text-[32px] md:text-[56px] leading-[0.95] tracking-[-0.04em] text-[#111111]"
-              >
-                Why Choose Subgeo
-              </motion.h2>
+        
+        {/* Top Header Section */}
+        <div className="mb-8 md:mb-12 max-w-4xl">
+          <RevealOnScroll direction="up">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-[#0f172a]">
+              Why Choose Subgeo
+            </h2>
+            <p className="mt-4 text-base md:text-lg text-[#475467] font-medium leading-relaxed max-w-2xl">
+              Local expertise, consistent clinical standards, and community-first service — all under one trusted Kenyan brand.
+            </p>
+          </RevealOnScroll>
+        </div>
 
-              <motion.p
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.12 }}
-                viewport={{ once: true }}
-                className="mt-3 max-w-[58ch] text-[14px] md:text-[16px] leading-relaxed text-[#222] font-normal"
-              >
-                Local expertise, consistent clinical standards, and community-first service — all under one trusted Kenyan brand.
-              </motion.p>
+        {/* Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch mb-16">
+          
+          {/* Left Column: Image Area - HEIGHT REDUCED */}
+          <div className="lg:col-span-5">
+            <RevealOnScroll direction="left">
+              {/* 
+                Changed to h-auto so it hugs the image height tightly.
+                Added w-full max-w-[400px] to keep it contained but shorter.
+              */}
+                  <div className="relative bg-[#f0fdf7] w-full max-w-[520px] mx-auto lg:mx-0 min-h-[420px] lg:min-h-[560px] py-6 lg:py-0 px-8 flex items-center justify-center overflow-hidden">
+                <motion.img
+                  src={whyImg}
+                  alt="Why choose Subgeo"
+                  className="w-full h-full object-contain object-center"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                />
+              </div>
+            </RevealOnScroll>
+          </div>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-2 max-w-3xl">
+          {/* Right Column: Features List & Details */}
+          <div className="lg:col-span-7 lg:pt-10">
+            <RevealOnScroll direction="right">
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight tracking-tight text-[#0f172a] mb-6">
+                Reliability you can count on
+              </h3>
+              
+              <p className="text-base md:text-lg text-[#475467] leading-relaxed mb-10 max-w-xl">
+                We provide the gift of modern, frictionless, and painless service. Integrate with Subgeo once and let us handle the technical complexity while you focus on your community.
+              </p>
+
+              {/* Feature List */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-12">
                 {[
                   "Community teams who know local needs and neighbourhoods.",
                   "One standard of safety, quality, and professionalism.",
                   "Integrated branches that make access easier for families.",
                   "Measured outcomes with follow-up care and accountability.",
                 ].map((item, index) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.16 + index * 0.06 }}
-                    viewport={{ once: true }}
-                    whileHover={{ y: -2 }}
-                    className="group rounded-2xl border border-black/10 bg-[#dfe1e3] px-4 py-4 shadow-[0_12px_30px_rgba(17,24,39,0.06)] backdrop-blur-sm transition-all duration-300 hover:border-[#d32f2f]/30 hover:shadow-[0_18px_45px_rgba(211,47,47,0.12)]"
-                  >
-                    <div className="flex items-start gap-3">
-                      <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#d32f2f] transition-transform duration-300 group-hover:scale-125" />
-                      <p className="text-[13px] md:text-[14px] leading-relaxed text-[#222] font-normal">{item}</p>
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="w-5 h-5 rounded-full bg-[#f0fdf7] flex items-center justify-center border border-[#d1fae5]">
+                         <div className="w-2 h-2 rounded-full bg-[#28b463]" />
+                      </div>
                     </div>
-                  </motion.div>
+                    <span className="text-[15px] font-semibold text-[#0f172a] leading-tight">
+                      {item}
+                    </span>
+                  </div>
                 ))}
               </div>
 
-              <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-                <motion.div whileHover={{ y: -3, scale: 1.01 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.2 }}>
-                  <Link
-                    to="/branches"
-                    className="inline-flex h-10 items-center justify-center rounded-full bg-[#d32f2f] px-7 text-sm font-medium text-white no-underline shadow-[0_12px_30px_rgba(211,47,47,0.28)] transition-all hover:bg-[#b71c1c] hover:shadow-[0_16px_34px_rgba(211,47,47,0.36)]"
-                  >
-                    Explore Branches
-                  </Link>
-                </motion.div>
-
-                <motion.div whileHover={{ y: -3, scale: 1.01 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.2 }}>
-                  <Link
-                    to="/contact"
-                    className="inline-flex h-10 items-center justify-center rounded-full border border-black/10 bg-[#dfe1e3] px-7 text-sm font-medium tracking-tight text-[#111111] no-underline shadow-sm backdrop-blur transition-all hover:border-[#d32f2f]/35 hover:bg-[#dfe1e3] hover:shadow-[0_12px_28px_rgba(17,24,39,0.08)]"
-                  >
-                    Contact Us
-                  </Link>
-                </motion.div>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  to="/branches"
+                  className="inline-flex h-[54px] items-center justify-center rounded-lg bg-[#28b463] px-8 text-[16px] font-bold text-white no-underline shadow-lg shadow-green-900/10 transition-all hover:bg-[#1f9a4f] hover:-translate-y-0.5"
+                >
+                  Explore Branches
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex h-[54px] items-center justify-center rounded-lg border border-[#e2e8f0] bg-white px-8 text-[16px] font-bold text-[#0f172a] no-underline transition-all hover:border-[#cbd5e1] hover:-translate-y-0.5"
+                >
+                  Contact Us
+                </Link>
               </div>
-            </div>
-          </RevealOnScroll>
-
-          <RevealOnScroll direction="right" delay={0.15}>
-            <div className="relative w-full max-w-[600px] lg:ml-auto lg:mr-0 lg:justify-self-stretch lg:translate-y-4 xl:max-w-[640px] xl:translate-y-6 2xl:translate-y-8">
-              <motion.img
-                src={whyImg}
-                alt="Why choose Subgeo"
-                className="h-[320px] md:h-[440px] w-full object-contain object-center lg:ml-auto"
-                initial={{ opacity: 0, scale: 0.98 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
-                viewport={{ once: true }}
-              />
-            </div>
-          </RevealOnScroll>
+            </RevealOnScroll>
+          </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+        {/* Bottom Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-[#f1f5f9] pt-12">
           {reasons.map((reason, index) => (
-            <RevealOnScroll key={reason.title} delay={index * 0.08}>
-              <motion.article
-                whileHover={{ y: -8, scale: 1.01 }}
-                transition={{ duration: 0.25 }}
-                className="group h-full rounded-[24px] border border-black/10 bg-[#dfe1e3] p-6 shadow-[0_14px_34px_rgba(17,24,39,0.07)] backdrop-blur-sm transition-all duration-300 hover:border-[#d32f2f]/30 hover:shadow-[0_20px_48px_rgba(211,47,47,0.14)]"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#111827] text-white transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#d32f2f]">
-                  <reason.icon className="h-5 w-5" />
+            <RevealOnScroll key={reason.title} delay={index * 0.1}>
+              <div className="group p-0">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#f8fafc] text-[#28b463] border border-[#f1f5f9] group-hover:bg-[#28b463] group-hover:text-white transition-colors duration-300">
+                    <reason.icon className="h-5 w-5" />
+                  </div>
+                  <h4 className="text-lg font-bold text-[#0f172a]">{reason.title}</h4>
                 </div>
-                <h4 className="mt-5 text-[16px] md:text-[18px] font-medium text-[#222]">{reason.title}</h4>
-                <p className="mt-3 text-[13px] md:text-[14px] leading-relaxed text-[#222] font-normal">{reason.description}</p>
-              </motion.article>
+                <p className="text-[15px] leading-relaxed text-[#475467]">
+                  {reason.description}
+                </p>
+              </div>
             </RevealOnScroll>
           ))}
         </div>

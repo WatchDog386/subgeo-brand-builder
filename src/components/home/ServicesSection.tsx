@@ -1,112 +1,84 @@
-import { Pill, HeartPulse, Sparkles, Heart, Wrench } from "lucide-react";
+import { Pill, HeartPulse, Sparkles, ArrowRight } from "lucide-react";
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
-import serviceImg from "@/assets/service.png";
 
 const serviceFeatures = [
   {
-    title: "Pharmacy Services",
+    title: "Subgeo for Health Brands",
     description:
-      "Professional pharmaceutical care with quality-assured medications and expert consultation.",
+      "We help health-focused businesses deliver trusted care, faster service, and better client experiences.",
     icon: Pill,
-    accent: "bg-[#d32f2f]",
+    iconBg: "bg-[#eaf4ff]",
   },
   {
-    title: "Medical Clinic",
+    title: "Subgeo for Entrepreneurs",
     description:
-      "Comprehensive clinical care from qualified healthcare professionals with modern diagnostics.",
+      "From early-stage setups to growing teams, we support operators with practical, scalable service solutions.",
     icon: HeartPulse,
-    accent: "bg-[#244f86]",
+    iconBg: "bg-[#eaf4ff]",
   },
   {
-    title: "Diagnostics Lab",
-    description: "Advanced laboratory services with same-day reporting and clinical accuracy.",
+    title: "Subgeo for Organizations",
+    description: "We support institutions with dependable service systems built for consistency, quality, and compliance.",
     icon: Sparkles,
-    accent: "bg-[#111827]",
-  },
-  {
-    title: "Wellness & Beauty",
-    description: "Holistic wellness and professional beauty services in a premium environment.",
-    icon: Heart,
-    accent: "bg-[#f56daf]",
-  },
-  {
-    title: "Industrial Works & Trades",
-    description:
-      "Professional maintenance, plumbing, fitting, and commercial works delivered reliably.",
-    icon: Wrench,
-    accent: "bg-[#67a7ff]",
+    iconBg: "bg-[#eaf4ff]",
   },
 ];
 
 export function ServicesSection() {
   return (
-    <section className="py-20 md:py-28 bg-[#dfe1e3] overflow-hidden relative font-sans text-[#111111]">
-      <div className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
-          <RevealOnScroll direction="right" delay={0.1}>
-            <div className="relative overflow-hidden w-full px-4 md:px-8 lg:px-16">
-                <img
-                  src={serviceImg}
-                  alt="Service"
-                  className="relative z-30 h-[340px] md:h-[480px] w-full object-cover shadow-2xl"
-                  style={{ filter: "grayscale(100%) contrast(120%)" }}
-                />
-            </div>
-          </RevealOnScroll>
-
-          <RevealOnScroll direction="left">
-            <div className="w-full flex justify-center">
-                <div className="max-w-xl text-center px-6 lg:px-0">
-                <h2 className="text-3xl md:text-5xl font-semibold leading-tight tracking-tight text-[#111827]">
-                  Professional Services Designed Around Subgeo Communities
-                </h2>
-
-                <p className="mt-4 text-sm md:text-base text-[#444444] max-w-lg leading-relaxed mx-auto">
-                  From pharmacy and clinic care to diagnostics, wellness, and industrial support,
-                  Subgeo delivers trusted services with consistent quality across every branch.
-                </p>
-                <div className="mt-6 flex justify-center">
-                  <button className="bg-[#d32f2f] text-white px-5 py-3 rounded-md font-semibold">Explore Services</button>
-                </div>
-              </div>
-            </div>
-          </RevealOnScroll>
+    <section className="relative overflow-hidden bg-[#f4f6f8] py-14 md:py-20">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -right-44 -top-8 h-[620px] w-[620px] opacity-60">
+          <svg viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {[...Array(14)].map((_, i) => (
+              <circle
+                key={i}
+                cx="350"
+                cy="350"
+                r={330 - i * 18}
+                stroke="#d9dee4"
+                strokeWidth="1"
+                fill="none"
+                strokeDasharray="3 6"
+                opacity={0.5 - i * 0.03}
+              />
+            ))}
+          </svg>
         </div>
+      </div>
 
-        <div className="mt-16 md:mt-20">
-          <div className="container-x">
-            <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
-              <h3 className="font-display text-3xl md:text-5xl text-[#111827] tracking-tight">
-                Service Features
-              </h3>
-              <p className="mt-4 text-slate-600 text-lg leading-relaxed">
-                A focused set of services designed to keep patients, clients, and communities moving
-                with confidence.
-              </p>
-            </div>
-          </div>
+      <div className="container-x relative z-10">
+        <RevealOnScroll direction="up" delay={0.1}>
+          <h2 className="mb-10 max-w-3xl text-2xl font-bold leading-tight tracking-tight text-[#0f172a] md:mb-14 md:text-3xl lg:text-4xl">
+            See how Subgeo can help your specific business
+          </h2>
+        </RevealOnScroll>
 
-          <div className="container-x">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-              {serviceFeatures.map((feature, index) => (
-                <RevealOnScroll key={feature.title} delay={index * 0.05}>
-                  <div
-                    className={`group h-full rounded-[24px] border border-black/10 bg-[#dfe1e3] p-6 shadow-[0_14px_34px_rgba(17,24,39,0.07)] backdrop-blur-sm transition-all duration-300 hover:border-[#d32f2f]/30 hover:shadow-[0_20px_48px_rgba(211,47,47,0.14)] ${
-                      index >= 3 ? "lg:col-span-1 lg:mx-auto" : ""
-                    }`}
-                  >
-                    <div className={`h-12 w-12 rounded-2xl ${feature.accent} text-white flex items-center justify-center mb-4`}>
-                      <feature.icon className="w-5 h-5" />
-                    </div>
-                    <h4 className="text-lg md:text-xl font-medium text-[#111827] leading-tight">
-                      {feature.title}
-                    </h4>
-                    <p className="mt-3 text-sm md:text-[15px] text-slate-600 leading-relaxed">{feature.description}</p>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {serviceFeatures.map((feature, index) => (
+            <RevealOnScroll key={feature.title} delay={index * 0.1}>
+              <div className="group rounded-sm border border-[#e2e8f0] bg-white p-8 transition-all duration-300 hover:border-[#d4dbe3] hover:shadow-[0_6px_20px_rgba(15,23,42,0.05)]">
+                <div className={`mb-7 flex h-16 w-16 items-center justify-center rounded-full ${feature.iconBg}`}>
+                  <feature.icon className="h-7 w-7 text-[#3b82f6]" />
+                </div>
+
+                <h3 className="mb-3 text-2xl font-bold leading-tight tracking-tight text-[#0f172a]">
+                  {feature.title}
+                </h3>
+
+                <p className="mb-7 text-base font-medium leading-relaxed text-[#475467]">
+                  {feature.description}
+                </p>
+
+                <button type="button" className="group/btn inline-flex items-center gap-2.5 text-[15px] font-bold text-[#28b463]">
+                  <span>Learn More</span>
+                  <div className="flex h-5 w-5 items-center justify-center rounded-full border border-[#28b463] transition-colors duration-200 group-hover/btn:bg-[#28b463]">
+                    <ArrowRight className="h-3 w-3 text-[#28b463] transition-colors group-hover/btn:text-white" />
                   </div>
-                </RevealOnScroll>
-              ))}
-            </div>
-          </div>
+                </button>
+              </div>
+            </RevealOnScroll>
+          ))}
         </div>
       </div>
     </section>

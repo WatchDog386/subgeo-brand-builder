@@ -6,7 +6,7 @@ import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
 
 export function StorySection() {
   return (
-    <section className="relative overflow-hidden bg-[#dfe1e3] py-24 md:py-32 font-sans">
+    <section className="section-hero-match relative overflow-hidden py-24 md:py-32 font-sans">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-16 right-[10%] w-[28rem] h-[28rem] rounded-full bg-[#244f86]/10 blur-3xl" />
         <div className="absolute bottom-10 left-[-8rem] w-72 h-72 rounded-full bg-[#d32f2f]/10 blur-3xl" />
@@ -18,15 +18,15 @@ export function StorySection() {
           <RevealOnScroll direction="left">
             <div className="max-w-xl">
               <p className="text-[#244f86] font-semibold tracking-tight text-sm md:text-base mb-2 uppercase">OUR PURPOSE</p>
-              <h2 className="font-hero text-4xl md:text-6xl leading-tight tracking-tight text-[#111827] mb-4">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-[#111827] mb-4">
                 A Holding Company Built for <span className="text-[#d32f2f]">Many Services</span>
               </h2>
 
-              <p className="mt-4 text-lg md:text-lg text-slate-700 leading-relaxed max-w-prose">
+              <p className="mt-4 text-base md:text-lg text-slate-700 leading-relaxed max-w-prose">
                 Subgeo is a holding company that brings together many services under one trusted umbrella, with each branch focused on doing its work well for the communities it serves.
               </p>
 
-              <p className="mt-4 text-lg md:text-lg text-slate-700 leading-relaxed max-w-prose">
+              <p className="mt-4 text-base md:text-lg text-slate-700 leading-relaxed max-w-prose">
                 From healthcare and wellness to industrial and support services, our group is structured to grow specialist branches while keeping the same standard of quality, care, and reliability.
               </p>
 

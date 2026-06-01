@@ -302,15 +302,15 @@ export const PremiumSection: React.FC<PremiumSectionProps> = ({
                   (() => {
                     const headingClass =
                       variant === "dark"
-                        ? "hero-magazine-title font-hero text-white relative z-10"
-                        : "hero-magazine-title font-hero text-[var(--hero-foreground)]";
+                        ? "font-display text-white relative z-10 font-bold leading-tight"
+                        : "font-display text-[var(--hero-foreground)] font-bold leading-tight";
 
                     const subtitleClass = variant === "dark" ? "text-white/90" : "text-[var(--hero-foreground)]/80";
 
                     const headingStyle =
                       variant === "dark"
                         ? { whiteSpace: "normal" }
-                        : { fontSize: "clamp(40px, 6vw, 86px)", lineHeight: 0.95 };
+                        : { fontSize: "clamp(1.5rem, 3vw, 2.25rem)", lineHeight: 1.1, letterSpacing: "-0.03em" };
 
                     const mergedHeadingStyle = { ...headingStyle, ...titleStyle };
 
@@ -322,7 +322,7 @@ export const PremiumSection: React.FC<PremiumSectionProps> = ({
                   })()
                 )}
             {subtitle && (
-              <p className={`text-lg md:text-xl opacity-75 ${variant === "dark" ? "text-white/90" : "text-[var(--hero-foreground)]/80"}`}>{subtitle}</p>
+              <p className={`text-base md:text-lg opacity-75 ${variant === "dark" ? "text-white/90" : "text-[var(--hero-foreground)]/80"}`}>{subtitle}</p>
             )}
           </motion.div>
         )}

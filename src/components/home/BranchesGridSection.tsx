@@ -107,7 +107,7 @@ export function BranchesGridSection() {
     <section
       id="branches"
       className="relative overflow-hidden py-12 md:py-16 section-hero-match font-sans"
-      style={{ background: "#dfe1e3" }}
+      style={{ background: "#f0fdf7" }}
     >
       <div className="container-x relative z-10">
         <CenteredContent

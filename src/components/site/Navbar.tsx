@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, ArrowUpRight, Facebook, Twitter, Linkedin } from "lucide-react";
 import logoSrc from "@/assets/logo.png";
+import backImg from "@/assets/back.png";
 import { branches } from "@/lib/branches";
 
 type NavItem = { to: string; label: string; hasMenu?: boolean };
@@ -12,6 +13,18 @@ const nav: NavItem[] = [
   { to: "/branches", label: "Branches", hasMenu: true },
   { to: "/contact", label: "Contact" },
 ];
+
+const branchRouteBySlug: Record<string, string> = {
+  pharmacy: "/pharmacy",
+  clinic: "/clinic",
+  laboratory: "/laboratory",
+  wellness: "/wellness",
+  barber: "/barber",
+  beauty: "/beauty",
+  "subgeo-industrial": "/subgeo-industrial",
+};
+
+const branchRoute = (slug: string) => branchRouteBySlug[slug] ?? `/branches/${slug}`;
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -30,28 +43,34 @@ export function Navbar() {
       {/* Top announcement strip */}
       <div className="bg-[#072235] text-sm text-white/90">
         <div className="container-x flex items-center justify-center h-9">
-          <div className="text-xs">
-            🚀 Register your business and get a corporate bank account — <a href="#" className="underline">fast</a>
+          <div className="text-xs flex items-center gap-1">
+            🚀 Register your business and get a corporate bank account — <a href="#" className="underline hover:text-white">fast</a> →
           </div>
         </div>
       </div>
 
-      {/* Main navigation */}
-      <div className={`nav-main transition-all duration-300 bg-white/5 ${scrolled ? 'shadow-elevation-2 backdrop-blur-sm' : ''}`}>
-        <div className="container-x grid grid-cols-[auto_1fr_auto] items-center h-20">
+      {/* Main navigation - Same color as hero section */}
+      <div className={`nav-main transition-all duration-300 bg-[#f0fdf7] relative overflow-visible ${scrolled ? 'shadow-sm' : ''}`}>
+        <div className="container-x relative z-10 !flex items-center h-20 gap-8">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group" aria-label="Home">
+          <Link to="/" className="flex items-center gap-2 md:gap-3 group" aria-label="Home">
             <motion.img
               whileHover={{ scale: 1.02 }}
               src={logoSrc}
               alt="Subgeo logo"
-              className="w-40 h-10 md:w-48 md:h-12 object-contain"
+              className="w-8 h-8 md:w-10 md:h-10 object-contain"
               style={{ zIndex: 60 }}
             />
+            <motion.span
+              className="text-lg md:text-xl font-bold text-[#072235] hidden md:block"
+              whileHover={{ scale: 1.02 }}
+            >
+              Subgeo
+            </motion.span>
           </Link>
 
           {/* Centered Desktop Navigation */}
-          <nav className="hidden lg:flex items-center justify-start gap-8 ml-10 text-sm font-semibold text-gray-800">
+          <nav className="hidden lg:flex ml-auto items-center justify-end gap-8 text-sm font-medium text-gray-700">
           {nav.map((item, idx) =>
             item.hasMenu ? (
               <div
@@ -61,7 +80,8 @@ export function Navbar() {
                 onMouseLeave={() => setBranchOpen(false)}
               >
                 <motion.button
-                  className="px-4 py-2 inline-flex items-center gap-1.5 text-gray-800 hover:opacity-90 transition-colors font-medium"
+                  type="button"
+                  className="px-4 py-2 inline-flex items-center gap-1.5 text-gray-700 hover:text-[#072235] transition-colors font-medium"
                   whileHover={{ y: -2 }}
                 >
                   {item.label}
@@ -80,25 +100,25 @@ export function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-[640px]"
+                      className="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-[640px] z-50"
                     >
-                        <div className="glass rounded-sm shadow-elevation-4 p-3 grid grid-cols-2 gap-2">
+                        <div className="bg-white rounded-lg shadow-lg p-3 grid grid-cols-2 gap-2">
                           {branches.map((b) => (
                               <motion.div key={b.slug} whileHover={{ scale: 1.02 }}>
                                 <Link
-                                  to={`/${b.slug}`}
-                                  className="group flex items-start justify-between gap-3 rounded-sm p-4 hover:bg-white/5 transition-all no-underline"
+                                  to={branchRoute(b.slug)}
+                                  className="group flex items-start justify-between gap-3 rounded-lg p-4 hover:bg-[#f0fdf7] transition-all no-underline"
                                 >
                                   <div>
-                                    <div className="text-sm font-semibold text-primary">
+                                    <div className="text-sm font-semibold text-[#072235]">
                                       {b.name}
                                     </div>
-                                    <div className="text-xs text-gray-700 mt-1">
+                                    <div className="text-xs text-gray-600 mt-1">
                                       {b.category}
                                     </div>
                                   </div>
                                   <motion.div
-                                    className="text-primary group-hover:text-primary/80 transition-colors"
+                                    className="text-[#28b463] group-hover:text-[#1f9a4f] transition-colors"
                                     whileHover={{ x: 2, y: -2 }}
                                   >
                                     <ArrowUpRight className="w-4 h-4" />
@@ -110,14 +130,14 @@ export function Navbar() {
                             {/* Add Subgeo Industrial as an extra item in the branches dropdown */}
                             <motion.div whileHover={{ scale: 1.02 }}>
                               <Link
-                                to={`/subgeo-industrial`}
-                                className="group flex items-start justify-between gap-3 rounded-sm p-4 hover:bg-white/5 transition-all no-underline"
+                                to={branchRoute("subgeo-industrial")}
+                                className="group flex items-start justify-between gap-3 rounded-lg p-4 hover:bg-[#f0fdf7] transition-all no-underline"
                               >
                                 <div>
-                                  <div className="text-sm font-semibold text-primary">Subgeo Industrial</div>
-                                  <div className="text-xs text-gray-700 mt-1">Industrial Services</div>
+                                  <div className="text-sm font-semibold text-[#072235]">Subgeo Industrial</div>
+                                  <div className="text-xs text-gray-600 mt-1">Industrial Services</div>
                                 </div>
-                                <motion.div className="text-primary group-hover:text-primary/80 transition-colors" whileHover={{ x: 2, y: -2 }}>
+                                <motion.div className="text-[#28b463] group-hover:text-[#1f9a4f] transition-colors" whileHover={{ x: 2, y: -2 }}>
                                   <ArrowUpRight className="w-4 h-4" />
                                 </motion.div>
                               </Link>
@@ -131,9 +151,9 @@ export function Navbar() {
               <motion.div key={item.to} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1, duration: 0.4 }}>
                 <Link
                   to={item.to}
-                  className="px-4 py-2 text-gray-800 hover:opacity-90 transition-colors font-medium no-underline block"
+                  className="px-4 py-2 text-gray-700 hover:text-[#072235] transition-colors font-medium no-underline block"
                   activeOptions={{ exact: item.to === "/" }}
-                  activeProps={{ className: "text-white" }}
+                  activeProps={{ className: "text-[#072235]" }}
                 >
                   <motion.span whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
                     {item.label}
@@ -156,15 +176,15 @@ export function Navbar() {
                       className="hidden md:inline-flex h-10 px-5 rounded-full bg-[#28b463] text-white font-semibold shadow-[0_10px_24px_rgba(40,180,99,0.16)] transition-all hover:bg-[#1f9a4f] no-underline items-center justify-center"
                     >
                       <motion.span className="flex items-center gap-2" whileHover={{ scale: 1.02 }} transition={{ duration: 0.15 }}>
-                        <span className="text-sm">Create free</span>
-                        <span className="text-sm font-semibold">account</span>
+                        <span className="text-sm">Book</span>
+                        <span className="text-sm font-semibold">appointment</span>
                       </motion.span>
                     </Link>
                   </motion.div>
 
             <motion.button
               onClick={() => setOpen((o) => !o)}
-              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors"
+              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-200/50 transition-colors"
               aria-label="Menu"
               whileTap={{ scale: 0.95 }}
             >
@@ -176,7 +196,7 @@ export function Navbar() {
                     animate={{ rotate: 0 }}
                     exit={{ rotate: 90 }}
                   >
-                    <X className="w-5 h-5 text-white" />
+                    <X className="w-5 h-5 text-gray-800" />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -185,7 +205,7 @@ export function Navbar() {
                     animate={{ rotate: 0 }}
                     exit={{ rotate: -90 }}
                   >
-                    <Menu className="w-5 h-5 text-white" />
+                    <Menu className="w-5 h-5 text-gray-800" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -202,16 +222,16 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-neutral-900 overflow-hidden"
+            className="lg:hidden border-t-0 bg-[#f0fdf7] overflow-hidden relative"
           >
-            <div className="container-x py-6 flex flex-col space-y-1">
+            <div className="container-x relative z-10 py-6 flex flex-col space-y-1">
               {nav.map((item) =>
                 !item.hasMenu ? (
                   <Link
                     key={item.to}
                     to={item.to}
                     onClick={() => setOpen(false)}
-                    className="py-3 px-4 text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors no-underline"
+                    className="py-3 px-4 text-gray-900 font-medium rounded-lg hover:bg-white/50 transition-colors no-underline"
                   >
                     {item.label}
                   </Link>
@@ -219,16 +239,16 @@ export function Navbar() {
               )}
 
               <div className="py-4 mt-2">
-                <p className="text-xs uppercase tracking-widest font-semibold text-gray-500 dark:text-gray-400 px-4 mb-3">
+                <p className="text-xs uppercase tracking-widest font-semibold text-gray-500 px-4 mb-3">
                   Branches
                 </p>
                 <div className="space-y-1">
                   {branches.map((b) => (
                     <Link
                       key={b.slug}
-                      to={`/${b.slug}`}
+                      to={branchRoute(b.slug)}
                       onClick={() => setOpen(false)}
-                      className="block py-3 px-4 text-gray-900 text-sm rounded-lg hover:bg-gray-100 transition-colors no-underline"
+                      className="block py-3 px-4 text-gray-900 text-sm rounded-lg hover:bg-white/50 transition-colors no-underline"
                     >
                       {b.name}
                     </Link>
@@ -236,20 +256,19 @@ export function Navbar() {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-gray-200 dark:border-gray-800">
+              <div className="pt-4 border-t border-gray-200">
                   <Link
                     to="/contact"
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-center py-3 px-4 bg-gradient-premium text-white font-semibold rounded-sm no-underline"
+                    className="flex items-center justify-center py-3 px-4 bg-[#28b463] text-white font-semibold rounded-full no-underline"
                   >
-                  Get in touch
+                  Book appointment
                 </Link>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-      {/* Floating button removed; Book Appointment moved into navbar right side */}
     </header>
   );
 }

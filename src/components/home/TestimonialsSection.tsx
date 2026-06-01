@@ -30,7 +30,6 @@ export function TestimonialsSection() {
       className="bg-[#dfe1e3] !py-10 md:!py-12"
       title={"Trusted by Our Community"}
       subtitle="Real experiences from people who've made Subgeo part of their wellness journey."
-      titleStyle={{ fontSize: "clamp(2.5rem, 4.5vw, 4rem)", lineHeight: 0.95, letterSpacing: "-0.04em" }}
     >
       <GridContainer columns={3} gap="md">
         {testimonials.map((testimonial, index) => (

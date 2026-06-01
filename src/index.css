@@ -235,51 +235,57 @@
   
   .link-underline:hover::after { width: 100%; }
 
-/* NAVBAR STYLES */
-.nav-top { background: linear-gradient(180deg,#0b2848,#0e2f53); }
-.nav-main { background: transparent; color: inherit; }
+/* NAVBAR STYLES - Updated to match hero section */
+.nav-top { 
+  background: #f0fdf7; 
+}
 
-/* Ensure nav links and buttons remain visible when navbar is on dark/navy background */
+.nav-main { 
+  background: #f0fdf7; 
+  color: inherit; 
+}
+
+/* Navbar with light hero background - dark text for contrast */
 .nav-main {
-  background: #123f75;
-  border-top: 1px solid rgba(255,255,255,0.03);
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-  backdrop-filter: blur(6px);
+  border-top: 0;
+  border-bottom: 0;
+  backdrop-filter: none;
 }
 
 .nav-main a {
-  color: #ffffff !important;
+  color: #0f172a !important;
 }
 
-/* Force navbar text and interactive controls to white for consistent contrast */
+/* Force navbar text and interactive controls to dark for contrast on light bg */
 .nav-main,
 .nav-main a,
 .nav-main button,
 .nav-main .container-x,
 .nav-topstrip,
 .nav-topstrip a {
-  color: #ffffff !important;
+  color: #0f172a !important;
 }
 
-/* Centered, spaced navbar links (desktop) to match reference layout */
+/* Right-aligned navbar links (desktop) to match reference layout */
 .nav-main nav {
   display: flex;
   gap: 1.25rem;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  margin-left: auto;
   flex-wrap: nowrap;
 }
 
-/* Ensure centered nav links/buttons are white for contrast */
+/* Ensure centered nav links/buttons are dark for contrast on light bg */
 .nav-main nav a,
 .nav-main nav button,
 .nav-main nav a *,
 .nav-main nav button * {
-  color: #ffffff !important;
+  color: #0f172a !important;
   text-transform: none;
   letter-spacing: 0.02em;
   font-weight: 500;
-  font-size: 0.875rem; /* match CTA text-sm */
+  font-size: 0.875rem;
   font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   white-space: nowrap;
 }
@@ -290,39 +296,44 @@
   padding: 0.5rem 1rem;
 }
 
-/* Keep the top social bar text white */
+/* Keep the top social bar text dark for light bg */
 .nav-top a { color: inherit; }
 
 /* Increase navbar typography for better visibility */
-.nav-main .font-display { font-size: 1.25rem; /* logo size within navbar */ }
+.nav-main .font-display { font-size: 1.25rem; }
 .nav-main .container-x { height: auto; }
 .nav-main .container-x.h-20,
 .nav-main .h-20 { height: 4.5rem; }
-.bg-nav-gradient { background: linear-gradient(180deg,#0f2b53,#1b476f); }
+
+/* Hero gradient utility */
+.bg-nav-gradient { 
+  background: linear-gradient(180deg, var(--hero-bg-start), var(--hero-bg-end)); 
+}
+
 .bg-submit-green { background: #22c55e; }
 .bg-submit-green:hover { filter: brightness(0.95); }
 
 .nav-top a { color: inherit; }
 .nav-main .container-x { display: grid; }
 
-/* Section variant that matches the navbar look */
-.section-dark-nav {
-  background: linear-gradient(180deg,#0f2b53,#1b476f);
-  color: white;
+/* Section variant that matches the navbar/hero look */
+.section-hero-match {
+  background: #f0fdf7;
+  color: var(--hero-foreground);
 }
-.section-dark-nav h2,
-.section-dark-nav h3 {
+.section-hero-match h2,
+.section-hero-match h3 {
   font-family: var(--font-display);
-  color: white;
+  color: var(--hero-foreground);
 }
-.section-dark-nav p { color: rgba(255,255,255,0.9); }
-.section-dark-nav .eyebrow { color: rgba(255,255,255,0.8); }
+.section-hero-match p { color: var(--hero-foreground); opacity: 0.9; }
+.section-hero-match .eyebrow { color: var(--color-brand); }
 
-/* Make dark-section headings prominent and crisp (e.g. Testimonials header) */
-.section-dark-nav .hero-magazine-title {
+/* Make headings prominent and crisp */
+.section-hero-match .hero-magazine-title {
   font-family: 'Big Shoulders Display', var(--font-display);
   font-weight: 900;
-  color: white;
+  color: var(--hero-foreground);
   font-size: clamp(28px, 6vw, 56px);
   line-height: 0.95;
   letter-spacing: -0.02em;
@@ -333,26 +344,16 @@
 }
 
 /* Match navbar typography sizes */
-.section-dark-nav h2:not(.hero-magazine-title) { font-size: 1.25rem; /* tailwind text-xl */ font-weight: 700; }
-.section-dark-nav h3 { font-size: 1rem; /* tailwind text-base */ font-weight: 600; }
-.section-dark-nav .eyebrow { font-size: 0.75rem; letter-spacing: 0.18em; font-weight: 600; }
-.section-dark-nav p { font-size: 0.875rem; /* text-sm */ line-height: 1.6; }
+.section-hero-match h2:not(.hero-magazine-title) { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; line-height: 1.1; }
+.section-hero-match h3 { font-size: clamp(1.125rem, 2vw, 1.5rem); font-weight: 600; line-height: 1.2; }
+.section-hero-match .eyebrow { font-size: 0.75rem; letter-spacing: 0.18em; font-weight: 600; }
+.section-hero-match p { font-size: 1rem; line-height: 1.7; }
 
 .section-subgeo-blue {
-  background: #123f75 !important;
+  background: linear-gradient(180deg, var(--hero-bg-start), var(--hero-bg-end)) !important;
 }
 
-
-/* Section variant that *matches* the hero visually only when explicitly marked as hero.
-   By default `section-hero-match` will be transparent so regular sections inherit the
-   page background and remain crisp. The decorative overlay is applied only when the
-   section is also an actual hero (`.is-hero`). */
-.section-hero-match {
-  background: transparent;
-  color: var(--color-foreground);
-  position: relative;
-}
-
+/* Section variant that matches the hero visually only when explicitly marked as hero */
 .section-hero-match.is-hero::before {
   content: "";
   position: absolute;
@@ -369,8 +370,8 @@
   z-index: 1;
 }
 .section-hero-match h2,
-.section-hero-match h3 { font-family: var(--font-display); color: var(--color-foreground); }
-.section-hero-match p { color: var(--color-foreground); }
+.section-hero-match h3 { font-family: var(--font-display); color: var(--hero-foreground); }
+.section-hero-match p { color: var(--hero-foreground); }
 .section-hero-match .eyebrow { color: var(--color-brand); }
 
 /* Magazine hero styles */
@@ -396,12 +397,12 @@
   margin: 0 auto;
 }
 
-/* Navbar visuals (solid hero-dark so the full header uses one dark tone) */
+/* Navbar visuals - hero section background */
 .nav-main {
-  background: #123f75;
-  border-top: 1px solid rgba(255,255,255,0.03);
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-  backdrop-filter: blur(6px);
+  background: #f0fdf7;
+  border-top: 0;
+  border-bottom: 0;
+  backdrop-filter: none;
 }
 
 /* Keep the navbar band limited to the nav area */
@@ -412,7 +413,7 @@
 }
 
 .nav-main nav a {
-  color: #ffffff;
+  color: #0f172a;
   opacity: 0.95;
 }
 
@@ -427,14 +428,14 @@
 }
 
 header.fixed {
-  padding-top: 0.6rem;
+  padding-top: 0;
 }
 
-/* Top strip for social icons */
+/* Top strip for social icons - updated to hero gradient */
 .nav-topstrip {
-  background: #123f75;
+  background: #f0fdf7;
   height: 40px;
-  border-bottom: 1px solid rgba(255,255,255,0.03);
+  border-bottom: 0;
 }
 
 .nav-topstrip .container-x {
@@ -446,7 +447,7 @@ header.fixed {
 
 .nav-main .container-x {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   height: 64px;
 }
@@ -537,8 +538,6 @@ header.fixed {
 }
 
 .is-hero + section {
-  /* Remove the decorative colored band under the hero by cancelling the negative offset.
-     Keep some top padding so content doesn't sit flush against the hero. */
   margin-top: 0;
   padding-top: 24px;
   background: transparent !important;
@@ -615,8 +614,6 @@ header.fixed {
   color: var(--hero-foreground);
 }
 
-/* (Previously hid decorative blue gradients in hero) — restored to allow original decorative gradients/glows */
-
 /* Pill CTA */
 .btn-pill-green { background: linear-gradient(180deg, #3BB54A, #2EA044); color: white; padding: 0.75rem 2.25rem; border-radius: 9999px; box-shadow: 0 8px 20px rgba(46,160,68,0.18); height: 48px; display: inline-flex; align-items: center; }
 
@@ -631,7 +628,6 @@ header.fixed {
 }
   
   /* ==================== PREMIUM GLASSMORPHISM ==================== */
-  /* reduce glass blur for crisper text while keeping the glass effect */
   .glass {
     background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(8px);
@@ -732,7 +728,7 @@ header.fixed {
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  /* Utility to apply the hero headline font */
+  
   .font-hero {
     font-family: 'Big Shoulders Display', var(--font-display);
     font-weight: 900;
@@ -813,45 +809,28 @@ header.fixed {
   animation: marquee 50s linear infinite; 
 }
 
-/* Floating animation */
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Subtle pulse */
 @keyframes subtle-pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
 }
 
 .animate-pulse-subtle {
   animation: subtle-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Gradient shift */
 @keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .animate-gradient {
@@ -859,94 +838,54 @@ header.fixed {
   animation: gradient-shift 8s ease infinite;
 }
 
-/* Blur in animation */
 @keyframes blur-in {
-  from {
-    opacity: 0;
-    filter: blur(10px);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0px);
-  }
+  from { opacity: 0; filter: blur(10px); }
+  to { opacity: 1; filter: blur(0px); }
 }
 
 .animate-blur-in {
   animation: blur-in 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Slide up animation */
 @keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-slide-up {
   animation: slide-up 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Slide in from left */
 @keyframes slide-in-left {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 .animate-slide-in-left {
   animation: slide-in-left 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Slide in from right */
 @keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 .animate-slide-in-right {
   animation: slide-in-right 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Fade in */
 @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .animate-fade-in {
   animation: fade-in 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Scale in */
 @keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .animate-scale-in {

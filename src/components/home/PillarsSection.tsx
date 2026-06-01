@@ -32,10 +32,7 @@ export function PillarsSection() {
       className="hero-magazine-inner !py-28 md:!py-36 bg-[#dfe1e3] font-sans"
       title={
         <>
-          <span className="text-2xl md:text-3xl">
-            Who We Are{" "}
-            <span className="bg-gradient-premium bg-clip-text text-transparent">& What We Stand For</span>
-          </span>
+          Who We Are <span className="bg-gradient-premium bg-clip-text text-transparent">& What We Stand For</span>
         </>
       }
       subtitle="A Kenyan group serving everyday health and lifestyle needs with unwavering professionalism and excellence."

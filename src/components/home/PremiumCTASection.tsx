@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function PremiumCTASection() {
   return (
-    <section className="bg-[#dfe1e3] py-20 md:py-24 px-4 font-sans">
+    <section className="section-hero-match py-20 md:py-24 px-4 font-sans">
       <div className="container-x">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,10 +25,10 @@ export function PremiumCTASection() {
 
           <div className="relative z-10">
             <p className="text-white/90 text-sm uppercase tracking-widest mb-4">Get in Touch</p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight">
               Ready to Experience Subgeo?
             </h2>
-            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-white/90 mb-8 max-w-2xl mx-auto">
               Visit any of our branches or get in touch to learn more about our services and
               community programs.
             </p>
