@@ -1,14 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-@import url("https://rsms.me/inter/inter.css");
-@import "tailwindcss" source(none);
+@import url("https://use.typekit.net/hus3mie.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import "tailwindcss";
 @source "../src";
 @import "tw-animate-css";
 
 /* ==================== TYPOGRAPHY IMPORTS ==================== */
 @supports (font-variation-settings: normal) {
   html {
-    font-family: "Inter var", sans-serif;
+    font-family: "proxima-nova", Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   }
 }
 
@@ -49,8 +48,8 @@
   --color-ring: var(--ring);
 
   /* ==================== TYPOGRAPHY ==================== */
-  --font-display: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "proxima-nova", Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "Fira Code", "Monaco", monospace;
   --font-serif: "Source Serif 4", ui-serif, Georgia, serif;
 }
@@ -69,11 +68,11 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.16 0.02 260);
 
-  /* Novartis-inspired vivid blue */
-  --primary: oklch(0.45 0.18 255);
-  --primary-foreground: oklch(0.99 0 0);
-  --brand: oklch(0.45 0.18 255);
-  --brand-foreground: oklch(0.99 0 0);
+  /* RISA blue */
+  --primary: #015B97;
+  --primary-foreground: #ffffff;
+  --brand: #015B97;
+  --brand-foreground: #ffffff;
 
   --secondary: oklch(0.97 0.005 260);
   --secondary-foreground: oklch(0.16 0.02 260);
@@ -98,25 +97,25 @@
 }
 
 .dark {
-  --background: oklch(0.12 0.02 260);
-  --foreground: oklch(0.98 0.005 260);
-  --card: oklch(0.16 0.02 260);
-  --card-foreground: oklch(0.98 0.005 260);
-  --popover: oklch(0.16 0.02 260);
-  --popover-foreground: oklch(0.98 0.005 260);
-  --primary: oklch(0.7 0.16 255);
-  --primary-foreground: oklch(0.12 0.02 260);
-  --brand: oklch(0.7 0.16 255);
-  --brand-foreground: oklch(0.12 0.02 260);
-  --secondary: oklch(0.2 0.02 260);
-  --secondary-foreground: oklch(0.98 0.005 260);
-  --muted: oklch(0.2 0.02 260);
-  --muted-foreground: oklch(0.7 0.01 260);
-  --accent: oklch(0.22 0.03 255);
-  --accent-foreground: oklch(0.98 0.005 260);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.7 0.16 255);
+  --background: #F8FAFC;
+  --foreground: #334155;
+  --card: #ffffff;
+  --card-foreground: #334155;
+  --popover: #ffffff;
+  --popover-foreground: #334155;
+  --primary: #015B97;
+  --primary-foreground: #ffffff;
+  --brand: #015B97;
+  --brand-foreground: #ffffff;
+  --secondary: #E2E8F0;
+  --secondary-foreground: #334155;
+  --muted: #F8FAFC;
+  --muted-foreground: #565A5C;
+  --accent: #0ea5e9;
+  --accent-foreground: #ffffff;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #015B97;
 }
 
 @layer base {
@@ -236,10 +235,6 @@
   .link-underline:hover::after { width: 100%; }
 
 /* NAVBAR STYLES - Updated to match hero section */
-.nav-top { 
-  background: #f0fdf7; 
-}
-
 .nav-main { 
   background: #f0fdf7; 
   color: inherit; 
@@ -260,9 +255,7 @@
 .nav-main,
 .nav-main a,
 .nav-main button,
-.nav-main .container-x,
-.nav-topstrip,
-.nav-topstrip a {
+.nav-main .container-x {
   color: #0f172a !important;
 }
 
@@ -296,8 +289,7 @@
   padding: 0.5rem 1rem;
 }
 
-/* Keep the top social bar text dark for light bg */
-.nav-top a { color: inherit; }
+/* Keep the top social bar text dark for light bg (top strip removed) */
 
 /* Increase navbar typography for better visibility */
 .nav-main .font-display { font-size: 1.25rem; }
@@ -313,21 +305,20 @@
 .bg-submit-green { background: #22c55e; }
 .bg-submit-green:hover { filter: brightness(0.95); }
 
-.nav-top a { color: inherit; }
 .nav-main .container-x { display: grid; }
 
 /* Section variant that matches the navbar/hero look */
 .section-hero-match {
-  background: #f0fdf7;
-  color: var(--hero-foreground);
+  background: #ffffff; /* white hero background */
+  color: #0b0b0b; /* black text for hero sections */
 }
 .section-hero-match h2,
 .section-hero-match h3 {
   font-family: var(--font-display);
-  color: var(--hero-foreground);
+  color: inherit;
 }
-.section-hero-match p { color: var(--hero-foreground); opacity: 0.9; }
-.section-hero-match .eyebrow { color: var(--color-brand); }
+.section-hero-match p { color: inherit; opacity: 0.95; }
+.section-hero-match .eyebrow { color: #0b0b0b; }
 
 /* Make headings prominent and crisp */
 .section-hero-match .hero-magazine-title {
@@ -431,19 +422,7 @@ header.fixed {
   padding-top: 0;
 }
 
-/* Top strip for social icons - updated to hero gradient */
-.nav-topstrip {
-  background: #f0fdf7;
-  height: 40px;
-  border-bottom: 0;
-}
-
-.nav-topstrip .container-x {
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+  /* Top strip removed: .nav-topstrip styles deleted */
 
 .nav-main .container-x {
   display: grid;
@@ -553,13 +532,13 @@ header.fixed {
 
 /* Apply warm beige gradient and soften headline color to match reference */
 .hero-magazine-inner {
-  background: transparent;
+  background: #ffffff; /* white hero background */
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 920px;
   padding-left: 0;
-  color: var(--hero-foreground);
+  color: #0b0b0b; /* black text for hero */
   position: relative;
 }
 
@@ -572,7 +551,7 @@ header.fixed {
 }
 
 .hero-magazine-title {
-  color: var(--hero-foreground);
+  color: #0b0b0b;
   text-shadow: none;
   white-space: nowrap;
   font-weight: 900;

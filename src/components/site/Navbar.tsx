@@ -3,7 +3,6 @@ import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, ArrowUpRight, Facebook, Twitter, Linkedin } from "lucide-react";
 import logoSrc from "@/assets/logo.png";
-import backImg from "@/assets/back.png";
 import { branches } from "@/lib/branches";
 
 type NavItem = { to: string; label: string; hasMenu?: boolean };
@@ -40,18 +39,16 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50">
-      {/* Top announcement strip */}
-      <div className="bg-[#072235] text-sm text-white/90">
-        <div className="container-x flex items-center justify-center h-9">
-          <div className="text-xs flex items-center gap-1">
-            🚀 Register your business and get a corporate bank account — <a href="#" className="underline hover:text-white">fast</a> →
+      <div className={`relative overflow-visible bg-[#203a72]/95 text-white backdrop-blur-sm transition-all duration-300 ${scrolled ? "shadow-[0_8px_30px_rgba(2,8,23,0.35)]" : ""}`}>
+        <div className="container-x hidden lg:flex h-12 items-center justify-end border-b border-white/25 text-sm">
+          <div className="flex items-center gap-4 text-[#cbd5e1]">
+            <a href="#" aria-label="Facebook" className="hover:text-white transition-colors"><Facebook className="h-3.5 w-3.5" /></a>
+            <a href="#" aria-label="Twitter" className="hover:text-white transition-colors"><Twitter className="h-3.5 w-3.5" /></a>
+            <a href="#" aria-label="LinkedIn" className="hover:text-white transition-colors"><Linkedin className="h-3.5 w-3.5" /></a>
           </div>
         </div>
-      </div>
 
-      {/* Main navigation - Same color as hero section */}
-      <div className={`nav-main transition-all duration-300 bg-[#f0fdf7] relative overflow-visible ${scrolled ? 'shadow-sm' : ''}`}>
-        <div className="container-x relative z-10 !flex items-center h-20 gap-8">
+        <div className="container-x relative z-10 grid h-[84px] grid-cols-[auto_1fr_auto] items-center gap-6">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 md:gap-3 group" aria-label="Home">
             <motion.img
@@ -62,7 +59,7 @@ export function Navbar() {
               style={{ zIndex: 60 }}
             />
             <motion.span
-              className="text-lg md:text-xl font-bold text-[#072235] hidden md:block"
+              className="hidden md:block font-sans text-[18px] md:text-[19px] font-semibold tracking-normal text-white"
               whileHover={{ scale: 1.02 }}
             >
               Subgeo
@@ -70,7 +67,7 @@ export function Navbar() {
           </Link>
 
           {/* Centered Desktop Navigation */}
-          <nav className="hidden lg:flex ml-auto items-center justify-end gap-8 text-sm font-medium text-gray-700">
+          <nav className="hidden lg:flex items-center justify-center gap-9 font-sans text-[13px] font-semibold uppercase tracking-[0.06em]">
           {nav.map((item, idx) =>
             item.hasMenu ? (
               <div
@@ -81,10 +78,10 @@ export function Navbar() {
               >
                 <motion.button
                   type="button"
-                  className="px-4 py-2 inline-flex items-center gap-1.5 text-gray-700 hover:text-[#072235] transition-colors font-medium"
+                  className="inline-flex items-center gap-1.5 px-2 py-2 font-sans text-[13px] font-semibold uppercase tracking-[0.06em] text-white hover:text-white/85 transition-colors"
                   whileHover={{ y: -2 }}
                 >
-                  {item.label}
+                  <span>{item.label.toUpperCase()}</span>
                   <motion.div
                     animate={{ rotate: branchOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
@@ -102,12 +99,12 @@ export function Navbar() {
                       transition={{ duration: 0.2 }}
                       className="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-[640px] z-50"
                     >
-                        <div className="bg-white rounded-lg shadow-lg p-3 grid grid-cols-2 gap-2">
+                        <div className="bg-white rounded-md shadow-xl p-3 grid grid-cols-2 gap-2">
                           {branches.map((b) => (
                               <motion.div key={b.slug} whileHover={{ scale: 1.02 }}>
                                 <Link
                                   to={branchRoute(b.slug)}
-                                  className="group flex items-start justify-between gap-3 rounded-lg p-4 hover:bg-[#f0fdf7] transition-all no-underline"
+                                  className="group flex items-start justify-between gap-3 rounded-md p-4 hover:bg-[#ecf3ff] transition-all no-underline"
                                 >
                                   <div>
                                     <div className="text-sm font-semibold text-[#072235]">
@@ -131,7 +128,7 @@ export function Navbar() {
                             <motion.div whileHover={{ scale: 1.02 }}>
                               <Link
                                 to={branchRoute("subgeo-industrial")}
-                                className="group flex items-start justify-between gap-3 rounded-lg p-4 hover:bg-[#f0fdf7] transition-all no-underline"
+                                className="group flex items-start justify-between gap-3 rounded-md p-4 hover:bg-[#ecf3ff] transition-all no-underline"
                               >
                                 <div>
                                   <div className="text-sm font-semibold text-[#072235]">Subgeo Industrial</div>
@@ -151,12 +148,12 @@ export function Navbar() {
               <motion.div key={item.to} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1, duration: 0.4 }}>
                 <Link
                   to={item.to}
-                  className="px-4 py-2 text-gray-700 hover:text-[#072235] transition-colors font-medium no-underline block"
+                  className="block px-2 py-2 font-sans text-[13px] font-semibold uppercase tracking-[0.06em] text-white hover:text-white/85 transition-colors no-underline"
                   activeOptions={{ exact: item.to === "/" }}
-                  activeProps={{ className: "text-[#072235]" }}
+                  activeProps={{ className: "text-white" }}
                 >
                   <motion.span whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-                    {item.label}
+                    {item.label.toUpperCase()}
                   </motion.span>
                 </Link>
               </motion.div>
@@ -173,18 +170,17 @@ export function Navbar() {
                   >
                     <Link
                       to="/contact"
-                      className="hidden md:inline-flex h-10 px-5 rounded-full bg-[#28b463] text-white font-semibold shadow-[0_10px_24px_rgba(40,180,99,0.16)] transition-all hover:bg-[#1f9a4f] no-underline items-center justify-center"
+                      className="hidden md:inline-flex h-10 items-center justify-center rounded-md bg-[#1fc95a] px-6 font-sans text-[13px] font-semibold uppercase tracking-[0.06em] text-white no-underline shadow-[0_10px_24px_rgba(31,201,90,0.24)] transition-all hover:bg-[#16b94f]"
                     >
                       <motion.span className="flex items-center gap-2" whileHover={{ scale: 1.02 }} transition={{ duration: 0.15 }}>
-                        <span className="text-sm">Book</span>
-                        <span className="text-sm font-semibold">appointment</span>
+                        <span>Book appointment</span>
                       </motion.span>
                     </Link>
                   </motion.div>
 
             <motion.button
               onClick={() => setOpen((o) => !o)}
-              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-200/50 transition-colors"
+              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-md hover:bg-white/10 transition-colors"
               aria-label="Menu"
               whileTap={{ scale: 0.95 }}
             >
@@ -196,7 +192,7 @@ export function Navbar() {
                     animate={{ rotate: 0 }}
                     exit={{ rotate: 90 }}
                   >
-                    <X className="w-5 h-5 text-gray-800" />
+                    <X className="w-5 h-5 text-white" />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -205,7 +201,7 @@ export function Navbar() {
                     animate={{ rotate: 0 }}
                     exit={{ rotate: -90 }}
                   >
-                    <Menu className="w-5 h-5 text-gray-800" />
+                    <Menu className="w-5 h-5 text-white" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -222,7 +218,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden border-t-0 bg-[#f0fdf7] overflow-hidden relative"
+            className="lg:hidden border-t border-white/20 bg-[#1d3768] overflow-hidden relative"
           >
             <div className="container-x relative z-10 py-6 flex flex-col space-y-1">
               {nav.map((item) =>
@@ -231,15 +227,15 @@ export function Navbar() {
                     key={item.to}
                     to={item.to}
                     onClick={() => setOpen(false)}
-                    className="py-3 px-4 text-gray-900 font-medium rounded-lg hover:bg-white/50 transition-colors no-underline"
+                    className="py-3 px-4 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-white/90 rounded-md hover:bg-white/10 transition-colors no-underline"
                   >
-                    {item.label}
+                    {item.label.toUpperCase()}
                   </Link>
                 ) : null,
               )}
 
               <div className="py-4 mt-2">
-                <p className="text-xs uppercase tracking-widest font-semibold text-gray-500 px-4 mb-3">
+                <p className="text-xs uppercase tracking-widest font-semibold text-white/60 px-4 mb-3">
                   Branches
                 </p>
                 <div className="space-y-1">
@@ -248,19 +244,19 @@ export function Navbar() {
                       key={b.slug}
                       to={branchRoute(b.slug)}
                       onClick={() => setOpen(false)}
-                      className="block py-3 px-4 text-gray-900 text-sm rounded-lg hover:bg-white/50 transition-colors no-underline"
+                      className="block py-3 px-4 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-white/90 rounded-md hover:bg-white/10 transition-colors no-underline"
                     >
-                      {b.name}
+                      {b.name.toUpperCase()}
                     </Link>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-gray-200">
+              <div className="pt-4 border-t border-white/20">
                   <Link
                     to="/contact"
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-center py-3 px-4 bg-[#28b463] text-white font-semibold rounded-full no-underline"
+                    className="flex items-center justify-center py-3 px-4 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-white rounded-md bg-[#1fc95a] no-underline"
                   >
                   Book appointment
                 </Link>

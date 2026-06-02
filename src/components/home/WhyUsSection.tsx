@@ -24,32 +24,28 @@ const reasons = [
 
 export function WhyUsSection() {
   return (
-    <section className="section-hero-match relative overflow-hidden py-12 md:py-16">
+    <section className="relative overflow-hidden py-10 md:py-12 bg-[#ececec] text-[#1f2937]">
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,#efefef_0%,#e5e5e5_100%)]" />
+      <div className="absolute inset-0 opacity-30 bg-[linear-gradient(rgba(31,41,55,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(31,41,55,0.04)_1px,transparent_1px)] bg-[size:28px_28px]" />
       <div className="container-x relative z-10">
-        
         {/* Top Header Section */}
-        <div className="mb-8 md:mb-12 max-w-4xl">
+        <div className="mb-6 md:mb-8 max-w-4xl">
           <RevealOnScroll direction="up">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-[#0f172a]">
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-[-0.03em] text-[#101828]">
               Why Choose Subgeo
             </h2>
-            <p className="mt-4 text-base md:text-lg text-[#475467] font-medium leading-relaxed max-w-2xl">
+            <p className="mt-4 font-sans text-base md:text-lg text-[#525f6b] font-medium leading-[1.75] max-w-2xl">
               Local expertise, consistent clinical standards, and community-first service — all under one trusted Kenyan brand.
             </p>
           </RevealOnScroll>
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch mb-16">
-          
-          {/* Left Column: Image Area - HEIGHT REDUCED */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch mb-10 md:mb-12">
+          {/* Left Column: Image Area */}
           <div className="lg:col-span-5">
             <RevealOnScroll direction="left">
-              {/* 
-                Changed to h-auto so it hugs the image height tightly.
-                Added w-full max-w-[400px] to keep it contained but shorter.
-              */}
-                  <div className="relative bg-[#f0fdf7] w-full max-w-[520px] mx-auto lg:mx-0 min-h-[420px] lg:min-h-[560px] py-6 lg:py-0 px-8 flex items-center justify-center overflow-hidden">
+              <div className="relative bg-[#f4f4f4] border border-[#d6d6d6] w-full max-w-[520px] mx-auto lg:mx-0 min-h-[360px] lg:min-h-[460px] py-5 lg:py-0 px-8 flex items-center justify-center overflow-hidden shadow-[0_18px_40px_rgba(16,24,40,0.06)]">
                 <motion.img
                   src={whyImg}
                   alt="Why choose Subgeo"
@@ -64,31 +60,31 @@ export function WhyUsSection() {
           </div>
 
           {/* Right Column: Features List & Details */}
-          <div className="lg:col-span-7 lg:pt-10">
+          <div className="lg:col-span-7 lg:pt-3">
             <RevealOnScroll direction="right">
-              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight tracking-tight text-[#0f172a] mb-6">
+              <h3 className="font-display text-xl md:text-2xl lg:text-3xl font-bold leading-tight tracking-[-0.02em] text-[#101828] mb-4">
                 Reliability you can count on
               </h3>
-              
-              <p className="text-base md:text-lg text-[#475467] leading-relaxed mb-10 max-w-xl">
+
+              <p className="font-sans text-base md:text-lg text-[#525f6b] leading-[1.8] mb-7 max-w-xl">
                 We provide the gift of modern, frictionless, and painless service. Integrate with Subgeo once and let us handle the technical complexity while you focus on your community.
               </p>
 
               {/* Feature List */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 {[
                   "Community teams who know local needs and neighbourhoods.",
                   "One standard of safety, quality, and professionalism.",
                   "Integrated branches that make access easier for families.",
                   "Measured outcomes with follow-up care and accountability.",
                 ].map((item, index) => (
-                  <div key={index} className="flex items-start gap-3">
+                  <div key={index} className="flex items-start gap-3 border border-[#d9d9d9] bg-[#f7f7f7] px-3 py-3">
                     <div className="flex-shrink-0 mt-1">
-                      <div className="w-5 h-5 rounded-full bg-[#f0fdf7] flex items-center justify-center border border-[#d1fae5]">
-                         <div className="w-2 h-2 rounded-full bg-[#28b463]" />
+                      <div className="w-5 h-5 bg-[#e9edf2] flex items-center justify-center border border-[#d0d7e1]">
+                        <div className="w-2 h-2 bg-[#22c13f]" />
                       </div>
                     </div>
-                    <span className="text-[15px] font-semibold text-[#0f172a] leading-tight">
+                    <span className="font-sans text-[14px] md:text-[15px] font-semibold text-[#101828] leading-[1.5]">
                       {item}
                     </span>
                   </div>
@@ -99,13 +95,13 @@ export function WhyUsSection() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/branches"
-                  className="inline-flex h-[54px] items-center justify-center rounded-lg bg-[#28b463] px-8 text-[16px] font-bold text-white no-underline shadow-lg shadow-green-900/10 transition-all hover:bg-[#1f9a4f] hover:-translate-y-0.5"
+                  className="inline-flex h-[54px] items-center justify-center bg-[#22c13f] px-8 font-sans text-[15px] font-bold uppercase tracking-wide text-white no-underline shadow-sm transition-all hover:bg-[#1fb13a]"
                 >
                   Explore Branches
                 </Link>
                 <Link
                   to="/contact"
-                  className="inline-flex h-[54px] items-center justify-center rounded-lg border border-[#e2e8f0] bg-white px-8 text-[16px] font-bold text-[#0f172a] no-underline transition-all hover:border-[#cbd5e1] hover:-translate-y-0.5"
+                  className="inline-flex h-[54px] items-center justify-center border border-[#cfd5de] bg-white px-8 font-sans text-[15px] font-bold uppercase tracking-wide text-[#1f2937] no-underline transition-all hover:bg-[#f5f7fa]"
                 >
                   Contact Us
                 </Link>
@@ -115,17 +111,17 @@ export function WhyUsSection() {
         </div>
 
         {/* Bottom Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-[#f1f5f9] pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 pt-2">
           {reasons.map((reason, index) => (
             <RevealOnScroll key={reason.title} delay={index * 0.1}>
-              <div className="group p-0">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#f8fafc] text-[#28b463] border border-[#f1f5f9] group-hover:bg-[#28b463] group-hover:text-white transition-colors duration-300">
+              <div className="group h-full border border-[#d5dae2] bg-[#f8f9fb] p-5 shadow-[0_10px_28px_rgba(16,24,40,0.04)] transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_34px_rgba(16,24,40,0.08)]">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="flex h-10 w-10 items-center justify-center bg-[#eef2f7] text-[#1f2937] border border-[#d0d7e1] transition-colors duration-300 group-hover:bg-[#22c13f] group-hover:text-white">
                     <reason.icon className="h-5 w-5" />
                   </div>
-                  <h4 className="text-lg font-bold text-[#0f172a]">{reason.title}</h4>
+                  <h4 className="font-sans text-lg font-bold text-[#101828]">{reason.title}</h4>
                 </div>
-                <p className="text-[15px] leading-relaxed text-[#475467]">
+                <p className="font-sans text-[14px] md:text-[15px] leading-[1.75] text-[#525f6b]">
                   {reason.description}
                 </p>
               </div>

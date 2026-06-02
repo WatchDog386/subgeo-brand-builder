@@ -51,8 +51,8 @@ export const PremiumHero: React.FC<HeroProps> = ({
     video: "",
   };
 
-  // Do not force a white background for magazine layout when a backgroundImage is provided.
-  const effectiveBg = backgroundImage ? bgClasses[background] : layout === "magazine" ? "bg-white" : bgClasses[background];
+  // When a background image is provided, don't force a background color class.
+  const effectiveBg = backgroundImage ? "" : layout === "magazine" ? "bg-white" : bgClasses[background];
 
   return (
     <section
@@ -65,12 +65,14 @@ export const PremiumHero: React.FC<HeroProps> = ({
           {backgroundImage && (
             <>
               <img src={backgroundImage} alt="Hero background" className="absolute inset-0 w-full h-full object-cover" />
-              {/* Slightly darker overlay to improve hero contrast */}
-              <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(180deg,rgba(0,0,0,0.44)_0%,rgba(0,0,0,0.14)_55%,rgba(0,0,0,0.28)_100%)]" />
+              {/* Overlay is omitted for light backgrounds to keep hero background bright */}
+              {background !== "light" && (
+                <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(180deg,rgba(0,0,0,0.44)_0%,rgba(0,0,0,0.14)_55%,rgba(0,0,0,0.28)_100%)]" />
+              )}
             </>
           )}
 
-          <motion.div className={`relative z-10 container-x text-center hero-magazine ${backgroundImage ? "text-white" : ""}`}>
+          <motion.div className={`relative z-10 container-x text-center hero-magazine ${backgroundImage && background !== "light" ? "text-white" : ""}`}>
             {eyebrow && (
               <motion.div
                 initial={{ opacity: 0 }}
