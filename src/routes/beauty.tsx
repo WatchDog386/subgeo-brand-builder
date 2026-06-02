@@ -1,23 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
+import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
-import { Clock, Phone, Sparkles, Heart, Crown, Zap } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Clock, Phone } from "lucide-react";
 import { branches } from "@/lib/branches";
-import { PremiumHero, PremiumSection, PremiumButton } from "@/components/premium/PremiumLayout";
-import { GridContainer } from "@/components/premium/PremiumGrid";
 import beautyImg from "@/assets/beauty.jpg";
 
 export const Route = createFileRoute("/beauty")({
   head: () => ({
     meta: [
-      { title: "Subgeo Beauty & Grooming — Elevated self-care, every visit." },
+      { title: "Subgeo Beauty Salon — Elevated self-care, every visit." },
       {
         name: "description",
         content:
           "A refined beauty studio offering facials, skincare, brows, lashes and hand & foot care — in a serene environment designed around comfort and discretion.",
       },
-      { property: "og:title", content: "Subgeo Beauty & Grooming — Subgeo" },
+      { property: "og:title", content: "Subgeo Beauty Salon — Subgeo" },
       {
         property: "og:description",
         content: "Elevated self-care, every visit.",
@@ -31,7 +30,7 @@ export const Route = createFileRoute("/beauty")({
 function BeautyPage() {
   const branch = {
     slug: "beauty",
-    name: "Subgeo Beauty & Grooming",
+    name: "Subgeo Beauty Salon",
     tagline: "Elevated self-care, every visit.",
     category: "Beauty",
     description:

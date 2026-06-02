@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Instagram, Facebook, Twitter, Heart } from "lucide-react";
 import bgFooter from "../../assets/background.png";
 import logoSrc from "@/assets/logo.png";
-import { branches } from "@/lib/branches";
 
 const socialLinks = [
   { icon: Instagram, label: "Instagram", href: "#" },
@@ -21,6 +20,12 @@ const footerSections = [
       { label: "Careers", href: "#" },
     ],
   },
+];
+
+const branchLinks = [
+  { label: "Subgeo Pharmacy", href: "/pharmacy" },
+  { label: "Subgeo Beauty Salon", href: "/beauty" },
+  { label: "Subgeo Industrial", href: "/subgeo-industrial" },
 ];
 
 export function Footer() {
@@ -124,14 +129,13 @@ export function Footer() {
               Our Branches
             </h4>
             <ul className="space-y-3">
-              {branches.slice(0, 4).map((branch) => (
-                <li key={branch.slug}>
+              {branchLinks.map((branch) => (
+                <li key={branch.href}>
                   <Link
-                    to="/branches/$slug"
-                    params={{ slug: branch.slug }}
+                    to={branch.href as any}
                     className="text-sm text-white/90 hover:text-white transition-colors no-underline"
                   >
-                    {branch.name}
+                    {branch.label}
                   </Link>
                 </li>
               ))}

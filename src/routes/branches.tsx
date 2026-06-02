@@ -17,13 +17,13 @@ const cardThemes = [
 export const Route = createFileRoute("/branches")({
   head: () => ({
     meta: [
-      { title: "Subgeo Branches — Pharmacy, Clinic, Lab, Wellness, Barber, Beauty" },
+      { title: "Subgeo Branches — Pharmacy, Beauty Salon, Industrial" },
       {
         name: "description",
-        content: "Explore the six specialised branches that make up the Subgeo group.",
+        content: "Explore the three standalone branches that make up the Subgeo group.",
       },
       { property: "og:title", content: "Subgeo Branches" },
-      { property: "og:description", content: "Six specialised divisions, one Subgeo standard." },
+      { property: "og:description", content: "Three standalone divisions, one Subgeo standard." },
     ],
   }),
   component: BranchesPage,
@@ -39,7 +39,7 @@ function BranchesPage() {
           <Reveal>
             <div className="eyebrow justify-center">OUR BRANCHES</div>
             <h1 className="mx-auto mt-5 max-w-5xl font-display text-[2.5rem] leading-[1.08] tracking-[-0.04em] text-[#22324c] md:text-[3.7rem] lg:text-[4.4rem]">
-              Six specialised branches under one Subgeo standard.
+              Three standalone branches under one Subgeo standard.
             </h1>
             <p className="mx-auto mt-6 max-w-3xl font-sans text-[1.02rem] leading-[1.8] text-[#667085] md:text-[1.15rem]">
               Each branch combines professional expertise, a calm client experience, and a distinct service focus while keeping the same Subgeo standard.
@@ -53,7 +53,7 @@ function BranchesPage() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3 xl:gap-10">
           {branches.map((b, i) => (
             <Reveal key={b.slug} delay={i * 0.04}>
-              <Link to="/branches/$slug" params={{ slug: b.slug }} className="group block h-full no-underline">
+              <Link to={`/${b.slug}` as any} className="group block h-full no-underline">
                 <div className="overflow-hidden bg-white shadow-[0_18px_48px_rgba(16,24,40,0.08)] transition-transform duration-300 group-hover:-translate-y-1">
                   <div className="relative aspect-[1.06] overflow-hidden bg-[#e5e7eb]">
                   <img

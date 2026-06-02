@@ -41,21 +41,21 @@ function Home() {
     <PageTransition className="min-h-screen bg-background text-foreground overflow-x-clip relative">
       <ScrollProgressBar />
       <HeroSection />
-      <WhyUsSection />
-      <TestimonialsSection />
-      <ServicesSection />
-      <ImpactStatsSection />
-      <StorySection />
-      <BranchesGridSection />
-      <PillarsSection />
-      <ValuesMissionSection />
-      <FAQSection />
-      <NewsAndInsightsSection />
-      <PremiumCTASection />
-      <VisitUsTodaySection />
-
-      
-      <Footer />
+      <div className="home-page-scale">
+        <WhyUsSection />
+        <TestimonialsSection />
+        <ServicesSection />
+        <ImpactStatsSection />
+        <StorySection />
+        <BranchesGridSection />
+        <PillarsSection />
+        <ValuesMissionSection />
+        <FAQSection />
+        <NewsAndInsightsSection />
+        <PremiumCTASection />
+        <VisitUsTodaySection />
+        <Footer />
+      </div>
     </PageTransition>
   );
 }

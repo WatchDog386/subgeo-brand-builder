@@ -9,24 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WellnessRouteImport } from './routes/wellness'
 import { Route as SubgeoIndustrialRouteImport } from './routes/subgeo-industrial'
 import { Route as PharmacyRouteImport } from './routes/pharmacy'
-import { Route as LaboratoryRouteImport } from './routes/laboratory'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as ClinicRouteImport } from './routes/clinic'
 import { Route as BranchesRouteImport } from './routes/branches'
 import { Route as BeautyRouteImport } from './routes/beauty'
-import { Route as BarberRouteImport } from './routes/barber'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as BranchesSlugRouteImport } from './routes/branches.$slug'
 
-const WellnessRoute = WellnessRouteImport.update({
-  id: '/wellness',
-  path: '/wellness',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SubgeoIndustrialRoute = SubgeoIndustrialRouteImport.update({
   id: '/subgeo-industrial',
   path: '/subgeo-industrial',
@@ -37,19 +27,9 @@ const PharmacyRoute = PharmacyRouteImport.update({
   path: '/pharmacy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LaboratoryRoute = LaboratoryRouteImport.update({
-  id: '/laboratory',
-  path: '/laboratory',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ClinicRoute = ClinicRouteImport.update({
-  id: '/clinic',
-  path: '/clinic',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BranchesRoute = BranchesRouteImport.update({
@@ -62,11 +42,6 @@ const BeautyRoute = BeautyRouteImport.update({
   path: '/beauty',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BarberRoute = BarberRouteImport.update({
-  id: '/barber',
-  path: '/barber',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -77,123 +52,77 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BranchesSlugRoute = BranchesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => BranchesRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/barber': typeof BarberRoute
   '/beauty': typeof BeautyRoute
-  '/branches': typeof BranchesRouteWithChildren
-  '/clinic': typeof ClinicRoute
+  '/branches': typeof BranchesRoute
   '/contact': typeof ContactRoute
-  '/laboratory': typeof LaboratoryRoute
   '/pharmacy': typeof PharmacyRoute
   '/subgeo-industrial': typeof SubgeoIndustrialRoute
-  '/wellness': typeof WellnessRoute
-  '/branches/$slug': typeof BranchesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/barber': typeof BarberRoute
   '/beauty': typeof BeautyRoute
-  '/branches': typeof BranchesRouteWithChildren
-  '/clinic': typeof ClinicRoute
+  '/branches': typeof BranchesRoute
   '/contact': typeof ContactRoute
-  '/laboratory': typeof LaboratoryRoute
   '/pharmacy': typeof PharmacyRoute
   '/subgeo-industrial': typeof SubgeoIndustrialRoute
-  '/wellness': typeof WellnessRoute
-  '/branches/$slug': typeof BranchesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/barber': typeof BarberRoute
   '/beauty': typeof BeautyRoute
-  '/branches': typeof BranchesRouteWithChildren
-  '/clinic': typeof ClinicRoute
+  '/branches': typeof BranchesRoute
   '/contact': typeof ContactRoute
-  '/laboratory': typeof LaboratoryRoute
   '/pharmacy': typeof PharmacyRoute
   '/subgeo-industrial': typeof SubgeoIndustrialRoute
-  '/wellness': typeof WellnessRoute
-  '/branches/$slug': typeof BranchesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
-    | '/barber'
     | '/beauty'
     | '/branches'
-    | '/clinic'
     | '/contact'
-    | '/laboratory'
     | '/pharmacy'
     | '/subgeo-industrial'
-    | '/wellness'
-    | '/branches/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/barber'
     | '/beauty'
     | '/branches'
-    | '/clinic'
     | '/contact'
-    | '/laboratory'
     | '/pharmacy'
     | '/subgeo-industrial'
-    | '/wellness'
-    | '/branches/$slug'
   id:
     | '__root__'
     | '/'
     | '/about'
-    | '/barber'
     | '/beauty'
     | '/branches'
-    | '/clinic'
     | '/contact'
-    | '/laboratory'
     | '/pharmacy'
     | '/subgeo-industrial'
-    | '/wellness'
-    | '/branches/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  BarberRoute: typeof BarberRoute
   BeautyRoute: typeof BeautyRoute
-  BranchesRoute: typeof BranchesRouteWithChildren
-  ClinicRoute: typeof ClinicRoute
+  BranchesRoute: typeof BranchesRoute
   ContactRoute: typeof ContactRoute
-  LaboratoryRoute: typeof LaboratoryRoute
   PharmacyRoute: typeof PharmacyRoute
   SubgeoIndustrialRoute: typeof SubgeoIndustrialRoute
-  WellnessRoute: typeof WellnessRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/wellness': {
-      id: '/wellness'
-      path: '/wellness'
-      fullPath: '/wellness'
-      preLoaderRoute: typeof WellnessRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/subgeo-industrial': {
       id: '/subgeo-industrial'
       path: '/subgeo-industrial'
@@ -208,25 +137,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PharmacyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/laboratory': {
-      id: '/laboratory'
-      path: '/laboratory'
-      fullPath: '/laboratory'
-      preLoaderRoute: typeof LaboratoryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/clinic': {
-      id: '/clinic'
-      path: '/clinic'
-      fullPath: '/clinic'
-      preLoaderRoute: typeof ClinicRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/branches': {
@@ -243,13 +158,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BeautyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/barber': {
-      id: '/barber'
-      path: '/barber'
-      fullPath: '/barber'
-      preLoaderRoute: typeof BarberRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -264,40 +172,17 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/branches/$slug': {
-      id: '/branches/$slug'
-      path: '/$slug'
-      fullPath: '/branches/$slug'
-      preLoaderRoute: typeof BranchesSlugRouteImport
-      parentRoute: typeof BranchesRoute
-    }
   }
 }
-
-interface BranchesRouteChildren {
-  BranchesSlugRoute: typeof BranchesSlugRoute
-}
-
-const BranchesRouteChildren: BranchesRouteChildren = {
-  BranchesSlugRoute: BranchesSlugRoute,
-}
-
-const BranchesRouteWithChildren = BranchesRoute._addFileChildren(
-  BranchesRouteChildren,
-)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  BarberRoute: BarberRoute,
   BeautyRoute: BeautyRoute,
-  BranchesRoute: BranchesRouteWithChildren,
-  ClinicRoute: ClinicRoute,
+  BranchesRoute: BranchesRoute,
   ContactRoute: ContactRoute,
-  LaboratoryRoute: LaboratoryRoute,
   PharmacyRoute: PharmacyRoute,
   SubgeoIndustrialRoute: SubgeoIndustrialRoute,
-  WellnessRoute: WellnessRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

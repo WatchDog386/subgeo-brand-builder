@@ -38,7 +38,7 @@ function AboutPage() {
             </h1>
             <p className="mt-7 text-lg text-muted-foreground max-w-2xl leading-relaxed">
               Subgeo started as a single neighbourhood pharmacy with one promise — make quality
-              healthcare and self-care accessible to everyone. Today we operate six specialised
+              healthcare and self-care accessible to everyone. Today we operate three standalone
               branches under one standard of care.
             </p>
           </Reveal>
@@ -60,18 +60,18 @@ function AboutPage() {
           <Reveal className="lg:col-span-6" delay={0.1}>
             <div className="eyebrow">Our story</div>
             <h2 className="mt-3 font-display text-3xl md:text-4xl leading-tight">
-              From one counter to six specialised branches.
+              From one counter to three standalone branches.
             </h2>
             <div className="mt-6 space-y-5 text-muted-foreground leading-relaxed">
               <p>
                 What began in Umoja as a small, well-loved pharmacy has grown into a coordinated
                 group of services. Each Subgeo branch was added in response to what our customers
-                asked for — a doctor they could trust, a lab they could rely on, a calmer place to
-                get a haircut or a facial.
+                asked for — a trusted pharmacy, a calm beauty space, and dependable industrial
+                services.
               </p>
               <p>
                 The thread that runs through all of it is professionalism. The same care a Subgeo
-                pharmacist brings to a prescription is the care our barbers and clinicians bring to
+                pharmacist brings to a prescription is the care our beauty and industrial teams bring to
                 every chair and every consultation room.
               </p>
             </div>

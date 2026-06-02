@@ -3,7 +3,6 @@ import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, ArrowUpRight, Facebook, Twitter, Linkedin } from "lucide-react";
 import logoSrc from "@/assets/logo.png";
-import { branches } from "@/lib/branches";
 
 type NavItem = { to: string; label: string; hasMenu?: boolean };
 const nav: NavItem[] = [
@@ -13,17 +12,11 @@ const nav: NavItem[] = [
   { to: "/contact", label: "Contact" },
 ];
 
-const branchRouteBySlug: Record<string, string> = {
-  pharmacy: "/pharmacy",
-  clinic: "/clinic",
-  laboratory: "/laboratory",
-  wellness: "/wellness",
-  barber: "/barber",
-  beauty: "/beauty",
-  "subgeo-industrial": "/subgeo-industrial",
-};
-
-const branchRoute = (slug: string) => branchRouteBySlug[slug] ?? `/branches/${slug}`;
+const branchLinks = [
+  { to: "/pharmacy", label: "Subgeo Pharmacy", category: "Pharmacy" },
+  { to: "/beauty", label: "Subgeo Beauty Salon", category: "Beauty" },
+  { to: "/subgeo-industrial", label: "Subgeo Industrial", category: "Industrial Works" },
+];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -100,18 +93,18 @@ export function Navbar() {
                       className="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-[640px] z-50"
                     >
                         <div className="bg-white rounded-md shadow-xl p-3 grid grid-cols-2 gap-2">
-                          {branches.map((b) => (
-                              <motion.div key={b.slug} whileHover={{ scale: 1.02 }}>
+                            {branchLinks.map((branch) => (
+                              <motion.div key={branch.to} whileHover={{ scale: 1.02 }}>
                                 <Link
-                                  to={branchRoute(b.slug)}
+                                  to={branch.to}
                                   className="group flex items-start justify-between gap-3 rounded-md p-4 hover:bg-[#ecf3ff] transition-all no-underline"
                                 >
                                   <div>
                                     <div className="text-sm font-semibold text-[#072235]">
-                                      {b.name}
+                                      {branch.label}
                                     </div>
                                     <div className="text-xs text-gray-600 mt-1">
-                                      {b.category}
+                                      {branch.category}
                                     </div>
                                   </div>
                                   <motion.div
@@ -123,22 +116,6 @@ export function Navbar() {
                                 </Link>
                               </motion.div>
                             ))}
-
-                            {/* Add Subgeo Industrial as an extra item in the branches dropdown */}
-                            <motion.div whileHover={{ scale: 1.02 }}>
-                              <Link
-                                to={branchRoute("subgeo-industrial")}
-                                className="group flex items-start justify-between gap-3 rounded-md p-4 hover:bg-[#ecf3ff] transition-all no-underline"
-                              >
-                                <div>
-                                  <div className="text-sm font-semibold text-[#072235]">Subgeo Industrial</div>
-                                  <div className="text-xs text-gray-600 mt-1">Industrial Services</div>
-                                </div>
-                                <motion.div className="text-[#28b463] group-hover:text-[#1f9a4f] transition-colors" whileHover={{ x: 2, y: -2 }}>
-                                  <ArrowUpRight className="w-4 h-4" />
-                                </motion.div>
-                              </Link>
-                            </motion.div>
                         </div>
                     </motion.div>
                   )}
@@ -239,14 +216,14 @@ export function Navbar() {
                   Branches
                 </p>
                 <div className="space-y-1">
-                  {branches.map((b) => (
+                  {branchLinks.map((branch) => (
                     <Link
-                      key={b.slug}
-                      to={branchRoute(b.slug)}
+                      key={branch.to}
+                      to={branch.to}
                       onClick={() => setOpen(false)}
                       className="block py-3 px-4 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-white/90 rounded-md hover:bg-white/10 transition-colors no-underline"
                     >
-                      {b.name.toUpperCase()}
+                      {branch.label.toUpperCase()}
                     </Link>
                   ))}
                 </div>

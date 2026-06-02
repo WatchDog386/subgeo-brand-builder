@@ -1,7 +1,7 @@
 import { StatsDisplay } from "@/components/premium/PremiumLayout";
 
 const stats = [
-  { number: "6", label: "Specialised Branches" },
+  { number: "3", label: "Specialised Branches" },
   { number: "10K+", label: "Community Clients" },
   { number: "20+", label: "Healthcare Professionals" },
   { number: "365", label: "Days Operating Yearly" },

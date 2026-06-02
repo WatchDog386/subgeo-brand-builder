@@ -205,6 +205,14 @@
   .container-x { max-width: 80rem; margin-inline: auto; padding-inline: 1.25rem; }
   @media (min-width: 768px) { .container-x { padding-inline: 2rem; } }
   
+  .home-page-scale {
+    --home-scale: 0.92;
+    width: calc(100% / var(--home-scale));
+    margin-inline: auto;
+    transform: scale(var(--home-scale));
+    transform-origin: top center;
+  }
+  
   /* Typography utilities */
   .eyebrow {
     font-size: 0.75rem; 

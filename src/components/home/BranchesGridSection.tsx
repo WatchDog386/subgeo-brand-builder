@@ -2,29 +2,29 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import pharmacyImg from "@/assets/pharmacy.jpg";
-import clinicImg from "@/assets/clinic.jpg";
+import beautyImg from "@/assets/beauty.jpg";
 import labImg from "@/assets/lab.jpg";
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
 
 const branches = [
   {
-    slug: "pharmacy",
+    href: "/pharmacy",
     name: "Subgeo Pharmacy",
-    tagline: "Quality-assured medications & expert advice.",
+    tagline: "Trusted medicines. Expert pharmacists. Always nearby.",
     image: pharmacyImg,
     theme: "#060047",
   },
   {
-    slug: "clinic",
-    name: "Subgeo Medical Clinic",
-    tagline: "Comprehensive care from registered clinicians.",
-    image: clinicImg,
+    href: "/beauty",
+    name: "Subgeo Beauty Salon",
+    tagline: "Elevated self-care, every visit.",
+    image: beautyImg,
     theme: "#0b6d6c",
   },
   {
-    slug: "diagnostics",
-    name: "Subgeo Diagnostics Lab",
-    tagline: "Accurate testing with rapid, same-day outcomes.",
+    href: "/subgeo-industrial",
+    name: "Subgeo Industrial",
+    tagline: "Reliable plumbing and industrial works for demanding projects.",
     image: labImg,
     theme: "#7027b9",
   },
@@ -41,15 +41,15 @@ export function BranchesGridSection() {
         <div className="mx-auto max-w-5xl text-center">
           <RevealOnScroll direction="up">
             <h2 className="font-display text-[1.4rem] leading-[1.06] tracking-[-0.02em] text-[#22324c] md:text-[2.2rem] lg:text-[2.6rem]">
-              Now three standalone and publicly traded companies
+              Three standalone branches under one Subgeo standard
             </h2>
           </RevealOnScroll>
         </div>
 
         <div className="mt-10 md:mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 xl:gap-8">
           {branches.map((branch, index) => (
-            <RevealOnScroll key={branch.slug} delay={index * 0.08}>
-              <Link to="/branches/$slug" params={{ slug: branch.slug }} className="group block h-full no-underline">
+            <RevealOnScroll key={branch.href} delay={index * 0.08}>
+              <Link to={branch.href as any} className="group block h-full no-underline">
                 <div className="overflow-hidden">
                   <div className="relative aspect-[1.6] overflow-hidden bg-[#d9dde3]">
                     <motion.img
@@ -68,7 +68,7 @@ export function BranchesGridSection() {
                         ? "The future is our starting point"
                         : index === 1
                           ? "The energy to change the world"
-                          : "Every patient has a story to tell"}
+                          : "Every project needs a dependable partner"}
                     </h3>
 
                     <p className="mt-2 max-w-md font-sans text-[0.92rem] leading-[1.45] text-white/90 md:text-[0.95rem]">

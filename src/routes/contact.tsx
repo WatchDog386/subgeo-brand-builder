@@ -114,6 +114,7 @@ function ContactPage() {
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
+              suppressHydrationWarning
             />
           </div>
         </div>
