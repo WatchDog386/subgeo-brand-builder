@@ -24,7 +24,7 @@ export function FAQSection() {
     <section className="bg-white py-16 md:py-20">
       <div className="container-x">
         <RevealOnScroll direction="up">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">
+          <h2 className="font-display text-[clamp(32px,4vw,48px)] leading-[1.04] text-primary">
             Our Commitment to Excellence
           </h2>
           <p className="mt-3 text-gray-600 max-w-2xl">

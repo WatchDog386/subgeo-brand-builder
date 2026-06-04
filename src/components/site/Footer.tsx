@@ -16,8 +16,12 @@ export function Footer() {
       <div className="container mx-auto px-6 py-12 border-b border-gray-100">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
           {/* Logo Area */}
-          <div className="text-[32px] font-display font-bold text-[#223a5c] tracking-tight">
-            Subgeo<span className="text-[#e0292e]">.</span>
+          <div className="flex items-center">
+            <a href="/" className="no-underline">
+              <span className="text-[#be232a] text-[20px] lg:text-[24px] font-bold tracking-[0.02em] leading-none" style={{ fontFamily: "'Oswald', sans-serif", transform: "scaleY(1.15)", transformOrigin: "bottom", display: "inline-block" }}>
+                SUBGEO HOLDING COMPANY LTD.
+              </span>
+            </a>
           </div>
 
           {/* Right Side: Newsletter & Apps */}
@@ -136,39 +140,39 @@ export function Footer() {
       </div>
 
       {/* Bottom Section: Dark Bar (Matching Zalora's help section) */}
-      <div className="bg-[#1a2c4e] text-white">
+      <div className="bg-[#1e2532] text-white">
         <div className="container mx-auto px-6 py-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Help Text */}
             <div className="md:col-span-1">
-              <p className="font-display text-lg font-bold text-white mb-2">We're always here to help you...</p>
-              <p className="text-[13px] text-gray-300">Reach out to us through any of these support channels</p>
+              <p className="text-sm font-bold text-white mb-1">We're always here to help you...</p>
+              <p className="text-xs text-gray-400">Reach out to us through any of these support channels</p>
             </div>
             
             {/* Hotline (Using your San Rafael number) */}
             <div>
-              <p className="text-[11px] text-gray-400 uppercase tracking-widest font-bold mb-1">Hotline</p>
-              <p className="font-display text-lg font-bold text-white">0733 699 441</p>
+              <p className="text-xs text-gray-400 mb-1">Hotline:</p>
+              <p className="text-sm font-medium text-white">0733 699 441</p>
             </div>
             
             {/* Email */}
             <div>
-              <p className="text-[11px] text-gray-400 uppercase tracking-widest font-bold mb-1">Email</p>
-              <p className="font-display text-lg font-bold text-white">info@subgeo.co.ke</p>
+              <p className="text-xs text-gray-400 mb-1">Email:</p>
+              <p className="text-sm font-medium text-white">info@subgeo.co.ke</p>
             </div>
             
             {/* Connect with us (Colored Icons) */}
             <div>
-              <p className="text-[11px] text-gray-400 uppercase tracking-widest font-bold mb-3">Connect with us</p>
+              <p className="text-xs text-gray-400 mb-3">Connect with us</p>
               <div className="flex gap-3">
                 {socials.map(({ Icon, color, label }, index) => (
                   <a 
                     key={index} 
                     href="#" 
                     aria-label={label}
-                    className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                    className="h-8 w-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
                   >
-                    <Icon className={`h-5 w-5 ${color}`} />
+                    <Icon className={`h-4 w-4 ${color}`} />
                   </a>
                 ))}
               </div>

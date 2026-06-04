@@ -47,12 +47,12 @@ export function ServicesSection() {
         {/* ───────── RIGHT: Content ───────── */}
         <RevealOnScroll direction="right">
           {/* Heading */}
-          <h2 className="text-[2.2rem] md:text-[2.5rem] lg:text-[2.8rem] text-[#1a2c4e] leading-[1.1] tracking-tight font-display font-bold">
+          <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-primary">
             Elevating Lifestyles <br/> Across Kenya
           </h2>
 
           {/* Paragraph */}
-          <p className="mt-5 text-[15px] md:text-[16px] text-gray-500 leading-relaxed font-medium">
+          <p className="mt-5 text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">
             Subgeo Holding Limited is Kenya's premier choice for comprehensive
             pharmacy, beauty, and industrial services. Since our founding, our 
             dedicated company has helped countless clients achieve better health, 

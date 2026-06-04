@@ -21,25 +21,25 @@ export function Navbar() {
     <header className="fixed top-0 inset-x-0 z-50">
       {/* Top Bar - White Background (Original height kept at h-20) */}
       <div className="bg-white border-b border-gray-200">
-        <div className="container-x h-20 flex items-center justify-between px-4 lg:px-8">
+        <div className="container-x h-16 flex items-center justify-between px-4 lg:px-8">
           {/* Company Name (Logo removed) */}
           <Link to="/" className="flex items-center no-underline">
-            <span className="text-[#be232a] text-[28px] lg:text-[34px] font-bold tracking-[0.02em] leading-none" style={{ fontFamily: "'Oswald', sans-serif", transform: "scaleY(1.15)", transformOrigin: "bottom" }}>
+            <span className="text-[#be232a] text-[20px] lg:text-[24px] font-bold tracking-[0.02em] leading-none" style={{ fontFamily: "'Oswald', sans-serif", transform: "scaleY(1.15)", transformOrigin: "bottom" }}>
               SUBGEO HOLDING COMPANY LTD.
             </span>
           </Link>
 
           {/* Phone Numbers - Desktop */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6">
             {phoneTiles.map((tile) => (
-              <div key={tile.phone} className="flex items-center gap-4">
-                <div className="h-12 w-12 rounded-full bg-red-600 flex items-center justify-center text-white flex-shrink-0">
-                  <Phone className="h-5 w-5" />
+              <div key={tile.phone} className="flex items-center gap-2.5">
+                <div className="h-8 w-8 rounded-full bg-red-600 flex items-center justify-center text-white flex-shrink-0">
+                  <Phone className="h-3.5 w-3.5" />
                 </div>
                 <div className="flex flex-col">
-                  <div className="text-lg font-semibold text-gray-900">{tile.phone}</div>
-                  <div className="text-xs text-gray-500 flex items-center gap-1">
-                    <MapPin className="h-3 w-3" /> {tile.location}
+                  <div className="text-[13px] font-semibold text-gray-900 leading-tight">{tile.phone}</div>
+                  <div className="text-[10px] text-gray-500 flex items-center gap-1 leading-tight">
+                    <MapPin className="h-2.5 w-2.5" /> {tile.location}
                   </div>
                 </div>
               </div>
@@ -49,25 +49,25 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="lg:hidden h-10 w-10 flex items-center justify-center rounded-md border border-gray-300"
+            className="lg:hidden h-8 w-8 flex items-center justify-center rounded-md border border-gray-300"
             onClick={() => setOpen((value) => !value)}
             aria-label="Toggle menu"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </div>
       </div>
 
       {/* Bottom Bar - Dark Navy Background (Height increased to h-16) */}
       <div className="bg-[#1e3a5f]">
-        <div className="container-x h-16 flex items-center justify-between px-4 lg:px-8">
+        <div className="container-x h-12 flex items-center justify-between px-4 lg:px-8">
           {/* Navigation - Desktop */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-5">
             {nav.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                className="text-white/90 hover:text-white text-sm font-medium no-underline flex items-center gap-1"
+                className="text-white/90 hover:text-white text-[11px] font-semibold no-underline flex items-center gap-1 uppercase tracking-[0.05em]"
               >
                 {item.label}
                 <ChevronDown className="h-3 w-3" />
@@ -79,7 +79,7 @@ export function Navbar() {
           <div className="hidden lg:flex items-center">
             <Link
               to="/contact"
-              className="text-white hover:text-white/90 text-sm font-semibold no-underline flex items-center gap-2"
+              className="text-white hover:text-white/90 text-[11px] font-semibold no-underline flex items-center gap-1.5 tracking-[0.05em]"
             >
               CONTACT US
               <ArrowRight className="h-4 w-4" />

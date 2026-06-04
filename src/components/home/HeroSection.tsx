@@ -167,7 +167,6 @@ const tiles = [
 ];
 
 export function HeroSection() {
-  const [hoveredTile, setHoveredTile] = useState<number | null>(null);
 
   return (
     <section className="relative section-slab">
@@ -175,23 +174,23 @@ export function HeroSection() {
 
       <div className="container-x pt-36 pb-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
-          <div className="pt-10 lg:pt-16">
-            <h1 className="font-display text-[clamp(32px,4vw,48px)] leading-[1.04] text-primary">
+          <div className="pt-20 lg:pt-32">
+            <h1 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-primary">
               Providing kenyan`s<br />
               With Realiable and <br />
               Quality Services
             </h1>
-            <p className="mt-5 text-sm md:text-base text-gray-600 max-w-xl">
+            <p className="mt-5 text-[13px] md:text-sm text-gray-600 max-w-xl">
              As a premier holding company based in Kenya, Subgeo Holding Limited delivers comprehensive, high-quality services and infrastructure solutions tailored to drive progress, reliability, and innovation across the region.
             </p>
             <div className="mt-7 flex flex-col sm:flex-row gap-4">
-              <Button className="rounded-none bg-[#e0292e] hover:bg-[#c42428] text-white h-12 px-7 font-semibold text-sm uppercase tracking-wide flex items-center gap-2">
+              <Button className="rounded-none bg-[#e0292e] hover:bg-[#c42428] text-white h-10 px-6 font-semibold text-[13px] uppercase tracking-wide flex items-center gap-2">
                 Book Now
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Button>
-              <Button variant="ghost" className="rounded-none text-[#e0292e] hover:bg-transparent hover:text-[#c42428] h-12 px-4 font-semibold text-sm uppercase tracking-wide flex items-center gap-2">
+              <Button variant="ghost" className="rounded-none text-[#e0292e] hover:bg-transparent hover:text-[#c42428] h-10 px-4 font-semibold text-[13px] uppercase tracking-wide flex items-center gap-2">
                 Get A Free Quote
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -288,56 +287,6 @@ export function HeroSection() {
               </div>
             </motion.div>
           </div>
-        </div>
-
-        {/* Service Grid with Sharp Elongated Cards */}
-        <div className="service-grid mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-0 border border-gray-200">
-          {tiles.map((tile, index) => {
-            const isHovered = hoveredTile === index;
-            const isActive = tile.active || isHovered;
-            
-            return (
-              <motion.div
-                key={tile.label}
-                className={`
-                  relative h-80 cursor-pointer transition-all duration-300 ease-in-out
-                  flex flex-col items-center justify-between py-10 px-6
-                  border-r border-b border-gray-200 last:border-r-0
-                  ${isActive 
-                    ? 'bg-white shadow-lg z-20' 
-                    : 'bg-white/40 hover:bg-white'
-                  }
-                `}
-                onMouseEnter={() => setHoveredTile(index)}
-                onMouseLeave={() => setHoveredTile(null)}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.3 }}
-              >
-                {/* Icon Container */}
-                <div className={`
-                  h-20 w-20 flex items-center justify-center transition-all duration-300
-                `}>
-                  <tile.icon className="h-16 w-16" />
-                </div>
-                
-                {/* Label */}
-                <div className={`
-                  text-center font-display font-bold text-[17px] transition-all duration-300
-                  ${isActive ? 'text-[#223a5c]' : 'text-gray-300'}
-                `}>
-                  {tile.label}
-                </div>
-                
-                {/* Learn More Link */}
-                <div className={`
-                  font-bold text-[11px] uppercase tracking-wider transition-all duration-300
-                  ${isActive ? 'text-[#e0292e]' : 'text-gray-300/70'}
-                `}>
-                  Learn More
-                </div>
-              </motion.div>
-            );
-          })}
         </div>
       </div>
     </section>

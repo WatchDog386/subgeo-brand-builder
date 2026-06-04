@@ -74,7 +74,7 @@ export function BranchesGridSection() {
                   
                   {/* Title */}
                   <h3 className={`
-                    text-base md:text-lg font-semibold mb-6 transition-colors duration-300
+                    text-base font-semibold mb-6 transition-colors duration-300
                     ${isActive ? 'text-primary' : 'text-gray-400 group-hover:text-gray-500'}
                   `}>
                     {service.title}

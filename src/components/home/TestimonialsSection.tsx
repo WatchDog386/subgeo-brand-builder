@@ -78,13 +78,7 @@ export function TestimonialsSection() {
       <div className="container-x grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
         {/* Left Column */}
         <RevealOnScroll direction="left">
-          <h2
-            className="text-[40px] md:text-[46px] lg:text-[52px] font-extrabold leading-[1.1] tracking-[-0.02em]"
-            style={{
-              color: "#1a2d42",
-              fontFamily: "'Montserrat', system-ui, sans-serif",
-            }}
-          >
+          <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-primary">
             Our Clients Speaks
             <br />
             Highly Of Us
@@ -99,12 +93,12 @@ export function TestimonialsSection() {
                 <Avatar reviewer={item} />
                 <div>
                   <div
-                    className="text-[17px] font-bold"
+                    className="text-[14px] font-bold"
                     style={{ color: "#2a3d52" }}
                   >
                     {item.name}
                   </div>
-                  <div className="text-[14px] text-[#9aa8b8] mt-1">
+                  <div className="text-[12px] text-[#9aa8b8] mt-1">
                     {item.date}
                   </div>
                 </div>
@@ -118,7 +112,7 @@ export function TestimonialsSection() {
           <div className="flex flex-col items-start">
             <GoogleLogo />
             <p
-              className="mt-4 text-[14px] leading-[1.6]"
+              className="mt-4 text-[13px] leading-[1.6]"
               style={{ color: "#4a5568" }}
             >
               4.9 Stars & 500 Reviews Thanks
@@ -129,7 +123,7 @@ export function TestimonialsSection() {
 
           <div className="mt-16">
             <h3
-              className="text-[30px] md:text-[34px] font-bold leading-[1.2]"
+              className="text-[24px] md:text-[28px] font-bold leading-[1.2]"
               style={{
                 color: "#1a2d42",
                 fontFamily: "'Inter', system-ui, sans-serif",
@@ -151,7 +145,7 @@ export function TestimonialsSection() {
             </div>
 
             <p
-              className="mt-7 text-[15px] leading-[1.85]"
+              className="mt-7 text-[13px] leading-[1.85]"
               style={{ color: "#6b7a8d" }}
             >
               The team from Subgeo arrived exactly on time and exceeded expectations. From the thorough

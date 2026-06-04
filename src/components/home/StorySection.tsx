@@ -37,17 +37,17 @@ export function StorySection() {
         {/* Hero Content */}
         <div className="relative container-x pt-10 md:pt-14 pb-16 md:pb-20">
           <RevealOnScroll direction="up">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight max-w-2xl">
+            <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-white">
               Providing Reliable Services For Over
               <br />
-              <span className="text-4xl md:text-5xl lg:text-6xl">35 Years</span>
+              <span>35 Years</span>
             </h2>
           </RevealOnScroll>
 
           {/* Description Box */}
           <RevealOnScroll direction="up" delay={150}>
             <div className="mt-6 md:mt-8 max-w-xl bg-black/30 backdrop-blur-sm p-5 md:p-6 rounded-sm">
-              <p className="text-white/90 text-sm md:text-base leading-relaxed">
+              <p className="text-white/90 text-[13px] leading-relaxed">
                 Subgeo Holding Limited is Kenya's trusted partner for integrated pharmacy, beauty, and industrial solutions. Over the years, our dedicated teams have worked tirelessly to deliver outstanding value and reliability to the diverse communities we serve.
               </p>
               <div className="mt-5">

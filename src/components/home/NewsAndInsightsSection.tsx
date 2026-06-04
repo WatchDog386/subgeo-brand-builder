@@ -63,11 +63,11 @@ export function NewsAndInsightsSection() {
         {/* Right Side: Content */}
         <RevealOnScroll direction="right">
           <div className="pl-0 lg:pl-8">
-            <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-[#1e3a5f] leading-[1.1] tracking-tight">
+            <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-primary">
               Careers At Subgeo<br className="hidden md:block"/> Holding Limited
             </h2>
             
-            <p className="mt-6 text-gray-500 text-base md:text-lg leading-relaxed max-w-lg">
+            <p className="mt-6 text-gray-500 text-[13px] md:text-sm leading-relaxed max-w-lg">
               Apprentice to advanced job positions available. Work for a company that cares about its community.
             </p>
 

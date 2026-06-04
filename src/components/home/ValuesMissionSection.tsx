@@ -33,14 +33,14 @@ export function ValuesMissionSection() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
               {/* Left heading */}
               <div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-white">
                   Serving Kenya Nationwide
                 </h2>
               </div>
 
               {/* Right: description + phones */}
               <div>
-                <p className="text-white/70 text-sm md:text-[15px] leading-relaxed mb-10 max-w-md">
+                <p className="text-white/70 text-[13px] leading-relaxed mb-10 max-w-md">
                   Reliable services, from health to infrastructure, are vital to our communities. Subgeo Holding Limited is proud to be the expert partner you can count on across the region.
                 </p>
 

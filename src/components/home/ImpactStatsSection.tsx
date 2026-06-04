@@ -12,17 +12,17 @@ export function ImpactStatsSection() {
           {/* Left Side: Red Content Block */}
           <RevealOnScroll direction="right">
             <div className="bg-[#b81f25] text-white p-8 md:p-12 lg:p-16 flex flex-col justify-center h-full relative z-10">
-              <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold leading-tight mb-6">
+              <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-white mb-6">
                 Empowering Communities Across Kenya
               </h2>
-              <p className="text-white/90 text-base md:text-lg leading-relaxed mb-8">
+              <p className="text-white/90 text-[13px] md:text-sm leading-relaxed mb-8">
                 At Subgeo Holding Limited, we want our customers to feel confident in the{" "}
                 <span className="font-bold text-white">quality and reliability</span> of every service we offer. Whether you are seeking exceptional healthcare, relaxing beauty treatments, or dependable industrial works, we are committed to enriching your everyday experiences across the region!
               </p>
               <div className="mt-auto">
                 <Button 
                   variant="outline" 
-                  className="bg-white text-[#b81f25] hover:bg-gray-100 border-white font-semibold h-12 px-6 rounded-none text-sm tracking-wide"
+                  className="bg-white text-[#b81f25] hover:bg-gray-100 border-white font-semibold h-10 px-5 rounded-none text-[12px] tracking-wide"
                 >
                   DISCOVER MORE &nbsp; &gt;
                 </Button>
