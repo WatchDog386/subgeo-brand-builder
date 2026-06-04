@@ -1,36 +1,104 @@
 import { Button } from "@/components/ui/button";
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
+import { 
+  Droplets, 
+  Flame, 
+  Thermometer, 
+  Snowflake, 
+  Wrench, 
+  Gauge 
+} from "lucide-react";
 
-const coupons = [
-  { title: "Any Installation", value: "$200 Off" },
-  { title: "Any Repair", value: "$35 Off" },
-  { title: "Indoor Air Quality Bundle", value: "5% Off" },
+const services = [
+  { 
+    title: "Pharmacy", 
+    icon: Droplets,
+    href: "/pharmacy"
+  },
+  { 
+    title: "Beauty Salon", 
+    icon: Flame,
+    href: "/beauty"
+  },
+  { 
+    title: "Subgeo Industrial", 
+    icon: Thermometer,
+    href: "/subgeo-industrial",
+    active: true
+  },
+  { 
+    title: "Prescriptions", 
+    icon: Snowflake,
+    href: "/pharmacy"
+  },
+  { 
+    title: "Skincare", 
+    icon: Wrench,
+    href: "/beauty"
+  },
+  { 
+    title: "Plumbing Works", 
+    icon: Gauge,
+    href: "/subgeo-industrial"
+  },
 ];
 
 export function BranchesGridSection() {
   return (
     <section className="section-shell py-16 md:py-20">
       <div className="container-x">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {coupons.map((coupon) => (
-            <RevealOnScroll key={coupon.title} delay={0.08}>
-              <div className="card-elevated overflow-hidden">
-                <div className="h-4 bg-accent" />
-                <div className="p-6">
-                  <div className="text-xl font-bold text-primary">{coupon.title}</div>
-                  <div className="mt-4 bg-primary text-white text-lg font-bold text-center py-2">
-                    {coupon.value}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-gray-200 border border-gray-200">
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            const isActive = service.active;
+            
+            return (
+              <RevealOnScroll key={service.title} delay={index * 0.08}>
+                <div 
+                  className={`
+                    relative bg-white p-6 md:p-8 flex flex-col items-center text-center
+                    transition-all duration-300 group
+                  `}
+                >
+                  {/* Icon */}
+                  <div className={`
+                    mb-4 transition-colors duration-300
+                    ${isActive ? 'text-primary' : 'text-gray-300 group-hover:text-gray-400'}
+                  `}>
+                    <Icon 
+                      size={48} 
+                      strokeWidth={1.5}
+                      className={isActive ? 'drop-shadow-sm' : ''}
+                    />
                   </div>
-                  <div className="mt-4">
-                    <Button className="btn-primary h-10 px-5 text-[11px] w-full">Book Now</Button>
-                  </div>
-                  <div className="mt-3 text-[10px] text-gray-400 leading-relaxed">
-                    *Valid for one-time-only installations and new client discount. Not to be used with any other offer.
-                  </div>
+                  
+                  {/* Title */}
+                  <h3 className={`
+                    text-base md:text-lg font-semibold mb-6 transition-colors duration-300
+                    ${isActive ? 'text-primary' : 'text-gray-400 group-hover:text-gray-500'}
+                  `}>
+                    {service.title}
+                  </h3>
+                  
+                  {/* Learn More Link */}
+                  <Button 
+                    variant="link"
+                    className={`
+                      p-0 h-auto font-semibold text-xs uppercase tracking-wide
+                      transition-all duration-300 mt-auto
+                      ${isActive 
+                        ? 'text-red-600 hover:text-red-700' 
+                        : 'text-gray-300 hover:text-gray-400'
+                      }
+                    `}
+                    onClick={() => window.location.href = service.href}
+                  >
+                    Learn More
+                  </Button>
                 </div>
-              </div>
-            </RevealOnScroll>
-          ))}
+              </RevealOnScroll>
+            );
+          })}
         </div>
       </div>
     </section>

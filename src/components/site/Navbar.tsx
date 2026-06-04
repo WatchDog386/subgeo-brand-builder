@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X, PhoneCall, MapPin } from "lucide-react";
-import logoSrc from "@/assets/logo.png";
+import { Menu, X, Phone, MapPin, ChevronDown, ArrowRight } from "lucide-react";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -11,8 +10,8 @@ const nav = [
 ];
 
 const phoneTiles = [
-  { phone: "(415) 942-6565", location: "Santa Rafael" },
-  { phone: "(707) 452-3464", location: "Santa Rosa" },
+  { phone: "+254 700 000 002", location: "Subgeo Pharmacy" },
+  { phone: "0733 699 441", location: "Subgeo Industrial" },
 ];
 
 export function Navbar() {
@@ -20,25 +19,26 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50">
-      <div className="bg-white border-b border-[#e1e6ee] shadow-sm">
-        <div className="container-x h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 no-underline">
-            <img src={logoSrc} alt="Subgeo" className="h-8 w-8 object-contain" />
-            <div className="hidden sm:flex flex-col leading-tight">
-              <span className="text-sm font-semibold text-primary">Subgeo Services, Inc.</span>
-              <span className="text-[10px] uppercase tracking-[0.24em] text-gray-500">Since 1989</span>
-            </div>
+      {/* Top Bar - White Background (Original height kept at h-20) */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="container-x h-20 flex items-center justify-between px-4 lg:px-8">
+          {/* Company Name (Logo removed) */}
+          <Link to="/" className="flex items-center no-underline">
+            <span className="text-[#be232a] text-[28px] lg:text-[34px] font-bold tracking-[0.02em] leading-none" style={{ fontFamily: "'Oswald', sans-serif", transform: "scaleY(1.15)", transformOrigin: "bottom" }}>
+              SUBGEO HOLDING COMPANY LTD.
+            </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-6">
+          {/* Phone Numbers - Desktop */}
+          <div className="hidden lg:flex items-center gap-8">
             {phoneTiles.map((tile) => (
-              <div key={tile.phone} className="flex items-center gap-3">
-                <div className="h-9 w-9 rounded-full border border-accent flex items-center justify-center text-accent">
-                  <PhoneCall className="h-4 w-4" />
+              <div key={tile.phone} className="flex items-center gap-4">
+                <div className="h-12 w-12 rounded-full bg-red-600 flex items-center justify-center text-white flex-shrink-0">
+                  <Phone className="h-5 w-5" />
                 </div>
-                <div className="text-right">
-                  <div className="text-sm font-semibold text-primary">{tile.phone}</div>
-                  <div className="text-[10px] uppercase tracking-[0.2em] text-gray-500 flex items-center justify-end gap-1">
+                <div className="flex flex-col">
+                  <div className="text-lg font-semibold text-gray-900">{tile.phone}</div>
+                  <div className="text-xs text-gray-500 flex items-center gap-1">
                     <MapPin className="h-3 w-3" /> {tile.location}
                   </div>
                 </div>
@@ -46,65 +46,91 @@ export function Navbar() {
             ))}
           </div>
 
+          {/* Mobile Menu Button */}
           <button
             type="button"
-            className="lg:hidden h-9 w-9 flex items-center justify-center rounded-md border border-gray-200"
+            className="lg:hidden h-10 w-10 flex items-center justify-center rounded-md border border-gray-300"
             onClick={() => setOpen((value) => !value)}
             aria-label="Toggle menu"
           >
-            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
 
-      <div className="bg-primary text-white">
-        <div className="container-x h-16 flex items-center justify-between">
-          <nav className="hidden lg:flex items-center gap-8 text-[11px] font-semibold uppercase tracking-[0.22em]">
+      {/* Bottom Bar - Dark Navy Background (Height increased to h-16) */}
+      <div className="bg-[#1e3a5f]">
+        <div className="container-x h-16 flex items-center justify-between px-4 lg:px-8">
+          {/* Navigation - Desktop */}
+          <nav className="hidden lg:flex items-center gap-6">
             {nav.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                className="text-white/90 hover:text-white no-underline"
+                className="text-white/90 hover:text-white text-sm font-medium no-underline flex items-center gap-1"
               >
                 {item.label}
+                <ChevronDown className="h-3 w-3" />
               </Link>
             ))}
           </nav>
-          <div className="hidden lg:flex items-center gap-3">
+
+          {/* Contact Us Button - Desktop */}
+          <div className="hidden lg:flex items-center">
             <Link
               to="/contact"
-              className="btn-primary inline-flex h-9 items-center px-5 text-[11px] no-underline"
+              className="text-white hover:text-white/90 text-sm font-semibold no-underline flex items-center gap-2"
             >
-              Contact Us
+              CONTACT US
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
-          <div className="lg:hidden text-xs uppercase tracking-[0.18em] font-semibold">
+          {/* Mobile Menu Text */}
+          <div className="lg:hidden text-white text-sm font-semibold uppercase tracking-wider">
             Menu
           </div>
         </div>
       </div>
 
+      {/* Mobile Menu Dropdown */}
       {open && (
-        <div className="lg:hidden bg-white border-b border-gray-200">
-          <div className="container-x py-4 flex flex-col gap-3">
-            {nav.map((item) => (
+        <div className="lg:hidden bg-white border-b border-gray-200 shadow-lg">
+          <div className="container-x py-4 px-4 flex flex-col gap-4">
+            {/* Phone Numbers - Mobile */}
+            {phoneTiles.map((tile) => (
+              <div key={tile.phone} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <div className="h-10 w-10 rounded-full bg-red-600 flex items-center justify-center text-white flex-shrink-0">
+                  <Phone className="h-4 w-4" />
+                </div>
+                <div className="flex flex-col">
+                  <div className="text-base font-semibold text-gray-900">{tile.phone}</div>
+                  <div className="text-xs text-gray-500 flex items-center gap-1">
+                    <MapPin className="h-3 w-3" /> {tile.location}
+                  </div>
+                </div>
+              </div>
+            ))}
+            
+            <div className="border-t border-gray-200 pt-4 mt-2">
+              {nav.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="block py-3 text-sm font-semibold text-gray-800 hover:text-red-600 no-underline border-b border-gray-100"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
               <Link
-                key={item.to}
-                to={item.to}
-                className="text-sm font-semibold uppercase tracking-[0.12em] text-primary no-underline"
+                to="/contact"
+                className="mt-4 bg-red-600 text-white inline-flex h-11 items-center justify-center px-6 text-sm font-semibold rounded-lg no-underline w-full"
                 onClick={() => setOpen(false)}
               >
-                {item.label}
+                CONTACT US
               </Link>
-            ))}
-            <Link
-              to="/contact"
-              className="btn-primary inline-flex h-10 items-center justify-center text-[11px] no-underline"
-              onClick={() => setOpen(false)}
-            >
-              Contact Us
-            </Link>
+            </div>
           </div>
         </div>
       )}

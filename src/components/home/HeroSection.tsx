@@ -2,58 +2,173 @@ import { motion } from "framer-motion";
 import { Navbar } from "@/components/site/Navbar";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/why.png";
+import { useState } from "react";
 
-const PlumbingIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className}>
-    <path d="M16 6H12V4C12 2.9 11.1 2 10 2H6C4.9 2 4 2.9 4 4V7H2V9H16C17.1 9 18 9.9 18 11V15H16.5C15.7 15 15 15.7 15 16.5V17H19V16.5C19 14.6 20.6 13 22.5 13H23V11C23 8.2 20.8 6 18 6H16ZM14.5 19C14.5 20.93 16.07 22.5 18 22.5C19.93 22.5 21.5 20.93 21.5 19C21.5 17.6 20.6 15.5 18 13C15.4 15.5 14.5 17.6 14.5 19Z" />
+const PharmacyIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 64 64" className={className}>
+    <defs>
+      <linearGradient id="pharmacyBg" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#4ade80" />
+        <stop offset="100%" stopColor="#16a34a" />
+      </linearGradient>
+      <linearGradient id="pharmacyCross" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#ffffff" />
+        <stop offset="100%" stopColor="#f0f0f0" />
+      </linearGradient>
+    </defs>
+    <rect x="12" y="12" width="40" height="40" rx="8" fill="url(#pharmacyBg)" />
+    <rect x="28" y="20" width="8" height="24" rx="2" fill="url(#pharmacyCross)" />
+    <rect x="20" y="28" width="24" height="8" rx="2" fill="url(#pharmacyCross)" />
   </svg>
 );
 
-const HeatingIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className}>
-    <path d="M5 8V18H7V8H5ZM9 8V18H11V8H9ZM13 8V18H15V8H13ZM17 8V18H19V8H17ZM5 20H19C20.1 20 21 19.1 21 18V8C21 6.9 20.1 6 19 6H5C3.9 6 3 6.9 3 8V18C3 19.1 3.9 20 5 20ZM7 2C7.5 3 6 4 6 5C6 5.5 6.4 6 7 6C7.6 6 8 5.5 8 5C8 3.5 9 3 9 2C8.5 1 10 0 10 -1C10 -1.5 9.6 -2 9 -2C8.4 -2 8 -1.5 8 -1C8 0.5 7 1 7 2ZM11 2C11.5 3 10 4 10 5C10 5.5 10.4 6 11 6C11.6 6 12 5.5 12 5C12 3.5 13 3 13 2C12.5 1 14 0 14 -1C14 -1.5 13.6 -2 13 -2C12.4 -2 12 -1.5 12 -1C12 0.5 11 1 11 2ZM15 2C15.5 3 14 4 14 5C14 5.5 14.4 6 15 6C15.6 6 16 5.5 16 5C16 3.5 17 3 17 2C16.5 1 18 0 18 -1C18 -1.5 17.6 -2 17 -2C16.4 -2 16 -1.5 16 -1C16 0.5 15 1 15 2ZM19 2C19.5 3 18 4 18 5C18 5.5 18.4 6 19 6C19.6 6 20 5.5 20 5C20 3.5 21 3 21 2C20.5 1 22 0 22 -1C22 -1.5 21.6 -2 21 -2C20.4 -2 20 -1.5 20 -1C20 0.5 19 1 19 2Z" fillRule="evenodd" />
+const BeautyIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 64 64" className={className}>
+    <defs>
+      <linearGradient id="beautyLipstick" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#ec4899" />
+        <stop offset="100%" stopColor="#be185d" />
+      </linearGradient>
+      <linearGradient id="beautyTube" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#fbbf24" />
+        <stop offset="100%" stopColor="#d97706" />
+      </linearGradient>
+      <linearGradient id="beautyBase" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#1e293b" />
+        <stop offset="100%" stopColor="#0f172a" />
+      </linearGradient>
+    </defs>
+    <rect x="26" y="14" width="12" height="18" rx="2" fill="url(#beautyLipstick)" />
+    <path d="M26 14 L32 8 L38 14 Z" fill="#be185d" />
+    <rect x="24" y="32" width="16" height="8" rx="1" fill="url(#beautyTube)" />
+    <rect x="22" y="40" width="20" height="14" rx="2" fill="url(#beautyBase)" />
+    <circle cx="32" cy="47" r="3" fill="#fbbf24" />
   </svg>
 );
 
-const ACUnitIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className}>
-    <path d="M2 7C2 5.9 2.9 5 4 5H20C21.1 5 22 5.9 22 7V13C22 14.1 21.1 15 20 15H4C2.9 15 2 14.1 2 13V7ZM4 7V13H20V7H4ZM15 9H18V11H15V9ZM6 9H13V11H6V9ZM6 17H8C8.55 17 9 17.45 9 18V21C9 21.55 8.55 22 8 22H6C5.45 22 5 21.55 5 21V18C5 17.45 5.45 17 6 17ZM10 17H12C12.55 17 13 17.45 13 18V20C13 20.55 12.55 21 12 21H10C9.45 21 9 20.55 9 20V18C9 17.45 9.45 17 10 17ZM14 17H16C16.55 17 17 17.45 17 18V19C17 19.55 16.55 20 16 20H14C13.45 20 13 19.55 13 19V18C13 17.45 13.45 17 14 17Z" />
+const IndustrialIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 64 64" className={className}>
+    <defs>
+      <linearGradient id="industrialBuilding" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#64748b" />
+        <stop offset="100%" stopColor="#475569" />
+      </linearGradient>
+      <linearGradient id="industrialRoof" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#334155" />
+        <stop offset="100%" stopColor="#1e293b" />
+      </linearGradient>
+      <linearGradient id="industrialSmoke" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#cbd5e1" stopOpacity="0.8" />
+        <stop offset="100%" stopColor="#94a3b8" stopOpacity="0.3" />
+      </linearGradient>
+    </defs>
+    <path d="M8 52 L8 28 L20 20 L20 52 Z" fill="url(#industrialBuilding)" />
+    <path d="M20 52 L20 24 L32 16 L32 52 Z" fill="url(#industrialBuilding)" />
+    <path d="M32 52 L32 20 L44 12 L44 52 Z" fill="url(#industrialBuilding)" />
+    <rect x="44" y="12" width="12" height="40" fill="url(#industrialBuilding)" />
+    <path d="M8 28 L20 20 L20 24 L8 32 Z" fill="url(#industrialRoof)" />
+    <path d="M20 24 L32 16 L32 20 L20 28 Z" fill="url(#industrialRoof)" />
+    <path d="M32 20 L44 12 L44 16 L32 24 Z" fill="url(#industrialRoof)" />
+    <rect x="12" y="36" width="4" height="6" fill="#fbbf24" />
+    <rect x="24" y="32" width="4" height="6" fill="#fbbf24" />
+    <rect x="36" y="28" width="4" height="6" fill="#fbbf24" />
+    <rect x="48" y="20" width="4" height="6" fill="#fbbf24" />
+    <circle cx="14" cy="16" r="3" fill="url(#industrialSmoke)" />
+    <circle cx="18" cy="12" r="4" fill="url(#industrialSmoke)" />
+    <circle cx="26" cy="10" r="3" fill="url(#industrialSmoke)" />
+    <rect x="4" y="52" width="56" height="4" fill="#334155" />
   </svg>
 );
 
-const PipesIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className}>
-    <path d="M21 4V10H20C20 12.76 17.76 15 15 15H9C7.34 15 6 16.34 6 18V20H2V18C2 14.14 5.14 11 9 11H15C15.55 11 16 10.55 16 10V4H21ZM12 4H15V6H12V4ZM16.5 4H19.5V8H16.5V4ZM3.5 13H6.5V17H3.5V13ZM6.5 19H9.5V23H6.5V19ZM16 18L13 21H11L14 18H16ZM19 18L16 21H14L17 18H19ZM22 18L19 21H17L20 18H22Z" />
+const WellnessIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 64 64" className={className}>
+    <defs>
+      <linearGradient id="wellnessHeart" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#ef4444" />
+        <stop offset="100%" stopColor="#b91c1c" />
+      </linearGradient>
+      <radialGradient id="wellnessGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#fca5a5" stopOpacity="0.6" />
+        <stop offset="100%" stopColor="#ef4444" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+    <circle cx="32" cy="32" r="28" fill="url(#wellnessGlow)" />
+    <path d="M32 52 C32 52 12 36 12 24 C12 18 16 14 22 14 C26 14 29 16 32 20 C35 16 38 14 42 14 C48 14 52 18 52 24 C52 36 32 52 32 52 Z" fill="url(#wellnessHeart)" />
+    <path d="M32 20 C29 16 26 14 22 14 C16 14 12 18 12 24 C12 26 12.5 28 13.5 30" fill="none" stroke="#fca5a5" strokeWidth="2" strokeLinecap="round" />
+    <path d="M28 30 L32 34 L40 26" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
-const GaugeIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className}>
-    <path d="M12 2C6.48 2 2 6.48 2 12H4C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12H22C22 6.48 17.52 2 12 2ZM11 7V12H16V10H13V7H11ZM2 14H22V16H2V14ZM6 18H18V20H6V18Z" />
+const CosmeticsIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 64 64" className={className}>
+    <defs>
+      <linearGradient id="cosmeticsPalette" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#f472b6" />
+        <stop offset="100%" stopColor="#db2777" />
+      </linearGradient>
+      <linearGradient id="cosmeticsCompact" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#fbbf24" />
+        <stop offset="100%" stopColor="#d97706" />
+      </linearGradient>
+      <linearGradient id="cosmeticsMirror" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#e0e7ff" />
+        <stop offset="100%" stopColor="#c7d2fe" />
+      </linearGradient>
+    </defs>
+    <ellipse cx="32" cy="38" rx="20" ry="16" fill="url(#cosmeticsPalette)" />
+    <ellipse cx="32" cy="36" rx="18" ry="14" fill="#1e293b" />
+    <circle cx="22" cy="34" r="4" fill="#ef4444" />
+    <circle cx="32" cy="32" r="4" fill="#ec4899" />
+    <circle cx="42" cy="34" r="4" fill="#8b5cf6" />
+    <circle cx="26" cy="42" r="4" fill="#f59e0b" />
+    <circle cx="38" cy="42" r="4" fill="#10b981" />
+    <ellipse cx="32" cy="18" rx="14" ry="10" fill="url(#cosmeticsCompact)" />
+    <ellipse cx="32" cy="17" rx="12" ry="8" fill="url(#cosmeticsMirror)" />
+    <ellipse cx="28" cy="15" rx="4" ry="3" fill="#ffffff" opacity="0.6" />
   </svg>
 );
 
-const WaterHeaterActiveIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" className={className}>
-    <rect x="5" y="3" width="14" height="17" rx="1" fill="#223a5c" />
-    <path d="M12 11C13.65 11 15 9.65 15 8C15 6.35 12 4 12 4C12 4 9 6.35 9 8C9 9.65 10.35 11 12 11ZM12 8.5C12.28 8.5 12.5 8.72 12.5 9C12.5 9.28 12.28 9.5 12 9.5C11.72 9.5 11.5 9.28 11.5 9C11.5 8.72 11.72 8.5 12 8.5Z" fill="#e0292e" />
-    <circle cx="12" cy="15" r="2" fill="#e0292e" />
-    <circle cx="12" cy="15" r="1" fill="#ffffff" />
-    <rect x="7" y="20" width="3" height="2" rx="1" fill="#e0292e" />
-    <rect x="14" y="20" width="3" height="2" rx="1" fill="#e0292e" />
+const MaintenanceIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 64 64" className={className}>
+    <defs>
+      <linearGradient id="maintWrench" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#94a3b8" />
+        <stop offset="100%" stopColor="#64748b" />
+      </linearGradient>
+      <linearGradient id="maintScrewdriver" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#fbbf24" />
+        <stop offset="100%" stopColor="#d97706" />
+      </linearGradient>
+      <linearGradient id="maintHandle" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#dc2626" />
+        <stop offset="100%" stopColor="#991b1b" />
+      </linearGradient>
+    </defs>
+    <path d="M16 48 L28 36 L32 40 L20 52 C18 54 14 54 12 52 C10 50 10 46 12 44 L16 48 Z" fill="url(#maintWrench)" />
+    <circle cx="14" cy="50" r="4" fill="#475569" />
+    <circle cx="14" cy="50" r="2" fill="#1e293b" />
+    <rect x="28" y="34" width="8" height="4" rx="1" fill="url(#maintWrench)" transform="rotate(-45 32 36)" />
+    <rect x="36" y="26" width="16" height="6" rx="2" fill="url(#maintHandle)" />
+    <rect x="38" y="28" width="12" height="2" fill="#7f1d1d" />
+    <rect x="52" y="28" width="6" height="2" fill="url(#maintScrewdriver)" />
+    <rect x="56" y="26" width="4" height="6" fill="#92400e" />
+    <path d="M40 16 L44 12 L48 16 L44 20 Z" fill="url(#maintWrench)" />
+    <circle cx="44" cy="16" r="2" fill="#1e293b" />
   </svg>
 );
 
 const tiles = [
-  { label: "Plumbing", icon: PlumbingIcon },
-  { label: "Heating", icon: HeatingIcon },
-  { label: "Water Heater", icon: WaterHeaterActiveIcon, active: true },
-  { label: "Cooling", icon: ACUnitIcon },
-  { label: "Drain And Sewers", icon: PipesIcon },
-  { label: "Indoor Air Quality", icon: GaugeIcon },
+  { label: "Pharmacy", icon: PharmacyIcon },
+  { label: "Beauty", icon: BeautyIcon },
+  { label: "Industrial", icon: IndustrialIcon, active: true },
+  { label: "Wellness", icon: WellnessIcon },
+  { label: "Cosmetics", icon: CosmeticsIcon },
+  { label: "Maintenance", icon: MaintenanceIcon },
 ];
 
 export function HeroSection() {
+  const [hoveredTile, setHoveredTile] = useState<number | null>(null);
+
   return (
     <section className="relative section-slab">
       <Navbar />
@@ -61,17 +176,27 @@ export function HeroSection() {
       <div className="container-x pt-36 pb-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
           <div className="pt-10 lg:pt-16">
-            <h1 className="font-display text-[clamp(40px,5.2vw,64px)] leading-[1.04] text-primary">
-              Maintain First<br />
-              Repair Second<br />
-              Replace Last
+            <h1 className="font-display text-[clamp(32px,4vw,48px)] leading-[1.04] text-primary">
+              Providing kenyan`s<br />
+              With Realiable and <br />
+              Quality Services
             </h1>
-            <p className="mt-5 text-base md:text-lg text-gray-600 max-w-xl">
-              Reliable plumbing, heating, and air conditioning systems turn a house into a home. With locations in Santa Rosa and San Rafael, we are Marin & Sonoma Counties' one-stop shop for complete comfort solutions.
+            <p className="mt-5 text-sm md:text-base text-gray-600 max-w-xl">
+             As a premier holding company based in Kenya, Subgeo Holding Limited delivers comprehensive, high-quality services and infrastructure solutions tailored to drive progress, reliability, and innovation across the region.
             </p>
             <div className="mt-7 flex flex-col sm:flex-row gap-4">
-              <Button className="btn-primary h-11 px-7">Book Now</Button>
-              <Button variant="outline" className="btn-outline h-11 px-7">Get A Free Quote</Button>
+              <Button className="rounded-none bg-[#e0292e] hover:bg-[#c42428] text-white h-12 px-7 font-semibold text-sm uppercase tracking-wide flex items-center gap-2">
+                Book Now
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Button>
+              <Button variant="ghost" className="rounded-none text-[#e0292e] hover:bg-transparent hover:text-[#c42428] h-12 px-4 font-semibold text-sm uppercase tracking-wide flex items-center gap-2">
+                Get A Free Quote
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Button>
             </div>
             <div className="mt-7 flex items-center gap-4">
               <div className="flex -space-x-2">
@@ -85,47 +210,134 @@ export function HeroSection() {
                 ))}
               </div>
               <div className="hero-badge px-4 py-2">
-                <div className="text-sm font-semibold text-primary">4.9 Stars</div>
-                <div className="text-xs text-gray-500">500 Reviews in Google</div>
+                <div className="text-xs font-semibold text-primary">4.9 Stars</div>
+                <div className="text-[10px] text-gray-500">500 Reviews in Google</div>
               </div>
             </div>
           </div>
 
-          <div className="relative flex justify-center">
-            <div className="absolute inset-0 flex justify-center">
-              <div className="h-[380px] w-[380px] rounded-full bg-primary" />
-            </div>
-            <div className="absolute right-0 top-0 h-[420px] hero-ribbon" />
+          {/* Image section - PERFECT POSITIONING */}
+          <div className="relative flex justify-center min-h-[600px]">
+            {/* Blue Circle - smaller and moved right towards red ribbon */}
+            <div className="absolute top-16 left-8 lg:left-12 h-[320px] w-[320px] rounded-full bg-[#223a5c] z-0" />
+            
+            {/* Red Vertical Ribbon - wider, extends from navbar to cards */}
+            <div className="absolute -top-20 right-12 lg:right-20 w-40 h-[720px] bg-[#e0292e] z-0" />
+            
+            {/* Person Image - moved up, behind cards, bottom aligned with ribbon and circle */}
             <motion.img
               src={heroImg}
               alt="Technician"
-              className="relative z-10 h-[400px] w-[330px] object-cover rounded-full shadow-2xl grayscale"
+              className="absolute z-10 -top-20 left-1/2 -translate-x-1/2 h-[720px] w-full max-w-[480px] object-contain object-bottom"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             />
-            <div className="absolute bottom-10 right-10 hero-badge px-5 py-3">
-              <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-accent" />
-                <span className="text-xs font-bold text-primary uppercase tracking-[0.2em]">Same Day Service</span>
+            
+            {/* Same Day Service Badge - HIGHEST z-index, in front */}
+            <motion.div 
+              className="absolute top-[380px] right-4 lg:-right-4 px-7 py-4 bg-white shadow-xl rounded-2xl z-30 flex items-center gap-3"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
+              <div className="flex items-center justify-center flex-shrink-0 text-[#e0292e]">
+                <svg className="h-9 w-9" viewBox="0 0 24 24" fill="currentColor">
+                  {/* Outer spinning arrows */}
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" fillOpacity="0"/>
+                  <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
+                  {/* Inner clock hands */}
+                  <path d="M12 7v5l4.25 2.52.75-1.23-3.5-2.07V7z" />
+                </svg>
               </div>
-            </div>
+              <span className="text-[18px] tracking-tight font-display font-bold text-[#e0292e]">Same Day Service</span>
+            </motion.div>
+            
+            {/* 4.9 Stars Badge - HIGHEST z-index, in front */}
+            <motion.div 
+              className="absolute top-[480px] right-14 lg:right-16 px-6 py-4 bg-white shadow-xl rounded-2xl z-30 border border-gray-50/50"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-3">
+                  <div className="h-11 w-11 rounded-full bg-[#82cbf7] border-[3px] border-white overflow-hidden shadow-sm z-30">
+                    <img src="https://i.pravatar.cc/100?img=47" alt="avatar" className="h-full w-full object-cover mix-blend-multiply" />
+                  </div>
+                  <div className="h-11 w-11 rounded-full bg-[#b2a2e6] border-[3px] border-white overflow-hidden shadow-sm z-20">
+                    <img src="https://i.pravatar.cc/100?img=12" alt="avatar" className="h-full w-full object-cover mix-blend-multiply" />
+                  </div>
+                  <div className="h-11 w-11 rounded-full bg-[#a1e2b5] border-[3px] border-white overflow-hidden shadow-sm z-10">
+                    <img src="https://i.pravatar.cc/100?img=5" alt="avatar" className="h-full w-full object-cover mix-blend-multiply" />
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <div className="text-lg font-display font-bold text-[#1a2c4e] leading-tight">4.9 Stars</div>
+                  <div className="text-[11px] font-semibold text-[#5a6b82] mt-0.5">
+                    500 Reviews in <span className="font-bold text-[12px]">
+                      <span className="text-[#4285F4]">G</span>
+                      <span className="text-[#EA4335]">o</span>
+                      <span className="text-[#FBBC05]">o</span>
+                      <span className="text-[#4285F4]">g</span>
+                      <span className="text-[#34A853]">l</span>
+                      <span className="text-[#EA4335]">e</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
 
-        <div className="service-grid mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-0">
-          {tiles.map((tile) => (
-            <div
-              key={tile.label}
-              className={`service-tile px-4 py-6 text-center ${tile.active ? "active" : ""}`}
-            >
-              <div className={`service-icon mx-auto h-16 w-16 flex items-center justify-center ${tile.active ? "" : "text-gray-300"}`}>
-                <tile.icon className="h-14 w-14" />
-              </div>
-              <div className="service-label mt-4">{tile.label}</div>
-              <div className="service-link mt-4 font-bold">Learn More</div>
-            </div>
-          ))}
+        {/* Service Grid with Sharp Elongated Cards */}
+        <div className="service-grid mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-0 border border-gray-200">
+          {tiles.map((tile, index) => {
+            const isHovered = hoveredTile === index;
+            const isActive = tile.active || isHovered;
+            
+            return (
+              <motion.div
+                key={tile.label}
+                className={`
+                  relative h-80 cursor-pointer transition-all duration-300 ease-in-out
+                  flex flex-col items-center justify-between py-10 px-6
+                  border-r border-b border-gray-200 last:border-r-0
+                  ${isActive 
+                    ? 'bg-white shadow-lg z-20' 
+                    : 'bg-white/40 hover:bg-white'
+                  }
+                `}
+                onMouseEnter={() => setHoveredTile(index)}
+                onMouseLeave={() => setHoveredTile(null)}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* Icon Container */}
+                <div className={`
+                  h-20 w-20 flex items-center justify-center transition-all duration-300
+                `}>
+                  <tile.icon className="h-16 w-16" />
+                </div>
+                
+                {/* Label */}
+                <div className={`
+                  text-center font-display font-bold text-[17px] transition-all duration-300
+                  ${isActive ? 'text-[#223a5c]' : 'text-gray-300'}
+                `}>
+                  {tile.label}
+                </div>
+                
+                {/* Learn More Link */}
+                <div className={`
+                  font-bold text-[11px] uppercase tracking-wider transition-all duration-300
+                  ${isActive ? 'text-[#e0292e]' : 'text-gray-300/70'}
+                `}>
+                  Learn More
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -15,7 +15,7 @@ export function VisitUsTodaySection() {
             <div className="mt-5 space-y-3">
               <div className="flex items-center gap-3 text-primary">
                 <PhoneCall className="h-4 w-4" />
-                <span className="text-sm font-semibold">(415) 942-6565</span>
+                <span className="text-sm font-semibold">+254 700 000 002</span>
               </div>
               <div className="flex items-center gap-3 text-primary">
                 <Clock className="h-4 w-4" />

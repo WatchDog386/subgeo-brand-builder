@@ -2,11 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageTransition, ScrollProgressBar } from "@/components/premium/PremiumAnimations";
 import { Footer } from "@/components/site/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
-import { WhyUsSection } from "@/components/home/WhyUsSection";
+import { StorySection } from "@/components/home/StorySection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { ImpactStatsSection } from "@/components/home/ImpactStatsSection";
-import { StorySection } from "@/components/home/StorySection";
+import { WhyUsSection } from "@/components/home/WhyUsSection";
 import { BranchesGridSection } from "@/components/home/BranchesGridSection";
 import { PillarsSection } from "@/components/home/PillarsSection";
 import { ValuesMissionSection } from "@/components/home/ValuesMissionSection";
@@ -40,15 +40,20 @@ function Home() {
       <ScrollProgressBar />
       <HeroSection />
       <div className="home-page-scale">
-        <WhyUsSection />
-        <TestimonialsSection />
         <ServicesSection />
-        <ImpactStatsSection />
         <StorySection />
-        <BranchesGridSection />
-        <PillarsSection />
+        <WhyUsSection />
+         <ImpactStatsSection />
+        <TestimonialsSection />
         <ValuesMissionSection />
+        
+       
+        
+        <BranchesGridSection />
+     
+        
         <NewsAndInsightsSection />
+           <PillarsSection />
         <PremiumCTASection />
         <Footer />
       </div>

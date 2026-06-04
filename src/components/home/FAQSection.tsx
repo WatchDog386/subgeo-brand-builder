@@ -3,19 +3,19 @@ import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
 
 const plans = [
   {
-    title: "Preventive Care",
+    title: "Expert Guidance",
     icon: ShieldCheck,
-    description: "Annual inspections and tune-ups to keep systems efficient.",
+    description: "Professional advice from pharmacists and trained professionals.",
   },
   {
-    title: "Priority Response",
+    title: "Timely Delivery",
     icon: Clock,
-    description: "Fast scheduling and on-call technicians when it matters.",
+    description: "Efficient services when you need them most across all branches.",
   },
   {
-    title: "Transparent Pricing",
+    title: "Value & Integrity",
     icon: DollarSign,
-    description: "Upfront estimates with zero surprises or hidden fees.",
+    description: "Transparent pricing without compromising on quality standards.",
   },
 ];
 
@@ -25,10 +25,10 @@ export function FAQSection() {
       <div className="container-x">
         <RevealOnScroll direction="up">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">
-            Service Plans Built For Peace of Mind
+            Our Commitment to Excellence
           </h2>
           <p className="mt-3 text-gray-600 max-w-2xl">
-            Flexible options that keep your home comfortable year-round.
+            Delivering quality and reliability across healthcare, beauty, and industrial services.
           </p>
         </RevealOnScroll>
 
