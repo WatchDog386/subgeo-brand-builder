@@ -5,4 +5,10 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
 	plugins: [react(), tailwindcss(), tsconfigPaths()],
+	server: {
+		host: "0.0.0.0",
+	},
+	preview: {
+		host: "0.0.0.0",
+	},
 });

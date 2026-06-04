@@ -8,10 +8,8 @@ import { ServicesSection } from "@/components/home/ServicesSection";
 import { ImpactStatsSection } from "@/components/home/ImpactStatsSection";
 import { StorySection } from "@/components/home/StorySection";
 import { BranchesGridSection } from "@/components/home/BranchesGridSection";
-import { VisitUsTodaySection } from "@/components/home/VisitUsTodaySection";
 import { PillarsSection } from "@/components/home/PillarsSection";
 import { ValuesMissionSection } from "@/components/home/ValuesMissionSection";
-import { FAQSection } from "@/components/home/FAQSection";
 import { NewsAndInsightsSection } from "@/components/home/NewsAndInsightsSection";
 import { PremiumCTASection } from "@/components/home/PremiumCTASection";
 // (Removed Subgeo Industrial imports)
@@ -38,7 +36,7 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <PageTransition className="min-h-screen bg-background text-foreground overflow-x-clip relative">
+    <PageTransition className="min-h-screen bg-background page-texture text-foreground overflow-x-clip relative">
       <ScrollProgressBar />
       <HeroSection />
       <div className="home-page-scale">
@@ -50,10 +48,8 @@ function Home() {
         <BranchesGridSection />
         <PillarsSection />
         <ValuesMissionSection />
-        <FAQSection />
         <NewsAndInsightsSection />
         <PremiumCTASection />
-        <VisitUsTodaySection />
         <Footer />
       </div>
     </PageTransition>

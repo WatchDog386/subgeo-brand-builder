@@ -1,57 +1,57 @@
-import { PremiumSection } from "@/components/premium/PremiumLayout";
-import { BentoGrid } from "@/components/premium/PremiumGrid";
+import { CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
+import teamImg from "@/assets/beauty.jpg";
 
-const news = [
-  {
-    title: "Subgeo Diagnostics Expands Same-Day Reporting",
-    description: "Enhanced laboratory capabilities bring faster results to our clients.",
-    date: "Apr 2026",
-    badge: "Update",
-    gradient: "linear-gradient(135deg, #5FA8FF, #3F8FFF)",
-  },
-  {
-    title: "Free BP Screenings Continue Across Branches",
-    description: "Community health initiatives reach new neighborhoods.",
-    date: "Mar 2026",
-    badge: "Community",
-    gradient: "linear-gradient(135deg, #10B981, #5FA8FF)",
-  },
-  {
-    title: "Welcoming New Clinicians to Medical Team",
-    description: "Expanding our healthcare professional network.",
-    date: "Feb 2026",
-    badge: "People",
-    gradient: "linear-gradient(135deg, #FF9D54, #FF6B9D)",
-  },
+const jobs = [
+  "Lead HVAC Installer",
+  "HVAC Install Assistant",
+  "HVAC/Plumbing Parts Specialist",
+  "Warehouse Clerk/Delivery Driver",
+  "Duct Cleaning Technician",
+  "Service Plumber",
 ];
 
 export function NewsAndInsightsSection() {
   return (
-    <PremiumSection
-      variant="default"
-      className="bg-[#dfe1e3] font-sans"
-      title="Latest From Subgeo"
-      subtitle="News, updates, and insights from across our branches."
-    >
-      <div className="mt-8">
-        <BentoGrid
-          items={news.map((item) => ({
-            title: item.title,
-            description: item.description,
-            gradient: item.gradient,
-            span: "col-span-1",
-            className: "h-64 md:h-72",
-            children: (
-              <div className="mt-auto pt-4 flex items-center justify-between text-xs text-white/80">
-                <span className="px-2.5 py-1 bg-white/20 rounded-full font-medium tracking-wide backdrop-blur-sm">
-                  {item.badge}
-                </span>
-                <span className="font-mono">{item.date}</span>
-              </div>
-            ),
-          }))}
-        />
+    <section className="section-shell py-16 md:py-20">
+      <div className="container-x grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 items-center">
+        <RevealOnScroll direction="left">
+          <div className="relative">
+            <img
+              src={teamImg}
+              alt="Team"
+              className="w-full h-[360px] md:h-[420px] object-cover rounded-md shadow-lg"
+            />
+            <div className="absolute bottom-6 left-6 bg-accent text-white px-4 py-2 text-xs font-bold uppercase tracking-[0.2em]">
+              We’re Hiring
+            </div>
+          </div>
+        </RevealOnScroll>
+
+        <RevealOnScroll direction="right">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">
+            Careers At Subgeo Services, Inc.
+          </h2>
+          <p className="mt-4 text-gray-600 leading-relaxed">
+            Apprentice to advanced job positions available. Work for a company that cares.
+          </p>
+          <div className="mt-6">
+            <div className="text-sm font-semibold text-accent uppercase tracking-[0.2em]">Job Listings</div>
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {jobs.map((job) => (
+                <div key={job} className="flex items-center gap-2 text-sm text-gray-600">
+                  <CheckCircle className="h-4 w-4 text-accent" />
+                  {job}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="mt-6">
+            <Button className="btn-primary h-11 px-6">Apply Now</Button>
+          </div>
+        </RevealOnScroll>
       </div>
-    </PremiumSection>
+    </section>
   );
 }

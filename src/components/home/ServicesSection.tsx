@@ -1,85 +1,69 @@
-import { Pill, HeartPulse, Sparkles, ArrowRight } from "lucide-react";
+import { Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
+import houseImg from "@/assets/plumbing.png";
+import techImg from "@/assets/why.png";
 
-const serviceFeatures = [
-  {
-    title: "Subgeo for Health Brands",
-    description:
-      "We help health-focused businesses deliver trusted care, faster service, and better client experiences.",
-    icon: Pill,
-    iconBg: "bg-[#eaf4ff]",
-  },
-  {
-    title: "Subgeo for Entrepreneurs",
-    description:
-      "From early-stage setups to growing teams, we support operators with practical, scalable service solutions.",
-    icon: HeartPulse,
-    iconBg: "bg-[#eaf4ff]",
-  },
-  {
-    title: "Subgeo for Organizations",
-    description: "We support institutions with dependable service systems built for consistency, quality, and compliance.",
-    icon: Sparkles,
-    iconBg: "bg-[#eaf4ff]",
-  },
+const benefits = [
+  "Prompt, efficient services every time",
+  "Fully stocked trucks",
+  "Extensive industry experience",
+  "We finish most jobs in one visit",
 ];
 
 export function ServicesSection() {
   return (
-    <section className="relative overflow-hidden bg-[#f4f6f8] py-14 md:py-20">
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -right-44 -top-8 h-[620px] w-[620px] opacity-60">
-          <svg viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {[...Array(14)].map((_, i) => (
-              <circle
-                key={i}
-                cx="350"
-                cy="350"
-                r={330 - i * 18}
-                stroke="#d9dee4"
-                strokeWidth="1"
-                fill="none"
-                strokeDasharray="3 6"
-                opacity={0.5 - i * 0.03}
-              />
-            ))}
-          </svg>
-        </div>
-      </div>
-
-      <div className="container-x relative z-10">
-        <RevealOnScroll direction="up" delay={0.1}>
-          <h2 className="mb-10 max-w-3xl text-2xl font-bold leading-tight tracking-tight text-[#0f172a] md:mb-14 md:text-3xl lg:text-4xl">
-            See how Subgeo can help your specific business
-          </h2>
+    <section className="section-shell py-16 md:py-20">
+      <div className="container-x grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
+        <RevealOnScroll direction="left">
+          <div className="relative">
+            <img
+              src={houseImg}
+              alt="Home exterior"
+              className="w-full h-[360px] md:h-[420px] object-cover rounded-md shadow-lg"
+            />
+            <img
+              src={techImg}
+              alt="Technician"
+              className="absolute -bottom-6 -right-6 w-[180px] h-[180px] object-cover rounded-md shadow-lg border-4 border-white"
+            />
+            <div className="absolute -bottom-6 left-6 bg-accent text-white px-4 py-2 text-xs font-bold uppercase tracking-[0.2em]">
+              Helping Since 1986
+            </div>
+          </div>
         </RevealOnScroll>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {serviceFeatures.map((feature, index) => (
-            <RevealOnScroll key={feature.title} delay={index * 0.1}>
-              <div className="group rounded-sm border border-[#e2e8f0] bg-white p-8 transition-all duration-300 hover:border-[#d4dbe3] hover:shadow-[0_6px_20px_rgba(15,23,42,0.05)]">
-                <div className={`mb-7 flex h-16 w-16 items-center justify-center rounded-full ${feature.iconBg}`}>
-                  <feature.icon className="h-7 w-7 text-[#3b82f6]" />
-                </div>
+        <RevealOnScroll direction="right">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">
+            Preserving Eichler Homes In Santa Rosa
+          </h2>
+          <p className="mt-4 text-gray-600 leading-relaxed">
+            Subgeo Services is Marin and Sonoma County's top choice for quality plumbing, heating, and air conditioning services. Since 1986, our local company has helped many homeowners achieve a more functional, reliable, and comfortable home.
+          </p>
 
-                <h3 className="mb-3 text-2xl font-bold leading-tight tracking-tight text-[#0f172a]">
-                  {feature.title}
-                </h3>
-
-                <p className="mb-7 text-base font-medium leading-relaxed text-[#475467]">
-                  {feature.description}
-                </p>
-
-                <button type="button" className="group/btn inline-flex items-center gap-2.5 text-[15px] font-bold text-[#28b463]">
-                  <span>Learn More</span>
-                  <div className="flex h-5 w-5 items-center justify-center rounded-full border border-[#28b463] transition-colors duration-200 group-hover/btn:bg-[#28b463]">
-                    <ArrowRight className="h-3 w-3 text-[#28b463] transition-colors group-hover/btn:text-white" />
-                  </div>
-                </button>
+          <div className="mt-6 grid grid-cols-1 lg:grid-cols-[0.4fr_0.6fr] gap-6 items-start">
+            <div className="card-outline p-6 text-center">
+              <div className="text-4xl font-bold text-accent">35</div>
+              <div className="mt-2 text-xs uppercase tracking-[0.2em] text-gray-500">
+                Years Of Experience
               </div>
-            </RevealOnScroll>
-          ))}
-        </div>
+            </div>
+            <div className="space-y-3">
+              {benefits.map((item) => (
+                <div key={item} className="flex items-center gap-3 text-sm text-gray-600">
+                  <span className="h-5 w-5 rounded-full border border-gray-200 flex items-center justify-center text-accent">
+                    <Check className="h-3 w-3" />
+                  </span>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <Button className="btn-primary h-11 px-6">Learn More</Button>
+          </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

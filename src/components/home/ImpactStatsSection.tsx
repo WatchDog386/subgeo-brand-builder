@@ -1,33 +1,30 @@
-import { StatsDisplay } from "@/components/premium/PremiumLayout";
-
-const stats = [
-  { number: "3", label: "Specialised Branches" },
-  { number: "10K+", label: "Community Clients" },
-  { number: "20+", label: "Healthcare Professionals" },
-  { number: "365", label: "Days Operating Yearly" },
-];
+import { Button } from "@/components/ui/button";
+import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
+import backImg from "@/assets/back.png";
 
 export function ImpactStatsSection() {
   return (
-    <section className="section-hero-match py-8 md:py-10 overflow-hidden relative text-gray-900">
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-cyan-500 rounded-full mix-blend-screen blur-3xl" />
-      </div>
-
+    <section className="relative bg-[#b81f25] text-white py-16 md:py-20 overflow-hidden">
+      <img
+        src={backImg}
+        alt="Service fleet"
+        className="absolute inset-0 h-full w-full object-cover opacity-30"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#b81f25] via-[#c22328] to-[#223a5c]/20" />
       <div className="container-x relative z-10">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="eyebrow mb-4 text-gray-600">BY THE NUMBERS</p>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-gray-900 whitespace-nowrap">
-            Impact in Kenyan Communities
-          </h2>
-          <p className="mt-4 text-base md:text-lg text-gray-700 leading-relaxed">
-            Growing reach, consistent standards, and real lives improved every day.
-          </p>
-        </div>
-
-        <div className="mt-4 md:mt-5">
-          <StatsDisplay stats={stats} className="text-gray-900" />
-        </div>
+        <RevealOnScroll direction="up">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+              Providing Reliable Services For Over 35 Years
+            </h2>
+            <p className="mt-4 text-white/90 leading-relaxed">
+              Subgeo Services is Marin and Sonoma County's top choice for quality plumbing, heating, and air conditioning services. Since 1986, our local company has helped many homeowners achieve a more functional, reliable, and comfortable home.
+            </p>
+            <div className="mt-6">
+              <Button className="bg-white text-primary h-11 px-6">About Us</Button>
+            </div>
+          </div>
+        </RevealOnScroll>
       </div>
     </section>
   );
