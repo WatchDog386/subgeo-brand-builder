@@ -3,95 +3,132 @@ import { Button } from "@/components/ui/button";
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
 import salonImg from "@/assets/salon.jpeg";
 import plumberImg from "@/assets/plumber.jpeg";
+import salon2Img from "@/assets/salon2.jpeg";
+import labImg from "@/assets/lab.jpg";
+import industryImg from "@/assets/industry.jpeg";
+import heroImg from "@/assets/hero.jpeg";
 
-const jobs = [
-  "Lead HVAC Installer",
-  "HVAC/Plumbing Parts Specialist",
-  "Duct Cleaning Technician",
-  "HVAC Install Assistant",
-  "Warehouse Clerk/ Delivery Driver",
-  "Service Plumber",
+const branchesData = [
+  {
+    title: "Subgeo Pharmacy",
+    desc: "Our flagship retail pharmacy stocks a full range of prescription, over-the-counter, and wellness essentials for your family.",
+    image: labImg, // Placeholder
+    badge: "HEALTH"
+  },
+  {
+    title: "Beauty Salon",
+    desc: "Premium grooming, expert hair styling, and rejuvenating skincare treatments tailored to bring out your best self.",
+    image: salon2Img,
+    badge: "BEAUTY"
+  },
+  {
+    title: "Industrial Work & Plumbing",
+    desc: "Professional plumbing, structural maintenance, and comprehensive industrial solutions for a seamlessly running facility.",
+    image: industryImg,
+    badge: "SERVICES"
+  }
 ];
 
 export function NewsAndInsightsSection() {
   return (
-    <section className="section-shell py-20 md:py-28 bg-white overflow-hidden">
-      <div className="container-x max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-        
-        {/* Left Side: Visual Collage */}
-        <RevealOnScroll direction="left">
-          <div className="relative w-full max-w-[700px] mx-auto lg:mx-0 h-[450px] md:h-[550px] flex items-center justify-center">
-            
-            {/* 1. Main Team Image */}
-            <div className="absolute top-[10%] left-[5%] z-10 w-[70%] h-[50%]">
-              <img
-                src={salonImg}
-                alt="Team members"
-                className="w-full h-full object-cover shadow-xl"
-              />
-            </div>
+    <section className="py-16 lg:py-24 bg-[#fafbfc] relative overflow-hidden">
+      <div className="container-x max-w-[1200px] mx-auto relative z-10">
 
-            {/* 2. Sign Image (plumber.jpeg) */}
-            <div className="absolute bottom-[2%] right-[-5%] z-20 w-[75%] h-[60%]">
-              <img
-                src={plumberImg}
-                alt="Love What You Do"
-                className="w-full h-full object-cover rounded-sm shadow-xl"
-              />
-            </div>
-
-            {/* 3. Megaphone Graphic */}
-            <div className="absolute top-[20%] right-[-10%] z-30 transform drop-shadow-2xl">
-               <div className="relative">
-                 {/* White body of megaphone */}
-                 <Megaphone className="w-40 h-40 text-gray-100 fill-white stroke-gray-300" strokeWidth={1} style={{ transform: 'rotate(-25deg)' }} />
-                 {/* Red/Orange cone tip */}
-                 <div className="absolute top-[48%] left-[45%] w-12 h-12 bg-[#dc2626] rounded-full shadow-inner transform -translate-x-1/2 -translate-y-1/2"></div>
-                 <div className="absolute top-[48%] left-[75%] w-6 h-10 bg-[#ea580c] rounded-md shadow-inner transform -translate-x-1/2 -translate-y-1/2 border border-gray-200"></div>
+        {/* TOP ADS BANNERS ROW */}
+        <RevealOnScroll direction="down">
+          <div className="flex flex-col md:flex-row gap-6 lg:gap-8 mb-16">
+            <div className="w-full md:w-1/2 overflow-hidden shadow-md group">
+               <div className="relative w-full aspect-[2/1] bg-gray-100 overflow-hidden border border-gray-200">
+                  <img src={heroImg} alt="Subgeo Company" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                  <div className="absolute inset-0 flex flex-col justify-center px-8 bg-gradient-to-r from-white via-white/80 to-transparent">
+                     <h4 className="font-sans text-[clamp(18px,2vw,28px)] leading-[1.1] font-medium text-primary mb-1">Providing Kenyans</h4>
+                     <h3 className="font-sans text-[clamp(22px,3vw,36px)] leading-[1.1] tracking-tighter font-[900] text-primary mb-2">With Reliable and Quality Services</h3>
+                     <p className="text-xs lg:text-[13px] text-gray-600 mt-2 max-w-[85%] lg:max-w-[75%] leading-relaxed font-sans">As a premier holding company based in Kenya, Subgeo Holding Limited delivers comprehensive, high-quality services and infrastructure solutions tailored to drive progress, reliability, and innovation across the region.</p>
+                     
+                     <div className="mt-4 bg-red-600 text-white font-bold w-20 h-20 rounded-full flex flex-col items-center justify-center border-4 border-white shadow-lg">
+                        <span className="text-[10px] leading-none uppercase">up to</span>
+                        <span className="text-xl leading-none mt-0.5">10%</span>
+                        <span className="text-[10px] leading-none uppercase mt-0.5">OFF</span>
+                     </div>
+                  </div>
                </div>
             </div>
 
-            {/* 4. "We're Hiring" Badge */}
-            <div className="absolute bottom-[10%] left-[-8%] z-40 bg-[#dc2626] text-white px-6 py-3 font-bold text-sm tracking-widest flex items-center gap-3 shadow-xl transform -rotate-1">
-              <Megaphone className="w-5 h-5 fill-white text-white" />
-              WE'RE HIRING
-            </div>
-
-          </div>
-        </RevealOnScroll>
-
-        {/* Right Side: Content */}
-        <RevealOnScroll direction="right">
-          <div className="pl-0 lg:pl-8">
-            <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-primary">
-              Careers At Subgeo<br className="hidden md:block"/> Holding Limited
-            </h2>
-            
-            <p className="mt-6 text-gray-500 text-[13px] md:text-sm leading-relaxed max-w-lg">
-              Apprentice to advanced job positions available. Work for a company that cares about its community.
-            </p>
-
-            <div className="mt-12">
-              <h3 className="text-[#dc2626] font-bold text-xl inline-block mb-8">Job Listings</h3>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">
-                {jobs.map((job) => (
-                  <div key={job} className="flex items-start gap-2 text-[14px] md:text-[15px] text-[#475569] font-bold">
-                    <CheckCircle className="h-5 w-5 text-[#64748b] flex-shrink-0 mt-0.5" strokeWidth={1.5} />
-                    {job}
+            <div className="w-full md:w-1/2 overflow-hidden shadow-md group">
+               <div className="relative w-full aspect-[2/1] bg-[#1a0f0d] overflow-hidden border border-[#2d1b17]">
+                  <div className="absolute inset-0 mix-blend-overlay opacity-30">
+                     <img src={plumberImg} alt="Ad right background" className="w-full h-full object-cover"/>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-10">
-              <Button className="bg-[#dc2626] hover:bg-[#b91c25] text-white font-bold tracking-wider text-sm px-8 py-6 rounded-none transition-colors flex items-center gap-2 h-auto shadow-md">
-                APPLY NOW <ChevronRight className="w-4 h-4 ml-1" strokeWidth={3} />
-              </Button>
+                  <div className="absolute inset-0 flex flex-col justify-center px-8 text-white z-10">
+                      <h4 className="font-sans text-[clamp(18px,2vw,28px)] leading-[1.1] font-medium text-white mb-1">30+ YEARS OF SERVICE.</h4>
+                      <h3 className="font-sans text-[clamp(22px,3vw,36px)] leading-[1.1] tracking-tighter font-[900] text-red-500 mb-2">A LIFETIME OF CARE.</h3>
+                      <p className="text-xs lg:text-sm text-gray-300 max-w-[60%] border-t border-red-500 pt-4 mt-2">Whether it's medicine, wellness, or everyday health needs, we've been here for your family—then, now, and always.</p>
+                  </div>
+                  <div className="absolute right-[-10%] top-0 h-full w-[50%] bg-gradient-to-l from-yellow-900 to-transparent z-0 skew-x-[-20deg]"></div>
+                  
+                  {/* Decorative badge placeholder right side */}
+                  <div className="absolute right-8 top-1/2 -translate-y-1/2 w-[90px] h-[90px] lg:w-[110px] lg:h-[110px] rounded-full border-[1.5px] border-yellow-500/30 flex items-center justify-center z-20 overflow-hidden p-1.5">
+                      <div className="w-full h-full border-[1.5px] border-yellow-600 rounded-full flex flex-col items-center justify-center bg-transparent">
+                         <span className="text-3xl lg:text-4xl font-serif text-yellow-500 font-bold">30</span>
+                      </div>
+                  </div>
+               </div>
             </div>
           </div>
+          <div className="text-[11px] text-gray-500 mb-8 mt-[-30px] font-mono">[elfsight_popup id="1"]</div>
+        </RevealOnScroll>
+        
+        <RevealOnScroll direction="up">
+          <h2 className="text-[#0d173d] font-sans font-[900] tracking-tight text-[clamp(24px,3vw,28px)] mb-3">
+            Explore Our Branches
+          </h2>
+          <p className="text-gray-500 text-[13px] md:text-[14px] leading-relaxed max-w-2xl mb-8">
+            Providing comprehensive care across different divisions. Discover the dedicated services we offer to support your health, beauty, and operational needs.
+          </p>
+          
+          {/* Horizontal Divider */}
+          <div className="w-full h-px bg-gray-200 mb-12"></div>
         </RevealOnScroll>
 
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-12">
+          {branchesData.map((branch, index) => {
+            return (
+              <RevealOnScroll key={branch.title} direction="up" delay={index * 0.1}>
+                <div className="bg-white shadow-[0_4px_25px_rgba(0,0,0,0.06)] px-6 pt-8 pb-8 relative flex flex-col h-full border border-gray-100/60 hover:-translate-y-1 transition-transform duration-300">
+                  
+                  {/* Badge */}
+                  <div className="absolute -top-4 left-6 bg-white border border-[#dc2626] px-[10px] py-[6px] flex flex-col items-center justify-center min-w-[50px]">
+                    <span className="text-[#dc2626] font-[800] text-[10px] uppercase tracking-widest leading-none mt-0.5">
+                      {branch.badge}
+                    </span>
+                  </div>
+
+                  <div className="flex gap-5 mb-5 items-start">
+                    <div className="w-[45%] h-[120px] bg-gray-100 overflow-hidden relative shadow-sm border border-gray-100">
+                       <img src={branch.image} alt={branch.title} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="w-[55%]">
+                       <h3 className="font-sans font-[900] tracking-tight text-[#111827] text-[14px] lg:text-[15px] leading-tight">
+                         {branch.title}
+                       </h3>
+                    </div>
+                  </div>
+
+                  <p className="text-[#4b5563] text-[13px] leading-relaxed mb-8 flex-grow pr-4">
+                    {branch.desc}
+                  </p>
+
+                  <div className="flex justify-center w-full mt-auto pt-4 border-t border-gray-100">
+                    <button className="border border-[#dc2626] text-[#dc2626] rounded-full px-8 py-[6px] text-[12px] font-semibold hover:bg-red-50 transition-colors flex items-center gap-1">
+                      Visit now <ChevronRight className="w-3.5 h-3.5 ml-1" strokeWidth={2.5} />
+                    </button>
+                  </div>
+                </div>
+              </RevealOnScroll>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
