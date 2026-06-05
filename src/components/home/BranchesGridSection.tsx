@@ -143,7 +143,7 @@ export function BranchesGridSection() {
 
                     {/* Title overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                      <h3 className={`font-display text-[clamp(28px,3vw,40px)] leading-[1.04] ${study.bannerTextColor}`}>
+                      <h3 className={`font-display text-[clamp(22px,2.5vw,32px)] leading-[1.04] ${study.bannerTextColor}`}>
                         {study.title.split(" ").map((word, i) => {
                           if (
                             (index === 0 && (word === "Subgeo" || word === "Plumbing")) ||
@@ -163,7 +163,7 @@ export function BranchesGridSection() {
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-600 font-sans text-sm md:text-base leading-relaxed mb-6 flex-grow">
+                  <p className="text-gray-600 font-sans text-xs md:text-sm leading-relaxed mb-6 flex-grow">
                     {study.description}
                   </p>
 

@@ -13,19 +13,19 @@ const benefits = [
 export function ServicesSection() {
   return (
     <section className="section-shell py-16 md:py-24 bg-white">
-      <div className="container-x flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="container-x max-w-5xl mx-auto flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         
         {/* ───────── LEFT: Image Composition ───────── */}
         <RevealOnScroll direction="left">
-          <div className="relative w-full max-w-[480px] mx-auto lg:mx-0 pb-16 lg:pr-10">
+          <div className="relative w-full max-w-[600px] mx-auto lg:mx-0 pb-12 lg:pr-10">
             {/* Light blue decorative square behind */}
-            <div className="absolute bottom-24 -left-6 lg:-left-8 w-[200px] h-[200px] bg-[#d5e0e7] z-0" />
+            <div className="absolute bottom-16 -left-6 lg:-left-8 w-[200px] h-[200px] bg-[#d5e0e7] z-0" />
 
             {/* Main house image - sharp corners */}
             <img
               src={houseImg}
               alt="Eichler home exterior"
-              className="relative z-10 w-[95%] aspect-[3/5] object-contain"
+              className="relative z-10 w-full aspect-[5/4] object-cover"
             />
 
             {/* "HELPING SINCE 1986" badge */}
@@ -34,7 +34,7 @@ export function ServicesSection() {
             </div>
 
             {/* Technician image */ }
-            <div className="absolute -bottom-8 right-0 z-20 w-[55%]">
+            <div className="absolute -bottom-8 -right-8 lg:-right-12 z-20 w-[45%]">
               <img
                 src={techImg}
                 alt="Technician at work"
