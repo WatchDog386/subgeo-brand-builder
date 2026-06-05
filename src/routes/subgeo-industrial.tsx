@@ -123,7 +123,7 @@ const services: IconCardItem[] = [
   {
     title: "Plumbing Maintenance",
     description: "Routine leak checks, pressure tests, and preventive upkeep for domestic and commercial systems.",
-    longDescription: "Our comprehensive plumbing maintenance service ensures your systems run smoothly year-round. We conduct thorough inspections, identify potential issues before they become major problems, and execute preventive care.",
+    longDescription: "Our comprehensive plumbing maintenance service ensures your systems run smoothly year-round. We conduct thorough inspections, identify potential issues before they become problems.",
     features: ["Leak detection and repair", "Pressure testing", "Pipe insulation", "Valve maintenance", "System optimization"],
     icon: Wrench,
     image: plumbingImg,
@@ -131,7 +131,7 @@ const services: IconCardItem[] = [
   {
     title: "Insurance Support",
     description: "Technical inspections, reports and approved repair execution for plumbing-related insurance claims.",
-    longDescription: "We work directly with insurance companies to provide detailed technical assessments, comprehensive reports, and approved repair services. Our documentation meets all insurance standards.",
+    longDescription: "We work directly with insurance companies to provide detailed technical assessments, comprehensive reports, and approved repair services.",
     features: ["Damage assessment", "Insurance-compliant reports", "Direct insurer liaison", "Approved repairs", "Claim documentation"],
     icon: FileText,
     image: commercialImg,
@@ -263,10 +263,10 @@ function SubgeoIndustrial() {
           <Navbar />
         </div>
 
-        <div className="container-x relative z-10 pt-32 pb-16 md:pb-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Aligned Content */}
-            <div className="text-left">
+        <div className="container-x relative z-10 pt-32 pb-16 md:pb-20 flex-1">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center h-full">
+            {/* Left Content - 7 columns */}
+            <div className="lg:col-span-7 text-left">
               <RevealOnScroll direction="up">
                 <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2.5 mb-6">
                   <span className="flex h-2 w-2 rounded-full bg-[#b91c2a] animate-pulse"></span>
@@ -283,9 +283,8 @@ function SubgeoIndustrial() {
               </RevealOnScroll>
 
               <RevealOnScroll direction="up" delay={0.08}>
-                <p className="mt-5 text-base md:text-lg text-white/90 max-w-xl leading-relaxed">
-                  We design, install and maintain resilient plumbing and drainage systems for homes,
-                  commercial spaces and industrial facilities across Kenya. Our fleet of well-maintained, reliable vehicles are company branded and extremely neat.
+                <p className="mt-5 text-base md:text-lg text-white/90 max-w-2xl leading-relaxed">
+                  We design, install and maintain resilient plumbing and drainage systems for homes, commercial spaces and industrial facilities across Kenya. Our fleet of well-maintained, reliable vehicles are company branded and extremely neat.
                 </p>
               </RevealOnScroll>
 
@@ -311,35 +310,35 @@ function SubgeoIndustrial() {
               </RevealOnScroll>
 
               <RevealOnScroll direction="up" delay={0.22}>
-                <div className="mt-7 flex items-center gap-4">
+                <div className="mt-10 flex items-center gap-6 flex-wrap">
                   <div className="flex -space-x-2">
                     {["12+", "24", "99"].map((val) => (
                       <div
                         key={val}
-                        className="h-9 w-9 rounded-full bg-white text-[#b91c2a] text-[10px] font-bold flex items-center justify-center border-2 border-white/20"
+                        className="h-10 w-10 rounded-full bg-white text-[#b91c2a] text-[11px] font-bold flex items-center justify-center border-2 border-white/20"
                       >
                         {val}
                       </div>
                     ))}
                   </div>
-                  <div className="rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2">
-                    <div className="text-xs font-semibold text-white">Emergency-ready</div>
-                    <div className="text-[10px] text-white/70">24/7 Support Guaranteed</div>
+                  <div className="rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-5 py-3">
+                    <div className="text-sm font-semibold text-white">Emergency-ready</div>
+                    <div className="text-xs text-white/70">24/7 Support Guaranteed</div>
                   </div>
                 </div>
               </RevealOnScroll>
             </div>
 
-            {/* Animated Image Sequence */}
-            <RevealOnScroll direction="left" delay={0.2}>
-              <div className="relative flex justify-center min-h-[500px] lg:min-h-[600px] mt-10 lg:mt-0">
-                <div className="relative w-full max-w-lg">
-                  {/* Image 1 - Plumbing */}
+            {/* Right Image Section - 5 columns */}
+            <RevealOnScroll direction="left" delay={0.2} className="lg:col-span-5">
+              <div className="relative flex justify-center lg:justify-end">
+                <div className="relative w-full max-w-md lg:max-w-lg h-[500px] lg:h-[600px]">
+                  {/* Top Left Image */}
                   <div 
-                    className="absolute top-0 left-0 w-64 h-64 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
+                    className="absolute top-0 left-0 w-48 h-48 lg:w-56 lg:h-56 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
                     style={{
                       animation: 'floatIn1 1s ease-out 0.2s both, float1 6s ease-in-out infinite',
-                      zIndex: 3,
+                      zIndex: 4,
                     }}
                   >
                     <img 
@@ -350,12 +349,12 @@ function SubgeoIndustrial() {
                     />
                   </div>
                   
-                  {/* Image 2 - Commercial */}
+                  {/* Top Right Image */}
                   <div 
-                    className="absolute top-20 right-0 w-56 h-56 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
+                    className="absolute top-12 right-0 w-44 h-44 lg:w-52 lg:h-52 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
                     style={{
                       animation: 'floatIn2 1s ease-out 0.5s both, float2 6s ease-in-out infinite',
-                      zIndex: 2,
+                      zIndex: 3,
                     }}
                   >
                     <img 
@@ -366,12 +365,12 @@ function SubgeoIndustrial() {
                     />
                   </div>
                   
-                  {/* Image 3 - Industrial */}
+                  {/* Bottom Left Image */}
                   <div 
-                    className="absolute bottom-0 left-10 w-60 h-60 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
+                    className="absolute bottom-0 left-0 w-40 h-40 lg:w-48 lg:h-48 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
                     style={{
                       animation: 'floatIn3 1s ease-out 0.8s both, float3 6s ease-in-out infinite',
-                      zIndex: 4,
+                      zIndex: 2,
                     }}
                   >
                     <img 
@@ -382,9 +381,9 @@ function SubgeoIndustrial() {
                     />
                   </div>
                   
-                  {/* Image 4 - Drainage */}
+                  {/* Bottom Right Image */}
                   <div 
-                    className="absolute bottom-20 right-10 w-52 h-52 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
+                    className="absolute bottom-12 right-6 w-36 h-36 lg:w-44 lg:h-44 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
                     style={{
                       animation: 'floatIn4 1s ease-out 1.1s both, float4 6s ease-in-out infinite',
                       zIndex: 1,
@@ -398,9 +397,9 @@ function SubgeoIndustrial() {
                     />
                   </div>
 
-                  {/* Decorative Elements */}
+                  {/* Decorative Glow */}
                   <div 
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#b91c2a]/20 rounded-full blur-3xl"
+                    className="absolute top-1/2 right-1/4 w-64 h-64 bg-[#b91c2a]/15 rounded-full blur-3xl pointer-events-none"
                     style={{ animation: 'pulse 4s ease-in-out infinite' }}
                   />
                 </div>
