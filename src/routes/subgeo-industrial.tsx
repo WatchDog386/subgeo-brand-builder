@@ -19,7 +19,6 @@ import {
   Sparkles,
   Users,
   Wrench,
-  ChevronDown,
   ChevronUp,
   CheckCircle2,
   type LucideIcon,
@@ -30,14 +29,14 @@ import { RevealOnScroll, PageTransition, ScrollProgressBar } from "@/components/
 import heroImg from "@/assets/corporate-hero.jpg";
 import bgImg from "@/assets/background.png";
 import industryImg from "@/assets/industry.jpeg";
-import plumbingImg from "@/assets/plumbing.jpg";
-import drainageImg from "@/assets/drainage.jpg";
-import geyserImg from "@/assets/geyser.jpg";
-import bathroomImg from "@/assets/bathroom.jpg";
-import showerImg from "@/assets/shower.jpg";
-import commercialImg from "@/assets/commercial.jpg";
-import residentialImg from "@/assets/residential.jpg";
-import industrialImg from "@/assets/industrial.jpg";
+import plumbingImg from "@/assets/plumber.jpeg";
+import drainageImg from "@/assets/plumbing.png";
+import geyserImg from "@/assets/service.png";
+import bathroomImg from "@/assets/plumbing.png";
+import showerImg from "@/assets/services.png";
+import commercialImg from "@/assets/corporate-hero.jpg";
+import residentialImg from "@/assets/subgeo.jpeg";
+import industrialImg from "@/assets/industry.jpeg";
 
 export const Route = createFileRoute("/subgeo-industrial")({
   head: () => ({
