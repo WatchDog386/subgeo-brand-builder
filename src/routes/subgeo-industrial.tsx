@@ -30,14 +30,14 @@ import { RevealOnScroll, PageTransition, ScrollProgressBar } from "@/components/
 import heroImg from "@/assets/corporate-hero.jpg";
 import bgImg from "@/assets/background.png";
 import industryImg from "@/assets/industry.jpeg";
-import plumbingImg from "@/assets/plumber.jpeg";
-import drainageImg from "@/assets/plumbing.png";
-import geyserImg from "@/assets/services.png";
-import bathroomImg from "@/assets/plumbing.png";
-import showerImg from "@/assets/services.png";
-import commercialImg from "@/assets/corporate-hero.jpg";
-import residentialImg from "@/assets/subgeo.jpeg";
-import industrialImg from "@/assets/industry.jpeg";
+import plumbingImg from "@/assets/plumbing.jpg";
+import drainageImg from "@/assets/drainage.jpg";
+import geyserImg from "@/assets/geyser.jpg";
+import bathroomImg from "@/assets/bathroom.jpg";
+import showerImg from "@/assets/shower.jpg";
+import commercialImg from "@/assets/commercial.jpg";
+import residentialImg from "@/assets/residential.jpg";
+import industrialImg from "@/assets/industrial.jpg";
 
 export const Route = createFileRoute("/subgeo-industrial")({
   head: () => ({
@@ -72,22 +72,19 @@ const trustMetrics = [
 
 const trustQuotes = [
   {
-    quote:
-      "Subgeo stepped in during an emergency shutdown and restored our full water line faster than expected.",
+    quote: "Subgeo stepped in during an emergency shutdown and restored our full water line faster than expected.",
     author: "Eng. Kevin Otieno",
     role: "Facility Manager",
     image: residentialImg,
   },
   {
-    quote:
-      "Their team communicates clearly, keeps sites clean, and delivers quality workmanship on every visit.",
+    quote: "Their team communicates clearly, keeps sites clean, and delivers quality workmanship on every visit.",
     author: "Margaret Njeri",
     role: "Property Director",
     image: commercialImg,
   },
   {
-    quote:
-      "From planning to handover, Subgeo treated our industrial retrofit with real precision and care.",
+    quote: "From planning to handover, Subgeo treated our industrial retrofit with real precision and care.",
     author: "Stephen Kamau",
     role: "Operations Lead",
     image: industrialImg,
@@ -108,20 +105,17 @@ const industries = [
 const valueCards: IconCardItem[] = [
   {
     title: "Quality First",
-    description:
-      "Every installation, inspection and repair follows strict quality controls for dependable long-term performance.",
+    description: "Every installation, inspection and repair follows strict quality controls for dependable long-term performance.",
     icon: BadgeCheck,
   },
   {
     title: "Rapid Response",
-    description:
-      "Our dispatch-ready teams and dedicated support line keep emergency downtime as low as possible.",
+    description: "Our dispatch-ready teams and dedicated support line keep emergency downtime as low as possible.",
     icon: Clock3,
   },
   {
     title: "Smart Innovation",
-    description:
-      "We combine proven plumbing practice with modern tooling to improve speed, safety and reporting accuracy.",
+    description: "We combine proven plumbing practice with modern tooling to improve speed, safety and reporting accuracy.",
     icon: Sparkles,
   },
 ];
@@ -129,8 +123,7 @@ const valueCards: IconCardItem[] = [
 const services: IconCardItem[] = [
   {
     title: "Plumbing Maintenance",
-    description:
-      "Routine leak checks, pressure tests, and preventive upkeep for domestic and commercial systems.",
+    description: "Routine leak checks, pressure tests, and preventive upkeep for domestic and commercial systems.",
     longDescription: "Our comprehensive plumbing maintenance service ensures your systems run smoothly year-round. We conduct thorough inspections, identify potential issues before they become major problems, and perform preventive maintenance to extend the lifespan of your plumbing infrastructure.",
     features: ["Leak detection and repair", "Pressure testing", "Pipe insulation", "Valve maintenance", "System optimization"],
     icon: Wrench,
@@ -138,8 +131,7 @@ const services: IconCardItem[] = [
   },
   {
     title: "Insurance Support",
-    description:
-      "Technical inspections, reports and approved repair execution for plumbing-related insurance claims.",
+    description: "Technical inspections, reports and approved repair execution for plumbing-related insurance claims.",
     longDescription: "We work directly with insurance companies to provide detailed technical assessments, comprehensive reports, and approved repair services. Our documentation meets all insurance requirements, making the claims process smooth and efficient.",
     features: ["Damage assessment", "Insurance-compliant reports", "Direct insurer liaison", "Approved repairs", "Claim documentation"],
     icon: FileText,
@@ -147,8 +139,7 @@ const services: IconCardItem[] = [
   },
   {
     title: "Geyser Installation",
-    description:
-      "Safe, code-compliant electric geyser installation, replacement and relocation services.",
+    description: "Safe, code-compliant electric geyser installation, replacement and relocation services.",
     longDescription: "Professional geyser installation services that prioritize safety and efficiency. We handle everything from selecting the right size unit to proper electrical connections and pressure valve installation, ensuring compliance with all safety standards.",
     features: ["Size consultation", "Safe installation", "Electrical connections", "Pressure valve setup", "Warranty registration"],
     icon: Settings,
@@ -156,8 +147,7 @@ const services: IconCardItem[] = [
   },
   {
     title: "Kitchen & Bathroom Fitouts",
-    description:
-      "Precise fixture plumbing for upgrades, remodels and full sanitary installation projects.",
+    description: "Precise fixture plumbing for upgrades, remodels and full sanitary installation projects.",
     longDescription: "Transform your kitchen and bathroom with our expert fitout services. We handle everything from sink installations to complete bathroom renovations, ensuring perfect alignment, proper sealing, and beautiful finishes.",
     features: ["Fixture installation", "Pipe rerouting", "Waterproofing", "Drain connections", "Final testing"],
     icon: Home,
@@ -165,8 +155,7 @@ const services: IconCardItem[] = [
   },
   {
     title: "Shower System Servicing",
-    description:
-      "Cleaning, replacement and pressure balancing to keep shower lines efficient and reliable.",
+    description: "Cleaning, replacement and pressure balancing to keep shower lines efficient and reliable.",
     longDescription: "Keep your shower systems performing at their best with our specialized servicing. We clean mineral buildup, replace worn components, balance water pressure, and ensure consistent temperature control for the perfect shower experience.",
     features: ["System cleaning", "Head replacement", "Pressure balancing", "Temperature control", "Leak prevention"],
     icon: RefreshCw,
@@ -174,8 +163,7 @@ const services: IconCardItem[] = [
   },
   {
     title: "Drainage & Waste Networks",
-    description:
-      "Drain rerouting, waste line diagnostics and leak remediation for healthy drainage performance.",
+    description: "Drain rerouting, waste line diagnostics and leak remediation for healthy drainage performance.",
     longDescription: "Our drainage specialists diagnose and resolve complex waste network issues. From CCTV inspections to complete system rerouting, we ensure your drainage systems function efficiently and prevent costly backups.",
     features: ["CCTV inspection", "Blockage removal", "Pipe relining", "System rerouting", "Preventive maintenance"],
     icon: Funnel,
@@ -187,24 +175,21 @@ const projects = [
   {
     date: "03/2018",
     title: "GLEE HOTEL | Fire Pump Retrofit",
-    summary:
-      "Full plumbing and drainage overhaul with integrated fire-fighting lines for a high-occupancy hospitality site.",
+    summary: "Full plumbing and drainage overhaul with integrated fire-fighting lines for a high-occupancy hospitality site.",
     image: industrialImg,
     category: "Hospitality",
   },
   {
     date: "02/2023",
     title: "Qwetu Catholic University",
-    summary:
-      "Campus-wide sanitary upgrades with water-efficient fittings and compliance-ready safety infrastructure.",
+    summary: "Campus-wide sanitary upgrades with water-efficient fittings and compliance-ready safety infrastructure.",
     image: commercialImg,
     category: "Education",
   },
   {
     date: "04/2024",
     title: "Kenya Marine Fisheries",
-    summary:
-      "Mixed-use development plumbing execution spanning underground mains, sanitary systems and hydrant networks.",
+    summary: "Mixed-use development plumbing execution spanning underground mains, sanitary systems and hydrant networks.",
     image: industrialImg,
     category: "Industrial",
   },
@@ -213,11 +198,20 @@ const projects = [
 function SubgeoIndustrial() {
   const [activeService, setActiveService] = useState<number | null>(null);
   const [scrollY, setScrollY] = useState(0);
+  const [visibleTestimonial, setVisibleTestimonial] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Auto-rotate testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisibleTestimonial((prev) => (prev + 1) % trustQuotes.length);
+    }, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -271,8 +265,9 @@ function SubgeoIndustrial() {
         </div>
 
         <div className="container-x relative z-10 pt-32 pb-16 md:pb-20">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
-            <div className="pt-10 lg:pt-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Aligned Content */}
+            <div className="text-left">
               <RevealOnScroll direction="up">
                 <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2.5 mb-6">
                   <span className="flex h-2 w-2 rounded-full bg-[#b91c2a] animate-pulse"></span>
@@ -336,46 +331,79 @@ function SubgeoIndustrial() {
               </RevealOnScroll>
             </div>
 
+            {/* Animated Image Sequence */}
             <RevealOnScroll direction="left" delay={0.2}>
-              <div className="relative flex justify-center min-h-[400px] lg:min-h-[600px] mt-10 lg:mt-0">
-                {/* Hero Image Grid */}
-                <div className="grid grid-cols-2 gap-4 w-full max-w-md">
-                  <div className="space-y-4">
-                    <div className="overflow-hidden rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                      <img 
-                        src={plumbingImg} 
-                        alt="Professional plumbing installation" 
-                        className="w-full h-48 object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="overflow-hidden rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                      <img 
-                        src={commercialImg} 
-                        alt="Commercial plumbing project" 
-                        className="w-full h-32 object-cover"
-                        loading="lazy"
-                      />
-                    </div>
+              <div className="relative flex justify-center min-h-[500px] lg:min-h-[600px] mt-10 lg:mt-0">
+                <div className="relative w-full max-w-lg">
+                  {/* Image 1 - Plumbing */}
+                  <div 
+                    className="absolute top-0 left-0 w-64 h-64 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
+                    style={{
+                      animation: 'floatIn1 1s ease-out 0.2s both, float1 6s ease-in-out infinite',
+                      zIndex: 3,
+                    }}
+                  >
+                    <img 
+                      src={plumbingImg} 
+                      alt="Professional plumbing installation" 
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="space-y-4 pt-8">
-                    <div className="overflow-hidden rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                      <img 
-                        src={industrialImg} 
-                        alt="Industrial maintenance services" 
-                        className="w-full h-32 object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="overflow-hidden rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                      <img 
-                        src={drainageImg} 
-                        alt="Drainage system installation" 
-                        className="w-full h-48 object-cover"
-                        loading="lazy"
-                      />
-                    </div>
+                  
+                  {/* Image 2 - Commercial */}
+                  <div 
+                    className="absolute top-20 right-0 w-56 h-56 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
+                    style={{
+                      animation: 'floatIn2 1s ease-out 0.5s both, float2 6s ease-in-out infinite',
+                      zIndex: 2,
+                    }}
+                  >
+                    <img 
+                      src={commercialImg} 
+                      alt="Commercial plumbing project" 
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
+                  
+                  {/* Image 3 - Industrial */}
+                  <div 
+                    className="absolute bottom-0 left-10 w-60 h-60 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
+                    style={{
+                      animation: 'floatIn3 1s ease-out 0.8s both, float3 6s ease-in-out infinite',
+                      zIndex: 4,
+                    }}
+                  >
+                    <img 
+                      src={industrialImg} 
+                      alt="Industrial maintenance services" 
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  
+                  {/* Image 4 - Drainage */}
+                  <div 
+                    className="absolute bottom-20 right-10 w-52 h-52 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
+                    style={{
+                      animation: 'floatIn4 1s ease-out 1.1s both, float4 6s ease-in-out infinite',
+                      zIndex: 1,
+                    }}
+                  >
+                    <img 
+                      src={drainageImg} 
+                      alt="Drainage system installation" 
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Decorative Elements */}
+                  <div 
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#b91c2a]/20 rounded-full blur-3xl"
+                    style={{ animation: 'pulse 4s ease-in-out infinite' }}
+                  />
                 </div>
               </div>
             </RevealOnScroll>
@@ -421,27 +449,72 @@ function SubgeoIndustrial() {
               ))}
             </div>
 
-            <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {/* Sequential Testimonials with Image Background */}
+            <div className="mt-10 relative">
               {trustQuotes.map((item, index) => (
-                <RevealOnScroll key={item.author} delay={index * 0.1} direction="up">
-                  <article className="flex h-full flex-col justify-between rounded-sm border border-[#e2e8f0] bg-[#f8fafc] p-6 shadow-[0_14px_30px_rgba(15,23,42,0.09)] transition-transform duration-300 hover:-translate-y-1.5">
-                    <div className="relative h-32 mb-4 overflow-hidden rounded-lg">
+                <RevealOnScroll key={item.author} direction="up" delay={index * 0.15}>
+                  <article 
+                    className={`flex h-full flex-col justify-between rounded-sm border border-[#e2e8f0] bg-[#f8fafc] p-0 shadow-[0_14px_30px_rgba(15,23,42,0.09)] transition-all duration-700 overflow-hidden ${
+                      visibleTestimonial === index 
+                        ? 'opacity-100 translate-y-0 scale-100' 
+                        : 'opacity-0 translate-y-8 scale-95 absolute inset-0 pointer-events-none'
+                    }`}
+                    style={{ minHeight: '400px' }}
+                  >
+                    {/* Background Image */}
+                    <div className="absolute inset-0 z-0">
                       <img 
                         src={item.image} 
                         alt={item.author} 
                         className="w-full h-full object-cover"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/50" />
                     </div>
-                    <p className="text-[14px] leading-relaxed text-gray-600">"{item.quote}"</p>
-                    <div className="mt-6 border-t border-[#e2e8f0] pt-4">
-                      <p className="text-sm font-semibold text-[#1a2c4e]">{item.author}</p>
-                      <p className="text-xs uppercase tracking-[0.16em] text-gray-500">{item.role}</p>
+                    
+                    {/* Content Overlay */}
+                    <div className="relative z-10 flex flex-col justify-between h-full p-8">
+                      <div>
+                        <div className="flex items-center gap-2 mb-4">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#b91c2a] text-white">
+                            <Users className="h-6 w-6" />
+                          </div>
+                          <div>
+                            <p className="text-lg font-bold text-white">{item.author}</p>
+                            <p className="text-sm text-white/70">{item.role}</p>
+                          </div>
+                        </div>
+                        <p className="text-lg leading-relaxed text-white/95 font-medium">"{item.quote}"</p>
+                      </div>
+                      
+                      {/* Rating Stars */}
+                      <div className="flex items-center gap-1 mt-6">
+                        {[...Array(5)].map((_, i) => (
+                          <svg key={i} className="w-5 h-5 text-[#b91c2a] fill-current" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
                     </div>
                   </article>
                 </RevealOnScroll>
               ))}
+              
+              {/* Testimonial Navigation Dots */}
+              <div className="flex justify-center gap-2 mt-6">
+                {trustQuotes.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setVisibleTestimonial(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      visibleTestimonial === index 
+                        ? 'bg-[#b91c2a] w-8' 
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`View testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -637,15 +710,13 @@ function SubgeoIndustrial() {
             <div className="mt-10 grid gap-5 md:grid-cols-2">
               {[
                 {
-                  quote:
-                    "Subgeo coordinated seamlessly with our contractors and delivered a clean, compliant installation ahead of timeline.",
+                  quote: "Subgeo coordinated seamlessly with our contractors and delivered a clean, compliant installation ahead of timeline.",
                   author: "Amina Hassan",
                   role: "Project Coordinator",
                   image: residentialImg,
                 },
                 {
-                  quote:
-                    "Their emergency support line is responsive and the technicians always arrive prepared with clear diagnostics.",
+                  quote: "Their emergency support line is responsive and the technicians always arrive prepared with clear diagnostics.",
                   author: "Dr. James Kipchoge",
                   role: "Operations Consultant",
                   image: commercialImg,
@@ -787,6 +858,100 @@ function SubgeoIndustrial() {
 
         <Footer />
       </main>
+
+      {/* Custom CSS for animations */}
+      <style>{`
+        @keyframes floatIn1 {
+          0% {
+            opacity: 0;
+            transform: translateY(50px) translateX(-30px) scale(0.8);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+          }
+        }
+        
+        @keyframes floatIn2 {
+          0% {
+            opacity: 0;
+            transform: translateY(-50px) translateX(30px) scale(0.8);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+          }
+        }
+        
+        @keyframes floatIn3 {
+          0% {
+            opacity: 0;
+            transform: translateY(50px) translateX(-20px) scale(0.8);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+          }
+        }
+        
+        @keyframes floatIn4 {
+          0% {
+            opacity: 0;
+            transform: translateY(-30px) translateX(20px) scale(0.8);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+          }
+        }
+        
+        @keyframes float1 {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-15px);
+          }
+        }
+        
+        @keyframes float2 {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(15px);
+          }
+        }
+        
+        @keyframes float3 {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+        
+        @keyframes float4 {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(10px);
+          }
+        }
+        
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 0.2;
+            transform: translate(-50%, -50%) scale(1);
+          }
+          50% {
+            opacity: 0.4;
+            transform: translate(-50%, -50%) scale(1.1);
+          }
+        }
+      `}</style>
     </PageTransition>
   );
 }
