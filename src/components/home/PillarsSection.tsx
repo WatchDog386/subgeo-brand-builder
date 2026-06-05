@@ -96,8 +96,7 @@ export function PillarsSection() {
           {/* ── Left: Heading + description ── */}
           <RevealOnScroll direction="left">
             <h3
-              className="text-[2rem] md:text-[2.4rem] lg:text-[2.6rem] font-black leading-[1.1] tracking-tight"
-              style={{ color: "#1c2b4a", fontFamily: "'Inter', 'Segoe UI', system-ui, sans-serif" }}
+              className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-primary tracking-tight"
             >
               SUBGEO
               <br />
