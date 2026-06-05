@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SubgeoIndustrialRouteImport } from './routes/subgeo-industrial'
 import { Route as PharmacyRouteImport } from './routes/pharmacy'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as BranchesRouteImport } from './routes/branches'
 import { Route as BeautyRouteImport } from './routes/beauty'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -30,11 +29,6 @@ const PharmacyRoute = PharmacyRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BranchesRoute = BranchesRouteImport.update({
-  id: '/branches',
-  path: '/branches',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BeautyRoute = BeautyRouteImport.update({
@@ -57,7 +51,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/beauty': typeof BeautyRoute
-  '/branches': typeof BranchesRoute
   '/contact': typeof ContactRoute
   '/pharmacy': typeof PharmacyRoute
   '/subgeo-industrial': typeof SubgeoIndustrialRoute
@@ -66,7 +59,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/beauty': typeof BeautyRoute
-  '/branches': typeof BranchesRoute
   '/contact': typeof ContactRoute
   '/pharmacy': typeof PharmacyRoute
   '/subgeo-industrial': typeof SubgeoIndustrialRoute
@@ -76,7 +68,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/beauty': typeof BeautyRoute
-  '/branches': typeof BranchesRoute
   '/contact': typeof ContactRoute
   '/pharmacy': typeof PharmacyRoute
   '/subgeo-industrial': typeof SubgeoIndustrialRoute
@@ -87,7 +78,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/beauty'
-    | '/branches'
     | '/contact'
     | '/pharmacy'
     | '/subgeo-industrial'
@@ -96,7 +86,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/beauty'
-    | '/branches'
     | '/contact'
     | '/pharmacy'
     | '/subgeo-industrial'
@@ -105,7 +94,6 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/beauty'
-    | '/branches'
     | '/contact'
     | '/pharmacy'
     | '/subgeo-industrial'
@@ -115,7 +103,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BeautyRoute: typeof BeautyRoute
-  BranchesRoute: typeof BranchesRoute
   ContactRoute: typeof ContactRoute
   PharmacyRoute: typeof PharmacyRoute
   SubgeoIndustrialRoute: typeof SubgeoIndustrialRoute
@@ -142,13 +129,6 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/branches': {
-      id: '/branches'
-      path: '/branches'
-      fullPath: '/branches'
-      preLoaderRoute: typeof BranchesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/beauty': {
@@ -179,7 +159,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BeautyRoute: BeautyRoute,
-  BranchesRoute: BranchesRoute,
   ContactRoute: ContactRoute,
   PharmacyRoute: PharmacyRoute,
   SubgeoIndustrialRoute: SubgeoIndustrialRoute,

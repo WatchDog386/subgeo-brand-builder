@@ -184,13 +184,13 @@ export function HeroSection() {
              As a premier holding company based in Kenya, Subgeo Holding Limited delivers comprehensive, high-quality services and infrastructure solutions tailored to drive progress, reliability, and innovation across the region.
             </p>
             <div className="mt-7 flex flex-col sm:flex-row gap-4">
-              <Button className="rounded-none bg-[#e0292e] hover:bg-[#c42428] text-white h-10 px-6 font-semibold text-[13px] uppercase tracking-wide flex items-center gap-2">
+              <Button className="rounded-none bg-[#e0292e] hover:bg-[#c42428] text-white h-[50px] w-full sm:w-auto px-8 font-semibold text-[13px] uppercase tracking-wider flex items-center justify-center gap-2">
                 Book Now
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Button>
-              <Button variant="ghost" className="rounded-none text-[#e0292e] hover:bg-transparent hover:text-[#c42428] h-10 px-4 font-semibold text-[13px] uppercase tracking-wide flex items-center gap-2">
+              <Button variant="outline" className="rounded-none border-[#e0292e] text-[#e0292e] hover:bg-[#e0292e] hover:text-white h-[50px] w-full sm:w-auto px-8 font-semibold text-[13px] uppercase tracking-wider flex items-center justify-center gap-2">
                 Get A Free Quote
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -216,18 +216,18 @@ export function HeroSection() {
           </div>
 
           {/* Image section - PERFECT POSITIONING */}
-          <div className="relative flex justify-center min-h-[600px]">
+          <div className="relative flex justify-center min-h-[400px] lg:min-h-[600px] mt-10 lg:mt-0">
             {/* Blue Circle - smaller and moved right towards red ribbon */}
-            <div className="absolute top-16 left-8 lg:left-12 h-[320px] w-[320px] rounded-full bg-[#223a5c] z-0" />
+            <div className="absolute top-10 lg:top-16 left-4 lg:left-12 h-[220px] w-[220px] lg:h-[320px] lg:w-[320px] rounded-full bg-[#223a5c] z-0" />
             
             {/* Red Vertical Ribbon - wider, extends from navbar to cards */}
-            <div className="absolute -top-20 right-12 lg:right-20 w-40 h-[720px] bg-[#e0292e] z-0" />
+            <div className="absolute -top-10 lg:-top-20 right-4 lg:right-20 w-24 lg:w-40 h-[480px] lg:h-[720px] bg-[#e0292e] z-0" />
             
             {/* Person Image - moved up, behind cards, bottom aligned with ribbon and circle */}
             <motion.img
               src={heroImg}
               alt="Technician"
-              className="absolute z-10 -top-20 left-1/2 -translate-x-1/2 h-[720px] w-full max-w-[480px] object-contain object-bottom"
+              className="absolute z-10 -top-10 lg:-top-20 left-1/2 -translate-x-1/2 h-[480px] lg:h-[720px] w-full max-w-[320px] lg:max-w-[480px] object-contain object-bottom"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -235,13 +235,13 @@ export function HeroSection() {
             
             {/* Same Day Service Badge - HIGHEST z-index, in front */}
             <motion.div 
-              className="absolute top-[380px] right-4 lg:-right-4 px-7 py-4 bg-white shadow-xl rounded-2xl z-30 flex items-center gap-3"
+              className="absolute top-[260px] lg:top-[380px] right-2 lg:-right-4 px-4 py-2.5 lg:px-7 lg:py-4 bg-white shadow-xl rounded-2xl z-30 flex items-center gap-2 lg:gap-3 lg:border-[none] border border-gray-100"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
               <div className="flex items-center justify-center flex-shrink-0 text-[#e0292e]">
-                <svg className="h-9 w-9" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="h-6 w-6 lg:h-9 lg:w-9" viewBox="0 0 24 24" fill="currentColor">
                   {/* Outer spinning arrows */}
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" fillOpacity="0"/>
                   <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
@@ -249,32 +249,32 @@ export function HeroSection() {
                   <path d="M12 7v5l4.25 2.52.75-1.23-3.5-2.07V7z" />
                 </svg>
               </div>
-              <span className="text-[18px] tracking-tight font-display font-bold text-[#e0292e]">Same Day Service</span>
+              <span className="text-[13px] lg:text-[18px] tracking-tight font-display font-bold text-[#e0292e]">Same Day Service</span>
             </motion.div>
             
             {/* 4.9 Stars Badge - HIGHEST z-index, in front */}
             <motion.div 
-              className="absolute top-[480px] right-14 lg:right-16 px-6 py-4 bg-white shadow-xl rounded-2xl z-30 border border-gray-50/50"
+              className="absolute top-[320px] lg:top-[480px] right-8 lg:right-16 px-4 py-3 lg:px-6 lg:py-4 bg-white shadow-xl rounded-2xl z-30 border border-gray-50/50"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
             >
-              <div className="flex items-center gap-4">
-                <div className="flex -space-x-3">
-                  <div className="h-11 w-11 rounded-full bg-[#82cbf7] border-[3px] border-white overflow-hidden shadow-sm z-30">
+              <div className="flex items-center gap-3 lg:gap-4">
+                <div className="flex -space-x-2 lg:-space-x-3">
+                  <div className="h-8 w-8 lg:h-11 lg:w-11 rounded-full bg-[#82cbf7] border-2 lg:border-[3px] border-white overflow-hidden shadow-sm z-30">
                     <img src="https://i.pravatar.cc/100?img=47" alt="avatar" className="h-full w-full object-cover mix-blend-multiply" />
                   </div>
-                  <div className="h-11 w-11 rounded-full bg-[#b2a2e6] border-[3px] border-white overflow-hidden shadow-sm z-20">
+                  <div className="h-8 w-8 lg:h-11 lg:w-11 rounded-full bg-[#b2a2e6] border-2 lg:border-[3px] border-white overflow-hidden shadow-sm z-20">
                     <img src="https://i.pravatar.cc/100?img=12" alt="avatar" className="h-full w-full object-cover mix-blend-multiply" />
                   </div>
-                  <div className="h-11 w-11 rounded-full bg-[#a1e2b5] border-[3px] border-white overflow-hidden shadow-sm z-10">
+                  <div className="h-8 w-8 lg:h-11 lg:w-11 rounded-full bg-[#a1e2b5] border-2 lg:border-[3px] border-white overflow-hidden shadow-sm z-10">
                     <img src="https://i.pravatar.cc/100?img=5" alt="avatar" className="h-full w-full object-cover mix-blend-multiply" />
                   </div>
                 </div>
                 <div className="flex flex-col">
-                  <div className="text-lg font-display font-bold text-[#1a2c4e] leading-tight">4.9 Stars</div>
-                  <div className="text-[11px] font-semibold text-[#5a6b82] mt-0.5">
-                    500 Reviews in <span className="font-bold text-[12px]">
+                  <div className="text-[14px] lg:text-lg font-display font-bold text-[#1a2c4e] leading-tight">4.9 Stars</div>
+                  <div className="text-[9px] lg:text-[11px] font-semibold text-[#5a6b82] mt-0.5">
+                    500 Reviews in <span className="font-bold text-[10px] lg:text-[12px]">
                       <span className="text-[#4285F4]">G</span>
                       <span className="text-[#EA4335]">o</span>
                       <span className="text-[#FBBC05]">o</span>

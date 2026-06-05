@@ -1,11 +1,24 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X, Phone, MapPin, ChevronDown, ArrowRight } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-const nav = [
+const nav: { label: string; to?: string; links?: { label: string; to: string }[] }[] = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
-  { to: "/branches", label: "Service Areas" },
+  { 
+    label: "Our Branches", 
+    links: [
+      { to: "/pharmacy", label: "Pharmacy" },
+      { to: "/beauty", label: "Beauty Salon" },
+      { to: "/subgeo-industrial", label: "Industrial" }
+    ] 
+  },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -16,6 +29,7 @@ const phoneTiles = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   return (
     <header className="fixed top-0 inset-x-0 z-50">
@@ -60,18 +74,35 @@ export function Navbar() {
 
       {/* Bottom Bar - Dark Navy Background (Height increased to h-16) */}
       <div className="bg-[#1e3a5f]">
-        <div className="container-x h-12 flex items-center justify-between px-4 lg:px-8">
+        <div className="container-x min-h-[48px] py-2 lg:py-0 lg:h-12 flex items-center justify-between px-2 lg:px-8">
           {/* Navigation - Desktop */}
           <nav className="hidden lg:flex items-center gap-5">
             {nav.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className="text-white/90 hover:text-white text-[11px] font-semibold no-underline flex items-center gap-1 uppercase tracking-[0.05em]"
-              >
-                {item.label}
-                <ChevronDown className="h-3 w-3" />
-              </Link>
+              item.links ? (
+                <DropdownMenu key={item.label}>
+                  <DropdownMenuTrigger className="text-white/90 hover:text-white text-[11px] font-semibold flex items-center gap-1 uppercase tracking-[0.05em] focus:outline-none cursor-pointer">
+                    {item.label}
+                    <ChevronDown className="h-3 w-3" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-48 bg-white border border-gray-200 shadow-xl rounded-md">
+                    {item.links.map((link) => (
+                      <Link key={link.to} to={link.to} className="no-underline">
+                        <DropdownMenuItem className="cursor-pointer hover:bg-gray-100 text-gray-800 text-[13px] font-medium">
+                          {link.label}
+                        </DropdownMenuItem>
+                      </Link>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link
+                  key={item.to}
+                  to={item.to!}
+                  className="text-white/90 hover:text-white text-[11px] font-semibold no-underline flex items-center gap-1 uppercase tracking-[0.05em]"
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
           </nav>
 
@@ -86,9 +117,21 @@ export function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu Text */}
-          <div className="lg:hidden text-white text-sm font-semibold uppercase tracking-wider">
-            Menu
+          {/* Mobile Phone Numbers - Shown only on Mobile */}
+          <div className="flex w-full justify-between items-center lg:hidden gap-2">
+            {phoneTiles.map((tile) => (
+              <div key={tile.phone} className="flex items-center gap-1.5 flex-1 justify-center">
+                <div className="h-5 w-5 lg:h-8 lg:w-8 rounded-full bg-red-600 flex items-center justify-center text-white flex-shrink-0">
+                  <Phone className="h-[10px] w-[10px] lg:h-3.5 lg:w-3.5" />
+                </div>
+                <div className="flex flex-col">
+                  <div className="text-[10px] lg:text-[13px] font-semibold text-white leading-tight">{tile.phone}</div>
+                  <div className="text-[8px] lg:text-[10px] text-white/70 flex items-center gap-0.5 leading-tight uppercase tracking-wider">
+                    {tile.location}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -114,14 +157,40 @@ export function Navbar() {
             
             <div className="border-t border-gray-200 pt-4 mt-2">
               {nav.map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  className="block py-3 text-sm font-semibold text-gray-800 hover:text-red-600 no-underline border-b border-gray-100"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.label}
-                </Link>
+                item.links ? (
+                  <div key={item.label} className="border-b border-gray-100">
+                    <button
+                      onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
+                      className="w-full py-3 text-sm font-semibold text-gray-800 uppercase flex items-center justify-between hover:text-red-600"
+                    >
+                      {item.label}
+                      <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} />
+                    </button>
+                    {openDropdown === item.label && (
+                      <div className="flex flex-col pb-2">
+                        {item.links.map(link => (
+                          <Link
+                            key={link.to}
+                            to={link.to}
+                            className="block py-2 pl-4 text-sm text-gray-600 hover:text-red-600 no-underline"
+                            onClick={() => setOpen(false)}
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={item.to}
+                    to={item.to!}
+                    className="block py-3 text-sm font-semibold text-gray-800 hover:text-red-600 no-underline border-b border-gray-100"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )
               ))}
               <Link
                 to="/contact"

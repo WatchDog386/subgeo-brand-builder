@@ -1,7 +1,7 @@
 import { Check, ArrowRight } from "lucide-react";
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
-import houseImg from "@/assets/plumbing.png";
-import techImg from "@/assets/why.png";
+import houseImg from "@/assets/hero.jpeg";
+import techImg from "@/assets/subgeo.jpeg";
 
 const benefits = [
   "Prompt, Efficient Services Every Time",
@@ -13,7 +13,7 @@ const benefits = [
 export function ServicesSection() {
   return (
     <section className="section-shell py-16 md:py-24 bg-white">
-      <div className="container-x grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="container-x flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         
         {/* ───────── LEFT: Image Composition ───────── */}
         <RevealOnScroll direction="left">
@@ -25,7 +25,7 @@ export function ServicesSection() {
             <img
               src={houseImg}
               alt="Eichler home exterior"
-              className="relative z-10 w-[82%] aspect-[4/5] object-cover rounded-none"
+              className="relative z-10 w-[95%] aspect-[3/5] object-contain"
             />
 
             {/* "HELPING SINCE 1986" badge */}
@@ -38,7 +38,7 @@ export function ServicesSection() {
               <img
                 src={techImg}
                 alt="Technician at work"
-                className="w-full aspect-[3/4] object-cover object-center rounded-none border-[5px] border-white bg-white shadow-xl"
+                className="w-full aspect-[3/4] object-contain bg-white shadow-xl"
               />
             </div>
           </div>
@@ -60,40 +60,42 @@ export function ServicesSection() {
           </p>
 
           {/* Stats Card + Benefits Row */}
-          <div className="mt-10 flex flex-col sm:flex-row gap-8 items-stretch">
-            {/* 35 Years Of Experience card */}
-            <div className="bg-[#f7f8f9] px-9 py-8 text-center flex flex-col justify-center min-w-[160px]">
-              <div className="text-[4rem] font-bold text-[#e0292e] leading-none tracking-tighter">
-                35
+          <div className="mt-8 lg:mt-10">
+            <div className="flex flex-col sm:flex-row gap-8 items-stretch mb-6 lg:mb-8">
+              {/* 35 Years Of Experience card */}
+              <div className="bg-[#f7f8f9] px-9 py-8 text-center flex flex-col justify-center min-w-[160px]">
+                <div className="text-[4rem] font-bold text-[#e0292e] leading-none tracking-tighter">
+                  35
+                </div>
+                <div className="mt-3 text-[13px] text-[#4a5568] font-bold leading-tight">
+                  Years Of
+                  <br />
+                  Experience
+                </div>
               </div>
-              <div className="mt-3 text-[13px] text-[#4a5568] font-bold leading-tight">
-                Years Of
-                <br />
-                Experience
+
+              {/* Benefits checklist */}
+              <div className="space-y-4 flex-1 py-2 flex flex-col justify-center">
+                {benefits.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 text-[12px] lg:text-[14px] text-[#4a5568] font-bold"
+                  >
+                    <span className="h-[22px] w-[22px] rounded-full border-[1.5px] border-[#6b7280] flex items-center justify-center text-[#6b7280] flex-shrink-0 bg-transparent">
+                      <Check className="h-3 w-3" strokeWidth={3} />
+                    </span>
+                    {item}
+                  </div>
+                ))}
               </div>
             </div>
-
-            {/* Benefits checklist */}
-            <div className="space-y-4 flex-1 py-2 flex flex-col justify-center">
-              {benefits.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 text-[14px] text-[#4a5568] font-bold"
-                >
-                  <span className="h-[22px] w-[22px] rounded-full border-[1.5px] border-[#6b7280] flex items-center justify-center text-[#6b7280] flex-shrink-0 bg-transparent">
-                    <Check className="h-3 w-3" strokeWidth={3} />
-                  </span>
-                  {item}
-                </div>
-              ))}
-              
-              {/* Learn More Button - moved under benefits list */}
-              <div className="pt-4">
-                <button className="bg-[#e0292e] hover:bg-[#c42428] text-white px-8 py-3.5 text-[13px] font-bold uppercase tracking-widest inline-flex items-center gap-2 transition-colors">
-                  Learn More
-                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-                </button>
-              </div>
+            
+            {/* Learn More Button - outside the flex row */}
+            <div className="pt-2 lg:pt-0">
+              <button className="bg-[#e0292e] hover:bg-[#c42428] text-white w-full lg:w-auto px-8 py-4 lg:py-3.5 text-[13px] font-bold uppercase tracking-widest flex lg:inline-flex items-center justify-center gap-2 transition-colors">
+                Learn More
+                <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+              </button>
             </div>
           </div>
         </RevealOnScroll>

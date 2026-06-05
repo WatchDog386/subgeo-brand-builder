@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Star, ArrowRight } from "lucide-react";
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
 
@@ -7,6 +8,8 @@ const reviewers = [
     date: "December 17, 2022 via Google",
     avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=140&h=140&fit=crop&crop=face",
     type: "image" as const,
+    title: "Exceptional Service\nand Care.",
+    text: "The team from Subgeo arrived exactly on time and exceeded expectations. From the thorough consultation to the flawless execution of the service, everything was handled with utmost professionalism. I highly recommend them to anyone looking for reliable and quality service...",
   },
   {
     name: "ERIC Ruiz",
@@ -14,6 +17,8 @@ const reviewers = [
     avatar: "E",
     color: "#f4a8c4",
     type: "letter" as const,
+    title: "Highly Professional\nand Quick.",
+    text: "Fantastic experience all around. Subgeo's representatives were extremely knowledgeable and took the time to answer all my questions. Their attention to detail was exceptional, and the final results speak for themselves. Would confidently use their services again.",
   },
   {
     name: "Barbara Powers",
@@ -21,6 +26,8 @@ const reviewers = [
     avatar: "B",
     color: "#b5c9a8",
     type: "letter" as const,
+    title: "Outstanding Quality\nof Work.",
+    text: "I've been a loyal customer for over a year now, and I couldn't be happier. The level of care and dedication the team shows is rare to find these days. They consistently go above and beyond to ensure customer satisfaction. Simply outstanding work!",
   },
 ];
 
@@ -73,6 +80,9 @@ function Avatar({ reviewer }: { reviewer: (typeof reviewers)[number] }) {
 }
 
 export function TestimonialsSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeReview = reviewers[activeIndex];
+  
   return (
     <section className="py-24 md:py-32 bg-[#f6f8fb]">
       <div className="container-x grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
@@ -85,10 +95,15 @@ export function TestimonialsSection() {
           </h2>
 
           <div className="mt-14 space-y-5">
-            {reviewers.map((item) => (
+            {reviewers.map((item, index) => (
               <div
                 key={item.name}
-                className="bg-white px-6 py-5 flex items-center gap-5 border border-gray-200"
+                onClick={() => setActiveIndex(index)}
+                className={`bg-white px-6 py-5 flex items-center gap-5 border cursor-pointer transition-all duration-500 ease-out ${
+                  activeIndex === index 
+                    ? "border-transparent shadow-[0_8px_30px_rgb(0,0,0,0.08)] scale-[1.02]" 
+                    : "border-gray-200 opacity-60 hover:opacity-100 hover:border-gray-300"
+                }`}
               >
                 <Avatar reviewer={item} />
                 <div>
@@ -123,15 +138,13 @@ export function TestimonialsSection() {
 
           <div className="mt-16">
             <h3
-              className="text-[24px] md:text-[28px] font-bold leading-[1.2]"
+              className="text-[24px] md:text-[28px] font-bold leading-[1.2] whitespace-pre-line transition-all duration-300"
               style={{
                 color: "#1a2d42",
                 fontFamily: "'Inter', system-ui, sans-serif",
               }}
             >
-              Exceptional Service
-              <br />
-              and Care.
+              {activeReview.title}
             </h3>
 
             <div className="mt-6 flex items-center gap-[4px]">
@@ -145,12 +158,10 @@ export function TestimonialsSection() {
             </div>
 
             <p
-              className="mt-7 text-[13px] leading-[1.85]"
+              className="mt-7 text-[13px] leading-[1.85] transition-all duration-300"
               style={{ color: "#6b7a8d" }}
             >
-              The team from Subgeo arrived exactly on time and exceeded expectations. From the thorough
-              consultation to the flawless execution of the service, everything was handled with utmost
-              professionalism. I highly recommend them to anyone looking for reliable and quality service...
+              {activeReview.text}
             </p>
 
             <button className="mt-10 flex items-center gap-2 group">

@@ -11,8 +11,121 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="bg-white text-gray-800">
-      {/* Top Section: Newsletter & App Download */}
+    <footer className="w-full bg-[#161a1e] lg:bg-white text-white lg:text-gray-800 font-sans">
+      {/* ──────────────── MOBILE FOOTER (As per Image 3) ──────────────── */}
+      <div className="block lg:hidden w-full px-4 py-8">
+        
+        {/* Logo and Email Subscription */}
+        <div className="bg-[#161a1e] mb-6">
+          <a href="/" className="no-underline block mb-6">
+            <span className="text-white text-[24px] font-bold tracking-[0.02em] leading-none" style={{ fontFamily: "'Oswald', sans-serif" }}>
+              SUBGEO HOLDING CO.
+            </span>
+          </a>
+          
+          <div className="space-y-4">
+            <input 
+              type="email" 
+              placeholder="YOUR EMAIL ADDRESS" 
+              className="w-full px-4 py-3.5 bg-[#1f242b] border border-gray-700/50 rounded-sm text-[13px] text-white focus:outline-none focus:border-gray-500 uppercase tracking-widest placeholder:text-gray-500"
+            />
+            <button className="w-full bg-[#e0292e] text-white h-[50px] font-bold text-[13px] tracking-widest flex items-center justify-center gap-2 hover:bg-[#c42428] transition-colors rounded-sm uppercase">
+              Book Now
+              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Location 1: Pharmacy */}
+        <div className="bg-[#1a1e23] p-6 mb-4 rounded-sm border border-gray-800/50">
+          <h3 className="text-white font-bold text-[18px] mb-6">Subgeo Pharmacy</h3>
+          <ul className="space-y-5">
+            <li className="flex items-center gap-4 text-[14px] text-gray-300">
+              <div className="h-8 w-8 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0">
+                <PhoneCall className="h-3.5 w-3.5 text-red-500" />
+              </div>
+              <span className="font-semibold tracking-wide">+254 700 000 002</span>
+            </li>
+            <li className="flex items-start gap-4 text-[14px] text-gray-300">
+              <div className="h-8 w-8 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <MapPin className="h-3.5 w-3.5 text-red-500" />
+              </div>
+              <span className="leading-snug underline decoration-gray-600 underline-offset-4 decoration-1">Nairobi Central<br />Nairobi, Kenya</span>
+            </li>
+            <li className="pt-2">
+              <a href="/pharmacy" className="text-[12px] font-bold uppercase tracking-widest text-[#e0292e] flex items-center gap-2">
+                Book Now 
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Location 2: Industrial */}
+        <div className="bg-[#1a1e23] p-6 mb-4 rounded-sm border border-gray-800/50">
+          <h3 className="text-white font-bold text-[18px] mb-6">Subgeo Industrial</h3>
+          <ul className="space-y-5">
+            <li className="flex items-center gap-4 text-[14px] text-gray-300">
+              <div className="h-8 w-8 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0">
+                <PhoneCall className="h-3.5 w-3.5 text-red-500" />
+              </div>
+              <span className="font-semibold tracking-wide">0733 699 441</span>
+            </li>
+            <li className="flex items-start gap-4 text-[14px] text-gray-300">
+              <div className="h-8 w-8 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <MapPin className="h-3.5 w-3.5 text-red-500" />
+              </div>
+              <span className="leading-snug underline decoration-gray-600 underline-offset-4 decoration-1">P.O. Box, 48230-00100<br />Nairobi, Kenya</span>
+            </li>
+            <li className="pt-2">
+              <a href="/subgeo-industrial" className="text-[12px] font-bold uppercase tracking-widest text-[#e0292e] flex items-center gap-2">
+                Book Now 
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Hours */}
+        <div className="bg-[#1a1e23] p-6 mb-4 rounded-sm border border-gray-800/50">
+          <h3 className="text-white font-bold text-[18px] mb-6">Hours</h3>
+          <div className="flex items-center gap-4 text-[14px] text-gray-300">
+            <div className="h-8 w-8 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0">
+              <Clock className="h-3.5 w-3.5 text-red-500" />
+            </div>
+            <span className="tracking-wide">Monday - Friday<br />7.30 AM - 5.30 PM</span>
+          </div>
+        </div>
+
+        {/* Connect (Socials) */}
+        <div className="bg-[#1a1e23] p-6 mb-4 rounded-sm border border-gray-800/50">
+          <h3 className="text-white font-bold text-[18px] mb-6">Connect</h3>
+          <div className="flex flex-wrap gap-3">
+            {socials.map((s, i) => (
+              <a key={i} href="#" className="h-10 w-10 rounded-full border border-gray-600 flex items-center justify-center hover:bg-gray-800 transition-colors">
+                <s.Icon className="h-4 w-4 text-gray-400" />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer Bottom */}
+        <div className="mt-8 border-t border-gray-800 pt-6">
+          <div className="flex justify-between items-center text-[12px] mb-4">
+            <span className="text-[#e0292e]">Akib Tanjil</span>
+            <span className="text-gray-500">© 2026 Reserved</span>
+          </div>
+          <div className="flex justify-between text-[12px] text-gray-500">
+            <a href="#" className="hover:text-white transition-colors">Terms & Conditions</a>
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+
+      {/* ──────────────── DESKTOP FOOTER (Hidden on mobile) ──────────────── */}
+      <div className="hidden lg:block w-full">
       <div className="container mx-auto px-6 py-12 border-b border-gray-100">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
           {/* Logo Area */}
@@ -187,6 +300,7 @@ export function Footer() {
           <p>&copy; 2026 Subgeo Holding Ltd. All Rights Reserved.</p>
           <p>Privacy Policy | Terms of Service</p>
         </div>
+      </div>
       </div>
     </footer>
   );
