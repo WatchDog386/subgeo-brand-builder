@@ -124,7 +124,7 @@ const services: IconCardItem[] = [
   {
     title: "Plumbing Maintenance",
     description: "Routine leak checks, pressure tests, and preventive upkeep for domestic and commercial systems.",
-    longDescription: "Our comprehensive plumbing maintenance service ensures your systems run smoothly year-round. We conduct thorough inspections, identify potential issues before they become major problems, and perform preventive maintenance to extend the lifespan of your plumbing infrastructure.",
+    longDescription: "Our comprehensive plumbing maintenance service ensures your systems run smoothly year-round. We conduct thorough inspections, identify potential issues before they become major problems, and execute preventive care.",
     features: ["Leak detection and repair", "Pressure testing", "Pipe insulation", "Valve maintenance", "System optimization"],
     icon: Wrench,
     image: plumbingImg,
@@ -132,7 +132,7 @@ const services: IconCardItem[] = [
   {
     title: "Insurance Support",
     description: "Technical inspections, reports and approved repair execution for plumbing-related insurance claims.",
-    longDescription: "We work directly with insurance companies to provide detailed technical assessments, comprehensive reports, and approved repair services. Our documentation meets all insurance requirements, making the claims process smooth and efficient.",
+    longDescription: "We work directly with insurance companies to provide detailed technical assessments, comprehensive reports, and approved repair services. Our documentation meets all insurance standards.",
     features: ["Damage assessment", "Insurance-compliant reports", "Direct insurer liaison", "Approved repairs", "Claim documentation"],
     icon: FileText,
     image: commercialImg,
@@ -140,7 +140,7 @@ const services: IconCardItem[] = [
   {
     title: "Geyser Installation",
     description: "Safe, code-compliant electric geyser installation, replacement and relocation services.",
-    longDescription: "Professional geyser installation services that prioritize safety and efficiency. We handle everything from selecting the right size unit to proper electrical connections and pressure valve installation, ensuring compliance with all safety standards.",
+    longDescription: "Professional geyser installation services that prioritize safety and efficiency. We handle everything from selecting the right size unit to proper electrical connections.",
     features: ["Size consultation", "Safe installation", "Electrical connections", "Pressure valve setup", "Warranty registration"],
     icon: Settings,
     image: geyserImg,
@@ -148,7 +148,7 @@ const services: IconCardItem[] = [
   {
     title: "Kitchen & Bathroom Fitouts",
     description: "Precise fixture plumbing for upgrades, remodels and full sanitary installation projects.",
-    longDescription: "Transform your kitchen and bathroom with our expert fitout services. We handle everything from sink installations to complete bathroom renovations, ensuring perfect alignment, proper sealing, and beautiful finishes.",
+    longDescription: "Transform your kitchen and bathroom with our expert fitout services. We handle everything from sink installations to complete bathroom renovations.",
     features: ["Fixture installation", "Pipe rerouting", "Waterproofing", "Drain connections", "Final testing"],
     icon: Home,
     image: bathroomImg,
@@ -156,7 +156,7 @@ const services: IconCardItem[] = [
   {
     title: "Shower System Servicing",
     description: "Cleaning, replacement and pressure balancing to keep shower lines efficient and reliable.",
-    longDescription: "Keep your shower systems performing at their best with our specialized servicing. We clean mineral buildup, replace worn components, balance water pressure, and ensure consistent temperature control for the perfect shower experience.",
+    longDescription: "Keep your shower systems performing at their best with our specialized servicing. We clean mineral buildup, replace worn components, and balance water pressure.",
     features: ["System cleaning", "Head replacement", "Pressure balancing", "Temperature control", "Leak prevention"],
     icon: RefreshCw,
     image: showerImg,
@@ -164,7 +164,7 @@ const services: IconCardItem[] = [
   {
     title: "Drainage & Waste Networks",
     description: "Drain rerouting, waste line diagnostics and leak remediation for healthy drainage performance.",
-    longDescription: "Our drainage specialists diagnose and resolve complex waste network issues. From CCTV inspections to complete system rerouting, we ensure your drainage systems function efficiently and prevent costly backups.",
+    longDescription: "Our drainage specialists diagnose and resolve complex waste network issues. From CCTV inspections to complete system rerouting, we ensure your drainage systems function efficiently.",
     features: ["CCTV inspection", "Blockage removal", "Pipe relining", "System rerouting", "Preventive maintenance"],
     icon: Funnel,
     image: drainageImg,
@@ -294,7 +294,7 @@ function SubgeoIndustrial() {
                 <div className="mt-7 flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={() => scrollToSection("services")}
-                    className="rounded-lg bg-[#b91c2a] hover:bg-[#8f1520] text-white h-[50px] w-full sm:w-auto px-8 font-semibold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#b91c2a]"
+                    className="rounded-lg bg-[#b91c2a] hover:bg-[#8f1520] text-white h-[50px] w-full sm:w-auto px-8 font-semibold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#b91c2a] focus:ring-offset-2"
                     aria-label="Explore our plumbing and industrial services"
                   >
                     Explore Services
@@ -302,7 +302,7 @@ function SubgeoIndustrial() {
                   </button>
                   <Link
                     to="/contact"
-                    className="inline-flex rounded-lg border-2 border-white text-white hover:bg-white hover:text-[#b91c2a] h-[50px] w-full sm:w-auto px-8 font-semibold text-sm uppercase tracking-wider items-center justify-center gap-2 transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+                    className="inline-flex rounded-lg border-2 border-white text-white hover:bg-white hover:text-[#b91c2a] h-[50px] w-full sm:w-auto px-8 font-semibold text-sm uppercase tracking-wider items-center justify-center gap-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
                     aria-label="Request a quote for your project"
                   >
                     Request A Quote
@@ -441,7 +441,7 @@ function SubgeoIndustrial() {
             <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
               {trustMetrics.map((item, index) => (
                 <RevealOnScroll key={item.label} delay={index * 0.08} direction="up">
-                  <div className="rounded-sm border border-[#e2e8f0] bg-white p-5 text-center shadow-[0_10px_24px_rgba(15,23,42,0.08)] hover:shadow-[0_14px_30px_rgba(15,23,42,0.12)] transition-all duration-300 hover:-translate-y-1">
+                  <div className="rounded-sm border border-[#e2e8f0] bg-white p-5 text-center shadow-[0_10px_24px_rgba(15,23,42,0.08)] hover:shadow-[0_14px_30px_rgba(15,23,42,0.12)] transition-all duration-300">
                     <p className="text-3xl font-bold text-[#b91c2a]">{item.value}</p>
                     <p className="mt-2 text-xs uppercase tracking-[0.16em] text-gray-500">{item.label}</p>
                   </div>
@@ -588,7 +588,7 @@ function SubgeoIndustrial() {
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {valueCards.map((item, index) => (
                 <RevealOnScroll key={item.title} delay={index * 0.1} direction="up">
-                  <article className="h-full rounded-sm border border-[#e2e8f0] bg-white p-7 shadow-[0_12px_28px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_34px_rgba(15,23,42,0.13)]">
+                  <article className="h-full rounded-sm border border-[#e2e8f0] bg-white p-7 shadow-[0_12px_28px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(15,23,42,0.12)]">
                     <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#fee2e2] text-[#b91c2a]">
                       <item.icon className="h-6 w-6" aria-hidden="true" />
                     </div>
@@ -653,7 +653,7 @@ function SubgeoIndustrial() {
                     <p className="mt-3 text-[14px] leading-relaxed text-gray-600">{projects[0].summary}</p>
                     <Link 
                       to="/contact" 
-                      className="mt-4 inline-flex items-center gap-2 text-[#b91c2a] font-semibold text-sm uppercase tracking-wider hover:gap-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#b91c2a] rounded"
+                      className="mt-4 inline-flex items-center gap-2 text-[#b91c2a] font-semibold text-sm uppercase tracking-wider hover:gap-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#b91c2a] rounded-lg"
                     >
                       View Details
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -680,7 +680,7 @@ function SubgeoIndustrial() {
                         <p className="mt-2 text-[13px] leading-relaxed text-gray-600">{item.summary}</p>
                         <Link 
                           to="/contact" 
-                          className="mt-3 inline-flex items-center gap-2 text-[#b91c2a] font-semibold text-xs uppercase tracking-wider hover:gap-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#b91c2a] rounded"
+                          className="mt-3 inline-flex items-center gap-2 text-[#b91c2a] font-semibold text-xs uppercase tracking-wider hover:gap-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#b91c2a] rounded-lg"
                         >
                           View Details
                           <ArrowRight className="h-3 w-3" aria-hidden="true" />
@@ -786,7 +786,7 @@ function SubgeoIndustrial() {
 
                 <Link
                   to="/contact"
-                  className="mt-8 inline-flex items-center gap-2 bg-[#b91c2a] hover:bg-[#8f1520] px-7 py-3 text-xs font-bold tracking-[0.2em] text-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b91c2a] focus:ring-offset-2"
+                  className="mt-8 inline-flex items-center gap-2 bg-[#b91c2a] hover:bg-[#8f1520] px-7 py-3 text-xs font-bold tracking-[0.2em] text-white transition-all duration-300 hover:shadow-xl rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b91c2a] focus:ring-offset-2"
                 >
                   CONTACT US
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -798,7 +798,7 @@ function SubgeoIndustrial() {
               <div className="overflow-hidden rounded-sm border border-[#dbe4ef] bg-white p-2 shadow-[0_14px_30px_rgba(15,23,42,0.1)]">
                 <iframe
                   title="Subgeo location map - Nairobi, Kenya"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255281.45975638997!2d36.656375!3d-1.286389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1702345678901!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255281.45975638997!2d36.656375!3d-1.286389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7996dbaaaa9100"
                   width="100%"
                   height="100%"
                   className="h-[360px] w-full rounded-sm"
@@ -839,14 +839,14 @@ function SubgeoIndustrial() {
                 <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 bg-[#b91c2a] hover:bg-[#8f1520] px-7 py-3 text-xs font-bold tracking-[0.2em] text-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b91c2a] focus:ring-offset-2"
+                    className="inline-flex items-center gap-2 bg-[#b91c2a] hover:bg-[#8f1520] px-7 py-3 text-xs font-bold tracking-[0.2em] text-white transition-all duration-300 hover:shadow-xl rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b91c2a] focus:ring-offset-2"
                   >
                     SCHEDULE VISIT
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                   <button
                     onClick={() => scrollToSection("services")}
-                    className="inline-flex items-center gap-2 border-2 border-[#b91c2a] px-7 py-3 text-xs font-bold tracking-[0.2em] text-[#b91c2a] transition-all duration-300 hover:bg-[#b91c2a] hover:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b91c2a] focus:ring-offset-2"
+                    className="inline-flex items-center gap-2 border-2 border-[#b91c2a] px-7 py-3 text-xs font-bold tracking-[0.2em] text-[#b91c2a] transition-all duration-300 hover:bg-[#b91c2a] hover:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b91c2a]"
                   >
                     VIEW SERVICES
                   </button>
@@ -973,7 +973,7 @@ function ServiceCard({
 
   return (
     <RevealOnScroll delay={index * 0.08} direction="up">
-      <article className="group relative h-full overflow-hidden rounded-sm border border-[#dbe4ef] bg-white p-6 shadow-[0_12px_26px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-[#f5a2a2] hover:shadow-[0_20px_34px_rgba(15,23,42,0.14)]">
+      <article className="group relative h-full overflow-hidden rounded-sm border border-[#dbe4ef] bg-white p-6 shadow-[0_12px_26px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(15,23,42,0.12)]">
         <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-[#b91c2a] via-[#e0292e] to-[#f97373]" />
         
         {service.image && (
@@ -1022,7 +1022,7 @@ function ServiceCard({
 
         <button
           onClick={onToggle}
-          className="mt-6 w-full flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#b91c2a] hover:text-[#8f1520] transition-colors focus:outline-none focus:ring-2 focus:ring-[#b91c2a] rounded py-2"
+          className="mt-6 w-full flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#b91c2a] hover:text-[#8f1520] transition-colors focus:outline-none focus:ring-2 focus:ring-[#b91c2a] rounded-lg"
           aria-expanded={isOpen}
           aria-controls={`service-details-${index}`}
         >
