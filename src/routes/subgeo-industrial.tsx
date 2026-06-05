@@ -32,18 +32,18 @@ import { RevealOnScroll, PageTransition, ScrollProgressBar } from "@/components/
 import heroImg from "@/assets/corporate-hero.jpg";
 import bgImg from "@/assets/background.png";
 import industryImg from "@/assets/industry.jpeg";
-import plumbingImg from "@/assets/plumbing.jpg";
-import drainageImg from "@/assets/drainage.jpg";
-import geyserImg from "@/assets/geyser.jpg";
-import bathroomImg from "@/assets/bathroom.jpg";
-import showerImg from "@/assets/shower.jpg";
-import commercialImg from "@/assets/commercial.jpg";
-import residentialImg from "@/assets/residential.jpg";
-import industrialImg from "@/assets/industrial.jpg";
-import hospitalityImg from "@/assets/hospitality.jpg";
-import educationImg from "@/assets/education.jpg";
-import retailImg from "@/assets/retail.jpg";
-import healthImg from "@/assets/health.jpg";
+import plumbingImg from "@/assets/plumber.jpeg";
+import drainageImg from "@/assets/plumbing.png";
+import geyserImg from "@/assets/services.png";
+import bathroomImg from "@/assets/plumbing.png";
+import showerImg from "@/assets/plumbing.png";
+import commercialImg from "@/assets/corporate-hero.jpg";
+import residentialImg from "@/assets/subgeo.jpeg";
+import industrialImg from "@/assets/industry.jpeg";
+import hospitalityImg from "@/assets/wellness.jpg";
+import educationImg from "@/assets/lab.jpg";
+import retailImg from "@/assets/services.png";
+import healthImg from "@/assets/clinic.jpg";
 
 export const Route = createFileRoute("/subgeo-industrial")({
   head: () => ({
