@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import {
   ArrowRight,
+  ArrowDown,
   BadgeCheck,
   Building2,
   Clock3,
@@ -21,11 +22,22 @@ import {
   Wrench,
   ChevronUp,
   CheckCircle2,
+  Play,
+  Quote,
+  Star,
   type LucideIcon,
 } from "lucide-react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useInView,
+  AnimatePresence,
+  type MotionValue,
+} from "framer-motion";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
-import { RevealOnScroll, PageTransition, ScrollProgressBar } from "@/components/premium/PremiumAnimations";
 import heroImg from "@/assets/corporate-hero.jpg";
 import bgImg from "@/assets/background.png";
 import industryImg from "@/assets/industry.jpeg";
@@ -53,6 +65,10 @@ export const Route = createFileRoute("/subgeo-industrial")({
   component: SubgeoIndustrial,
 });
 
+/* ─────────────────────────────────────────────
+   DATA (preserved from original)
+   ───────────────────────────────────────────── */
+
 type IconCardItem = {
   title: string;
   description: string;
@@ -63,10 +79,10 @@ type IconCardItem = {
 };
 
 const trustMetrics = [
-  { value: "12+", label: "Years of delivery" },
-  { value: "240+", label: "Projects completed" },
-  { value: "24/7", label: "Emergency response" },
-  { value: "99%", label: "Client satisfaction" },
+  { value: 12, suffix: "+", label: "Years of delivery" },
+  { value: 240, suffix: "+", label: "Projects completed" },
+  { value: 24, suffix: "/7", label: "Emergency response" },
+  { value: 99, suffix: "%", label: "Client satisfaction" },
 ];
 
 const trustQuotes = [
@@ -123,7 +139,7 @@ const services: IconCardItem[] = [
   {
     title: "Plumbing Maintenance",
     description: "Routine leak checks, pressure tests, and preventive upkeep for domestic and commercial systems.",
-    longDescription: "Our comprehensive plumbing maintenance service ensures your systems run smoothly year-round. We conduct thorough inspections, identify potential issues before they become problems.",
+    longDescription: "Our comprehensive plumbing maintenance service ensures your systems run smoothly year-round.",
     features: ["Leak detection and repair", "Pressure testing", "Pipe insulation", "Valve maintenance", "System optimization"],
     icon: Wrench,
     image: plumbingImg,
@@ -131,7 +147,7 @@ const services: IconCardItem[] = [
   {
     title: "Insurance Support",
     description: "Technical inspections, reports and approved repair execution for plumbing-related insurance claims.",
-    longDescription: "We work directly with insurance companies to provide detailed technical assessments, comprehensive reports, and approved repair services.",
+    longDescription: "We work directly with insurance companies to provide detailed technical assessments and approved repair services.",
     features: ["Damage assessment", "Insurance-compliant reports", "Direct insurer liaison", "Approved repairs", "Claim documentation"],
     icon: FileText,
     image: commercialImg,
@@ -139,7 +155,7 @@ const services: IconCardItem[] = [
   {
     title: "Geyser Installation",
     description: "Safe, code-compliant electric geyser installation, replacement and relocation services.",
-    longDescription: "Professional geyser installation services that prioritize safety and efficiency. We handle everything from selecting the right size unit to proper electrical connections.",
+    longDescription: "Professional geyser installation services that prioritize safety and efficiency.",
     features: ["Size consultation", "Safe installation", "Electrical connections", "Pressure valve setup", "Warranty registration"],
     icon: Settings,
     image: geyserImg,
@@ -147,7 +163,7 @@ const services: IconCardItem[] = [
   {
     title: "Kitchen & Bathroom Fitouts",
     description: "Precise fixture plumbing for upgrades, remodels and full sanitary installation projects.",
-    longDescription: "Transform your kitchen and bathroom with our expert fitout services. We handle everything from sink installations to complete bathroom renovations.",
+    longDescription: "Transform your kitchen and bathroom with our expert fitout services.",
     features: ["Fixture installation", "Pipe rerouting", "Waterproofing", "Drain connections", "Final testing"],
     icon: Home,
     image: bathroomImg,
@@ -155,7 +171,7 @@ const services: IconCardItem[] = [
   {
     title: "Shower System Servicing",
     description: "Cleaning, replacement and pressure balancing to keep shower lines efficient and reliable.",
-    longDescription: "Keep your shower systems performing at their best with our specialized servicing. We clean mineral buildup, replace worn components, and balance water pressure.",
+    longDescription: "Keep your shower systems performing at their best with our specialized servicing.",
     features: ["System cleaning", "Head replacement", "Pressure balancing", "Temperature control", "Leak prevention"],
     icon: RefreshCw,
     image: showerImg,
@@ -163,7 +179,7 @@ const services: IconCardItem[] = [
   {
     title: "Drainage & Waste Networks",
     description: "Drain rerouting, waste line diagnostics and leak remediation for healthy drainage performance.",
-    longDescription: "Our drainage specialists diagnose and resolve complex waste network issues. From CCTV inspections to complete system rerouting, we ensure your drainage systems function efficiently.",
+    longDescription: "Our drainage specialists diagnose and resolve complex waste network issues.",
     features: ["CCTV inspection", "Blockage removal", "Pipe relining", "System rerouting", "Preventive maintenance"],
     icon: Funnel,
     image: drainageImg,
@@ -173,7 +189,8 @@ const services: IconCardItem[] = [
 const projects = [
   {
     date: "03/2018",
-    title: "GLEE HOTEL | Fire Pump Retrofit",
+    title: "GLEE HOTEL",
+    subtitle: "Fire Pump Retrofit",
     summary: "Full plumbing and drainage overhaul with integrated fire-fighting lines for a high-occupancy hospitality site.",
     image: industrialImg,
     category: "Hospitality",
@@ -181,6 +198,7 @@ const projects = [
   {
     date: "02/2023",
     title: "Qwetu Catholic University",
+    subtitle: "Campus Sanitary Upgrades",
     summary: "Campus-wide sanitary upgrades with water-efficient fittings and compliance-ready safety infrastructure.",
     image: commercialImg,
     category: "Education",
@@ -188,847 +206,1232 @@ const projects = [
   {
     date: "04/2024",
     title: "Kenya Marine Fisheries",
+    subtitle: "Mixed-Use Development",
     summary: "Mixed-use development plumbing execution spanning underground mains, sanitary systems and hydrant networks.",
     image: industrialImg,
     category: "Industrial",
   },
 ];
 
-function SubgeoIndustrial() {
-  const [activeService, setActiveService] = useState<number | null>(null);
-  const [scrollY, setScrollY] = useState(0);
-  const [visibleTestimonial, setVisibleTestimonial] = useState(0);
+/* ─────────────────────────────────────────────
+   UTILITY HOOKS & COMPONENTS
+   ───────────────────────────────────────────── */
+
+// Animated counter
+function AnimatedCounter({ value, suffix = "", duration = 2 }: { value: number; suffix?: string; duration?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    if (!isInView) return;
+    let start = 0;
+    const end = value;
+    const increment = end / (duration * 60);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 1000 / 60);
+    return () => clearInterval(timer);
+  }, [isInView, value, duration]);
+
+  return (
+    <span ref={ref}>
+      {count}
+      {suffix}
+    </span>
+  );
+}
+
+// Magnetic button wrapper
+function MagneticButton({ children, className = "", strength = 0.3, ...props }: {
+  children: ReactNode;
+  className?: string;
+  strength?: number;
+  [key: string]: any;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useRef(0);
+  const y = useRef(0);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    x.current = (e.clientX - centerX) * strength;
+    y.current = (e.clientY - centerY) * strength;
+    ref.current.style.transform = `translate(${x.current}px, ${y.current}px)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (!ref.current) return;
+    ref.current.style.transform = "translate(0px, 0px)";
+  };
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-transform duration-300 ease-out ${className}`}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
+
+// Scroll-triggered reveal
+function ScrollReveal({
+  children,
+  className = "",
+  delay = 0,
+  direction = "up",
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  direction?: "up" | "down" | "left" | "right" | "none";
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
+  const directionMap = {
+    up: { y: 60, x: 0 },
+    down: { y: -60, x: 0 },
+    left: { y: 0, x: 60 },
+    right: { y: 0, x: -60 },
+    none: { y: 0, x: 0 },
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{
+        opacity: 0,
+        y: directionMap[direction].y,
+        x: directionMap[direction].x,
+      }}
+      animate={
+        isInView
+          ? { opacity: 1, y: 0, x: 0 }
+          : {
+              opacity: 0,
+              y: directionMap[direction].y,
+              x: directionMap[direction].x,
+            }
+      }
+      transition={{
+        duration: 0.8,
+        delay,
+        ease: [0.25, 0.4, 0.25, 1],
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// Parallax image
+function ParallaxImage({
+  src,
+  alt,
+  className = "",
+  speed = 0.3,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  speed?: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
+  return (
+    <div ref={ref} className={`overflow-hidden ${className}`}>
+      <motion.img
+        src={src}
+        alt={alt}
+        style={{ y }}
+        className="w-full h-[120%] object-cover"
+        loading="lazy"
+      />
+    </div>
+  );
+}
+
+// Custom cursor
+function CustomCursor() {
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+  const [label, setLabel] = useState("");
+
+  useEffect(() => {
+    const move = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY });
+    window.addEventListener("mousemove", move);
+
+    const handleOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const interactive = target.closest("[data-cursor]");
+      if (interactive) {
+        setIsHovering(true);
+        setLabel(interactive.getAttribute("data-cursor") || "View");
+      } else {
+        setIsHovering(false);
+        setLabel("");
+      }
+    };
+    window.addEventListener("mouseover", handleOver);
+
+    return () => {
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mouseover", handleOver);
+    };
   }, []);
+
+  return (
+    <>
+      <motion.div
+        className="fixed top-0 left-0 w-4 h-4 bg-[#b91c2a] rounded-full pointer-events-none z-[9999] mix-blend-difference hidden md:block"
+        animate={{ x: pos.x - 8, y: pos.y - 8, scale: isHovering ? 0 : 1 }}
+        transition={{ type: "spring", stiffness: 500, damping: 28 }}
+      />
+      <motion.div
+        className="fixed top-0 left-0 w-10 h-10 border border-[#b91c2a]/50 rounded-full pointer-events-none z-[9999] hidden md:flex items-center justify-center"
+        animate={{
+          x: pos.x - 20,
+          y: pos.y - 20,
+          scale: isHovering ? 2.5 : 1,
+          backgroundColor: isHovering ? "rgba(185, 28, 42, 0.08)" : "transparent",
+        }}
+        transition={{ type: "spring", stiffness: 200, damping: 20 }}
+      >
+        <AnimatePresence>
+          {isHovering && label && (
+            <motion.span
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5 }}
+              className="text-[10px] font-bold uppercase tracking-wider text-[#b91c2a] whitespace-nowrap"
+            >
+              {label}
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </>
+  );
+}
+
+// Horizontal scroll section
+function HorizontalScrollSection({ children, className = "" }: { children: ReactNode; className?: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef });
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
+
+  return (
+    <section ref={containerRef} className={`relative h-[300vh] ${className}`}>
+      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+        <motion.div style={{ x }} className="flex gap-8 pl-[10vw]">
+          {children}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   MAIN COMPONENT
+   ───────────────────────────────────────────── */
+
+function SubgeoIndustrial() {
+  const [activeService, setActiveService] = useState<number | null>(null);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: heroScroll } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const heroY = useTransform(heroScroll, [0, 1], ["0%", "30%"]);
+  const heroOpacity = useTransform(heroScroll, [0, 0.8], [1, 0]);
+  const heroScale = useTransform(heroScroll, [0, 1], [1, 1.15]);
+  const heroTextY = useTransform(heroScroll, [0, 1], ["0%", "50%"]);
 
   // Auto-rotate testimonials
   useEffect(() => {
     const interval = setInterval(() => {
-      setVisibleTestimonial((prev) => (prev + 1) % trustQuotes.length);
-    }, 5000);
+      setActiveTestimonial((prev) => (prev + 1) % trustQuotes.length);
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  const toggleService = (index: number) => {
-    setActiveService(activeService === index ? null : index);
-  };
-
   return (
-    <PageTransition className="relative min-h-screen overflow-x-clip bg-background page-texture text-foreground">
-      <ScrollProgressBar />
-      
-      {/* Skip to main content for accessibility */}
-      <a 
-        href="#main-content" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-[#b91c2a] text-white px-4 py-2 rounded-lg z-[60]"
-      >
-        Skip to main content
-      </a>
-      
-      <section className="relative overflow-hidden bg-black/90 min-h-screen flex items-center">
-        {/* Background Image with Parallax */}
-        <div 
+    <div className="relative min-h-screen overflow-x-clip bg-[#fafaf8] text-[#1a1a1a]">
+      <CustomCursor />
+
+      {/* ═══════════════════════════════════════
+          HERO — Cinematic Full-Screen Entry
+          ═══════════════════════════════════════ */}
+      <section ref={heroRef} className="relative h-screen overflow-hidden">
+        {/* Parallax Background */}
+        <motion.div
+          style={{ y: heroY, scale: heroScale }}
           className="absolute inset-0 z-0"
-          style={{ transform: `translateY(${scrollY * 0.4}px)` }}
         >
           <img
             src={industryImg}
-            alt="Subgeo Industrial Services - Professional plumbing and industrial maintenance"
+            alt="Subgeo Industrial Works"
             className="w-full h-full object-cover"
             loading="eager"
             fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
-        </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/80 via-[#0a1628]/50 to-[#0a1628]/90" />
+          {/* Grain overlay for premium texture */}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+            }}
+          />
+        </motion.div>
 
-        <div className="relative z-10 w-full">
+        {/* Navigation */}
+        <motion.div
+          style={{ opacity: heroOpacity }}
+          className="relative z-20 w-full"
+        >
           <Navbar />
-        </div>
+        </motion.div>
 
-        <div className="container-x relative z-10 pt-32 pb-16 md:pb-20 flex-1">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center h-full">
-            {/* Left Content - 7 columns */}
-            <div className="lg:col-span-7 text-left">
-              <RevealOnScroll direction="up">
-                <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2.5 mb-6">
-                  <span className="flex h-2 w-2 rounded-full bg-[#b91c2a] animate-pulse"></span>
-                  <span className="text-sm font-semibold text-white">Available 24/7 for Emergencies</span>
-                </div>
-              </RevealOnScroll>
+        {/* Hero Content */}
+        <motion.div
+          style={{ y: heroTextY, opacity: heroOpacity }}
+          className="relative z-10 h-full flex flex-col justify-center px-6 md:px-12 lg:px-20"
+        >
+          <div className="max-w-7xl mx-auto w-full">
+            {/* Eyebrow */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="mb-8"
+            >
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-md px-5 py-2.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#b91c2a] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#b91c2a]"></span>
+                </span>
+                <span className="text-xs font-semibold text-white/90 uppercase tracking-[0.2em]">
+                  Available 24/7 for Emergencies
+                </span>
+              </div>
+            </motion.div>
 
-              <RevealOnScroll direction="up">
-                <h1 className="font-display text-[clamp(2.5rem,6vw,4rem)] leading-[1.04] text-white font-bold">
-                  Subgeo Plumbing And
-                  <br />
-                  <span className="text-[#b91c2a]">Industrial Works</span>
-                </h1>
-              </RevealOnScroll>
-
-              <RevealOnScroll direction="up" delay={0.08}>
-                <p className="mt-5 text-base md:text-lg text-white/90 max-w-2xl leading-relaxed">
-                  We design, install and maintain resilient plumbing and drainage systems for homes, commercial spaces and industrial facilities across Kenya. Our fleet of well-maintained, reliable vehicles are company branded and extremely neat.
-                </p>
-              </RevealOnScroll>
-
-              <RevealOnScroll direction="up" delay={0.16}>
-                <div className="mt-7 flex flex-col sm:flex-row gap-4">
-                  <button
-                    onClick={() => scrollToSection("services")}
-                    className="rounded-lg bg-[#b91c2a] hover:bg-[#8f1520] text-white h-[50px] w-full sm:w-auto px-8 font-semibold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#b91c2a] focus:ring-offset-2"
-                    aria-label="Explore our plumbing and industrial services"
-                  >
-                    Explore Services
-                    <ArrowRight className="h-4 w-4" />
-                  </button>
-                  <Link
-                    to="/contact"
-                    className="inline-flex rounded-lg border-2 border-white text-white hover:bg-white hover:text-[#b91c2a] h-[50px] w-full sm:w-auto px-8 font-semibold text-sm uppercase tracking-wider items-center justify-center gap-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
-                    aria-label="Request a quote for your project"
-                  >
-                    Request A Quote
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </RevealOnScroll>
-
-              <RevealOnScroll direction="up" delay={0.22}>
-                <div className="mt-10 flex items-center gap-6 flex-wrap">
-                  <div className="flex -space-x-2">
-                    {["12+", "24", "99"].map((val) => (
-                      <div
-                        key={val}
-                        className="h-10 w-10 rounded-full bg-white text-[#b91c2a] text-[11px] font-bold flex items-center justify-center border-2 border-white/20"
-                      >
-                        {val}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-5 py-3">
-                    <div className="text-sm font-semibold text-white">Emergency-ready</div>
-                    <div className="text-xs text-white/70">24/7 Support Guaranteed</div>
-                  </div>
-                </div>
-              </RevealOnScroll>
+            {/* Headline */}
+            <div className="overflow-hidden">
+              <motion.h1
+                initial={{ y: 120 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1, delay: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+                className="font-serif text-[clamp(3rem,8vw,7rem)] leading-[0.9] text-white font-light tracking-tight"
+              >
+                Precision
+              </motion.h1>
+            </div>
+            <div className="overflow-hidden">
+              <motion.h1
+                initial={{ y: 120 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1, delay: 0.65, ease: [0.25, 0.4, 0.25, 1] }}
+                className="font-serif text-[clamp(3rem,8vw,7rem)] leading-[0.9] text-white font-light tracking-tight"
+              >
+                in Every
+                <span className="italic text-[#b91c2a]"> Pipe</span>
+              </motion.h1>
+            </div>
+            <div className="overflow-hidden">
+              <motion.h1
+                initial={{ y: 120 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1, delay: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+                className="font-serif text-[clamp(3rem,8vw,7rem)] leading-[0.9] text-white/40 font-light tracking-tight"
+              >
+                We Touch.
+              </motion.h1>
             </div>
 
-            {/* Right Image Section - 5 columns */}
-            <RevealOnScroll direction="left" delay={0.2} className="lg:col-span-5">
-              <div className="relative flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-md lg:max-w-lg h-[500px] lg:h-[600px]">
-                  {/* Top Left Image */}
-                  <div 
-                    className="absolute top-0 left-0 w-48 h-48 lg:w-56 lg:h-56 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
-                    style={{
-                      animation: 'floatIn1 1s ease-out 0.2s both, float1 6s ease-in-out infinite',
-                      zIndex: 4,
-                    }}
-                  >
-                    <img 
-                      src={plumbingImg} 
-                      alt="Professional plumbing installation" 
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  
-                  {/* Top Right Image */}
-                  <div 
-                    className="absolute top-12 right-0 w-44 h-44 lg:w-52 lg:h-52 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
-                    style={{
-                      animation: 'floatIn2 1s ease-out 0.5s both, float2 6s ease-in-out infinite',
-                      zIndex: 3,
-                    }}
-                  >
-                    <img 
-                      src={commercialImg} 
-                      alt="Commercial plumbing project" 
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  
-                  {/* Bottom Left Image */}
-                  <div 
-                    className="absolute bottom-0 left-0 w-40 h-40 lg:w-48 lg:h-48 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
-                    style={{
-                      animation: 'floatIn3 1s ease-out 0.8s both, float3 6s ease-in-out infinite',
-                      zIndex: 2,
-                    }}
-                  >
-                    <img 
-                      src={industrialImg} 
-                      alt="Industrial maintenance services" 
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  
-                  {/* Bottom Right Image */}
-                  <div 
-                    className="absolute bottom-12 right-6 w-36 h-36 lg:w-44 lg:h-44 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 ease-out"
-                    style={{
-                      animation: 'floatIn4 1s ease-out 1.1s both, float4 6s ease-in-out infinite',
-                      zIndex: 1,
-                    }}
-                  >
-                    <img 
-                      src={drainageImg} 
-                      alt="Drainage system installation" 
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.1 }}
+              className="mt-8 max-w-xl text-base md:text-lg text-white/70 leading-relaxed font-light"
+            >
+              We design, install and maintain resilient plumbing and drainage systems
+              for homes, commercial spaces and industrial facilities across Kenya.
+            </motion.p>
 
-                  {/* Decorative Glow */}
-                  <div 
-                    className="absolute top-1/2 right-1/4 w-64 h-64 bg-[#b91c2a]/15 rounded-full blur-3xl pointer-events-none"
-                    style={{ animation: 'pulse 4s ease-in-out infinite' }}
-                  />
-                </div>
-              </div>
-            </RevealOnScroll>
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.3 }}
+              className="mt-10 flex flex-col sm:flex-row gap-5"
+            >
+              <MagneticButton strength={0.2}>
+                <button
+                  onClick={() => scrollToSection("services")}
+                  data-cursor="Explore"
+                  className="group relative overflow-hidden rounded-full bg-[#b91c2a] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-500 hover:shadow-[0_0_40px_rgba(185,28,42,0.4)]"
+                >
+                  <span className="relative z-10 flex items-center gap-3">
+                    Explore Services
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                </button>
+              </MagneticButton>
+
+              <MagneticButton strength={0.2}>
+                <Link
+                  to="/contact"
+                  data-cursor="Contact"
+                  className="group flex items-center gap-3 rounded-full border border-white/30 px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white backdrop-blur-sm transition-all duration-500 hover:bg-white/10 hover:border-white/60"
+                >
+                  Request A Quote
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </MagneticButton>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-          <button 
-            onClick={() => scrollToSection('main-content')}
-            className="animate-bounce flex flex-col items-center text-white/70 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white rounded-lg p-2"
-            aria-label="Scroll to main content"
-          >
-            <span className="text-xs mb-2 uppercase tracking-wider">Scroll</span>
-            <div className="w-6 h-10 rounded-full border-2 border-white/50 flex justify-center">
-              <div className="w-1 h-3 bg-white rounded-full mt-2"></div>
-            </div>
-          </button>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3"
+        >
+          <span className="text-[10px] uppercase tracking-[0.3em] text-white/50">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="w-[1px] h-12 bg-gradient-to-b from-white/60 to-transparent"
+          />
+        </motion.div>
+
+        {/* Side decorative elements */}
+        <div className="absolute right-8 top-1/2 -translate-y-1/2 z-10 hidden lg:flex flex-col items-center gap-4">
+          <div className="w-[1px] h-16 bg-white/20" />
+          <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 [writing-mode:vertical-rl]">
+            Subgeo Industrial
+          </span>
+          <div className="w-[1px] h-16 bg-white/20" />
         </div>
       </section>
 
-      <main id="main-content" className="home-page-scale">
-        <section className="section-slab section-rule py-16 md:py-20">
-          <div className="container-x">
-            <RevealOnScroll direction="up">
-              <div className="mx-auto max-w-3xl text-center">
-                <p className="eyebrow">Trusted Performance</p>
-                <h2 className="mt-3 font-display text-[clamp(28px,3vw,40px)] text-[#1a2c4e]">Trusted By Teams That Cannot Afford Downtime</h2>
-                <p className="mt-4 text-[14px] leading-relaxed text-gray-600">
-                  Our clients rely on Subgeo for dependable project execution, structured communication and measurable outcomes.
-                </p>
-              </div>
-            </RevealOnScroll>
-
-            <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
-              {trustMetrics.map((item, index) => (
-                <RevealOnScroll key={item.label} delay={index * 0.08} direction="up">
-                  <div className="rounded-sm border border-[#e2e8f0] bg-white p-5 text-center shadow-[0_10px_24px_rgba(15,23,42,0.08)] hover:shadow-[0_14px_30px_rgba(15,23,42,0.12)] transition-all duration-300">
-                    <p className="text-3xl font-bold text-[#b91c2a]">{item.value}</p>
-                    <p className="mt-2 text-xs uppercase tracking-[0.16em] text-gray-500">{item.label}</p>
-                  </div>
-                </RevealOnScroll>
-              ))}
+      {/* ═══════════════════════════════════════
+          CHAPTER 01 — Trust Metrics
+          ═══════════════════════════════════════ */}
+      <section className="relative py-32 md:py-40 bg-[#fafaf8]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          {/* Chapter label */}
+          <ScrollReveal>
+            <div className="flex items-center gap-6 mb-20">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#b91c2a] font-semibold">01</span>
+              <div className="h-[1px] flex-1 bg-[#b91c2a]/20 max-w-[80px]" />
+              <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400">Trusted Performance</span>
             </div>
+          </ScrollReveal>
 
-            {/* Sequential Testimonials with Image Background */}
-            <div className="mt-10 relative">
-              {trustQuotes.map((item, index) => (
-                <RevealOnScroll key={item.author} direction="up" delay={index * 0.15}>
-                  <article 
-                    className={`flex h-full flex-col justify-between rounded-sm border border-[#e2e8f0] bg-[#f8fafc] p-0 shadow-[0_14px_30px_rgba(15,23,42,0.09)] transition-all duration-700 overflow-hidden ${
-                      visibleTestimonial === index 
-                        ? 'opacity-100 translate-y-0 scale-100' 
-                        : 'opacity-0 translate-y-8 scale-95 absolute inset-0 pointer-events-none'
-                    }`}
-                    style={{ minHeight: '400px' }}
-                  >
-                    {/* Background Image */}
-                    <div className="absolute inset-0 z-0">
-                      <img 
-                        src={item.image} 
-                        alt={item.author} 
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/50" />
-                    </div>
-                    
-                    {/* Content Overlay */}
-                    <div className="relative z-10 flex flex-col justify-between h-full p-8">
-                      <div>
-                        <div className="flex items-center gap-2 mb-4">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#b91c2a] text-white">
-                            <Users className="h-6 w-6" />
-                          </div>
-                          <div>
-                            <p className="text-lg font-bold text-white">{item.author}</p>
-                            <p className="text-sm text-white/70">{item.role}</p>
-                          </div>
-                        </div>
-                        <p className="text-lg leading-relaxed text-white/95 font-medium">"{item.quote}"</p>
-                      </div>
-                      
-                      {/* Rating Stars */}
-                      <div className="flex items-center gap-1 mt-6">
-                        {[...Array(5)].map((_, i) => (
-                          <svg key={i} className="w-5 h-5 text-[#b91c2a] fill-current" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
-                      </div>
-                    </div>
-                  </article>
-                </RevealOnScroll>
-              ))}
-              
-              {/* Testimonial Navigation Dots */}
-              <div className="flex justify-center gap-2 mt-6">
-                {trustQuotes.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setVisibleTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      visibleTestimonial === index 
-                        ? 'bg-[#b91c2a] w-8' 
-                        : 'bg-gray-300 hover:bg-gray-400'
-                    }`}
-                    aria-label={`View testimonial ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+          {/* Heading */}
+          <ScrollReveal delay={0.1}>
+            <h2 className="font-serif text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] text-[#1a2c4e] font-light max-w-4xl">
+              Trusted by teams that
+              <span className="italic"> cannot afford </span>
+              downtime.
+            </h2>
+          </ScrollReveal>
 
-        <section id="industries" className="section-shell section-rule py-20">
-          <div className="container-x grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-            <RevealOnScroll direction="right">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="col-span-2 overflow-hidden rounded-sm border border-[#dbe4ef] shadow-[0_12px_28px_rgba(15,23,42,0.12)]">
-                  <img src={heroImg} alt="Industrial plumbing installations" className="h-56 w-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" />
-                </div>
-                <div className="overflow-hidden rounded-sm border border-[#dbe4ef] shadow-[0_12px_28px_rgba(15,23,42,0.12)]">
-                  <img src={bgImg} alt="Subgeo team in action" className="h-40 w-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" />
-                </div>
-                <div className="overflow-hidden rounded-sm border border-[#dbe4ef] shadow-[0_12px_28px_rgba(15,23,42,0.12)]">
-                  <img src={plumbingImg} alt="Commercial project delivery" className="h-40 w-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" />
-                </div>
-              </div>
-            </RevealOnScroll>
-
-            <div>
-              <RevealOnScroll direction="up">
-                <p className="eyebrow">Industries We Serve</p>
-                <h2 className="mt-3 font-display text-[clamp(28px,3vw,40px)] text-[#1a2c4e]">
-                  Reliable Plumbing Solutions Across Critical Sectors
-                </h2>
-                <p className="mt-4 text-[14px] leading-relaxed text-gray-600">
-                  Subgeo supports multi-site operators and independent property owners with tailored plumbing, drainage and maintenance programs.
-                </p>
-              </RevealOnScroll>
-
-              <RevealOnScroll direction="up" delay={0.08}>
-                <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-                  {industries.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <li key={item.name} className="flex items-center gap-2 rounded-sm border border-[#dbe4ef] bg-white px-3 py-2 text-[13px] text-gray-700 hover:border-[#b91c2a] hover:shadow-md transition-all duration-300">
-                        <Icon className="h-4 w-4 text-[#b91c2a]" aria-hidden="true" />
-                        <span>{item.name}</span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </RevealOnScroll>
-
-              <RevealOnScroll direction="up" delay={0.16}>
-                <div className="mt-7 rounded-sm border border-[#fbcaca] bg-[#fff5f5] p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#b91c2a]">Service Promise</p>
-                  <p className="mt-2 text-[14px] leading-relaxed text-[#7f1d1d]">
-                    We align every scope with operational risk, site safety and realistic maintenance windows so your teams keep moving.
+          {/* Metrics Grid */}
+          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-gray-200">
+            {trustMetrics.map((item, index) => (
+              <ScrollReveal key={item.label} delay={index * 0.1}>
+                <div className="border-b border-r border-gray-200 p-8 md:p-10 group hover:bg-[#1a2c4e]/[0.02] transition-colors duration-500">
+                  <p className="font-serif text-5xl md:text-6xl text-[#b91c2a] font-light">
+                    <AnimatedCounter value={item.value} suffix={item.suffix} />
+                  </p>
+                  <p className="mt-4 text-xs uppercase tracking-[0.2em] text-gray-500 font-medium">
+                    {item.label}
                   </p>
                 </div>
-              </RevealOnScroll>
-            </div>
+              </ScrollReveal>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section id="about" className="section-slab section-rule py-20">
-          <div className="container-x">
-            <RevealOnScroll direction="up">
-              <div className="mx-auto max-w-4xl text-center">
-                <p className="eyebrow">About Subgeo Industrial</p>
-                <h2 className="mt-3 font-display text-[clamp(28px,3vw,40px)] text-[#1a2c4e]">Built On Professional Discipline Since 2012</h2>
-                <p className="mt-5 text-[14px] leading-relaxed text-gray-600">
-                  Subgeo Plumbing & Industrial Works Ltd is a registered private limited company focused on plumbing, sanitary installation,
-                  drainage systems, fire-fighting infrastructure and recurring maintenance services for long-term asset performance.
+      {/* ═══════════════════════════════════════
+          CHAPTER 02 — About / Story
+          ═══════════════════════════════════════ */}
+      <section className="relative py-32 md:py-40 bg-[#0a1628] text-white overflow-hidden">
+        {/* Background accent */}
+        <div className="absolute top-0 right-0 w-1/2 h-full opacity-10">
+          <div className="w-full h-full bg-gradient-to-l from-[#b91c2a]/30 to-transparent" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 relative">
+          <ScrollReveal>
+            <div className="flex items-center gap-6 mb-20">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#b91c2a] font-semibold">02</span>
+              <div className="h-[1px] flex-1 bg-white/20 max-w-[80px]" />
+              <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">Our Story</span>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <div>
+              <ScrollReveal delay={0.1}>
+                <h2 className="font-serif text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] font-light">
+                  Built on professional
+                  <span className="italic text-[#b91c2a]"> discipline </span>
+                  since 2012.
+                </h2>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.2}>
+                <p className="mt-8 text-base leading-relaxed text-white/60 font-light">
+                  Subgeo Plumbing & Industrial Works Ltd is a registered private limited company
+                  focused on plumbing, sanitary installation, drainage systems, fire-fighting
+                  infrastructure and recurring maintenance services for long-term asset performance.
                 </p>
-              </div>
-            </RevealOnScroll>
+              </ScrollReveal>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {valueCards.map((item, index) => (
-                <RevealOnScroll key={item.title} delay={index * 0.1} direction="up">
-                  <article className="h-full rounded-sm border border-[#e2e8f0] bg-white p-7 shadow-[0_12px_28px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(15,23,42,0.12)]">
-                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#fee2e2] text-[#b91c2a]">
-                      <item.icon className="h-6 w-6" aria-hidden="true" />
+              <ScrollReveal delay={0.3}>
+                <p className="mt-6 text-base leading-relaxed text-white/60 font-light">
+                  Our fleet of well-maintained, reliable vehicles are company branded and extremely neat.
+                  We align every scope with operational risk, site safety and realistic maintenance
+                  windows so your teams keep moving.
+                </p>
+              </ScrollReveal>
+            </div>
+
+            {/* Image composition */}
+            <ScrollReveal direction="left" delay={0.2}>
+              <div className="relative">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+                  <ParallaxImage
+                    src={heroImg}
+                    alt="Subgeo Industrial team at work"
+                    speed={0.2}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/40 to-transparent" />
+                </div>
+                {/* Floating accent card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                  className="absolute -bottom-8 -left-8 bg-[#b91c2a] p-6 rounded-sm shadow-2xl max-w-[240px]"
+                >
+                  <p className="text-3xl font-serif font-light text-white">12+</p>
+                  <p className="mt-2 text-xs uppercase tracking-[0.2em] text-white/70">
+                    Years of reliable delivery
+                  </p>
+                </motion.div>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Value Cards */}
+          <div className="mt-24 grid md:grid-cols-3 gap-0 border-t border-white/10">
+            {valueCards.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <ScrollReveal key={item.title} delay={index * 0.1}>
+                  <div className="border-b border-r border-white/10 p-8 md:p-10 group hover:bg-white/[0.03] transition-colors duration-500">
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#b91c2a]/30 text-[#b91c2a] group-hover:bg-[#b91c2a] group-hover:text-white transition-all duration-500">
+                      <Icon className="h-5 w-5" />
                     </div>
-                    <h3 className="mt-5 text-lg font-bold text-[#1a2c4e]">{item.title}</h3>
-                    <p className="mt-3 text-[14px] leading-relaxed text-gray-600">{item.description}</p>
-                  </article>
-                </RevealOnScroll>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="services" className="section-shell section-rule py-20">
-          <div className="container-x">
-            <RevealOnScroll direction="up">
-              <div className="mx-auto max-w-3xl text-center">
-                <p className="eyebrow">Core Services</p>
-                <h2 className="mt-3 font-display text-[clamp(28px,3vw,40px)] text-[#1a2c4e]">End-To-End Plumbing And Industrial Maintenance</h2>
-                <p className="mt-4 text-[14px] leading-relaxed text-gray-600">
-                  From preventive maintenance to full installation programs, our teams deliver practical technical solutions with clear reporting.
-                </p>
-              </div>
-            </RevealOnScroll>
-
-            <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {services.map((item, index) => (
-                <ServiceCard 
-                  key={item.title} 
-                  service={item} 
-                  index={index}
-                  isOpen={activeService === index}
-                  onToggle={() => toggleService(index)}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="projects" className="section-slab section-rule py-20">
-          <div className="container-x">
-            <RevealOnScroll direction="up">
-              <div className="mx-auto max-w-3xl text-center">
-                <p className="eyebrow">Recent Work</p>
-                <h2 className="mt-3 font-display text-[clamp(28px,3vw,40px)] text-[#1a2c4e]">Projects Delivered With High Technical Accuracy</h2>
-              </div>
-            </RevealOnScroll>
-
-            <div className="mt-12 grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
-              <RevealOnScroll direction="right">
-                <article className="group h-full overflow-hidden rounded-sm border border-[#dbe4ef] bg-white shadow-[0_14px_30px_rgba(15,23,42,0.1)] hover:shadow-[0_20px_40px_rgba(15,23,42,0.15)] transition-all duration-300">
-                  <div className="relative overflow-hidden">
-                    <img src={projects[0].image} alt={projects[0].title} className="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                    <span className="absolute left-4 top-4 rounded-sm bg-[#b91c2a] px-3 py-1 text-xs font-bold tracking-[0.14em] text-white">
-                      {projects[0].date}
-                    </span>
-                    <span className="absolute right-4 top-4 rounded-sm bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-[#1a2c4e]">
-                      {projects[0].category}
-                    </span>
+                    <h3 className="mt-6 text-lg font-medium text-white">{item.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-white/50">{item.description}</p>
                   </div>
-                  <div className="p-7">
-                    <h3 className="text-xl font-bold text-[#1a2c4e]">{projects[0].title}</h3>
-                    <p className="mt-3 text-[14px] leading-relaxed text-gray-600">{projects[0].summary}</p>
-                    <Link 
-                      to="/contact" 
-                      className="mt-4 inline-flex items-center gap-2 text-[#b91c2a] font-semibold text-sm uppercase tracking-wider hover:gap-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#b91c2a] rounded-lg"
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          CHAPTER 03 — Industries (Horizontal Scroll)
+          ═══════════════════════════════════════ */}
+      <section className="relative py-32 md:py-40 bg-[#fafaf8]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <ScrollReveal>
+            <div className="flex items-center gap-6 mb-20">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#b91c2a] font-semibold">03</span>
+              <div className="h-[1px] flex-1 bg-[#b91c2a]/20 max-w-[80px]" />
+              <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400">Industries</span>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <ScrollReveal>
+                <h2 className="font-serif text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] text-[#1a2c4e] font-light">
+                  Reliable solutions across
+                  <span className="italic"> critical </span>
+                  sectors.
+                </h2>
+              </ScrollReveal>
+              <ScrollReveal delay={0.1}>
+                <p className="mt-8 text-base leading-relaxed text-gray-600 font-light">
+                  Subgeo supports multi-site operators and independent property owners
+                  with tailored plumbing, drainage and maintenance programs.
+                </p>
+              </ScrollReveal>
+
+              {/* Service Promise */}
+              <ScrollReveal delay={0.2}>
+                <div className="mt-10 border-l-2 border-[#b91c2a] pl-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#b91c2a]">
+                    Service Promise
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                    We align every scope with operational risk, site safety and realistic
+                    maintenance windows so your teams keep moving.
+                  </p>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* Industries Grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {industries.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <ScrollReveal key={item.name} delay={index * 0.05}>
+                    <motion.div
+                      data-cursor="Discover"
+                      whileHover={{ y: -4, scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                      className="group relative overflow-hidden rounded-sm border border-gray-200 bg-white p-6 cursor-pointer hover:border-[#b91c2a]/30 hover:shadow-lg transition-all duration-500"
                     >
-                      View Details
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </Link>
-                  </div>
-                </article>
-              </RevealOnScroll>
-
-              <div className="grid gap-5">
-                {projects.slice(1).map((item, index) => (
-                  <RevealOnScroll key={item.title} delay={index * 0.08} direction="left">
-                    <article className="group overflow-hidden rounded-sm border border-[#dbe4ef] bg-white shadow-[0_14px_30px_rgba(15,23,42,0.1)] hover:shadow-[0_20px_40px_rgba(15,23,42,0.15)] transition-all duration-300">
-                      <div className="relative overflow-hidden">
-                        <img src={item.image} alt={item.title} className="h-40 w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                        <span className="absolute left-4 top-4 rounded-sm bg-[#b91c2a] px-3 py-1 text-xs font-bold tracking-[0.14em] text-white">
-                          {item.date}
-                        </span>
-                        <span className="absolute right-4 top-4 rounded-sm bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-[#1a2c4e]">
-                          {item.category}
-                        </span>
-                      </div>
-                      <div className="p-5">
-                        <h3 className="text-base font-bold uppercase tracking-[0.08em] text-[#1a2c4e]">{item.title}</h3>
-                        <p className="mt-2 text-[13px] leading-relaxed text-gray-600">{item.summary}</p>
-                        <Link 
-                          to="/contact" 
-                          className="mt-3 inline-flex items-center gap-2 text-[#b91c2a] font-semibold text-xs uppercase tracking-wider hover:gap-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#b91c2a] rounded-lg"
-                        >
-                          View Details
-                          <ArrowRight className="h-3 w-3" aria-hidden="true" />
-                        </Link>
-                      </div>
-                    </article>
-                  </RevealOnScroll>
-                ))}
-              </div>
+                      <Icon className="h-6 w-6 text-[#b91c2a]/60 group-hover:text-[#b91c2a] transition-colors duration-300" />
+                      <p className="mt-4 text-sm font-medium text-[#1a2c4e]">{item.name}</p>
+                      <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#b91c2a] group-hover:w-full transition-all duration-500" />
+                    </motion.div>
+                  </ScrollReveal>
+                );
+              })}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="relative overflow-hidden bg-[#102845] py-20">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_15%,rgba(255,255,255,0.14),transparent_38%),radial-gradient(circle_at_85%_20%,rgba(224,41,46,0.35),transparent_42%)]" />
-          <div className="container-x relative">
-            <RevealOnScroll direction="up">
-              <div className="mx-auto max-w-3xl text-center">
-                <p className="text-xs font-bold uppercase tracking-[0.32em] text-white/70">Client Testimony</p>
-                <h2 className="mt-3 font-display text-[clamp(28px,3vw,40px)] text-white">Confidence That Comes From Consistent Delivery</h2>
-                <p className="mt-4 text-[14px] leading-relaxed text-white/75">
-                  Feedback from project partners and recurring maintenance clients who rely on Subgeo teams.
-                </p>
-              </div>
-            </RevealOnScroll>
+      {/* ═══════════════════════════════════════
+          CHAPTER 04 — Services (Immersive)
+          ═══════════════════════════════════════ */}
+      <section id="services" className="relative py-32 md:py-40 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <ScrollReveal>
+            <div className="flex items-center gap-6 mb-20">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#b91c2a] font-semibold">04</span>
+              <div className="h-[1px] flex-1 bg-[#b91c2a]/20 max-w-[80px]" />
+              <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400">Core Services</span>
+            </div>
+          </ScrollReveal>
 
-            <div className="mt-10 grid gap-5 md:grid-cols-2">
-              {[
-                {
-                  quote: "Subgeo coordinated seamlessly with our contractors and delivered a clean, compliant installation ahead of timeline.",
-                  author: "Amina Hassan",
-                  role: "Project Coordinator",
-                  image: residentialImg,
-                },
-                {
-                  quote: "Their emergency support line is responsive and the technicians always arrive prepared with clear diagnostics.",
-                  author: "Dr. James Kipchoge",
-                  role: "Operations Consultant",
-                  image: commercialImg,
-                },
-              ].map((item, index) => (
-                <RevealOnScroll key={item.author} direction="up" delay={index * 0.1}>
-                  <article className="rounded-sm border border-white/15 bg-white/10 p-7 backdrop-blur-sm hover:bg-white/15 transition-all duration-300">
-                    <div className="relative h-32 mb-4 overflow-hidden rounded-lg">
-                      <img 
-                        src={item.image} 
-                        alt={item.author} 
-                        className="w-full h-full object-cover"
+          <ScrollReveal>
+            <h2 className="font-serif text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] text-[#1a2c4e] font-light max-w-4xl">
+              End-to-end plumbing
+              <span className="italic"> and </span>
+              industrial maintenance.
+            </h2>
+          </ScrollReveal>
+
+          {/* Services — alternating layout */}
+          <div className="mt-20 space-y-0">
+            {services.map((service, index) => {
+              const Icon = service.icon;
+              const isEven = index % 2 === 0;
+              return (
+                <ScrollReveal key={service.title} delay={0.05}>
+                  <motion.div
+                    data-cursor="Explore"
+                    className={`group grid lg:grid-cols-2 gap-0 border-t border-gray-200 ${
+                      isEven ? "" : "lg:direction-rtl"
+                    }`}
+                    whileHover={{ backgroundColor: "rgba(26, 44, 78, 0.02)" }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {/* Image */}
+                    <div className={`relative aspect-[4/3] lg:aspect-auto overflow-hidden ${isEven ? "" : "lg:order-2"}`}>
+                      <motion.img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute inset-0 bg-[#0a1628]/20 group-hover:bg-[#0a1628]/10 transition-colors duration-500" />
+                      <div className="absolute top-6 left-6">
+                        <span className="text-[10px] uppercase tracking-[0.3em] text-white/70 font-medium">
+                          0{index + 1}
+                        </span>
+                      </div>
                     </div>
-                    <p className="text-[15px] leading-relaxed text-white/90">"{item.quote}"</p>
-                    <div className="mt-5 flex items-center gap-3 border-t border-white/20 pt-4">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white">
-                        <Users className="h-5 w-5" aria-hidden="true" />
+
+                    {/* Content */}
+                    <div className={`flex flex-col justify-center p-8 md:p-12 lg:p-16 ${isEven ? "" : "lg:order-1"}`}>
+                      <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#b91c2a]/20 text-[#b91c2a] group-hover:bg-[#b91c2a] group-hover:text-white transition-all duration-500">
+                        <Icon className="h-5 w-5" />
+                      </div>
+
+                      <h3 className="mt-6 font-serif text-2xl md:text-3xl text-[#1a2c4e] font-light">
+                        {service.title}
+                      </h3>
+
+                      <p className="mt-4 text-base leading-relaxed text-gray-600 font-light">
+                        {service.description}
+                      </p>
+
+                      {/* Expandable features */}
+                      <AnimatePresence>
+                        {activeService === index && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+                            className="overflow-hidden"
+                          >
+                            <div className="pt-6 mt-6 border-t border-gray-100">
+                              <p className="text-sm text-gray-600 mb-4">{service.longDescription}</p>
+                              {service.features && (
+                                <ul className="space-y-2">
+                                  {service.features.map((feature, idx) => (
+                                    <li key={idx} className="flex items-center gap-3 text-sm text-gray-600">
+                                      <CheckCircle2 className="h-4 w-4 text-[#b91c2a] flex-shrink-0" />
+                                      {feature}
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+
+                      <button
+                        onClick={() => setActiveService(activeService === index ? null : index)}
+                        className="mt-8 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#b91c2a] group/btn"
+                        data-cursor={activeService === index ? "Close" : "View"}
+                      >
+                        <span>{activeService === index ? "Show Less" : "Learn More"}</span>
+                        <motion.span
+                          animate={{ rotate: activeService === index ? 90 : 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                        </motion.span>
+                      </button>
+                    </div>
+                  </motion.div>
+                </ScrollReveal>
+              );
+            })}
+            {/* Bottom border */}
+            <div className="border-t border-gray-200" />
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          CHAPTER 05 — Projects (Cinematic Gallery)
+          ═══════════════════════════════════════ */}
+      <section id="projects" className="relative py-32 md:py-40 bg-[#0a1628] text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <ScrollReveal>
+            <div className="flex items-center gap-6 mb-20">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#b91c2a] font-semibold">05</span>
+              <div className="h-[1px] flex-1 bg-white/20 max-w-[80px]" />
+              <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">Recent Work</span>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <h2 className="font-serif text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] font-light max-w-4xl">
+              Projects delivered with
+              <span className="italic text-[#b91c2a]"> high </span>
+              technical accuracy.
+            </h2>
+          </ScrollReveal>
+
+          {/* Projects */}
+          <div className="mt-20 space-y-0">
+            {projects.map((project, index) => (
+              <ScrollReveal key={project.title} delay={index * 0.1}>
+                <motion.div
+                  data-cursor="View Project"
+                  className="group grid lg:grid-cols-12 gap-8 items-center border-t border-white/10 py-10 cursor-pointer hover:bg-white/[0.02] transition-colors duration-500 px-4 -mx-4 rounded-sm"
+                >
+                  {/* Number */}
+                  <div className="lg:col-span-1">
+                    <span className="text-xs text-white/30 font-mono">0{index + 1}</span>
+                  </div>
+
+                  {/* Image */}
+                  <div className="lg:col-span-3">
+                    <div className="relative aspect-[16/10] overflow-hidden rounded-sm">
+                      <motion.img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-[#0a1628]/30 group-hover:bg-[#0a1628]/10 transition-colors duration-500" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="lg:col-span-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-[#b91c2a] font-semibold">
+                        {project.date}
+                      </span>
+                      <span className="w-1 h-1 rounded-full bg-white/30" />
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-white/40">
+                        {project.category}
+                      </span>
+                    </div>
+                    <h3 className="font-serif text-xl md:text-2xl font-light text-white group-hover:text-[#b91c2a] transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-white/50 mt-1 italic">{project.subtitle}</p>
+                  </div>
+
+                  {/* Summary */}
+                  <div className="lg:col-span-2">
+                    <p className="text-xs leading-relaxed text-white/40">{project.summary}</p>
+                  </div>
+
+                  {/* Arrow */}
+                  <div className="lg:col-span-1 flex justify-end">
+                    <motion.div
+                      className="h-10 w-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#b91c2a] group-hover:bg-[#b91c2a] transition-all duration-500"
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <ArrowRight className="h-4 w-4 text-white transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </ScrollReveal>
+            ))}
+            <div className="border-t border-white/10" />
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          CHAPTER 06 — Testimonials (Immersive)
+          ═══════════════════════════════════════ */}
+      <section className="relative py-32 md:py-40 bg-[#fafaf8] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <ScrollReveal>
+            <div className="flex items-center gap-6 mb-20">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#b91c2a] font-semibold">06</span>
+              <div className="h-[1px] flex-1 bg-[#b91c2a]/20 max-w-[80px]" />
+              <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400">Client Testimony</span>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <h2 className="font-serif text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] text-[#1a2c4e] font-light max-w-4xl">
+              Confidence that comes from
+              <span className="italic"> consistent </span>
+              delivery.
+            </h2>
+          </ScrollReveal>
+
+          {/* Testimonial Carousel */}
+          <div className="mt-20 relative">
+            <div className="relative min-h-[400px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTestimonial}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -40 }}
+                  transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+                  className="grid lg:grid-cols-2 gap-12 items-center"
+                >
+                  {/* Image */}
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
+                    <motion.img
+                      src={trustQuotes[activeTestimonial].image}
+                      alt={trustQuotes[activeTestimonial].author}
+                      className="w-full h-full object-cover"
+                      initial={{ scale: 1.1 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 1.2, ease: [0.25, 0.4, 0.25, 1] }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/60 to-transparent" />
+                    <div className="absolute bottom-6 left-6">
+                      <Quote className="h-8 w-8 text-[#b91c2a]" />
+                    </div>
+                  </div>
+
+                  {/* Quote */}
+                  <div>
+                    <div className="flex gap-1 mb-6">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-[#b91c2a] text-[#b91c2a]" />
+                      ))}
+                    </div>
+                    <blockquote className="font-serif text-xl md:text-2xl leading-relaxed text-[#1a2c4e] font-light italic">
+                      "{trustQuotes[activeTestimonial].quote}"
+                    </blockquote>
+                    <div className="mt-8 flex items-center gap-4">
+                      <div className="h-12 w-12 rounded-full bg-[#1a2c4e] flex items-center justify-center">
+                        <Users className="h-5 w-5 text-white" />
                       </div>
                       <div>
-                        <p className="text-sm font-semibold text-white">{item.author}</p>
-                        <p className="text-xs uppercase tracking-[0.16em] text-white/70">{item.role}</p>
+                        <p className="text-sm font-semibold text-[#1a2c4e]">
+                          {trustQuotes[activeTestimonial].author}
+                        </p>
+                        <p className="text-xs uppercase tracking-[0.15em] text-gray-500">
+                          {trustQuotes[activeTestimonial].role}
+                        </p>
                       </div>
                     </div>
-                  </article>
-                </RevealOnScroll>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Navigation */}
+            <div className="mt-12 flex items-center gap-6">
+              {trustQuotes.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveTestimonial(index)}
+                  className="group flex items-center gap-3"
+                  data-cursor="View"
+                >
+                  <div
+                    className={`h-[2px] transition-all duration-500 ${
+                      activeTestimonial === index
+                        ? "w-12 bg-[#b91c2a]"
+                        : "w-6 bg-gray-300 group-hover:bg-gray-400"
+                    }`}
+                  />
+                  <span
+                    className={`text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${
+                      activeTestimonial === index ? "text-[#b91c2a]" : "text-gray-400"
+                    }`}
+                  >
+                    0{index + 1}
+                  </span>
+                </button>
               ))}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section id="contact" className="section-slab section-rule py-20">
-          <div className="container-x grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-            <RevealOnScroll direction="right">
-              <div className="rounded-sm border border-[#dbe4ef] bg-white p-7 shadow-[0_14px_30px_rgba(15,23,42,0.1)]">
-                <p className="eyebrow">Contact & Location</p>
-                <h2 className="mt-3 font-display text-[clamp(26px,3vw,36px)] text-[#1a2c4e]">Plan Your Next Project With Our Team</h2>
-                <p className="mt-4 text-[14px] leading-relaxed text-gray-600">
-                  Reach out for a site survey, emergency support, or a preventive maintenance plan tailored to your operation.
+      {/* ═══════════════════════════════════════
+          CHAPTER 07 — Contact
+          ═══════════════════════════════════════ */}
+      <section id="contact" className="relative py-32 md:py-40 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <ScrollReveal>
+            <div className="flex items-center gap-6 mb-20">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#b91c2a] font-semibold">07</span>
+              <div className="h-[1px] flex-1 bg-[#b91c2a]/20 max-w-[80px]" />
+              <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400">Get In Touch</span>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+            <div>
+              <ScrollReveal>
+                <h2 className="font-serif text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] text-[#1a2c4e] font-light">
+                  Plan your next project
+                  <span className="italic"> with </span>
+                  our team.
+                </h2>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.1}>
+                <p className="mt-8 text-base leading-relaxed text-gray-600 font-light">
+                  Reach out for a site survey, emergency support, or a preventive
+                  maintenance plan tailored to your operation.
                 </p>
+              </ScrollReveal>
 
-                <div className="mt-8 space-y-4 text-[14px] text-gray-700">
-                  <a href="tel:0733699441" className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#b91c2a] rounded-lg p-2 -ml-2">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#1a2c4e] text-white group-hover:bg-[#b91c2a] transition-colors">
-                      <Phone className="h-4 w-4" aria-hidden="true" />
-                    </span>
-                    <span className="group-hover:text-[#b91c2a] transition-colors font-semibold">0733 699 441</span>
+              {/* Contact Details */}
+              <div className="mt-12 space-y-6">
+                <ScrollReveal delay={0.15}>
+                  <a
+                    href="tel:0733699441"
+                    data-cursor="Call"
+                    className="group flex items-center gap-5 p-4 -ml-4 rounded-sm hover:bg-[#1a2c4e]/[0.03] transition-colors duration-300"
+                  >
+                    <div className="h-12 w-12 rounded-full border border-[#1a2c4e]/20 flex items-center justify-center group-hover:border-[#b91c2a] group-hover:bg-[#b91c2a] transition-all duration-500">
+                      <Phone className="h-4 w-4 text-[#1a2c4e] group-hover:text-white transition-colors duration-500" />
+                    </div>
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.2em] text-gray-400">Phone</p>
+                      <p className="mt-1 text-base font-medium text-[#1a2c4e] group-hover:text-[#b91c2a] transition-colors duration-300">
+                        0733 699 441
+                      </p>
+                    </div>
                   </a>
-                  <a href="mailto:info@subgeo.co.ke" className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#b91c2a] rounded-lg p-2 -ml-2">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#1a2c4e] text-white group-hover:bg-[#b91c2a] transition-colors">
-                      <Mail className="h-4 w-4" aria-hidden="true" />
-                    </span>
-                    <span className="group-hover:text-[#b91c2a] transition-colors font-semibold">info@subgeo.co.ke</span>
+                </ScrollReveal>
+
+                <ScrollReveal delay={0.2}>
+                  <a
+                    href="mailto:info@subgeo.co.ke"
+                    data-cursor="Email"
+                    className="group flex items-center gap-5 p-4 -ml-4 rounded-sm hover:bg-[#1a2c4e]/[0.03] transition-colors duration-300"
+                  >
+                    <div className="h-12 w-12 rounded-full border border-[#1a2c4e]/20 flex items-center justify-center group-hover:border-[#b91c2a] group-hover:bg-[#b91c2a] transition-all duration-500">
+                      <Mail className="h-4 w-4 text-[#1a2c4e] group-hover:text-white transition-colors duration-500" />
+                    </div>
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.2em] text-gray-400">Email</p>
+                      <p className="mt-1 text-base font-medium text-[#1a2c4e] group-hover:text-[#b91c2a] transition-colors duration-300">
+                        info@subgeo.co.ke
+                      </p>
+                    </div>
                   </a>
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#1a2c4e] text-white">
-                      <MapPin className="h-4 w-4" aria-hidden="true" />
-                    </span>
-                    <address className="not-italic">
-                      <p className="font-semibold">P.O. Box 48230-00100</p>
-                      <p className="text-sm text-gray-600">Nairobi, Kenya</p>
-                    </address>
+                </ScrollReveal>
+
+                <ScrollReveal delay={0.25}>
+                  <div className="group flex items-center gap-5 p-4 -ml-4 rounded-sm">
+                    <div className="h-12 w-12 rounded-full border border-[#1a2c4e]/20 flex items-center justify-center">
+                      <MapPin className="h-4 w-4 text-[#1a2c4e]" />
+                    </div>
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.2em] text-gray-400">Location</p>
+                      <address className="mt-1 text-base font-medium text-[#1a2c4e] not-italic">
+                        P.O. Box 48230-00100, Nairobi, Kenya
+                      </address>
+                    </div>
                   </div>
-                </div>
-
-                <Link
-                  to="/contact"
-                  className="mt-8 inline-flex items-center gap-2 bg-[#b91c2a] hover:bg-[#8f1520] px-7 py-3 text-xs font-bold tracking-[0.2em] text-white transition-all duration-300 hover:shadow-xl rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b91c2a] focus:ring-offset-2"
-                >
-                  CONTACT US
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
+                </ScrollReveal>
               </div>
-            </RevealOnScroll>
 
-            <RevealOnScroll direction="left">
-              <div className="overflow-hidden rounded-sm border border-[#dbe4ef] bg-white p-2 shadow-[0_14px_30px_rgba(15,23,42,0.1)]">
+              {/* CTA */}
+              <ScrollReveal delay={0.3}>
+                <div className="mt-12">
+                  <MagneticButton strength={0.15}>
+                    <Link
+                      to="/contact"
+                      data-cursor="Start"
+                      className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#b91c2a] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-500 hover:shadow-[0_0_40px_rgba(185,28,42,0.3)]"
+                    >
+                      <span className="relative z-10 flex items-center gap-3">
+                        Schedule A Visit
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
+                      <div className="absolute inset-0 bg-[#8f1520] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                    </Link>
+                  </MagneticButton>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* Map */}
+            <ScrollReveal direction="left" delay={0.2}>
+              <div className="relative h-full min-h-[500px] overflow-hidden rounded-sm">
                 <iframe
                   title="Subgeo location map - Nairobi, Kenya"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255281.45975638997!2d36.656375!3d-1.286389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7996dbaaaa9100"
                   width="100%"
                   height="100%"
-                  className="h-[360px] w-full rounded-sm"
-                  style={{ border: 0 }}
+                  className="absolute inset-0 w-full h-full"
+                  style={{ border: 0, filter: "grayscale(0.3) contrast(1.1)" }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-
-                <div className="grid gap-3 border-t border-[#e2e8f0] p-4 text-[12px] text-gray-600 sm:grid-cols-3">
-                  <p className="flex items-center gap-2">
-                    <Clock3 className="h-4 w-4 text-[#b91c2a]" aria-hidden="true" />
-                    Mon - Fri: 7:30 AM - 5:30 PM
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <Droplets className="h-4 w-4 text-[#b91c2a]" aria-hidden="true" />
-                    Preventive maintenance plans
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <ShieldCheck className="h-4 w-4 text-[#b91c2a]" aria-hidden="true" />
-                    Safety-compliant execution
-                  </p>
+                {/* Map overlay info */}
+                <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm p-6 border-t border-gray-100">
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <Clock3 className="h-4 w-4 text-[#b91c2a] mx-auto mb-2" />
+                      <p className="text-[10px] uppercase tracking-[0.15em] text-gray-500">Hours</p>
+                      <p className="text-xs font-medium text-[#1a2c4e] mt-1">Mon-Fri 7:30-5:30</p>
+                    </div>
+                    <div>
+                      <Droplets className="h-4 w-4 text-[#b91c2a] mx-auto mb-2" />
+                      <p className="text-[10px] uppercase tracking-[0.15em] text-gray-500">Service</p>
+                      <p className="text-xs font-medium text-[#1a2c4e] mt-1">Preventive Plans</p>
+                    </div>
+                    <div>
+                      <ShieldCheck className="h-4 w-4 text-[#b91c2a] mx-auto mb-2" />
+                      <p className="text-[10px] uppercase tracking-[0.15em] text-gray-500">Safety</p>
+                      <p className="text-xs font-medium text-[#1a2c4e] mt-1">Compliant</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </RevealOnScroll>
+            </ScrollReveal>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="section-shell py-16">
-          <div className="container-x">
-            <RevealOnScroll direction="up">
-              <div className="rounded-sm border border-[#f5a2a2] bg-[linear-gradient(120deg,#fff7f7_0%,#ffe8e8_55%,#ffd7d7_100%)] p-8 text-center shadow-[0_16px_34px_rgba(185,28,40,0.16)] md:p-10">
-                <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#b91c2a]">Need Immediate Assistance?</p>
-                <h3 className="mt-3 font-display text-[clamp(26px,3.2vw,38px)] text-[#7f1d1d]">Book A Technical Assessment Today</h3>
-                <p className="mx-auto mt-4 max-w-2xl text-[14px] leading-relaxed text-[#7f1d1d]/85">
-                  Let our engineers assess your current plumbing systems and provide a practical, cost-aware improvement plan.
-                </p>
-                <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center gap-2 bg-[#b91c2a] hover:bg-[#8f1520] px-7 py-3 text-xs font-bold tracking-[0.2em] text-white transition-all duration-300 hover:shadow-xl rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b91c2a] focus:ring-offset-2"
-                  >
-                    SCHEDULE VISIT
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                  <button
-                    onClick={() => scrollToSection("services")}
-                    className="inline-flex items-center gap-2 border-2 border-[#b91c2a] px-7 py-3 text-xs font-bold tracking-[0.2em] text-[#b91c2a] transition-all duration-300 hover:bg-[#b91c2a] hover:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b91c2a]"
-                  >
-                    VIEW SERVICES
-                  </button>
-                </div>
-              </div>
-            </RevealOnScroll>
-          </div>
-        </section>
+      {/* ═══════════════════════════════════════
+          FINAL CTA — Cinematic
+          ═══════════════════════════════════════ */}
+      <section className="relative py-32 md:py-40 overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0">
+          <img
+            src={commercialImg}
+            alt=""
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-[#0a1628]/90" />
+        </div>
 
-        <Footer />
-      </main>
+        <div className="relative max-w-4xl mx-auto px-6 md:px-12 text-center">
+          <ScrollReveal>
+            <p className="text-xs uppercase tracking-[0.3em] text-[#b91c2a] font-semibold">
+              Need Immediate Assistance?
+            </p>
+          </ScrollReveal>
 
-      {/* Custom CSS for animations */}
+          <ScrollReveal delay={0.1}>
+            <h2 className="mt-6 font-serif text-[clamp(2rem,5vw,4rem)] leading-[1.1] text-white font-light">
+              Book a technical
+              <span className="italic"> assessment </span>
+              today.
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2}>
+            <p className="mt-6 text-base leading-relaxed text-white/60 font-light max-w-2xl mx-auto">
+              Let our engineers assess your current plumbing systems and provide a practical,
+              cost-aware improvement plan.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.3}>
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5">
+              <MagneticButton strength={0.15}>
+                <Link
+                  to="/contact"
+                  data-cursor="Book Now"
+                  className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-[#b91c2a] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-500 hover:shadow-[0_0_40px_rgba(185,28,42,0.4)]"
+                >
+                  <span className="relative z-10 flex items-center gap-3">
+                    Schedule Visit
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                </Link>
+              </MagneticButton>
+
+              <MagneticButton strength={0.15}>
+                <button
+                  onClick={() => scrollToSection("services")}
+                  data-cursor="View"
+                  className="group flex items-center gap-3 rounded-full border border-white/30 px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-all duration-500 hover:bg-white/10 hover:border-white/60"
+                >
+                  View Services
+                </button>
+              </MagneticButton>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <Footer />
+
+      {/* ═══════════════════════════════════════
+          GLOBAL STYLES
+          ═══════════════════════════════════════ */}
       <style>{`
-        @keyframes floatIn1 {
-          0% {
-            opacity: 0;
-            transform: translateY(50px) translateX(-30px) scale(0.8);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0) translateX(0) scale(1);
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        .font-serif {
+          font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        body {
+          font-family: 'Inter', system-ui, sans-serif;
+          cursor: none;
+        }
+
+        @media (max-width: 768px) {
+          body {
+            cursor: auto;
           }
         }
-        
-        @keyframes floatIn2 {
-          0% {
-            opacity: 0;
-            transform: translateY(-50px) translateX(30px) scale(0.8);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0) translateX(0) scale(1);
-          }
+
+        /* Smooth scrolling */
+        html {
+          scroll-behavior: smooth;
         }
-        
-        @keyframes floatIn3 {
-          0% {
-            opacity: 0;
-            transform: translateY(50px) translateX(-20px) scale(0.8);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0) translateX(0) scale(1);
-          }
+
+        /* Selection color */
+        ::selection {
+          background: rgba(185, 28, 42, 0.2);
+          color: #1a2c4e;
         }
-        
-        @keyframes floatIn4 {
-          0% {
-            opacity: 0;
-            transform: translateY(-30px) translateX(20px) scale(0.8);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0) translateX(0) scale(1);
-          }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+          width: 6px;
         }
-        
-        @keyframes float1 {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-15px);
-          }
+        ::-webkit-scrollbar-track {
+          background: #fafaf8;
         }
-        
-        @keyframes float2 {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(15px);
-          }
+        ::-webkit-scrollbar-thumb {
+          background: #b91c2a;
+          border-radius: 3px;
         }
-        
-        @keyframes float3 {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-        
-        @keyframes float4 {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(10px);
-          }
-        }
-        
-        @keyframes pulse {
-          0%, 100% {
-            opacity: 0.2;
-            transform: translate(-50%, -50%) scale(1);
-          }
-          50% {
-            opacity: 0.4;
-            transform: translate(-50%, -50%) scale(1.1);
-          }
+
+        /* Grain animation */
+        @keyframes grain {
+          0%, 100% { transform: translate(0, 0); }
+          10% { transform: translate(-5%, -10%); }
+          20% { transform: translate(-15%, 5%); }
+          30% { transform: translate(7%, -25%); }
+          40% { transform: translate(-5%, 25%); }
+          50% { transform: translate(-15%, 10%); }
+          60% { transform: translate(15%, 0%); }
+          70% { transform: translate(0%, 15%); }
+          80% { transform: translate(3%, 35%); }
+          90% { transform: translate(-10%, 10%); }
         }
       `}</style>
-    </PageTransition>
-  );
-}
-
-// Service Card Component with Expandable Content
-function ServiceCard({ 
-  service, 
-  index,
-  isOpen,
-  onToggle 
-}: { 
-  service: IconCardItem; 
-  index: number;
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
-  const Icon = service.icon;
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <RevealOnScroll delay={index * 0.08} direction="up">
-      <article className="group relative h-full overflow-hidden rounded-sm border border-[#dbe4ef] bg-white p-6 shadow-[0_12px_26px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(15,23,42,0.12)]">
-        <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-[#b91c2a] via-[#e0292e] to-[#f97373]" />
-        
-        {service.image && (
-          <div className="relative h-40 overflow-hidden rounded-sm mb-4 -mx-6 -mt-6">
-            <img 
-              src={service.image} 
-              alt={service.title} 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          </div>
-        )}
-        
-        <div className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#1a2c4e] text-white transition-colors group-hover:bg-[#b91c2a]">
-          <Icon className="h-5 w-5" aria-hidden="true" />
-        </div>
-        <h3 className="mt-5 text-base font-bold uppercase tracking-[0.08em] text-[#1a2c4e]">{service.title}</h3>
-        <p className="mt-3 text-[14px] leading-relaxed text-gray-600">{service.description}</p>
-        
-        {/* Expandable Content */}
-        <div 
-          ref={contentRef}
-          className={`overflow-hidden transition-all duration-500 ease-in-out ${
-            isOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="border-t border-gray-100 pt-4">
-            {service.longDescription && (
-              <p className="text-sm text-gray-700 mb-4">
-                {service.longDescription}
-              </p>
-            )}
-            {service.features && (
-              <ul className="space-y-2" role="list">
-                {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-2 text-sm text-gray-600">
-                    <CheckCircle2 className="h-4 w-4 text-[#b91c2a] flex-shrink-0" aria-hidden="true" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-
-        <button
-          onClick={onToggle}
-          className="mt-6 w-full flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#b91c2a] hover:text-[#8f1520] transition-colors focus:outline-none focus:ring-2 focus:ring-[#b91c2a] rounded-lg"
-          aria-expanded={isOpen}
-          aria-controls={`service-details-${index}`}
-        >
-          {isOpen ? "Show Less" : "Learn More"}
-          {isOpen ? <ChevronUp className="h-4 w-4" aria-hidden="true" /> : <ArrowRight className="h-4 w-4" aria-hidden="true" />}
-        </button>
-      </article>
-    </RevealOnScroll>
+    </div>
   );
 }
 
