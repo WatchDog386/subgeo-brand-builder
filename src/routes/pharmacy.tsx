@@ -266,12 +266,6 @@ function PharmacyPage() {
               </p>
             </div>
           </div>
-
-          <div className="mt-16 pt-4 flex justify-center">
-            <Button className="rounded-full bg-[#22c55e] hover:bg-[#16a34a] text-white h-[50px] px-10 font-semibold text-[13px] uppercase tracking-wider shadow-sm">
-              How It Works
-            </Button>
-          </div>
         </div>
       </section>
 
@@ -490,17 +484,15 @@ function PharmacyPage() {
                     Discover The Transformative Power of Subgeo Pharmacy!
                   </h2>
                   
-                  {/* Button with Cart Icon */}
-                  <div className="relative inline-flex items-center group cursor-pointer mt-2 pl-4">
-                     {/* Cart Circle overlay */}
+                  {/* Badge with Shield Icon */}
+                  <div className="relative inline-flex items-center mt-2 pl-4 pointer-events-none">
+                     {/* Icon Circle overlay */}
                      <div className="absolute left-[-5px] w-[54px] h-[54px] bg-white rounded-full flex items-center justify-center shadow-md z-10 border border-gray-100">
-                        <svg className="w-6 h-6 text-[#3b71ad]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                           <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0L5.5 19h13m-2-6V6m-6 7V6m-6 7V6"></path>
-                        </svg>
+                        <Shield className="w-6 h-6 text-[#3b71ad]" strokeWidth={2} />
                      </div>
-                     {/* Pill Button background */}
-                     <div className="bg-[#467ab6] text-white font-bold text-[14px] lg:text-[15px] tracking-widest uppercase pl-[56px] pr-8 py-3.5 lg:py-4 rounded-r-full rounded-l-full shadow-lg group-hover:bg-[#326198] transition-colors relative z-0">
-                        Shop Now
+                     {/* Pill Badge background */}
+                     <div className="bg-[#467ab6] text-white font-bold text-[14px] lg:text-[15px] tracking-widest uppercase pl-[56px] pr-8 py-3.5 lg:py-4 rounded-r-full rounded-l-full shadow-lg relative z-0">
+                        Trusted Care
                      </div>
                   </div>
                </div>
@@ -552,10 +544,10 @@ function PharmacyPage() {
               <p className="text-[#4b5563] text-[13px] leading-relaxed mb-8 flex-grow">
                 List of Products, Premises, Professionals, Clinical Trials, Safety Reports
               </p>
-              <a href="#" className="flex items-center justify-center gap-2 text-[#71d340] font-sans font-[900] tracking-tight text-[13px] hover:text-[#5ab132] transition-colors uppercase">
+              <Link to="/about" className="flex items-center justify-center gap-2 text-[#71d340] font-sans font-[900] tracking-tight text-[13px] hover:text-[#5ab132] transition-colors uppercase">
                 <ArrowRight className="w-4 h-4" />
                 LEARN MORE
-              </a>
+              </Link>
               {/* Bottom Dash */}
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#71d340]"></div>
             </div>
@@ -569,10 +561,10 @@ function PharmacyPage() {
               <p className="text-[#4b5563] text-[13px] leading-relaxed mb-8 flex-grow">
                 Policy Documents, Laws, Processes, Instructions to Applicants
               </p>
-              <a href="#" className="flex items-center justify-center gap-2 text-[#71d340] font-sans font-[900] tracking-tight text-[13px] hover:text-[#5ab132] transition-colors uppercase">
+              <Link to="/about" className="flex items-center justify-center gap-2 text-[#71d340] font-sans font-[900] tracking-tight text-[13px] hover:text-[#5ab132] transition-colors uppercase">
                 <ArrowRight className="w-4 h-4" />
                 LEARN MORE
-              </a>
+              </Link>
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#71d340]"></div>
             </div>
 
@@ -585,10 +577,10 @@ function PharmacyPage() {
               <p className="text-[#4b5563] text-[13px] leading-relaxed mb-8 flex-grow">
                 Support for public participation in governance ascribed to by the Constitution of Kenya 2010
               </p>
-              <a href="#" className="flex items-center justify-center gap-2 text-[#71d340] font-sans font-[900] tracking-tight text-[13px] hover:text-[#5ab132] transition-colors uppercase">
+              <Link to="/about" className="flex items-center justify-center gap-2 text-[#71d340] font-sans font-[900] tracking-tight text-[13px] hover:text-[#5ab132] transition-colors uppercase">
                 <ArrowRight className="w-4 h-4" />
                 LEARN MORE
-              </a>
+              </Link>
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#71d340]"></div>
             </div>
 
@@ -601,10 +593,10 @@ function PharmacyPage() {
               <p className="text-[#4b5563] text-[13px] leading-relaxed mb-8 flex-grow">
                 PRIMS, Practice, CPD, Clinical Trials, Pharmacovigilance, Transporters
               </p>
-              <a href="#" className="flex items-center justify-center gap-2 text-[#71d340] font-sans font-[900] tracking-tight text-[13px] hover:text-[#5ab132] transition-colors uppercase">
+              <Link to="/about" className="flex items-center justify-center gap-2 text-[#71d340] font-sans font-[900] tracking-tight text-[13px] hover:text-[#5ab132] transition-colors uppercase">
                 <ArrowRight className="w-4 h-4" />
                 LEARN MORE
-              </a>
+              </Link>
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#71d340]"></div>
             </div>
 
