@@ -175,12 +175,14 @@ export function HeroSection() {
       <div className="container-x pt-36 pb-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
           <div className="pt-20 lg:pt-32">
-            <h1 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-primary">
-              Providing kenyan`s<br />
-              With Realiable and <br />
-              Quality Services
+            <h1 className="font-sans text-[clamp(28px,3vw,52px)] leading-[1.1] font-medium text-primary mb-1">
+              Providing Kenyans
             </h1>
-            <p className="mt-5 text-[13px] md:text-sm text-gray-600 max-w-xl">
+            <h2 className="font-sans text-[clamp(28px,4vw,60px)] leading-[1.1] tracking-tighter font-[900] text-primary">
+              With Reliable and <br />
+              Quality Services
+            </h2>
+            <p className="mt-5 text-[13px] md:text-[15px] font-sans text-gray-600 max-w-xl">
              As a premier holding company based in Kenya, Subgeo Holding Limited delivers comprehensive, high-quality services and infrastructure solutions tailored to drive progress, reliability, and innovation across the region.
             </p>
             <div className="mt-7 flex flex-col sm:flex-row gap-4">
@@ -215,19 +217,19 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Image section - PERFECT POSITIONING */}
-          <div className="relative flex justify-center min-h-[400px] lg:min-h-[600px] mt-10 lg:mt-0">
-            {/* Blue Circle - smaller and moved right towards red ribbon */}
-            <div className="absolute top-10 lg:top-16 left-4 lg:left-12 h-[220px] w-[220px] lg:h-[320px] lg:w-[320px] rounded-full bg-[#223a5c] z-0" />
+          {/* Image section */}
+          <div className="relative flex justify-center min-h-[400px] lg:min-h-[500px] mt-10 lg:mt-0">
+            {/* Blue Circle */}
+            <div className="absolute top-10 lg:top-16 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-12 h-[220px] w-[220px] lg:h-[320px] lg:w-[320px] rounded-full bg-[#223a5c] z-0" />
             
             {/* Red Vertical Ribbon - wider, extends from navbar to cards */}
-            <div className="absolute -top-10 lg:-top-20 right-4 lg:right-20 w-24 lg:w-40 h-[480px] lg:h-[720px] bg-[#e0292e] z-0" />
+            <div className="absolute -top-20 lg:-top-32 right-4 lg:right-20 w-24 lg:w-40 h-[400px] lg:h-[600px] bg-[#e0292e] z-0" />
             
-            {/* Person Image - moved up, behind cards, bottom aligned with ribbon and circle */}
+            {/* Person Image - moved down to exactly touch the bottom line */}
             <motion.img
               src={heroImg}
               alt="Technician"
-              className="absolute z-10 -top-10 lg:-top-20 left-1/2 -translate-x-1/2 h-[480px] lg:h-[720px] w-full max-w-[320px] lg:max-w-[480px] object-contain object-bottom"
+              className="absolute z-10 bottom-0 left-1/2 -translate-x-1/2 h-[400px] lg:h-[600px] w-full max-w-[280px] lg:max-w-[440px] object-contain object-bottom"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -249,12 +251,12 @@ export function HeroSection() {
                   <path d="M12 7v5l4.25 2.52.75-1.23-3.5-2.07V7z" />
                 </svg>
               </div>
-              <span className="text-[13px] lg:text-[18px] tracking-tight font-display font-bold text-[#e0292e]">Same Day Service</span>
+              <span className="text-[13px] lg:text-[18px] tracking-tight font-sans font-bold text-[#e0292e]">Same Day Service</span>
             </motion.div>
             
             {/* 4.9 Stars Badge - HIGHEST z-index, in front */}
             <motion.div 
-              className="absolute top-[320px] lg:top-[480px] right-8 lg:right-16 px-4 py-3 lg:px-6 lg:py-4 bg-white shadow-xl rounded-2xl z-30 border border-gray-50/50"
+              className="absolute top-[320px] lg:top-[480px] right-12 lg:right-24 px-4 py-3 lg:px-6 lg:py-4 bg-white shadow-xl rounded-2xl z-30 border border-gray-50/50"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
