@@ -304,7 +304,7 @@ function SubgeoIndustrial() {
               className="mb-6"
             >
               <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2">
-                <span className="flex h-2 w-2 rounded-full bg-[#2563eb] animate-pulse"></span>
+                <span className="flex h-2 w-2 rounded-full bg-[#eb255a] animate-pulse"></span>
                 <span className="text-sm font-medium text-white">Available 24/7 for Emergencies</span>
               </div>
             </motion.div>
@@ -317,7 +317,7 @@ function SubgeoIndustrial() {
             >
               Precision Plumbing
               <br />
-              <span className="text-[#2563eb]">& Industrial Solutions</span>
+              <span className="text-[#eb255a]">& Industrial Solutions</span>
             </motion.h1>
 
             <motion.p
@@ -338,7 +338,7 @@ function SubgeoIndustrial() {
             >
               <button
                 onClick={() => scrollToSection("services")}
-                className="rounded-lg bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-8 py-4 text-sm font-semibold uppercase tracking-wide transition-all duration-300 flex items-center justify-center gap-2"
+                className="rounded-lg bg-[#eb255a] hover:bg-[#1d4ed8] text-white px-8 py-4 text-sm font-semibold uppercase tracking-wide transition-all duration-300 flex items-center justify-center gap-2"
               >
                 Explore Services
                 <ArrowRight className="h-4 w-4" />
@@ -378,7 +378,7 @@ function SubgeoIndustrial() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="text-sm font-semibold uppercase tracking-wider text-[#2563eb] mb-3">Trusted Performance</p>
+              <p className="text-sm font-semibold uppercase tracking-wider text-[#eb255a] mb-3">Trusted Performance</p>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1628]">
                 Trusted by teams that cannot afford downtime
               </h2>
@@ -389,7 +389,7 @@ function SubgeoIndustrial() {
             {trustMetrics.map((item, index) => (
               <ScrollReveal key={item.label} delay={index * 0.1}>
                 <div className="bg-white rounded-lg p-8 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
-                  <p className="text-4xl md:text-5xl font-bold text-[#2563eb] mb-2">
+                  <p className="text-4xl md:text-5xl font-bold text-[#eb255a] mb-2">
                     <AnimatedCounter value={item.value} suffix={item.suffix} />
                   </p>
                   <p className="text-sm font-medium text-gray-600 uppercase tracking-wide">
@@ -408,7 +408,7 @@ function SubgeoIndustrial() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <ScrollReveal>
-                <p className="text-sm font-semibold uppercase tracking-wider text-[#2563eb] mb-3">About Subgeo Industrial</p>
+                <p className="text-sm font-semibold uppercase tracking-wider text-[#eb255a] mb-3">About Subgeo Industrial</p>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1628] leading-tight mb-6">
                   Built on professional discipline since 2012
                 </h2>
@@ -439,7 +439,7 @@ function SubgeoIndustrial() {
                   className="w-full h-[500px] object-cover rounded-lg shadow-lg"
                   loading="lazy"
                 />
-                <div className="absolute -bottom-6 -left-6 bg-[#2563eb] p-6 rounded-lg shadow-xl max-w-[200px]">
+                <div className="absolute -bottom-6 -left-6 bg-#eb255a] p-6 rounded-lg shadow-xl max-w-[200px]">
                   <p className="text-3xl font-bold text-white mb-1">12+</p>
                   <p className="text-xs font-medium text-white/90 uppercase tracking-wide">
                     Years of reliable delivery
@@ -455,8 +455,8 @@ function SubgeoIndustrial() {
               const Icon = item.icon;
               return (
                 <ScrollReveal key={item.title} delay={index * 0.1}>
-                  <div className="bg-gray-50 rounded-lg p-8 hover:bg-[#2563eb] group transition-colors duration-300">
-                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#2563eb] text-white group-hover:bg-white group-hover:text-[#2563eb] transition-colors duration-300 mb-4">
+                  <div className="bg-gray-50 rounded-lg p-8 hover:bg-[#eb255a] group transition-colors duration-300">
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#eb255a] text-white group-hover:bg-white group-hover:text-[#eb255a] transition-colors duration-300 mb-4">
                       <Icon className="h-6 w-6" />
                     </div>
                     <h3 className="text-xl font-bold text-[#0a1628] group-hover:text-white mb-3 transition-colors duration-300">
@@ -479,7 +479,7 @@ function SubgeoIndustrial() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             <div>
               <ScrollReveal>
-                <p className="text-sm font-semibold uppercase tracking-wider text-[#2563eb] mb-3">Industries We Serve</p>
+                <p className="text-sm font-semibold uppercase tracking-wider text-[#eb255a] mb-3">Industries We Serve</p>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1628] leading-tight mb-6">
                   Reliable solutions across critical sectors
                 </h2>
@@ -493,8 +493,8 @@ function SubgeoIndustrial() {
               </ScrollReveal>
 
               <ScrollReveal delay={0.2}>
-                <div className="border-l-4 border-[#2563eb] pl-6 bg-white p-6 rounded-r-lg">
-                  <p className="text-sm font-bold uppercase tracking-wider text-[#2563eb] mb-2">
+                <div className="border-l-4 border-[#eb255a] pl-6 bg-white p-6 rounded-r-lg">
+                  <p className="text-sm font-bold uppercase tracking-wider text-[#eb255a] mb-2">
                     Service Promise
                   </p>
                   <p className="text-sm text-gray-600 leading-relaxed">
@@ -527,7 +527,7 @@ function SubgeoIndustrial() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="text-sm font-semibold uppercase tracking-wider text-[#2563eb] mb-3">Core Services</p>
+              <p className="text-sm font-semibold uppercase tracking-wider text-[#eb255a] mb-3">Core Services</p>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1628]">
                 End-to-end plumbing and industrial maintenance
               </h2>
@@ -553,7 +553,7 @@ function SubgeoIndustrial() {
                       </div>
                     )}
                     <div className="p-6">
-                      <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#2563eb] text-white mb-4">
+                      <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#eb255a] text-white mb-4">
                         <Icon className="h-6 w-6" />
                       </div>
                       <h3 className="text-xl font-bold text-[#0a1628] mb-3">{service.title}</h3>
@@ -681,14 +681,14 @@ function SubgeoIndustrial() {
                 >
                   <div className="flex gap-1 mb-6">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-[#2563eb] text-[#2563eb]" />
+                      <Star key={i} className="h-5 w-5 fill-[#eb255a] text-[#2563eb]" />
                     ))}
                   </div>
                   <blockquote className="text-xl md:text-2xl text-[#0a1628] leading-relaxed mb-8 font-medium">
                     "{trustQuotes[activeTestimonial].quote}"
                   </blockquote>
                   <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-[#2563eb] flex items-center justify-center">
+                    <div className="h-12 w-12 rounded-full bg-[#eb255a] flex items-center justify-center">
                       <Users className="h-6 w-6 text-white" />
                     </div>
                     <div>
@@ -711,7 +711,7 @@ function SubgeoIndustrial() {
                   onClick={() => setActiveTestimonial(index)}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     activeTestimonial === index
-                      ? "w-12 bg-[#2563eb]"
+                      ? "w-12 bg-[#eb255a]"
                       : "w-2 bg-gray-300 hover:bg-gray-400"
                   }`}
                   aria-label={`View testimonial ${index + 1}`}
@@ -747,7 +747,7 @@ function SubgeoIndustrial() {
                     href="tel:0733699441"
                     className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors group"
                   >
-                    <div className="h-12 w-12 rounded-lg bg-[#2563eb] flex items-center justify-center group-hover:bg-[#1d4ed8] transition-colors">
+                    <div className="h-12 w-12 rounded-lg bg-[#eb255a] flex items-center justify-center group-hover:bg-[#1d4ed8] transition-colors">
                       <Phone className="h-5 w-5 text-white" />
                     </div>
                     <div>
@@ -795,7 +795,7 @@ function SubgeoIndustrial() {
                 <div className="mt-8">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-8 py-4 text-sm font-semibold uppercase tracking-wide rounded-lg transition-all duration-300"
+                    className="inline-flex items-center gap-2 bg-[#eb255a] hover:bg-[#1d4ed8] text-white px-8 py-4 text-sm font-semibold uppercase tracking-wide rounded-lg transition-all duration-300"
                   >
                     Schedule A Visit
                     <ArrowRight className="h-4 w-4" />
@@ -820,17 +820,17 @@ function SubgeoIndustrial() {
                 <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm p-6 border-t border-gray-200">
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <Clock3 className="h-5 w-5 text-[#2563eb] mx-auto mb-2" />
+                      <Clock3 className="h-5 w-5 text-[#eb255a] mx-auto mb-2" />
                       <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Hours</p>
                       <p className="text-sm font-bold text-[#0a1628] mt-1">Mon-Fri 7:30-5:30</p>
                     </div>
                     <div>
-                      <Droplets className="h-5 w-5 text-[#2563eb] mx-auto mb-2" />
+                      <Droplets className="h-5 w-5 text-[#eb255a] mx-auto mb-2" />
                       <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Service</p>
                       <p className="text-sm font-bold text-[#0a1628] mt-1">Preventive Plans</p>
                     </div>
                     <div>
-                      <ShieldCheck className="h-5 w-5 text-[#2563eb] mx-auto mb-2" />
+                      <ShieldCheck className="h-5 w-5 text-[#eb255a] mx-auto mb-2" />
                       <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Safety</p>
                       <p className="text-sm font-bold text-[#0a1628] mt-1">Compliant</p>
                     </div>
@@ -856,7 +856,7 @@ function SubgeoIndustrial() {
 
         <div className="relative max-w-4xl mx-auto px-6 md:px-12 text-center">
           <ScrollReveal>
-            <p className="text-sm font-semibold uppercase tracking-wider text-[#2563eb] mb-4">
+            <p className="text-sm font-semibold uppercase tracking-wider text-[#eb255a] mb-4">
               Need Immediate Assistance?
             </p>
           </ScrollReveal>
@@ -878,7 +878,7 @@ function SubgeoIndustrial() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-8 py-4 text-sm font-semibold uppercase tracking-wide rounded-lg transition-all duration-300"
+                className="inline-flex items-center gap-2 bg-[#eb255a] hover:bg-[#1d4ed8] text-white px-8 py-4 text-sm font-semibold uppercase tracking-wide rounded-lg transition-all duration-300"
               >
                 Schedule Visit
                 <ArrowRight className="h-4 w-4" />
@@ -901,7 +901,7 @@ function SubgeoIndustrial() {
           scroll-behavior: smooth;
         }
         ::selection {
-          background: rgba(37, 99, 235, 0.2);
+          background: rgba(235, 37, 90, 0.2);
           color: #0a1628;
         }
       `}</style>
