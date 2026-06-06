@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageTransition, ScrollProgressBar } from "@/components/premium/PremiumAnimations";
 import { Footer } from "@/components/site/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
+<<<<<<< HEAD
 import { WhyUsSection } from "@/components/home/WhyUsSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
@@ -12,6 +13,16 @@ import { VisitUsTodaySection } from "@/components/home/VisitUsTodaySection";
 import { PillarsSection } from "@/components/home/PillarsSection";
 import { ValuesMissionSection } from "@/components/home/ValuesMissionSection";
 import { FAQSection } from "@/components/home/FAQSection";
+=======
+import { StorySection } from "@/components/home/StorySection";
+import { TestimonialsSection } from "@/components/home/TestimonialsSection";
+import { ServicesSection } from "@/components/home/ServicesSection";
+import { ImpactStatsSection } from "@/components/home/ImpactStatsSection";
+import { WhyUsSection } from "@/components/home/WhyUsSection";
+import { BranchesGridSection } from "@/components/home/BranchesGridSection";
+import { PillarsSection } from "@/components/home/PillarsSection";
+import { ValuesMissionSection } from "@/components/home/ValuesMissionSection";
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
 import { NewsAndInsightsSection } from "@/components/home/NewsAndInsightsSection";
 import { PremiumCTASection } from "@/components/home/PremiumCTASection";
 // (Removed Subgeo Industrial imports)
@@ -38,6 +49,7 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
+<<<<<<< HEAD
     <PageTransition className="min-h-screen bg-background text-foreground overflow-x-clip relative">
       <ScrollProgressBar />
       <HeroSection />
@@ -54,6 +66,27 @@ function Home() {
         <NewsAndInsightsSection />
         <PremiumCTASection />
         <VisitUsTodaySection />
+=======
+    <PageTransition className="min-h-screen bg-background page-texture text-foreground overflow-x-clip relative">
+      <ScrollProgressBar />
+      <HeroSection />
+      <div className="home-page-scale">
+        <ServicesSection />
+        <StorySection />
+        <WhyUsSection />
+         <ImpactStatsSection />
+        <TestimonialsSection />
+        <ValuesMissionSection />
+        
+       
+        
+        <BranchesGridSection />
+     
+        
+        <NewsAndInsightsSection />
+           <PillarsSection />
+        <PremiumCTASection />
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
         <Footer />
       </div>
     </PageTransition>

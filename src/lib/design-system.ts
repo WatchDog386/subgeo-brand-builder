@@ -160,7 +160,11 @@ export const shadows = {
   md: "0 4px 6px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.06)",
   lg: "0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05)",
   xl: "0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04)",
+<<<<<<< HEAD
   2xl: "0 25px 50px rgba(0, 0, 0, 0.15)",
+=======
+  "2xl": "0 25px 50px rgba(0, 0, 0, 0.15)",
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
 
   // Premium glow shadows (Framer-style)
   glow: {
@@ -182,8 +186,13 @@ export const borderRadius = {
   md: "12px",
   lg: "16px",
   xl: "24px",
+<<<<<<< HEAD
   2xl: "32px",
   3xl: "48px",
+=======
+  "2xl": "32px",
+  "3xl": "48px",
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
   full: "9999px",
 };
 

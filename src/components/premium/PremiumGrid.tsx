@@ -73,7 +73,11 @@ export const ImageCard: React.FC<ImageCardProps> = ({
       <img
         src={image}
         alt={title}
+<<<<<<< HEAD
         className="w-full h-64 md:h-72 object-cover group-hover:scale-110 transition-transform duration-500"
+=======
+        className="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
       />
 
       {overlay && (

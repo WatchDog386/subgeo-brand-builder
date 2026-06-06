@@ -4,10 +4,17 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
+<<<<<<< HEAD
     "dev": "vite dev",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
+=======
+    "dev": "vite dev --host 0.0.0.0",
+    "build": "vite build",
+    "build:dev": "vite build --mode development",
+    "preview": "vite preview --host 0.0.0.0",
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
     "lint": "eslint .",
     "format": "prettier --write ."
   },

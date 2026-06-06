@@ -12,7 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SubgeoIndustrialRouteImport } from './routes/subgeo-industrial'
 import { Route as PharmacyRouteImport } from './routes/pharmacy'
 import { Route as ContactRouteImport } from './routes/contact'
+<<<<<<< HEAD
 import { Route as BranchesRouteImport } from './routes/branches'
+=======
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
 import { Route as BeautyRouteImport } from './routes/beauty'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -32,11 +35,14 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+<<<<<<< HEAD
 const BranchesRoute = BranchesRouteImport.update({
   id: '/branches',
   path: '/branches',
   getParentRoute: () => rootRouteImport,
 } as any)
+=======
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
 const BeautyRoute = BeautyRouteImport.update({
   id: '/beauty',
   path: '/beauty',
@@ -57,7 +63,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/beauty': typeof BeautyRoute
+<<<<<<< HEAD
   '/branches': typeof BranchesRoute
+=======
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
   '/contact': typeof ContactRoute
   '/pharmacy': typeof PharmacyRoute
   '/subgeo-industrial': typeof SubgeoIndustrialRoute
@@ -66,7 +75,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/beauty': typeof BeautyRoute
+<<<<<<< HEAD
   '/branches': typeof BranchesRoute
+=======
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
   '/contact': typeof ContactRoute
   '/pharmacy': typeof PharmacyRoute
   '/subgeo-industrial': typeof SubgeoIndustrialRoute
@@ -76,7 +88,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/beauty': typeof BeautyRoute
+<<<<<<< HEAD
   '/branches': typeof BranchesRoute
+=======
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
   '/contact': typeof ContactRoute
   '/pharmacy': typeof PharmacyRoute
   '/subgeo-industrial': typeof SubgeoIndustrialRoute
@@ -87,7 +102,10 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/beauty'
+<<<<<<< HEAD
     | '/branches'
+=======
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
     | '/contact'
     | '/pharmacy'
     | '/subgeo-industrial'
@@ -96,7 +114,10 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/beauty'
+<<<<<<< HEAD
     | '/branches'
+=======
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
     | '/contact'
     | '/pharmacy'
     | '/subgeo-industrial'
@@ -105,7 +126,10 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/beauty'
+<<<<<<< HEAD
     | '/branches'
+=======
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
     | '/contact'
     | '/pharmacy'
     | '/subgeo-industrial'
@@ -115,7 +139,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BeautyRoute: typeof BeautyRoute
+<<<<<<< HEAD
   BranchesRoute: typeof BranchesRoute
+=======
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
   ContactRoute: typeof ContactRoute
   PharmacyRoute: typeof PharmacyRoute
   SubgeoIndustrialRoute: typeof SubgeoIndustrialRoute
@@ -144,6 +171,7 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+<<<<<<< HEAD
     '/branches': {
       id: '/branches'
       path: '/branches'
@@ -151,6 +179,8 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BranchesRouteImport
       parentRoute: typeof rootRouteImport
     }
+=======
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
     '/beauty': {
       id: '/beauty'
       path: '/beauty'
@@ -179,7 +209,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BeautyRoute: BeautyRoute,
+<<<<<<< HEAD
   BranchesRoute: BranchesRoute,
+=======
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
   ContactRoute: ContactRoute,
   PharmacyRoute: PharmacyRoute,
   SubgeoIndustrialRoute: SubgeoIndustrialRoute,

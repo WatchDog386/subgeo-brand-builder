@@ -1,14 +1,24 @@
+<<<<<<< HEAD
+=======
+import React from "react";
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
   createRootRouteWithContext,
   useRouter,
+<<<<<<< HEAD
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 
 import appCss from "../index.css?url";
+=======
+} from "@tanstack/react-router";
+
+import "../index.css";
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
 
 function NotFoundComponent() {
   return (
@@ -73,6 +83,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Lovable App" },
+<<<<<<< HEAD
       { name: "description", content: "Lovable Generated Project" },
       { name: "author", content: "Lovable" },
       { property: "og:title", content: "Lovable App" },
@@ -83,6 +94,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+=======
+    ],
+    links: [
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
@@ -98,12 +113,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
   }),
+<<<<<<< HEAD
   shellComponent: RootShell,
+=======
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
 
+<<<<<<< HEAD
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -118,12 +137,20 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+=======
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
+<<<<<<< HEAD
       <Outlet />
+=======
+      <React.Fragment>
+        <Outlet />
+      </React.Fragment>
+>>>>>>> a5a45ed9d2c87926bfbef2ac01c730ed6ad25396
     </QueryClientProvider>
   );
 }
