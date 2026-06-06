@@ -3,14 +3,15 @@ import { Button } from "@/components/ui/button";
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
 import salonImg from "@/assets/salon.jpeg";
 import plumberImg from "@/assets/plumber.jpeg";
+import salon2Img from "@/assets/salon2.jpeg";
 
 const jobs = [
-  "Lead HVAC Installer",
-  "HVAC/Plumbing Parts Specialist",
-  "Duct Cleaning Technician",
-  "HVAC Install Assistant",
-  "Warehouse Clerk/ Delivery Driver",
-  "Service Plumber",
+  "Licensed Pharmacist",
+  "Pharmacy Analyst & Assistant",
+  "Senior Beauty Therapist",
+  "Specialised Hair Stylist",
+  "Lead Industrial Plumber",
+  "Maintenance Project Manager",
 ];
 
 export function NewsAndInsightsSection() {
@@ -22,8 +23,8 @@ export function NewsAndInsightsSection() {
         <RevealOnScroll direction="left">
           <div className="relative w-full max-w-[700px] mx-auto lg:mx-0 h-[450px] md:h-[550px] flex items-center justify-center">
             
-            {/* 1. Main Team Image */}
-            <div className="absolute top-[10%] left-[5%] z-10 w-[70%] h-[50%]">
+            {/* 1. Top Right Image */}
+            <div className="absolute top-[0%] right-[0%] z-10 w-[60%] h-[55%]">
               <img
                 src={salonImg}
                 alt="Team members"
@@ -31,28 +32,26 @@ export function NewsAndInsightsSection() {
               />
             </div>
 
-            {/* 2. Sign Image (plumber.jpeg) */}
-            <div className="absolute bottom-[2%] right-[-5%] z-20 w-[75%] h-[60%]">
+            {/* 2. Bottom Left Image */}
+            <div className="absolute bottom-[0%] left-[5%] z-20 w-[60%] h-[55%]">
               <img
                 src={plumberImg}
                 alt="Love What You Do"
-                className="w-full h-full object-cover rounded-sm shadow-xl"
+                className="w-full h-full object-cover shadow-xl"
+              />
+            </div>
+            
+            {/* 3. Center Overlapping Image */}
+            <div className="absolute top-[25%] left-[25%] z-30 w-[45%] h-[45%]">
+              <img
+                src={salon2Img}
+                alt="Salon service"
+                className="w-full h-full object-cover shadow-2xl ring-1 ring-black/5"
               />
             </div>
 
-            {/* 3. Megaphone Graphic */}
-            <div className="absolute top-[20%] right-[-10%] z-30 transform drop-shadow-2xl">
-               <div className="relative">
-                 {/* White body of megaphone */}
-                 <Megaphone className="w-40 h-40 text-gray-100 fill-white stroke-gray-300" strokeWidth={1} style={{ transform: 'rotate(-25deg)' }} />
-                 {/* Red/Orange cone tip */}
-                 <div className="absolute top-[48%] left-[45%] w-12 h-12 bg-[#dc2626] rounded-full shadow-inner transform -translate-x-1/2 -translate-y-1/2"></div>
-                 <div className="absolute top-[48%] left-[75%] w-6 h-10 bg-[#ea580c] rounded-md shadow-inner transform -translate-x-1/2 -translate-y-1/2 border border-gray-200"></div>
-               </div>
-            </div>
-
             {/* 4. "We're Hiring" Badge */}
-            <div className="absolute bottom-[10%] left-[-8%] z-40 bg-[#dc2626] text-white px-6 py-3 font-bold text-sm tracking-widest flex items-center gap-3 shadow-xl transform -rotate-1">
+            <div className="absolute bottom-[15%] right-[5%] z-40 bg-[#dc2626] text-white px-6 py-3 font-bold text-sm tracking-widest flex items-center gap-3 shadow-xl transform rotate-2">
               <Megaphone className="w-5 h-5 fill-white text-white" />
               WE'RE HIRING
             </div>

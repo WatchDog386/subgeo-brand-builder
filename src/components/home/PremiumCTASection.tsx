@@ -6,7 +6,7 @@ export function PremiumCTASection() {
       
       {/* Main CTA Container */}
       <div className="w-full max-w-[1400px] mx-auto px-4 md:px-8 relative z-10">
-        <div className="w-full bg-gradient-to-br from-[#1a0f44] via-[#12072b] to-[#0e0421] rounded-none overflow-hidden relative shadow-2xl">
+        <div className="w-full bg-[#1a2c4e] rounded-none overflow-hidden relative shadow-2xl">
           
           {/* --- SVG Isometric Background Elements --- */}
           
@@ -67,18 +67,25 @@ export function PremiumCTASection() {
 
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center w-full max-w-md mx-auto">
               <Button 
-                className="bg-[#d5fb46] hover:bg-[#cbf13e] text-[#110825] transition-colors rounded px-8 py-3 h-12 text-sm font-semibold uppercase tracking-wide w-full sm:w-auto shadow-[0_0_20px_rgba(213,251,70,0.1)]"
+                className="rounded-none bg-[#e0292e] hover:bg-[#c42428] text-white h-[50px] w-full sm:w-auto px-8 font-semibold text-[13px] uppercase tracking-wider flex items-center justify-center gap-2"
               >
                 Book a Service
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </Button>
               <Button 
-                className="bg-[#29175a] hover:bg-[#34206c] text-[#d5fb46] transition-colors rounded px-8 py-3 h-12 text-sm font-semibold uppercase tracking-wide w-full sm:w-auto shadow-none"
+                variant="outline"
+                className="rounded-none border-[#e0292e] text-[#e0292e] hover:bg-[#e0292e] hover:text-white h-[50px] w-full sm:w-auto px-8 font-semibold text-[13px] uppercase tracking-wider flex items-center justify-center gap-2 bg-transparent"
               >
                 Contact Support
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </Button>
             </div>
 
-            <p className="text-[#6d5b9d] text-[13px] mt-8 font-sans tracking-wide">
+            <p className="text-gray-400 text-[13px] mt-8 font-sans tracking-wide">
               Fast response guaranteed, no commitment required.
             </p>
 

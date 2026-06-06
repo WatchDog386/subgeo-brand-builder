@@ -4,7 +4,7 @@ import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShieldCheck, HeartHandshake, UserCheck, Scale } from "lucide-react";
-import heroImg from "@/assets/corporate-hero.jpg";
+import heroImg from "@/assets/hero.jpeg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -41,11 +41,12 @@ function AboutPage() {
               <div className="font-bold text-[11px] uppercase tracking-widest text-[#e0292e] mb-4">
                 About Subgeo
               </div>
-              <h1 className="font-display font-bold text-5xl md:text-7xl leading-[1.05] text-[#223a5c] tracking-tight">
-                A trusted Kenyan group, built around community.
+              <h1 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-primary">
+                A trusted Kenyan group,<br />
+                built around community.
               </h1>
               <div className="w-20 h-1 bg-[#e0292e] mt-8 mb-6" />
-              <p className="text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">
+              <p className="mt-5 text-[13px] md:text-sm text-gray-600 max-w-xl">
                 Subgeo started as a single neighbourhood pharmacy with one promise — make quality
                 healthcare and self-care accessible to everyone. Today we operate three standalone
                 branches under one standard of care.
