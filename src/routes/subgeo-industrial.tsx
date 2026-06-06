@@ -26,7 +26,6 @@ import {
   useScroll,
   useTransform,
   useInView,
-  useSpring,
 } from "framer-motion";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
@@ -228,7 +227,7 @@ function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; del
   );
 }
 
-function ParallaxBackground({ 
+function ParallaxSection({ 
   image, 
   children, 
   overlayColor = "#0a1628",
