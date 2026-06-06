@@ -20,8 +20,6 @@ import {
   Users,
   Wrench,
   CheckCircle2,
-  Quote,
-  Star,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -42,7 +40,7 @@ import bathroomImg from "@/assets/plumbing.png";
 import showerImg from "@/assets/services.png";
 import commercialImg from "@/assets/corporate-hero.jpg";
 import residentialImg from "@/assets/subgeo.jpeg";
-import industrialImg from "@/assets/industry.jpeg";
+import industrialImg from "@/assets/industry2.jpeg";
 
 export const Route = createFileRoute("/subgeo-industrial")({
   head: () => ({
@@ -75,36 +73,15 @@ const trustMetrics = [
   { value: 99, suffix: "%", label: "Client satisfaction" },
 ];
 
-const trustQuotes = [
-  {
-    quote: "Subgeo stepped in during an emergency shutdown and restored our full water line faster than expected.",
-    author: "Eng. Kevin Otieno",
-    role: "Facility Manager",
-    image: residentialImg,
-  },
-  {
-    quote: "Their team communicates clearly, keeps sites clean, and delivers quality workmanship on every visit.",
-    author: "Margaret Njeri",
-    role: "Property Director",
-    image: commercialImg,
-  },
-  {
-    quote: "From planning to handover, Subgeo treated our industrial retrofit with real precision and care.",
-    author: "Stephen Kamau",
-    role: "Operations Lead",
-    image: industrialImg,
-  },
-];
-
 const industries = [
-  { name: "Commercial Buildings", icon: Building2 },
-  { name: "Residential Estates", icon: Home },
-  { name: "Industrial Plants", icon: Factory },
-  { name: "Hospitality Spaces", icon: Building2 },
-  { name: "Educational Campuses", icon: Building2 },
-  { name: "Property Developers", icon: Building2 },
-  { name: "Retail Facilities", icon: Building2 },
-  { name: "Health Institutions", icon: Building2 },
+  { name: "Commercial Buildings", icon: Building2, image: commercialImg },
+  { name: "Residential Estates", icon: Home, image: residentialImg },
+  { name: "Industrial Plants", icon: Factory, image: industrialImg },
+  { name: "Hospitality Spaces", icon: Building2, image: heroImg },
+  { name: "Educational Campuses", icon: Building2, image: commercialImg },
+  { name: "Property Developers", icon: Building2, image: industrialImg },
+  { name: "Retail Facilities", icon: Building2, image: heroImg },
+  { name: "Health Institutions", icon: Building2, image: residentialImg },
 ];
 
 const valueCards: IconCardItem[] = [
@@ -260,14 +237,6 @@ function ScrollReveal({
 
 function SubgeoIndustrial() {
   const [activeService, setActiveService] = useState<number | null>(null);
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveTestimonial((prev) => (prev + 1) % trustQuotes.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -288,7 +257,7 @@ function SubgeoIndustrial() {
             loading="eager"
             fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/80 via-[#0a1628]/60 to-[#0a1628]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/90 via-[#0a1628]/70 to-[#0a1628]/95" />
         </div>
 
         <div className="relative z-10 w-full">
@@ -338,7 +307,7 @@ function SubgeoIndustrial() {
             >
               <button
                 onClick={() => scrollToSection("services")}
-                className="rounded-lg bg-[#eb255a] hover:bg-[#1d4ed8] text-white px-8 py-4 text-sm font-semibold uppercase tracking-wide transition-all duration-300 flex items-center justify-center gap-2"
+                className="rounded-lg bg-[#eb255a] hover:bg-[#d11f4e] text-white px-8 py-4 text-sm font-semibold uppercase tracking-wide transition-all duration-300 flex items-center justify-center gap-2"
               >
                 Explore Services
                 <ArrowRight className="h-4 w-4" />
@@ -439,7 +408,7 @@ function SubgeoIndustrial() {
                   className="w-full h-[500px] object-cover rounded-lg shadow-lg"
                   loading="lazy"
                 />
-                <div className="absolute -bottom-6 -left-6 bg-#eb255a] p-6 rounded-lg shadow-xl max-w-[200px]">
+                <div className="absolute -bottom-6 -left-6 bg-[#eb255a] p-6 rounded-lg shadow-xl max-w-[200px]">
                   <p className="text-3xl font-bold text-white mb-1">12+</p>
                   <p className="text-xs font-medium text-white/90 uppercase tracking-wide">
                     Years of reliable delivery
@@ -473,52 +442,71 @@ function SubgeoIndustrial() {
         </div>
       </section>
 
-      {/* Industries Section */}
+      {/* Industries Section - Redesigned based on reference image */}
       <section className="py-20 md:py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-            <div>
-              <ScrollReveal>
-                <p className="text-sm font-semibold uppercase tracking-wider text-[#eb255a] mb-3">Industries We Serve</p>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1628] leading-tight mb-6">
-                  Reliable solutions across critical sectors
-                </h2>
-              </ScrollReveal>
-
-              <ScrollReveal delay={0.1}>
-                <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8">
-                  Subgeo supports multi-site operators and independent property owners
-                  with tailored plumbing, drainage and maintenance programs.
-                </p>
-              </ScrollReveal>
-
-              <ScrollReveal delay={0.2}>
-                <div className="border-l-4 border-[#eb255a] pl-6 bg-white p-6 rounded-r-lg">
-                  <p className="text-sm font-bold uppercase tracking-wider text-[#eb255a] mb-2">
-                    Service Promise
-                  </p>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    We align every scope with operational risk, site safety and realistic
-                    maintenance windows so your teams keep moving.
-                  </p>
-                </div>
-              </ScrollReveal>
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <p className="text-sm font-semibold uppercase tracking-wider text-[#eb255a] mb-3">Industries We Serve</p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1628]">
+                Reliable solutions across critical sectors
+              </h2>
+              <p className="mt-4 text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+                Subgeo supports multi-site operators and independent property owners
+                with tailored plumbing, drainage and maintenance programs.
+              </p>
             </div>
+          </ScrollReveal>
 
-            <div className="grid grid-cols-2 gap-4">
-              {industries.map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <ScrollReveal key={item.name} delay={index * 0.05}>
-                    <div className="bg-white rounded-lg p-6 hover:shadow-md transition-all duration-300 border border-gray-200 hover:border-[#2563eb]">
-                      <Icon className="h-8 w-8 text-[#2563eb] mb-3" />
-                      <p className="text-sm font-semibold text-[#0a1628]">{item.name}</p>
+          {/* Clean grid layout matching reference image */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {industries.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <ScrollReveal key={item.name} delay={index * 0.05}>
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.3 }}
+                    className="group bg-white rounded-lg p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
+                  >
+                    {/* Splash Image Container - Easy to replace */}
+                    <div className="relative h-32 mb-6 overflow-hidden rounded-lg bg-gray-100">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
-                  </ScrollReveal>
-                );
-              })}
-            </div>
+                    
+                    {/* Icon */}
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#eb255a]/10 text-[#eb255a] mb-4 group-hover:bg-[#eb255a] group-hover:text-white transition-colors duration-300">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    
+                    {/* Title */}
+                    <h3 className="text-base font-bold text-[#0a1628] group-hover:text-[#eb255a] transition-colors duration-300">
+                      {item.name}
+                    </h3>
+                  </motion.div>
+                </ScrollReveal>
+              );
+            })}
           </div>
+
+          {/* Service Promise */}
+          <ScrollReveal delay={0.4}>
+            <div className="mt-12 border-l-4 border-[#eb255a] pl-6 bg-white p-6 rounded-r-lg shadow-sm">
+              <p className="text-sm font-bold uppercase tracking-wider text-[#eb255a] mb-2">
+                Service Promise
+              </p>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                We align every scope with operational risk, site safety and realistic
+                maintenance windows so your teams keep moving.
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -576,7 +564,7 @@ function SubgeoIndustrial() {
                                 <ul className="space-y-2">
                                   {service.features.map((feature, idx) => (
                                     <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
-                                      <CheckCircle2 className="h-4 w-4 text-[#2563eb] flex-shrink-0 mt-0.5" />
+                                      <CheckCircle2 className="h-4 w-4 text-[#eb255a] flex-shrink-0 mt-0.5" />
                                       <span>{feature}</span>
                                     </li>
                                   ))}
@@ -589,7 +577,7 @@ function SubgeoIndustrial() {
 
                       <button
                         onClick={() => setActiveService(isOpen ? null : index)}
-                        className="mt-4 w-full flex items-center justify-center gap-2 text-sm font-semibold text-[#2563eb] hover:text-[#1d4ed8] transition-colors"
+                        className="mt-4 w-full flex items-center justify-center gap-2 text-sm font-semibold text-[#eb255a] hover:text-[#d11f4e] transition-colors"
                       >
                         {isOpen ? "Show Less" : "Learn More"}
                         <ArrowRight className={`h-4 w-4 transition-transform ${isOpen ? "rotate-90" : ""}`} />
@@ -608,7 +596,7 @@ function SubgeoIndustrial() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="text-sm font-semibold uppercase tracking-wider text-[#2563eb] mb-3">Recent Work</p>
+              <p className="text-sm font-semibold uppercase tracking-wider text-[#eb255a] mb-3">Recent Work</p>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
                 Projects delivered with high technical accuracy
               </h2>
@@ -632,7 +620,7 @@ function SubgeoIndustrial() {
 
                   <div className="lg:col-span-6">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-xs font-semibold uppercase tracking-wider text-[#2563eb]">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-[#eb255a]">
                         {project.date}
                       </span>
                       <span className="w-1 h-1 rounded-full bg-white/40" />
@@ -640,7 +628,7 @@ function SubgeoIndustrial() {
                         {project.category}
                       </span>
                     </div>
-                    <h3 className="text-2xl font-bold mb-1 group-hover:text-[#2563eb] transition-colors duration-300">
+                    <h3 className="text-2xl font-bold mb-1 group-hover:text-[#eb255a] transition-colors duration-300">
                       {project.title}
                     </h3>
                     <p className="text-sm text-white/60 italic">{project.subtitle}</p>
@@ -656,79 +644,13 @@ function SubgeoIndustrial() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 md:py-28 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <p className="text-sm font-semibold uppercase tracking-wider text-[#2563eb] mb-3">Client Testimony</p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1628]">
-                Confidence from consistent delivery
-              </h2>
-            </div>
-          </ScrollReveal>
-
-          <div className="relative max-w-4xl mx-auto">
-            <div className="relative min-h-[300px]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTestimonial}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-white rounded-lg p-8 md:p-12 shadow-lg"
-                >
-                  <div className="flex gap-1 mb-6">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-[#eb255a] text-[#2563eb]" />
-                    ))}
-                  </div>
-                  <blockquote className="text-xl md:text-2xl text-[#0a1628] leading-relaxed mb-8 font-medium">
-                    "{trustQuotes[activeTestimonial].quote}"
-                  </blockquote>
-                  <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-[#eb255a] flex items-center justify-center">
-                      <Users className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-base font-bold text-[#0a1628]">
-                        {trustQuotes[activeTestimonial].author}
-                      </p>
-                      <p className="text-sm text-gray-600">
-                        {trustQuotes[activeTestimonial].role}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            <div className="mt-8 flex justify-center gap-3">
-              {trustQuotes.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveTestimonial(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    activeTestimonial === index
-                      ? "w-12 bg-[#eb255a]"
-                      : "w-2 bg-gray-300 hover:bg-gray-400"
-                  }`}
-                  aria-label={`View testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
       <section id="contact" className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             <div>
               <ScrollReveal>
-                <p className="text-sm font-semibold uppercase tracking-wider text-[#2563eb] mb-3">Contact & Location</p>
+                <p className="text-sm font-semibold uppercase tracking-wider text-[#eb255a] mb-3">Contact & Location</p>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1628] leading-tight mb-6">
                   Plan your next project with our team
                 </h2>
@@ -747,12 +669,12 @@ function SubgeoIndustrial() {
                     href="tel:0733699441"
                     className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors group"
                   >
-                    <div className="h-12 w-12 rounded-lg bg-[#eb255a] flex items-center justify-center group-hover:bg-[#1d4ed8] transition-colors">
+                    <div className="h-12 w-12 rounded-lg bg-[#eb255a] flex items-center justify-center group-hover:bg-[#d11f4e] transition-colors">
                       <Phone className="h-5 w-5 text-white" />
                     </div>
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Phone</p>
-                      <p className="text-base font-bold text-[#0a1628] group-hover:text-[#2563eb] transition-colors">
+                      <p className="text-base font-bold text-[#0a1628] group-hover:text-[#eb255a] transition-colors">
                         0733 699 441
                       </p>
                     </div>
@@ -764,12 +686,12 @@ function SubgeoIndustrial() {
                     href="mailto:info@subgeo.co.ke"
                     className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors group"
                   >
-                    <div className="h-12 w-12 rounded-lg bg-[#2563eb] flex items-center justify-center group-hover:bg-[#1d4ed8] transition-colors">
+                    <div className="h-12 w-12 rounded-lg bg-[#eb255a] flex items-center justify-center group-hover:bg-[#d11f4e] transition-colors">
                       <Mail className="h-5 w-5 text-white" />
                     </div>
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Email</p>
-                      <p className="text-base font-bold text-[#0a1628] group-hover:text-[#2563eb] transition-colors">
+                      <p className="text-base font-bold text-[#0a1628] group-hover:text-[#eb255a] transition-colors">
                         info@subgeo.co.ke
                       </p>
                     </div>
@@ -778,7 +700,7 @@ function SubgeoIndustrial() {
 
                 <ScrollReveal delay={0.25}>
                   <div className="flex items-center gap-4 p-4 rounded-lg">
-                    <div className="h-12 w-12 rounded-lg bg-[#2563eb] flex items-center justify-center">
+                    <div className="h-12 w-12 rounded-lg bg-[#eb255a] flex items-center justify-center">
                       <MapPin className="h-5 w-5 text-white" />
                     </div>
                     <div>
@@ -795,7 +717,7 @@ function SubgeoIndustrial() {
                 <div className="mt-8">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 bg-[#eb255a] hover:bg-[#1d4ed8] text-white px-8 py-4 text-sm font-semibold uppercase tracking-wide rounded-lg transition-all duration-300"
+                    className="inline-flex items-center gap-2 bg-[#eb255a] hover:bg-[#d11f4e] text-white px-8 py-4 text-sm font-semibold uppercase tracking-wide rounded-lg transition-all duration-300"
                   >
                     Schedule A Visit
                     <ArrowRight className="h-4 w-4" />
@@ -878,7 +800,7 @@ function SubgeoIndustrial() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 bg-[#eb255a] hover:bg-[#1d4ed8] text-white px-8 py-4 text-sm font-semibold uppercase tracking-wide rounded-lg transition-all duration-300"
+                className="inline-flex items-center gap-2 bg-[#eb255a] hover:bg-[#d11f4e] text-white px-8 py-4 text-sm font-semibold uppercase tracking-wide rounded-lg transition-all duration-300"
               >
                 Schedule Visit
                 <ArrowRight className="h-4 w-4" />
