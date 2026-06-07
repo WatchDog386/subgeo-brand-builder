@@ -19,6 +19,10 @@ import {
   Sparkles,
   Wrench,
   CheckCircle2,
+  Users,
+  Award,
+  TrendingUp,
+  Target,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -43,6 +47,13 @@ import industrialImg from "@/assets/industry2.jpeg";
 import firePumpImg from "@/assets/fire-pump.jpg";
 import pumpRoomImg from "@/assets/pump-room.jpg";
 import constructionSiteImg from "@/assets/construction-site.jpg";
+
+// Additional imagery for storytelling
+import teamWorkingImg from "@/assets/team-working.jpg"; // Placeholder - replace with actual
+import equipmentImg from "@/assets/equipment.jpg"; // Placeholder - replace with actual
+import safetyGearImg from "@/assets/safety-gear.jpg"; // Placeholder - replace with actual
+import blueprintImg from "@/assets/blueprint.jpg"; // Placeholder - replace with actual
+import completedProjectImg from "@/assets/completed-project.jpg"; // Placeholder - replace with actual
 
 export const Route = createFileRoute("/subgeo-industrial")({
   head: () => ({
@@ -178,6 +189,61 @@ const projects = [
     summary: "Mixed-use development plumbing execution spanning underground mains, sanitary systems and hydrant networks.",
     image: constructionSiteImg,
     category: "Industrial",
+  },
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Site Assessment",
+    description: "Our engineers conduct thorough inspections to understand your unique requirements and challenges.",
+    icon: Target,
+    image: blueprintImg,
+  },
+  {
+    number: "02",
+    title: "Strategic Planning",
+    description: "We develop detailed project plans with timelines, resource allocation, and safety protocols.",
+    icon: FileText,
+    image: constructionSiteImg,
+  },
+  {
+    number: "03",
+    title: "Expert Execution",
+    description: "Skilled technicians deploy with proper equipment to deliver precision workmanship.",
+    icon: Wrench,
+    image: equipmentImg,
+  },
+  {
+    number: "04",
+    title: "Quality Assurance",
+    description: "Rigorous testing and inspection ensure every system meets our high standards before handover.",
+    icon: ShieldCheck,
+    image: completedProjectImg,
+  },
+];
+
+const whyChooseUs = [
+  {
+    icon: Award,
+    title: "Certified Experts",
+    description: "Our team holds industry certifications and undergoes continuous training on latest technologies and safety standards.",
+    stat: "100%",
+    statLabel: "Certified Technicians",
+  },
+  {
+    icon: TrendingUp,
+    title: "Proven Track Record",
+    description: "Over 240 successful projects across diverse sectors demonstrate our capability to handle complex challenges.",
+    stat: "240+",
+    statLabel: "Projects Delivered",
+  },
+  {
+    icon: Users,
+    title: "Dedicated Teams",
+    description: "We assign dedicated project managers and technicians who understand your facility's unique needs.",
+    stat: "24/7",
+    statLabel: "Support Available",
   },
 ];
 
@@ -513,6 +579,75 @@ function SubgeoIndustrial() {
         </div>
       </section>
 
+      {/* NEW: Our Process - Visual Storytelling Section */}
+      <section className="py-40 md:py-48 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <FadeInSection>
+            <div className="text-center mb-24">
+              <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#eb255a] mb-6">Our Process</p>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#0a1628] leading-[1.05]">
+                How we deliver
+                <br />
+                <span className="text-[#eb255a]">excellence</span>
+              </h2>
+            </div>
+          </FadeInSection>
+
+          <div className="relative">
+            {/* Connection Line */}
+            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-[#eb255a]/20 via-[#eb255a] to-[#eb255a]/20 -translate-y-1/2 z-0" />
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+              {processSteps.map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <FadeInSection key={step.number} delay={index * 0.15}>
+                    <motion.div
+                      whileHover={{ y: -10 }}
+                      transition={{ duration: 0.3 }}
+                      className="group relative"
+                    >
+                      {/* Image Container */}
+                      <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 shadow-lg">
+                        <img
+                          src={step.image}
+                          alt={step.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/80 via-[#0a1628]/40 to-transparent" />
+                        
+                        {/* Step Number Badge */}
+                        <div className="absolute top-6 left-6">
+                          <span className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#eb255a] text-white text-xl font-bold shadow-lg">
+                            {step.number}
+                          </span>
+                        </div>
+
+                        {/* Icon Overlay */}
+                        <div className="absolute bottom-6 right-6">
+                          <div className="h-12 w-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center">
+                            <Icon className="h-6 w-6 text-white" />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <h3 className="text-2xl font-bold text-[#0a1628] mb-3 group-hover:text-[#eb255a] transition-colors">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        {step.description}
+                      </p>
+                    </motion.div>
+                  </FadeInSection>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Chapter 03: Industries - Full Screen with Construction Site */}
       <ParallaxSection image={constructionSiteImg} overlayOpacity={0.85}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full">
@@ -573,6 +708,100 @@ function SubgeoIndustrial() {
           </div>
         </div>
       </ParallaxSection>
+
+      {/* NEW: Why Choose Us - Visual Stats Section */}
+      <section className="py-40 md:py-48 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <FadeInSection>
+                <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#eb255a] mb-6">Why Choose Us</p>
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#0a1628] leading-[1.05] mb-10">
+                  The Subgeo
+                  <br />
+                  <span className="text-[#eb255a]">advantage</span>
+                </h2>
+              </FadeInSection>
+
+              <FadeInSection delay={0.1}>
+                <p className="text-xl text-gray-600 leading-relaxed mb-12">
+                  We combine technical expertise with unwavering commitment to safety,
+                  quality, and client satisfaction. Every project reflects our dedication
+                  to excellence.
+                </p>
+              </FadeInSection>
+
+              <div className="space-y-8">
+                {whyChooseUs.map((item, index) => {
+                  const Icon = item.icon;
+                  return (
+                    <FadeInSection key={item.title} delay={0.2 + index * 0.1}>
+                      <motion.div
+                        whileHover={{ x: 10 }}
+                        className="flex items-start gap-6 p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300"
+                      >
+                        <div className="flex-shrink-0">
+                          <div className="h-16 w-16 rounded-2xl bg-[#eb255a] flex items-center justify-center">
+                            <Icon className="h-8 w-8 text-white" />
+                          </div>
+                        </div>
+                        <div className="flex-grow">
+                          <h3 className="text-2xl font-bold text-[#0a1628] mb-2">
+                            {item.title}
+                          </h3>
+                          <p className="text-gray-600 leading-relaxed mb-3">
+                            {item.description}
+                          </p>
+                          <div className="flex items-center gap-3">
+                            <span className="text-3xl font-bold text-[#eb255a]">{item.stat}</span>
+                            <span className="text-sm font-semibold text-gray-500 uppercase tracking-wider">{item.statLabel}</span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </FadeInSection>
+                  );
+                })}
+              </div>
+            </div>
+
+            <FadeInSection delay={0.3}>
+              <div className="relative">
+                <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+                  <img
+                    src={teamWorkingImg}
+                    alt="Subgeo team at work"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/60 via-transparent to-transparent" />
+                </div>
+                
+                {/* Floating Stats Card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                  className="absolute -bottom-10 -left-10 bg-white rounded-2xl p-8 shadow-2xl max-w-xs"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="h-12 w-12 rounded-full bg-[#eb255a] flex items-center justify-center">
+                      <Award className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-3xl font-bold text-[#0a1628]">12+</p>
+                      <p className="text-sm text-gray-600">Years Experience</p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Trusted by leading companies across Kenya for industrial plumbing excellence
+                  </p>
+                </motion.div>
+              </div>
+            </FadeInSection>
+          </div>
+        </div>
+      </section>
 
       {/* Chapter 04: Services - Alternating Large Layout */}
       <section id="services" className="py-40 md:py-48 bg-white">
@@ -730,6 +959,59 @@ function SubgeoIndustrial() {
           </div>
         </div>
       </section>
+
+      {/* NEW: Equipment & Safety - Visual Section */}
+      <ParallaxSection image={safetyGearImg} overlayOpacity={0.9}>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <FadeInSection>
+              <p className="text-sm font-bold uppercase tracking-[0.3em] text-[#eb255a] mb-6">Safety & Equipment</p>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] mb-10">
+                Professional
+                <br />
+                <span className="text-[#eb255a]">grade tools</span>
+                <br />
+                & safety first
+              </h2>
+            </FadeInSection>
+
+            <div className="space-y-8">
+              <FadeInSection delay={0.2}>
+                <p className="text-xl text-white/85 leading-relaxed font-light">
+                  We invest in state-of-the-art equipment and prioritize safety protocols
+                  on every job site. Our technicians are equipped with the latest tools
+                  and protective gear to ensure efficient, safe service delivery.
+                </p>
+              </FadeInSection>
+
+              <FadeInSection delay={0.3}>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+                    <Wrench className="h-10 w-10 text-[#eb255a] mb-4" />
+                    <h4 className="text-lg font-bold text-white mb-2">Modern Equipment</h4>
+                    <p className="text-sm text-white/70">Latest diagnostic and repair tools</p>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+                    <ShieldCheck className="h-10 w-10 text-[#eb255a] mb-4" />
+                    <h4 className="text-lg font-bold text-white mb-2">Safety Certified</h4>
+                    <p className="text-sm text-white/70">OSHA compliant practices</p>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+                    <RefreshCw className="h-10 w-10 text-[#eb255a] mb-4" />
+                    <h4 className="text-lg font-bold text-white mb-2">Well Maintained</h4>
+                    <p className="text-sm text-white/70">Regular equipment servicing</p>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+                    <BadgeCheck className="h-10 w-10 text-[#eb255a] mb-4" />
+                    <h4 className="text-lg font-bold text-white mb-2">Quality Assured</h4>
+                    <p className="text-sm text-white/70">Premium materials only</p>
+                  </div>
+                </div>
+              </FadeInSection>
+            </div>
+          </div>
+        </div>
+      </ParallaxSection>
 
       {/* Chapter 06: Contact - Split Layout */}
       <section id="contact" className="py-40 md:py-48 bg-white">
