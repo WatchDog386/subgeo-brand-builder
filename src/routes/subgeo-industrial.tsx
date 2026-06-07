@@ -33,27 +33,27 @@ import {
 } from "framer-motion";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
-import heroImg from "@/assets/corporate-hero.jpg";
+import heroImg from "@/assets/corporate-hero.jpeg";
 import industryImg from "@/assets/industry.jpeg";
 import plumbingImg from "@/assets/plumber.jpeg";
 import drainageImg from "@/assets/plumbing.png";
 import geyserImg from "@/assets/service.png";
 import bathroomImg from "@/assets/plumbing.png";
 import showerImg from "@/assets/services.png";
-import commercialImg from "@/assets/corporate-hero.jpg";
+import commercialImg from "@/assets/corporate-hero.jpeg";
 import industrialImg from "@/assets/industry2.jpeg";
 
 // New images from user
-import firePumpImg from "@/assets/fire-pump.jpg";
-import pumpRoomImg from "@/assets/pump-room.jpg";
-import constructionSiteImg from "@/assets/construction-site.jpg";
+import firePumpImg from "@/assets/industry.jpeg";
+import pumpRoomImg from "@/assets/industry2.jpeg";
+import constructionSiteImg from "@/assets/industry.jpeg";
 
 // Additional imagery for storytelling
-import teamWorkingImg from "@/assets/team-working.jpg"; // Placeholder - replace with actual
-import equipmentImg from "@/assets/equipment.jpg"; // Placeholder - replace with actual
-import safetyGearImg from "@/assets/safety-gear.jpg"; // Placeholder - replace with actual
-import blueprintImg from "@/assets/blueprint.jpg"; // Placeholder - replace with actual
-import completedProjectImg from "@/assets/completed-project.jpg"; // Placeholder - replace with actual
+import teamWorkingImg from "@/assets/work.jpeg"; // Placeholder - replace with actual
+import equipmentImg from "@/assets/hero.jpg"; // Placeholder - replace with actual
+import safetyGearImg from "@/assets/hero.jpeg"; // Placeholder - replace with actual
+import blueprintImg from "@/assets/background.png"; // Placeholder - replace with actual
+import completedProjectImg from "@/assets/work.jpeg"; // Placeholder - replace with actual
 
 export const Route = createFileRoute("/subgeo-industrial")({
   head: () => ({
