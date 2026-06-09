@@ -55,7 +55,7 @@ import constructionSiteImg from "@/assets/industry.jpeg";
 import teamWorkingImg from "@/assets/work.jpg";
 import equipmentImg from "@/assets/equipment.jpg";
 import safetyGearImg from "@/assets/safety.jpg";
-import blueprintImg from "@/assets/blueprint.jpg";
+import blueprintImg from "@/assets/blueprint.png";
 import completedProjectImg from "@/assets/completeprjct.jpg";
 
 export const Route = createFileRoute("/subgeo-industrial")({
