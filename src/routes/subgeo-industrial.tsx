@@ -23,8 +23,6 @@ import {
   Award,
   TrendingUp,
   Target,
-  ChevronLeft,
-  ChevronRight,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -55,7 +53,7 @@ import constructionSiteImg from "@/assets/industry.jpeg";
 import teamWorkingImg from "@/assets/work.jpg";
 import equipmentImg from "@/assets/equipment.jpg";
 import safetyGearImg from "@/assets/safety.jpg";
-import blueprintImg from "@/assets/blueprint.png";
+import blueprintImg from "@/assets/blueprint.jpg";
 import completedProjectImg from "@/assets/completeprjct.jpg";
 
 export const Route = createFileRoute("/subgeo-industrial")({
@@ -400,7 +398,7 @@ function StickyNavbar() {
   );
 }
 
-// ─── Process Timeline Component ─────────────────────────────────────────────────
+// ─── Process Timeline Component - Vertical Layout with Images ─────────────────
 function ProcessTimeline() {
   const [activeStep, setActiveStep] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -433,187 +431,97 @@ function ProcessTimeline() {
           </div>
         </FadeInSection>
 
-        {/* Desktop Timeline */}
-        <div className="hidden lg:block">
-          {/* Progress Bar */}
-          <div className="relative mb-16">
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 -translate-y-1/2" />
-            <motion.div
-              className="absolute top-1/2 left-0 h-0.5 bg-[#eb255a] -translate-y-1/2"
-              initial={{ width: "0%" }}
-              animate={{ width: `${((activeStep + 1) / processSteps.length) * 100}%` }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
-            />
-            <div className="relative grid grid-cols-4 gap-8">
-              {processSteps.map((step, index) => {
-                const Icon = step.icon;
-                const isActive = index <= activeStep;
-                const isCurrent = index === activeStep;
-                return (
-                  <motion.button
-                    key={step.number}
-                    onClick={() => setActiveStep(index)}
-                    className="flex flex-col items-center group cursor-pointer"
-                    whileHover={{ y: -4 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <motion.div
-                      className={`relative w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 ${
-                        isCurrent
-                          ? "bg-[#eb255a] text-white shadow-lg shadow-[#eb255a]/30 scale-110"
-                          : isActive
-                          ? "bg-[#eb255a] text-white"
-                          : "bg-white border-2 border-gray-200 text-gray-400"
-                      }`}
-                      animate={isCurrent ? { scale: [1, 1.05, 1] } : {}}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <Icon className="w-7 h-7" />
-                      {isCurrent && (
-                        <motion.div
-                          className="absolute inset-0 rounded-full border-2 border-[#eb255a]"
-                          initial={{ scale: 1, opacity: 0.5 }}
-                          animate={{ scale: 1.5, opacity: 0 }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                        />
-                      )}
-                    </motion.div>
-                    <div className="mt-4 text-center">
-                      <span
-                        className={`text-xs font-bold uppercase tracking-wider transition-colors ${
-                          isActive ? "text-[#eb255a]" : "text-gray-400"
-                        }`}
-                      >
-                        Step {step.number}
-                      </span>
-                      <h3
-                        className={`mt-1 text-lg font-bold transition-colors ${
-                          isCurrent ? "text-[#0a1628]" : isActive ? "text-[#0a1628]" : "text-gray-500"
-                        }`}
-                      >
-                        {step.title}
-                      </h3>
-                    </div>
-                  </motion.button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Active Step Detail Card */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeStep}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-              className="grid md:grid-cols-2 gap-10 items-center bg-gray-50 rounded-3xl p-8 md:p-12"
-            >
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                <img
-                  src={processSteps[activeStep].image}
-                  alt={processSteps[activeStep].title}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/60 via-transparent to-transparent" />
-                <div className="absolute top-6 left-6">
-                  <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#eb255a] text-white text-lg font-bold shadow-lg">
-                    {processSteps[activeStep].number}
-                  </span>
-                </div>
-              </div>
-              <div>
-                <div className="inline-flex items-center gap-2 mb-4">
-                  {(() => {
-                    const Icon = processSteps[activeStep].icon;
-                    return (
-                      <div className="h-10 w-10 rounded-xl bg-[#eb255a]/10 flex items-center justify-center">
-                        <Icon className="h-5 w-5 text-[#eb255a]" />
-                      </div>
-                    );
-                  })()}
-                  <span className="text-sm font-bold uppercase tracking-wider text-[#eb255a]">
-                    Phase {processSteps[activeStep].number}
-                  </span>
-                </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-[#0a1628] mb-4">
-                  {processSteps[activeStep].title}
-                </h3>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  {processSteps[activeStep].description}
-                </p>
-
-                {/* Navigation */}
-                <div className="mt-8 flex items-center gap-4">
-                  <button
-                    onClick={() =>
-                      setActiveStep((prev) =>
-                        prev === 0 ? processSteps.length - 1 : prev - 1
-                      )
-                    }
-                    className="h-12 w-12 rounded-full border-2 border-gray-200 flex items-center justify-center hover:border-[#eb255a] hover:text-[#eb255a] transition-colors"
-                    aria-label="Previous step"
-                  >
-                    <ChevronLeft className="h-5 w-5" />
-                  </button>
-                  <button
-                    onClick={() =>
-                      setActiveStep((prev) => (prev + 1) % processSteps.length)
-                    }
-                    className="h-12 w-12 rounded-full border-2 border-gray-200 flex items-center justify-center hover:border-[#eb255a] hover:text-[#eb255a] transition-colors"
-                    aria-label="Next step"
-                  >
-                    <ChevronRight className="h-5 w-5" />
-                  </button>
-                  <div className="flex items-center gap-2 ml-4">
-                    {processSteps.map((_, i) => (
-                      <button
-                        key={i}
-                        onClick={() => setActiveStep(i)}
-                        className={`h-2 rounded-full transition-all duration-300 ${
-                          i === activeStep
-                            ? "w-8 bg-[#eb255a]"
-                            : "w-2 bg-gray-300 hover:bg-gray-400"
-                        }`}
-                        aria-label={`Go to step ${i + 1}`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Mobile / Tablet Process Cards */}
-        <div className="lg:hidden space-y-6">
+        {/* Vertical Process Steps - Images on Left, Text on Right */}
+        <div className="space-y-8 md:space-y-12">
           {processSteps.map((step, index) => {
             const Icon = step.icon;
+            const isActive = index === activeStep;
             return (
               <FadeInSection key={step.number} delay={index * 0.1}>
-                <div className="flex gap-6 items-start">
-                  <div className="flex flex-col items-center flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-[#eb255a] text-white flex items-center justify-center font-bold text-sm">
-                      {step.number}
+                <motion.div
+                  onClick={() => setActiveStep(index)}
+                  className={`grid md:grid-cols-2 gap-6 md:gap-10 items-center cursor-pointer group ${
+                    index % 2 === 1 ? "md:flex-row-reverse" : ""
+                  }`}
+                  whileHover={{ scale: 1.01 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {/* Image Side */}
+                  <div className={`relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl ${
+                    index % 2 === 1 ? "md:order-2" : ""
+                  }`}>
+                    <img
+                      src={step.image}
+                      alt={step.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/70 via-[#0a1628]/30 to-transparent" />
+                    
+                    {/* Step Number Badge */}
+                    <div className="absolute top-4 left-4 md:top-6 md:left-6">
+                      <motion.div
+                        className={`inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full text-white text-lg md:text-2xl font-bold shadow-lg ${
+                          isActive ? "bg-[#eb255a] scale-110" : "bg-white/20 backdrop-blur-md"
+                        }`}
+                        animate={isActive ? { scale: [1, 1.1, 1] } : {}}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      >
+                        {step.number}
+                      </motion.div>
                     </div>
-                    {index < processSteps.length - 1 && (
-                      <div className="w-0.5 h-full min-h-[60px] bg-gradient-to-b from-[#eb255a] to-gray-200 mt-2" />
-                    )}
-                  </div>
-                  <div className="flex-grow pb-8">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="h-9 w-9 rounded-lg bg-[#eb255a]/10 flex items-center justify-center">
-                        <Icon className="h-4 w-4 text-[#eb255a]" />
+
+                    {/* Icon */}
+                    <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6">
+                      <div className="h-10 w-10 md:h-12 md:w-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center">
+                        <Icon className="h-5 w-5 md:h-6 md:w-6 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold text-[#0a1628]">{step.title}</h3>
                     </div>
-                    <p className="text-gray-600 leading-relaxed text-base">
+                  </div>
+
+                  {/* Content Side */}
+                  <div className={`space-y-4 ${index % 2 === 1 ? "md:order-1 md:text-right" : ""}`}>
+                    <div className={`inline-flex items-center gap-2 ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
+                      <div className={`h-10 w-10 rounded-xl ${isActive ? "bg-[#eb255a]" : "bg-[#eb255a]/10"} flex items-center justify-center`}>
+                        <Icon className={`h-5 w-5 ${isActive ? "text-white" : "text-[#eb255a]"}`} />
+                      </div>
+                      <span className={`text-xs font-bold uppercase tracking-wider ${isActive ? "text-[#eb255a]" : "text-gray-400"}`}>
+                        Step {step.number}
+                      </span>
+                    </div>
+                    
+                    <h3 className={`text-2xl md:text-3xl lg:text-4xl font-bold ${isActive ? "text-[#eb255a]" : "text-[#0a1628] group-hover:text-[#eb255a]"} transition-colors`}>
+                      {step.title}
+                    </h3>
+                    
+                    <p className="text-base md:text-lg text-gray-600 leading-relaxed">
                       {step.description}
                     </p>
+
+                    {/* Progress Indicator */}
+                    <div className="flex items-center gap-2 pt-2">
+                      {processSteps.map((_, i) => (
+                        <div
+                          key={i}
+                          className={`h-1.5 rounded-full transition-all duration-500 ${
+                            i === index
+                              ? "w-12 bg-[#eb255a]"
+                              : i < index
+                              ? "w-6 bg-[#eb255a]/40"
+                              : "w-6 bg-gray-200"
+                          }`}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
+                </motion.div>
+
+                {/* Divider */}
+                {index < processSteps.length - 1 && (
+                  <div className="hidden md:flex items-center justify-center py-4">
+                    <div className="w-0.5 h-12 bg-gradient-to-b from-[#eb255a]/40 to-gray-200" />
+                  </div>
+                )}
               </FadeInSection>
             );
           })}
@@ -655,7 +563,7 @@ function SubgeoIndustrial() {
       <StickyNavbar />
 
       {/* Hero Section - Full Screen with Parallax */}
-      <section ref={heroRef} className="relative h-screen overflow-hidden">
+      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
         <motion.div style={{ scale: heroScale }} className="absolute inset-0 z-0">
           <img
             src={firePumpImg}
@@ -675,14 +583,14 @@ function SubgeoIndustrial() {
 
         <motion.div
           style={{ y: heroTextY, opacity: heroOpacity }}
-          className="relative z-10 flex items-center px-6 md:px-12 lg:px-20 h-[calc(100vh-5rem)]"
+          className="relative z-10 flex items-center px-6 md:px-12 lg:px-20 pb-12 md:pb-16"
         >
           <div className="max-w-7xl mx-auto w-full">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-6 md:mb-8"
+              className="mb-4 md:mb-6"
             >
               <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 md:px-6 py-2 md:py-3">
                 <span className="flex h-2 w-2 rounded-full bg-[#eb255a] animate-pulse"></span>
@@ -712,7 +620,7 @@ function SubgeoIndustrial() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.9 }}
-              className="mt-8 md:mt-10 max-w-2xl text-base md:text-lg lg:text-xl text-white/80 leading-relaxed font-light"
+              className="mt-6 md:mt-8 max-w-2xl text-base md:text-lg lg:text-xl text-white/80 leading-relaxed font-light"
             >
               We design, install and maintain resilient plumbing and drainage systems
               for homes, commercial spaces and industrial facilities across Kenya.
@@ -722,7 +630,7 @@ function SubgeoIndustrial() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.1 }}
-              className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-4 md:gap-6"
+              className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-4 md:gap-6"
             >
               <button
                 onClick={() => scrollToSection("services")}
@@ -746,7 +654,7 @@ function SubgeoIndustrial() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8, duration: 1 }}
-          className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-10"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
@@ -871,7 +779,7 @@ function SubgeoIndustrial() {
         </div>
       </section>
 
-      {/* Our Process - Enhanced Timeline */}
+      {/* Our Process - Enhanced Timeline with Vertical Layout */}
       <ProcessTimeline />
 
       {/* Chapter 03: Industries */}
