@@ -1455,7 +1455,7 @@ function SubgeoIndustrial() {
           scroll-behavior: smooth;
         }
         ::selection {
-          background: rgba(240, 16, 16, 0.3);
+          background: rgba(235, 37, 90, 0.3);
           color: #0a1628;
         }
       `}</style>
