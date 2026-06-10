@@ -37,10 +37,10 @@ import { Footer } from "@/components/site/Footer";
 import heroImg from "@/assets/corporate-hero.jpeg";
 import industryImg from "@/assets/industry.jpeg";
 import plumbingImg from "@/assets/plumber.jpeg";
-import drainageImg from "@/assets/plumbing.png";
-import geyserImg from "@/assets/service.png";
-import bathroomImg from "@/assets/plumbing.png";
-import showerImg from "@/assets/services.png";
+import drainageImg from "@/assets/Drainage.png";
+import geyserImg from "@/assets/Geyserinstall.png";
+import bathroomImg from "@/assets/Kitchenfitouts.png";
+import showerImg from "@/assets/Showerservice.png";
 import commercialImg from "@/assets/corporate-hero.jpeg";
 import industrialImg from "@/assets/industry2.jpeg";
 
@@ -53,8 +53,12 @@ import constructionSiteImg from "@/assets/industry.jpeg";
 import teamWorkingImg from "@/assets/work.jpg";
 import equipmentImg from "@/assets/equipment.jpg";
 import safetyGearImg from "@/assets/safety.jpg";
-import blueprintImg from "@/assets/siteassessment.png";
-import completedProjectImg from "@/assets/completeprjct.jpg";
+
+// Process step images
+import siteAssessmentImg from "@/assets/Siteassessment.png";
+import planningImg from "@/assets/Planning.png";
+import expertExecutionImg from "@/assets/Expertexecution.png";
+import handoverImg from "@/assets/Handover.png";
 
 export const Route = createFileRoute("/subgeo-industrial")({
   head: () => ({
@@ -227,7 +231,7 @@ const processSteps = [
     description:
       "Our engineers conduct thorough on-site inspections to understand your unique plumbing challenges, infrastructure conditions, and operational requirements before proposing any solution.",
     icon: Target,
-    image: blueprintImg,
+    image: siteAssessmentImg,
   },
   {
     number: "02",
@@ -235,7 +239,7 @@ const processSteps = [
     description:
       "We develop detailed project plans with clear timelines, resource allocation, material specifications, and comprehensive safety protocols tailored to your facility.",
     icon: FileText,
-    image: constructionSiteImg,
+    image: planningImg,
   },
   {
     number: "03",
@@ -243,7 +247,7 @@ const processSteps = [
     description:
       "Skilled technicians deploy with properly maintained equipment and certified materials to deliver precision workmanship that meets industry standards and project specifications.",
     icon: Wrench,
-    image: equipmentImg,
+    image: expertExecutionImg,
   },
   {
     number: "04",
@@ -251,7 +255,7 @@ const processSteps = [
     description:
       "Rigorous pressure testing, system diagnostics, and compliance inspections ensure every installation meets our high standards before formal handover and documentation.",
     icon: ShieldCheck,
-    image: completedProjectImg,
+    image: handoverImg,
   },
 ];
 
@@ -1451,7 +1455,7 @@ function SubgeoIndustrial() {
           scroll-behavior: smooth;
         }
         ::selection {
-          background: rgba(235, 37, 90, 0.3);
+          background: rgba(240, 16, 16, 0.3);
           color: #0a1628;
         }
       `}</style>
