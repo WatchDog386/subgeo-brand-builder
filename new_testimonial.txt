@@ -1,0 +1,109 @@
+        <section className="py-24 md:py-32 bg-[#f6f8fb]">
+          <div className="container-x grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            {/* Left Column */}
+            <RevealOnScroll direction="left">
+              <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-[#1a2d42]">
+                Our Clients Speaks
+                <br />
+                Highly Of Us
+              </h2>
+
+              <div className="mt-14 space-y-5">
+                {testimonialReviewers.map((item, index) => (
+                  <div
+                    key={item.name}
+                    onClick={() => setActiveTestimonialIndex(index)}
+                    className={`bg-white px-6 py-5 flex items-center gap-5 border cursor-pointer transition-all duration-500 ease-out ${
+                      activeTestimonialIndex === index
+                        ? "border-transparent shadow-[0_8px_30px_rgb(0,0,0,0.08)] scale-[1.02]"
+                        : "border-gray-200 opacity-60 hover:opacity-100 hover:border-gray-300"
+                    }`}
+                  >
+                    {item.type === "image" ? (
+                      <img
+                        src={item.avatar}
+                        alt={item.name}
+                        className="h-[64px] w-[64px] rounded-full object-cover"
+                      />
+                    ) : (
+                      <div
+                        className="h-[64px] w-[64px] rounded-full flex items-center justify-center text-white text-[22px] font-medium"
+                        style={{ backgroundColor: item.color }}
+                      >
+                        {item.avatar}
+                      </div>
+                    )}
+                    <div>
+                      <div
+                        className="text-[14px] font-bold"
+                        style={{ color: "#2a3d52" }}
+                      >
+                        {item.name}
+                      </div>
+                      <div className="text-[12px] text-[#9aa8b8] mt-1">
+                        {item.date}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </RevealOnScroll>
+
+            {/* Right Column */}
+            <RevealOnScroll direction="right">
+              <div className="flex flex-col items-start">
+                <GoogleLogo />
+                <p
+                  className="mt-4 text-[13px] leading-[1.6]"
+                  style={{ color: "#4a5568" }}
+                >
+                  4.9 Stars & 500 Reviews Thanks
+                  <br />
+                  To Our Amazing Community
+                </p>
+              </div>
+
+              <div className="mt-16">
+                <h3
+                  className="text-[24px] md:text-[28px] font-bold leading-[1.2] whitespace-pre-line transition-all duration-300"
+                  style={{
+                    color: "#1a2d42",
+                    fontFamily: "'Inter', system-ui, sans-serif",
+                  }}
+                >
+                  {activeTestimonial.title}
+                </h3>
+
+                <div className="mt-6 flex items-center gap-[4px]">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star
+                      key={i}
+                      className="h-[26px] w-[26px] fill-[#f4b942] text-[#f4b942]"
+                      strokeWidth={0}
+                    />
+                  ))}
+                </div>
+
+                <p
+                  className="mt-7 text-[13px] leading-[1.85] transition-all duration-300"
+                  style={{ color: "#6b7a8d" }}
+                >
+                  {activeTestimonial.text}
+                </p>
+
+                <button className="mt-10 flex items-center gap-2 group">
+                  <span
+                    className="text-[13px] font-bold uppercase tracking-[0.12em]"
+                    style={{ color: "#d41a2a" }}
+                  >
+                    Read More
+                  </span>
+                  <ArrowRight
+                    className="h-[14px] w-[14px] transition-transform duration-200 group-hover:translate-x-1"
+                    style={{ color: "#d41a2a" }}
+                  />
+                </button>
+              </div>
+            </RevealOnScroll>
+          </div>
+        </section>
