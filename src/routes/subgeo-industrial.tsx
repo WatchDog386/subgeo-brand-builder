@@ -37,10 +37,10 @@ import { Footer } from "@/components/site/Footer";
 import heroImg from "@/assets/corporate-hero.jpeg";
 import industryImg from "@/assets/industry.jpeg";
 import plumbingImg from "@/assets/plumber.jpeg";
-import drainageImg from "@/assets/Drainage.png";
-import geyserImg from "@/assets/Geyserinstall.png";
-import bathroomImg from "@/assets/Kitchenfitouts.png";
-import showerImg from "@/assets/Showerservice.png";
+import drainageImg from "@/assets/drainage.png";
+import geyserImg from "@/assets/geyserinstall.png";
+import bathroomImg from "@/assets/kitchenfitouts.png";
+import showerImg from "@/assets/showerservice.png";
 import commercialImg from "@/assets/corporate-hero.jpeg";
 import industrialImg from "@/assets/industry2.jpeg";
 
@@ -55,10 +55,10 @@ import equipmentImg from "@/assets/equipment.jpg";
 import safetyGearImg from "@/assets/safety.jpg";
 
 // Process step images
-import siteAssessmentImg from "@/assets/Siteassessment.png";
-import planningImg from "@/assets/Planning.png";
-import expertExecutionImg from "@/assets/Expertexecution.png";
-import handoverImg from "@/assets/Handover.png";
+import siteassessmentImg from "@/assets/siteassessment.png";
+import planningImg from "@/assets/planning.png";
+import expertexecutionImg from "@/assets/expertexecution.png";
+import handoverImg from "@/assets/handover.png";
 
 export const Route = createFileRoute("/subgeo-industrial")({
   head: () => ({
@@ -231,7 +231,7 @@ const processSteps = [
     description:
       "Our engineers conduct thorough on-site inspections to understand your unique plumbing challenges, infrastructure conditions, and operational requirements before proposing any solution.",
     icon: Target,
-    image: siteAssessmentImg,
+    image: siteassessmentImg,
   },
   {
     number: "02",
@@ -247,7 +247,7 @@ const processSteps = [
     description:
       "Skilled technicians deploy with properly maintained equipment and certified materials to deliver precision workmanship that meets industry standards and project specifications.",
     icon: Wrench,
-    image: expertExecutionImg,
+    image: expertexecutionImg,
   },
   {
     number: "04",
