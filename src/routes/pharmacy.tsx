@@ -9,7 +9,6 @@ import { PremiumHero, PremiumSection, PremiumButton } from "@/components/premium
 import { GridContainer } from "@/components/premium/PremiumGrid";
 import pharmacyImg from "@/assets/pharmacy.jpg";
 import labImg from "@/assets/lab.jpg";
-import guideImg from "@/assets/Guide.png";
 // Imported new images
 import pharm2Img from "@/assets/pharm2.jpeg";
 import pharm4Img from "@/assets/pharm4.jpeg";
@@ -178,27 +177,10 @@ function PharmacyPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left: Circular Graphic (Swapped) */}
+            {/* Left: Image */}
             <div className="flex justify-center relative order-last lg:order-first">
-              <div className="relative w-full max-w-[450px] aspect-square rounded-full border-[8px] border-[#a855f7] p-2">
-                {/* Floating decoration dots */}
-                <div className="absolute top-[5%] right-[10%] w-12 h-12 bg-[#22c55e] rounded-full"></div>
-                <div className="absolute top-[45%] left-[-5%] w-8 h-8 bg-[#0ea5e9] rounded-full"></div>
-                <div className="absolute bottom-[5%] right-[15%] w-16 h-16 bg-[#f97316] rounded-full"></div>
-                
-                {/* Main Image */ }
-                <div className="w-full h-full rounded-full overflow-hidden relative">
-                   <img src={guideImg} alt="Pharmacy Service" className="w-full h-full object-cover" />
-                </div>
-                {/* Quotes icon */}
-                <div className="absolute bottom-10 left-10 text-[80px] text-[#22c55e] leading-none font-serif rotate-180">
-                  "
-                </div>
-
-                <div className="absolute -bottom-10 inset-x-0 text-center text-[#1e293b]">
-                  <p className="font-bold text-[14px]">Subgeo Pharmacy</p>
-                  <p className="text-[12px] text-[#8b5cf6] font-medium">"Your trusted healthcare partner"</p>
-                </div>
+              <div className="relative w-full max-w-[450px] aspect-[4/3] overflow-hidden shadow-lg">
+                <img src={pharmImg} alt="Pharmacy" className="w-full h-full object-cover" />
               </div>
             </div>
 
