@@ -37,28 +37,22 @@ import { Footer } from "@/components/site/Footer";
 import heroImg from "@/assets/corporate-hero.jpeg";
 import industryImg from "@/assets/industry.jpeg";
 import plumbingImg from "@/assets/plumber.jpeg";
-import drainageImg from "@/assets/Drainage.png";
-import geyserImg from "@/assets/Geyserinstall.png";
-import bathroomImg from "@/assets/Kitchenfitouts.png";
-import showerImg from "@/assets/Showerservice.png";
+import drainageImg from "@/assets/drainage.png";
+import geyserImg from "@/assets/geyserinstall.png";
+import bathroomImg from "@/assets/kitchenfitouts.png";
+import showerImg from "@/assets/showerservice.png";
 import commercialImg from "@/assets/corporate-hero.jpeg";
-import industrialImg from "@/assets/industry2.jpeg";
-
-// New images from user
+import industrialImg from "@/assets/industry.jpeg";
 import firePumpImg from "@/assets/industry.jpeg";
-import pumpRoomImg from "@/assets/industry2.jpeg";
+import pumpRoomImg from "@/assets/industry.jpeg";
 import constructionSiteImg from "@/assets/industry.jpeg";
-
-// Additional imagery for storytelling
-import teamWorkingImg from "@/assets/work.jpg";
-import equipmentImg from "@/assets/equipment.jpg";
-import safetyGearImg from "@/assets/safety.jpg";
-
-// Process step images
-import siteAssessmentImg from "@/assets/Siteassessment.png";
-import planningImg from "@/assets/Planning.png";
-import expertExecutionImg from "@/assets/Expertexecution.png";
-import handoverImg from "@/assets/Handover.png";
+import teamWorkingImg from "@/assets/work.jpeg";
+import equipmentImg from "@/assets/service.jpeg";
+import safetyGearImg from "@/assets/industry.jpeg";
+import siteAssessmentImg from "@/assets/siteassessment.png";
+import planningImg from "@/assets/planning.png";
+import expertExecutionImg from "@/assets/expertexecution.png";
+import handoverImg from "@/assets/handover.png";
 
 export const Route = createFileRoute("/subgeo-industrial")({
   head: () => ({
