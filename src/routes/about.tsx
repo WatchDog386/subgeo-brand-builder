@@ -4,8 +4,9 @@ import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, PhoneCall, Globe, Clock, Briefcase, CheckCircle2, Plane } from "lucide-react";
-import heroImg from "@/assets/hero.jpeg";
 import aboutImg from "@/assets/about.png";
+import serviceImg from "@/assets/service.jpeg";
+import communityImg from "@/assets/community.jpeg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -78,12 +79,12 @@ function AboutPage() {
             <Reveal delay={0.2} className="relative h-[350px] sm:h-[400px] lg:h-[450px] w-full max-w-[500px] ml-auto">
               {/* Top Left Image */}
               <div className="absolute top-0 left-0 w-[78%] h-[68%] shadow-lg z-10">
-                <img src={heroImg} alt="Subgeo services" className="w-full h-full object-cover" />
+                <img src={communityImg} alt="Subgeo community" className="w-full h-full object-cover" />
               </div>
               
               {/* Bottom Right Image */}
               <div className="absolute bottom-0 right-0 w-[55%] h-[55%] shadow-2xl border-[10px] border-white z-20 bg-white">
-                <img src={heroImg} alt="Subgeo facilities" className="w-full h-full object-cover" />
+                <img src={serviceImg} alt="Subgeo services" className="w-full h-full object-cover" />
               </div>
               
               {/* Dot Pattern (Behind Bottom Left) */}
@@ -138,7 +139,7 @@ function AboutPage() {
       <section className="py-20 lg:py-28 bg-white">
         <div className="container-x grid lg:grid-cols-2 gap-16 items-center">
           <Reveal className="h-[380px] lg:h-[440px] w-full shadow-lg">
-            <img src={heroImg} alt="Industry competence" className="w-full h-full object-cover" />
+            <img src={communityImg} alt="Industry competence" className="w-full h-full object-cover" />
           </Reveal>
           
           <Reveal delay={0.2} className="space-y-6 lg:pl-10">
@@ -171,40 +172,6 @@ function AboutPage() {
               Get Help Now !
             </Button>
           </Reveal>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-20 lg:py-28 bg-[#f6f8fb]">
-        <div className="container-x">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-[clamp(28px,3vw,40px)] font-bold mb-4" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
-              <span className="text-[#1d3b4a]">Dedicated </span>
-              <span className="text-[#ef6a42]">expert team</span>
-            </h2>
-            <p className="text-gray-500 text-[14px] leading-relaxed">
-              Meet the passionate professionals who drive Subgeo's vision forward and ensure consistent excellence in every division of our company.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {[
-              { role: "CEO & Founder", name: "Devon Lane", image: heroImg }, 
-              { role: "Head of Operations", name: "Emily Johnson", image: heroImg },
-              { role: "Client Relations", name: "Sophia Brown", image: heroImg },
-              { role: "QA Director", name: "Anita Benson", image: heroImg },
-            ].map((member, idx) => (
-              <Reveal key={idx} delay={idx * 0.1} className="group relative bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <div className="aspect-[3/4] w-full overflow-hidden">
-                  <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 bg-[#112a38] p-5 text-left">
-                  <div className="text-[#ef6a42] text-[11px] font-bold uppercase tracking-wider mb-1">{member.role}</div>
-                  <h3 className="text-white text-[18px] font-bold" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>{member.name}</h3>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
