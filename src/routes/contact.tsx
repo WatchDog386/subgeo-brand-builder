@@ -10,7 +10,6 @@ import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { branches } from "@/lib/branches";
-import corporateHero from "@/assets/corporate-hero.jpg";
 import whyImg from "@/assets/why.png";
 
 export const Route = createFileRoute("/contact")({
@@ -38,7 +37,7 @@ function ContactPage() {
       {/* Hero Section */}
       <section className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center mt-20">
         <div className="absolute inset-0 z-0">
-          <img src={corporateHero} alt="Contact Hero" className="w-full h-full object-cover grayscale" />
+          <img src="https://media.istockphoto.com/id/1168945108/photo/close-up-image-of-male-hands-using-smartphone-with-icon-telephone-email-mobile-phone-and.jpg?s=612x612&w=0&k=20&c=aVojLzP1n3XNxuRdy7Pqdzo6OyRAVanOWDUWjbu3R8Q=" alt="Contact Hero" className="w-full h-full object-cover grayscale" />
           <div className="absolute inset-0 bg-black/60 mix-blend-multiply"></div>
         </div>
         <div className="relative z-10 text-center">
