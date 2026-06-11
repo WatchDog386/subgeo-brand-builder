@@ -8,7 +8,7 @@ import { ServicesSection } from "@/components/home/ServicesSection";
 import { ImpactStatsSection } from "@/components/home/ImpactStatsSection";
 import { WhyUsSection } from "@/components/home/WhyUsSection";
 import { BranchesGridSection } from "@/components/home/BranchesGridSection";
-import { PillarsSection } from "@/components/home/PillarsSection";
+
 import { ValuesMissionSection } from "@/components/home/ValuesMissionSection";
 import { NewsAndInsightsSection } from "@/components/home/NewsAndInsightsSection";
 import { PremiumCTASection } from "@/components/home/PremiumCTASection";
@@ -53,7 +53,7 @@ function Home() {
      
         
         <NewsAndInsightsSection />
-           <PillarsSection />
+           
         <PremiumCTASection />
         <Footer />
       </div>

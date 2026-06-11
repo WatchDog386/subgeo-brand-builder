@@ -1,5 +1,5 @@
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
-import heroImg from "@/assets/hero.jpeg"; 
+import community from "@/assets/community.jpeg"; 
 
 export function ImpactStatsSection() {
   return (
@@ -43,7 +43,7 @@ export function ImpactStatsSection() {
               {/* Image Container */}
               <div className="relative w-full h-[300px] md:h-full min-h-[350px] lg:min-h-[420px] border-[12px] border-white bg-gray-100 shadow-sm z-20">
                 <img
-                  src={heroImg}
+                  src={community}
                   alt="Service professional"
                   className="absolute inset-0 w-full h-full object-cover"
                 />

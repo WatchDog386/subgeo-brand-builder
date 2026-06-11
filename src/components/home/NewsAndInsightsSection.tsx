@@ -4,15 +4,14 @@ import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
 import salonImg from "@/assets/salon.jpeg";
 import plumberImg from "@/assets/plumber.jpeg";
 import salon2Img from "@/assets/salon2.jpeg";
-import labImg from "@/assets/lab.jpg";
+import pharm2mg from "@/assets/pharm2.jpeg";
 import industryImg from "@/assets/industry.jpeg";
-import heroImg from "@/assets/hero.jpeg";
-
+import serviceImg from "@/assets/service.jpeg";
 const branchesData = [
   {
     title: "Subgeo Pharmacy",
     desc: "Our flagship retail pharmacy stocks a full range of prescription, over-the-counter, and wellness essentials for your family.",
-    image: labImg, // Placeholder
+    image: pharm2mg,
     badge: "HEALTH"
   },
   {
@@ -39,7 +38,7 @@ export function NewsAndInsightsSection() {
           <div className="flex flex-col md:flex-row gap-6 lg:gap-8 mb-16">
             <div className="w-full md:w-1/2 overflow-hidden shadow-md group">
                <div className="relative w-full aspect-[2/1] bg-gray-100 overflow-hidden border border-gray-200">
-                  <img src={heroImg} alt="Subgeo Company" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                  <img src={serviceImg} alt="Subgeo Company" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                   <div className="absolute inset-0 flex flex-col justify-center px-8 bg-gradient-to-r from-white via-white/80 to-transparent">
                      <h4 className="font-sans text-[clamp(18px,2vw,28px)] leading-[1.1] font-medium text-primary mb-1">Providing Kenyans</h4>
                      <h3 className="font-sans text-[clamp(22px,3vw,36px)] leading-[1.1] tracking-tighter font-[900] text-primary mb-2">With Reliable and Quality Services</h3>

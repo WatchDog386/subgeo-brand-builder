@@ -6,8 +6,14 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowUpRight, Play, Star, Sparkles, Clock, Phone, Check } from "lucide-react";
 import { branches } from "@/lib/branches";
 import beautyImg from "@/assets/salon.jpeg";
+import salon2 from "@/assets/salon2.jpeg";
 import salon3 from "@/assets/salon3.jpeg";
 import salon4 from "@/assets/salon4.jpeg";
+import salon5 from "@/assets/salon5.jpeg";
+import salon6 from "@/assets/salon6.jpeg";
+import salon7 from "@/assets/salon7.jpeg";
+import salon8 from "@/assets/salon8.jpeg";
+import salon9 from "@/assets/salon9.jpeg";
 import victor from "@/assets/victor.jpeg";
 import florence from "@/assets/florence.jpeg";
 
@@ -73,7 +79,7 @@ function BeautyPage() {
       {/* 1. HERO SECTION (Light Theme Hairdressing Replica) */}
       <section className="relative w-full bg-white flex flex-col pt-[72px]">
         {/* Top Hero Splash */}
-        <div className="relative w-full h-[600px] lg:h-[750px] flex items-center bg-gray-50 border-b border-gray-100 overflow-hidden">
+        <div className="relative w-full h-[400px] lg:h-[500px] flex items-center bg-gray-50 border-b border-gray-100 overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0 flex items-end">
              <img 
@@ -391,7 +397,7 @@ function BeautyPage() {
               </div>
               <div className="absolute left-[-5%] bottom-0 w-[70%] h-[95%] pointer-events-none">
                 <img 
-                  src="https://cdn.bgmgirl.com/media/wysiwyg/blog/Four_Braids_Side_Part_Bob.jpg" 
+                  src={salon9}
                   alt="Women's Style"
                   className="w-full h-full object-cover object-bottom mix-blend-darken group-hover:scale-105 transition-transform duration-700"
                 />
@@ -492,7 +498,7 @@ function BeautyPage() {
               </div>
               <div className="absolute right-0 bottom-0 top-0 w-[55%] pointer-events-none">
                 <img 
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwDgIbj5vOB71d8_ckjf34f4d3KWGPCs3abA&s" 
+                  src={salon5}
                   alt="Women's Wear" 
                   className="w-full h-full object-cover object-center mix-blend-darken group-hover:scale-105 transition-transform duration-700" 
                 />
@@ -619,10 +625,10 @@ function BeautyPage() {
             {/* Gallery Images Grid Container */}
             <div className="grid md:grid-cols-3 gap-0 border border-gray-200 bg-white">
               
-              {/* Image 1 */}
+              {/* Image 1 - salon5.jpeg */}
               <div className="relative group overflow-hidden border-b md:border-b-0 md:border-r border-gray-200">
                 <div className="w-full h-[220px] p-2 hover:p-0 transition-all duration-300">
-                   <img src={victor} alt="Gallery Image 1" className="w-full h-full object-cover object-top" />
+                   <img src={salon5} alt="Beauty Treatment" className="w-full h-full object-cover object-top" />
                 </div>
                 {/* Hover Maximize Overlay Icon (matches the design) */}
                 <div className="absolute inset-0 bg-white/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
@@ -634,10 +640,10 @@ function BeautyPage() {
                 </div>
               </div>
 
-              {/* Image 2 */}
+              {/* Image 2 - salon6.jpeg */}
               <div className="relative group overflow-hidden border-b md:border-b-0 md:border-r border-gray-200">
                 <div className="w-full h-[220px] p-2 hover:p-0 transition-all duration-300">
-                   <img src={florence} alt="Gallery Image 2" className="w-full h-full object-cover object-top" />
+                   <img src={salon6} alt="Salon Workspace" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="absolute inset-0 bg-white/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
                   <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
@@ -648,16 +654,44 @@ function BeautyPage() {
                 </div>
               </div>
 
-              {/* Image 3 */}
-              <div className="relative group overflow-hidden">
+              {/* Image 3 - salon7.jpeg */}
+              <div className="relative group overflow-hidden border-b md:border-b-0 md:border-r border-gray-200">
                 <div className="w-full h-[220px] p-2 hover:p-0 transition-all duration-300">
-                   <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=80" alt="Gallery Image 3" className="w-full h-full object-cover" />
+                   <img src={salon7} alt="Hair Care" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="absolute inset-0 bg-white/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
                   <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                     </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                       <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Image 4 - salon8.jpeg */}
+              <div className="relative group overflow-hidden border-b md:border-b-0 md:border-r border-gray-200">
+                <div className="w-full h-[220px] p-2 hover:p-0 transition-all duration-300">
+                   <img src={salon8} alt="Salon Ambience" className="w-full h-full object-cover object-top" />
+                </div>
+                <div className="absolute inset-0 bg-white/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                       <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Image 5 - salon9.jpeg */}
+              <div className="relative group overflow-hidden">
+                <div className="w-full h-[220px] p-2 hover:p-0 transition-all duration-300">
+                   <img src={salon9} alt="Women Styling" className="w-full h-full object-cover object-top" />
+                </div>
+                <div className="absolute inset-0 bg-white/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                       <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                    </svg>
                   </div>
                 </div>
               </div>

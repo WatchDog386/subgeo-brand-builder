@@ -1,7 +1,7 @@
 import { Check, ArrowRight } from "lucide-react";
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
 import houseImg from "@/assets/hero.jpeg";
-import techImg from "@/assets/subgeo.jpeg";
+import serviceImg from "@/assets/service.jpeg";
 
 const benefits = [
   "Prompt, Efficient Services Every Time",
@@ -13,11 +13,11 @@ const benefits = [
 export function ServicesSection() {
   return (
     <section className="section-shell py-16 md:py-24 bg-white">
-      <div className="container-x max-w-5xl mx-auto flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="container-x max-w-5xl mx-auto flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         
         {/* ───────── LEFT: Image Composition ───────── */}
         <RevealOnScroll direction="left">
-          <div className="relative w-full max-w-[600px] mx-auto lg:mx-0 pb-12 lg:pr-10">
+          <div className="relative w-full max-w-[600px] mx-auto lg:mx-0 pb-16 lg:pr-12">
             {/* Light blue decorative square behind */}
             <div className="absolute bottom-16 -left-6 lg:-left-8 w-[200px] h-[200px] bg-[#d5e0e7] z-0" />
 
@@ -29,16 +29,17 @@ export function ServicesSection() {
             />
 
             {/* "HELPING SINCE 1986" badge */}
-            <div className="absolute bottom-[20%] left-6 z-30 bg-[#e0292e] text-white px-6 py-3 text-[12px] font-bold uppercase tracking-widest border-[3px] border-white max-w-fit whitespace-nowrap">
+            <div className="absolute bottom-[10%] -left-4 lg:left-2 z-30 bg-[#e0292e] text-white px-6 py-3 text-[12px] font-bold uppercase tracking-widest border-[4px] border-white max-w-fit whitespace-nowrap">
               Helping Since 1986
             </div>
 
             {/* Technician image */ }
-            <div className="absolute -bottom-8 -right-8 lg:-right-12 z-20 w-[45%]">
+            {/* UPDATED: Increased width (w-[60%]), reduced height (aspect-[4/3]), and added a thick white border to cleanly block the first image */}
+            <div className="absolute -bottom-8 -right-4 lg:-right-16 z-20 w-[65%] sm:w-[60%] shadow-2xl">
               <img
-                src={techImg}
+                src={serviceImg}
                 alt="Technician at work"
-                className="w-full aspect-[3/4] object-contain bg-white shadow-xl"
+                className="w-full aspect-[4/3] object-cover border-[10px] border-white"
               />
             </div>
           </div>

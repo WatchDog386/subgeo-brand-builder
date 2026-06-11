@@ -10,6 +10,11 @@ import { GridContainer } from "@/components/premium/PremiumGrid";
 import pharmacyImg from "@/assets/pharmacy.jpg";
 import labImg from "@/assets/lab.jpg";
 import guideImg from "@/assets/Guide.png";
+// Imported new images
+import pharm2Img from "@/assets/pharm2.jpeg";
+import pharm4Img from "@/assets/pharm4.jpeg";
+import pharm1Img from "@/assets/pharm1.jpeg";
+import pharmImg from "@/assets/pharm.jpeg";
 
 export const Route = createFileRoute("/pharmacy")({
   head: () => ({
@@ -74,9 +79,13 @@ function PharmacyPage() {
         <div className="container-x w-full max-w-[1240px] px-4 md:px-0">
           <div className="relative w-full min-h-[400px] lg:min-h-[480px] overflow-hidden bg-white mx-auto">
             
-            {/* Background Image Layer underneath */}
+            {/* Background Image Layer underneath - pharm2.jpeg */}
             <div className="absolute top-0 bottom-0 left-0 w-full z-0">
-              <img src={pharmacyImg} alt="Pharmacy" className="w-full h-full object-cover object-left lg:object-center" />
+              <img 
+                src={pharm2Img} 
+                alt="Pharmacy Hero" 
+                className="w-full h-full object-cover object-center lg:object-left" 
+              />
             </div>
 
             {/* Slanted White Background Area overlaying the right side (Slant \) */}
@@ -301,10 +310,14 @@ function PharmacyPage() {
           {/* TOP ADS BANNERS ROW */}
           <div className="flex flex-col md:flex-row gap-6 lg:gap-8 mb-16">
             <div className="w-full md:w-1/2 overflow-hidden shadow-md group">
-               {/* Note: Ideally place actual ad banners here. Using default pharmacyImg for structure placeholder */}
+               {/* Health, Skin and Lifestyle Care - Using pharm2.jpeg */}
                <div className="relative w-full aspect-[2/1] bg-gray-100 overflow-hidden border border-gray-200">
-                  <img src={pharmacyImg} alt="Ad left" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-                  <div className="absolute inset-0 flex flex-col justify-center px-8 bg-gradient-to-r from-white via-white/80 to-transparent">
+                  <img 
+                    src={pharm2Img} 
+                    alt="Health Skin Care" 
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 flex flex-col justify-center px-8 bg-gradient-to-r from-white via-white/90 to-transparent">
                      <h4 className="font-sans text-[clamp(18px,2vw,28px)] leading-[1.1] font-medium text-red-600 mb-1">Health, Skin And Lifestyle Care</h4>
                      <h3 className="font-sans text-[clamp(22px,3vw,36px)] leading-[1.1] tracking-tighter font-[900] text-blue-900 mb-2">On Your Palms</h3>
                      <p className="text-xs lg:text-sm text-gray-700 mt-2 max-w-[60%]">Discover a world of beauty essentials that care for your skin, enhance your glow, and bring out your best self.</p>
@@ -445,7 +458,7 @@ function PharmacyPage() {
         </div>
       </section>
 
-      {/* Learn with Subgeo Pharmacy */}
+      {/* Unlock Better Health Section - Using pharm4.jpeg */}
       <section className="py-16 lg:py-24 bg-white relative overflow-hidden border-b border-gray-100">
         <div className="w-full mx-auto relative overflow-hidden bg-[#f0f5f8] min-h-[400px] lg:min-h-[500px] flex items-center">
             
@@ -467,10 +480,13 @@ function PharmacyPage() {
               </svg>
             </div>
 
-            {/* Huge Blue Circle mask for Right Image */}
+            {/* Huge Blue Circle mask for Right Image - Using pharm4.jpeg */}
             <div className="absolute top-[-20%] bottom-[-20%] right-[-10%] w-[60%] lg:w-[45%] bg-[#a5c2d3] rounded-full z-0 overflow-hidden shadow-2xl border-8 border-white/20">
-               {/* Woman Image masked inside circle - ensuring absolute clarity */}
-               <img src={labImg} alt="Radiant skin" className="absolute inset-0 w-full h-full object-cover object-top" />
+               <img 
+                 src={pharm4Img} 
+                 alt="Radiant skin" 
+                 className="absolute inset-0 w-full h-full object-cover object-top" 
+               />
             </div>
 
             <div className="container-x max-w-[1400px] w-full mx-auto relative z-10 flex flex-col md:flex-row items-stretch lg:px-16 py-12">
@@ -604,7 +620,7 @@ function PharmacyPage() {
         </div>
       </section>
 
-      {/* CTA BANNER SECTION */}
+      {/* CTA BANNER SECTION - Using pharm1.jpeg and pharm.jpeg */}
       <section className="py-16 lg:py-24 bg-white relative overflow-hidden">
         {/* Background Network Pattern */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden flex justify-between">
@@ -670,7 +686,7 @@ function PharmacyPage() {
                  </button>
              </div>
 
-             {/* Products Placeholder (Center) */}
+             {/* Products Placeholder (Center) - Using pharm1.jpeg */}
              <div className="hidden md:flex absolute bottom-0 right-[25%] lg:right-[30%] w-[35%] h-[80%] z-10 items-end justify-center pointer-events-none">
                 <div className="w-[85%] h-full relative">
                    {/* Mock Circular Podiums */}
@@ -678,14 +694,22 @@ function PharmacyPage() {
                    <div className="absolute bottom-3 left-[40%] w-[45%] h-[35px] bg-white rounded-[50%] shadow-sm border border-gray-200 z-10"></div>
                    <div className="absolute bottom-1 right-[5%] w-[40%] h-[30px] bg-white rounded-[50%] shadow-sm border border-gray-200"></div>
                    
-                   {/* Image over podiums */}
-                   <img src="https://d1hdtc0tbqeghx.cloudfront.net/wp-content/uploads/2024/04/16131251/Best-Pharmacy-Website-Designs-1024x528.jpg" alt="Products" className="absolute bottom-6 left-[15%] w-[70%] h-[75%] object-cover rounded-lg shadow-md border-4 border-white opacity-95 grayscale mix-blend-multiply" />
+                   {/* Image over podiums - Scaled down to fit nicely */}
+                   <img 
+                     src={pharm1Img} 
+                     alt="Products" 
+                     className="absolute bottom-6 left-[15%] w-[70%] h-[75%] object-contain drop-shadow-lg" 
+                   />
                 </div>
              </div>
 
-             {/* End Image (Right) */}
+             {/* End Image (Right) - Using pharm.jpeg */}
              <div className="absolute right-0 top-0 w-1/3 md:w-[35%] lg:w-[32%] h-full z-0 overflow-hidden">
-                <img src="https://www.medisana.com/healthblog/app/uploads/2025/10/Design-ohne-Titel-3.jpg" alt="Cold relief" className="w-full h-full object-cover object-left" />
+                <img 
+                  src={pharmImg} 
+                  alt="Cold relief" 
+                  className="w-full h-full object-cover object-left" 
+                />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#f6f2ef] via-[#f6f2ef]/40 to-transparent"></div>
              </div>
           </div>
