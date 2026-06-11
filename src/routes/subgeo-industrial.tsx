@@ -329,7 +329,7 @@ function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; del
 function ParallaxSection({
   image,
   children,
-  overlayColor = "#0a1628",
+  overlayColor = "#1e293b",
   overlayOpacity = 0.85,
   parallaxSpeed = 0.5,
   className = "",
@@ -385,7 +385,7 @@ function StickyNavbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
         scrolled
-          ? "bg-[#0a1628]/95 backdrop-blur-xl shadow-lg shadow-black/10 py-2"
+          ? "bg-white/95 backdrop-blur-xl shadow-sm py-2"
           : "bg-transparent py-4"
       }`}
     >
@@ -411,18 +411,18 @@ function ProcessTimeline() {
   }, [isInView]);
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 bg-white overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         <FadeInSection>
-          <div className="text-center mb-16 md:mb-20">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#eb255a] mb-4">
+          <div className="text-center mb-12">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
               Our Process
             </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1628] leading-[1.15]">
+            <h2 className="font-display text-[clamp(24px,2.5vw,36px)] font-bold text-[#1e293b] leading-[1.15]">
               How we deliver{" "}
-              <span className="text-[#eb255a]">excellence</span>
+              <span className="text-[#2563eb]">excellence</span>
             </h2>
-            <p className="mt-6 text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-4 text-sm md:text-base text-gray-500 max-w-2xl mx-auto leading-relaxed font-sans line-clamp-2">
               A structured, transparent approach that keeps every project on time,
               on budget, and built to last.
             </p>
@@ -454,13 +454,13 @@ function ProcessTimeline() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/70 via-[#0a1628]/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1e293b]/60 via-transparent to-transparent" />
                     
                     {/* Step Number Badge */}
                     <div className="absolute top-4 left-4 md:top-6 md:left-6">
                       <motion.div
                         className={`inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full text-white text-lg md:text-2xl font-bold shadow-lg ${
-                          isActive ? "bg-[#eb255a] scale-110" : "bg-white/20 backdrop-blur-md"
+                          isActive ? "bg-[#2563eb] scale-110" : "bg-white/20 backdrop-blur-md"
                         }`}
                         animate={isActive ? { scale: [1, 1.1, 1] } : {}}
                         transition={{ duration: 2, repeat: Infinity }}
@@ -477,24 +477,24 @@ function ProcessTimeline() {
                     </div>
                   </div>
 
-                  {/* Content Side */}
-                  <div className={`space-y-4 ${index % 2 === 1 ? "md:order-1 md:text-right" : ""}`}>
-                    <div className={`inline-flex items-center gap-2 ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
-                      <div className={`h-10 w-10 rounded-xl ${isActive ? "bg-[#eb255a]" : "bg-[#eb255a]/10"} flex items-center justify-center`}>
-                        <Icon className={`h-5 w-5 ${isActive ? "text-white" : "text-[#eb255a]"}`} />
+                    {/* Content Side */}
+                    <div className={`space-y-3 ${index % 2 === 1 ? "md:order-1 md:text-right" : ""}`}>
+                      <div className={`inline-flex items-center gap-2 ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
+                        <div className={`h-8 w-8 rounded-lg ${isActive ? "bg-[#2563eb]" : "bg-[#2563eb]/10"} flex items-center justify-center`}>
+                          <Icon className={`h-4 w-4 ${isActive ? "text-white" : "text-[#2563eb]"}`} />
+                        </div>
+                        <span className={`text-[11px] font-bold uppercase tracking-wider ${isActive ? "text-[#2563eb]" : "text-gray-400"} font-sans`}>
+                          Step {step.number}
+                        </span>
                       </div>
-                      <span className={`text-xs font-bold uppercase tracking-wider ${isActive ? "text-[#eb255a]" : "text-gray-400"}`}>
-                        Step {step.number}
-                      </span>
-                    </div>
-                    
-                    <h3 className={`text-2xl md:text-3xl lg:text-4xl font-bold ${isActive ? "text-[#eb255a]" : "text-[#0a1628] group-hover:text-[#eb255a]"} transition-colors`}>
-                      {step.title}
-                    </h3>
-                    
-                    <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                      {step.description}
-                    </p>
+                      
+                      <h3 className={`font-display text-xl md:text-2xl font-bold ${isActive ? "text-[#2563eb]" : "text-[#1e293b] group-hover:text-[#2563eb]"} transition-colors`}>
+                        {step.title}
+                      </h3>
+                      
+                      <p className="text-sm md:text-base text-gray-600 leading-relaxed font-sans line-clamp-2">
+                        {step.description}
+                      </p>
 
                     {/* Progress Indicator */}
                     <div className="flex items-center gap-2 pt-2">
@@ -503,9 +503,9 @@ function ProcessTimeline() {
                           key={i}
                           className={`h-1.5 rounded-full transition-all duration-500 ${
                             i === index
-                              ? "w-12 bg-[#eb255a]"
+                              ? "w-12 bg-[#2563eb]"
                               : i < index
-                              ? "w-6 bg-[#eb255a]/40"
+                              ? "w-6 bg-[#2563eb]/40"
                               : "w-6 bg-gray-200"
                           }`}
                         />
@@ -517,7 +517,7 @@ function ProcessTimeline() {
                 {/* Divider */}
                 {index < processSteps.length - 1 && (
                   <div className="hidden md:flex items-center justify-center py-4">
-                    <div className="w-0.5 h-12 bg-gradient-to-b from-[#eb255a]/40 to-gray-200" />
+                    <div className="w-0.5 h-12 bg-gradient-to-b from-[#2563eb]/40 to-gray-200" />
                   </div>
                 )}
               </FadeInSection>
@@ -560,8 +560,8 @@ function SubgeoIndustrial() {
       {/* Fixed Sticky Navbar - content scrolls behind */}
       <StickyNavbar />
 
-      {/* Hero Section - Full Screen with Parallax */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Hero Section - Reduced height like beauty.tsx */}
+      <section ref={heroRef} className="relative h-[420px] lg:h-[520px] flex items-center overflow-hidden">
         <motion.div style={{ scale: heroScale }} className="absolute inset-0 z-0">
           <img
             src={firePumpImg}
@@ -572,124 +572,92 @@ function SubgeoIndustrial() {
           />
           <motion.div
             style={{ opacity: heroOpacity }}
-            className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/90 via-[#0a1628]/80 to-[#0a1628]/95"
+            className="absolute inset-0 bg-gradient-to-r from-[#1e293b]/95 via-[#1e293b]/80 to-transparent"
           />
         </motion.div>
 
-        {/* Spacer for fixed navbar */}
-        <div className="relative z-10 h-20 md:h-24" />
-
-        <motion.div
-          style={{ y: heroTextY, opacity: heroOpacity }}
-          className="relative z-10 flex items-center px-6 md:px-12 lg:px-20 pb-12 md:pb-16"
-        >
-          <div className="max-w-7xl mx-auto w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-4 md:mb-6"
-            >
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 md:px-6 py-2 md:py-3">
-                <span className="flex h-2 w-2 rounded-full bg-[#eb255a] animate-pulse"></span>
-                <span className="text-xs md:text-sm font-semibold text-white uppercase tracking-wider">
-                  Available 24/7 for Emergencies
-                </span>
-              </div>
-            </motion.div>
-
-            {/* Reduced hero typography for better balance */}
-            <motion.h1
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-[1.05] tracking-tight"
-            >
-              Precision
-              <br />
-              <span className="text-[#eb255a]">Plumbing</span>
-              <br />
-              & Industrial
-              <br />
-              Solutions
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-              className="mt-6 md:mt-8 max-w-2xl text-base md:text-lg lg:text-xl text-white/80 leading-relaxed font-light"
-            >
-              We design, install and maintain resilient plumbing and drainage systems
-              for homes, commercial spaces and industrial facilities across Kenya.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.1 }}
-              className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-4 md:gap-6"
-            >
-              <button
-                onClick={() => scrollToSection("services")}
-                className="rounded-lg bg-[#eb255a] hover:bg-[#d11f4e] text-white px-8 md:px-10 py-4 md:py-5 text-xs md:text-sm font-semibold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-3"
-              >
-                Explore Services
-                <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
-              </button>
-              <Link
-                to="/contact"
-                className="rounded-lg border-2 border-white text-white hover:bg-white hover:text-[#0a1628] px-8 md:px-10 py-4 md:py-5 text-xs md:text-sm font-semibold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-3"
-              >
-                Request A Quote
-                <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
-              </Link>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.8, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-        >
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center text-white/60"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mb-3"
           >
-            <span className="text-xs uppercase tracking-[0.3em] mb-4">Scroll</span>
-            <div className="w-7 h-12 md:w-8 md:h-14 rounded-full border-2 border-white/40 flex justify-center">
-              <div className="w-1.5 h-4 md:h-5 bg-white/60 rounded-full mt-3 md:mt-4"></div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2">
+              <span className="flex h-2 w-2 rounded-full bg-[#2563eb] animate-pulse"></span>
+              <span className="text-xs font-semibold text-white uppercase tracking-wider">
+                Available 24/7 for Emergencies
+              </span>
             </div>
           </motion.div>
-        </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="font-display text-[clamp(28px,3.5vw,48px)] leading-[1.1] font-bold text-white"
+          >
+            Precision <span className="text-[#2563eb]">Plumbing</span>
+            <br />
+            &amp; Industrial Solutions
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="mt-4 max-w-xl text-sm md:text-base text-white/80 leading-relaxed font-sans"
+          >
+            We design, install and maintain resilient plumbing and drainage systems
+            for homes, commercial spaces and industrial facilities across Kenya.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
+            className="mt-5 flex flex-col sm:flex-row gap-3"
+          >
+            <button
+              onClick={() => scrollToSection("services")}
+              className="rounded-sm bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-8 py-3 text-xs font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2"
+            >
+              Explore Services
+              <ArrowRight className="h-3.5 w-3.5" />
+            </button>
+            <Link
+              to="/contact"
+              className="rounded-sm border-2 border-white text-white hover:bg-white hover:text-[#1e293b] px-8 py-3 text-xs font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2"
+            >
+              Request A Quote
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </motion.div>
+        </div>
       </section>
 
       {/* Chapter 01: Trust Metrics */}
-      <section className="py-24 md:py-32 lg:py-40 bg-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <FadeInSection>
-            <div className="text-center mb-16 md:mb-20">
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#eb255a] mb-4">
+            <div className="text-center mb-12">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
                 Trusted Performance
               </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1628] leading-[1.15]">
-                Trusted by teams that
-                <br className="hidden md:block" /> cannot afford downtime
+              <h2 className="font-display text-[clamp(24px,2.5vw,36px)] font-bold text-[#1e293b] leading-[1.15]">
+                Trusted by teams that cannot afford downtime
               </h2>
             </div>
           </FadeInSection>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {trustMetrics.map((item, index) => (
               <FadeInSection key={item.label} delay={index * 0.12}>
-                <div className="text-center p-6 md:p-8 border border-gray-100 rounded-2xl hover:shadow-xl transition-shadow duration-500">
-                  <p className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#eb255a] mb-3">
+                <div className="text-center p-5 border border-gray-100 rounded-lg hover:shadow-md transition-shadow duration-300">
+                  <p className="text-3xl md:text-4xl font-bold text-[#2563eb] mb-2">
                     <AnimatedCounter value={item.value} suffix={item.suffix} />
                   </p>
-                  <p className="text-xs md:text-sm font-semibold text-gray-600 uppercase tracking-widest">
+                  <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-widest font-sans">
                     {item.label}
                   </p>
                 </div>
@@ -700,25 +668,21 @@ function SubgeoIndustrial() {
       </section>
 
       {/* Chapter 02: About */}
-      <ParallaxSection image={pumpRoomImg} overlayOpacity={0.9}>
+      <ParallaxSection image={pumpRoomImg} overlayOpacity={0.9} className="min-h-[60vh]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
             <FadeInSection>
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#eb255a] mb-4">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
                 About Subgeo Industrial
               </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.15] mb-8">
-                Built on professional
-                <br />
-                <span className="text-[#eb255a]">discipline</span>
-                <br />
-                since 2012
+              <h2 className="font-display text-[clamp(26px,3vw,40px)] font-bold text-white leading-[1.15] mb-6">
+                Built on professional <span className="text-[#2563eb]">discipline</span> since 2012
               </h2>
             </FadeInSection>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               <FadeInSection delay={0.2}>
-                <p className="text-base md:text-lg text-white/85 leading-relaxed font-light">
+                <p className="text-sm md:text-base text-white/85 leading-relaxed font-sans line-clamp-2">
                   Subgeo Plumbing & Industrial Works Ltd is a registered private limited company
                   focused on plumbing, sanitary installation, drainage systems, fire-fighting
                   infrastructure and recurring maintenance services for long-term asset performance.
@@ -726,7 +690,7 @@ function SubgeoIndustrial() {
               </FadeInSection>
 
               <FadeInSection delay={0.3}>
-                <p className="text-base md:text-lg text-white/85 leading-relaxed font-light">
+                <p className="text-sm md:text-base text-white/85 leading-relaxed font-sans line-clamp-2">
                   Our fleet of well-maintained, reliable vehicles are company branded and extremely neat.
                   We align every scope with operational risk, site safety and realistic maintenance
                   windows so your teams keep moving.
@@ -734,14 +698,11 @@ function SubgeoIndustrial() {
               </FadeInSection>
 
               <FadeInSection delay={0.4}>
-                <div className="mt-8 md:mt-10 inline-flex items-center gap-4 md:gap-6 bg-[#eb255a] px-6 md:px-8 py-4 md:py-5 rounded-lg">
-                  <p className="text-3xl md:text-4xl font-bold text-white">12+</p>
+                <div className="inline-flex items-center gap-3 bg-[#2563eb] px-5 py-3 rounded-sm">
+                  <p className="text-2xl font-bold text-white">12+</p>
                   <div>
-                    <p className="text-xs md:text-sm font-semibold text-white/90 uppercase tracking-widest">
-                      Years of reliable
-                    </p>
-                    <p className="text-xs md:text-sm font-semibold text-white/90 uppercase tracking-widest">
-                      delivery
+                    <p className="text-[11px] font-semibold text-white/90 uppercase tracking-widest font-sans">
+                      Years of reliable delivery
                     </p>
                   </div>
                 </div>
@@ -752,21 +713,21 @@ function SubgeoIndustrial() {
       </ParallaxSection>
 
       {/* Value Cards */}
-      <section className="py-24 md:py-32 lg:py-40 bg-gray-50">
+      <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-3 gap-5 md:gap-6">
             {valueCards.map((item, index) => {
               const Icon = item.icon;
               return (
                 <FadeInSection key={item.title} delay={index * 0.12}>
-                  <div className="bg-white rounded-2xl p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 h-full group hover:-translate-y-2">
-                    <div className="inline-flex h-14 w-14 md:h-16 md:w-16 items-center justify-center rounded-2xl bg-[#eb255a] text-white mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-500">
-                      <Icon className="h-7 w-7 md:h-8 md:w-8" />
+                  <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 h-full group">
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#2563eb] text-white mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="h-6 w-6" />
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-[#0a1628] mb-4 md:mb-5">
+                    <h3 className="font-display text-lg font-bold text-[#1e293b] mb-2">
                       {item.title}
                     </h3>
-                    <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+                    <p className="text-sm text-gray-600 leading-relaxed font-sans line-clamp-2">
                       {item.description}
                     </p>
                   </div>
@@ -781,36 +742,32 @@ function SubgeoIndustrial() {
       <ProcessTimeline />
 
       {/* Chapter 03: Industries */}
-      <ParallaxSection image={constructionSiteImg} overlayOpacity={0.85}>
+      <ParallaxSection image={constructionSiteImg} overlayOpacity={0.85} className="min-h-[60vh]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div>
               <FadeInSection>
-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#eb255a] mb-4">
+                <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
                   Industries We Serve
                 </p>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.15] mb-8">
-                  Reliable solutions
-                  <br />
-                  across critical
-                  <br />
-                  <span className="text-[#eb255a]">sectors</span>
+                <h2 className="font-display text-[clamp(26px,3vw,40px)] font-bold text-white leading-[1.15] mb-6">
+                  Reliable solutions across critical <span className="text-[#2563eb]">sectors</span>
                 </h2>
               </FadeInSection>
 
               <FadeInSection delay={0.2}>
-                <p className="text-base md:text-lg text-white/85 leading-relaxed font-light mb-8 md:mb-10">
+                <p className="text-sm md:text-base text-white/85 leading-relaxed font-sans line-clamp-2 mb-6">
                   Subgeo supports multi-site operators and independent property owners
                   with tailored plumbing, drainage and maintenance programs.
                 </p>
               </FadeInSection>
 
               <FadeInSection delay={0.3}>
-                <div className="border-l-4 border-[#eb255a] pl-6 md:pl-8 bg-white/10 backdrop-blur-sm p-6 md:p-8 rounded-r-2xl">
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#eb255a] mb-3">
+                <div className="border-l-4 border-[#2563eb] pl-5 bg-white/10 backdrop-blur-sm p-5 rounded-sm">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2563eb] mb-2 font-sans">
                     Service Promise
                   </p>
-                  <p className="text-base md:text-lg text-white/90 leading-relaxed">
+                  <p className="text-sm md:text-base text-white/90 leading-relaxed font-sans line-clamp-2">
                     We align every scope with operational risk, site safety and realistic
                     maintenance windows so your teams keep moving.
                   </p>
@@ -818,20 +775,20 @@ function SubgeoIndustrial() {
               </FadeInSection>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 md:gap-4">
+            <div className="grid grid-cols-2 gap-2 md:gap-3">
               {industries.map((item, index) => {
                 const Icon = item.icon;
                 return (
                   <FadeInSection key={item.name} delay={0.4 + index * 0.06}>
                     <motion.div
-                      whileHover={{ scale: 1.05, y: -5 }}
+                      whileHover={{ scale: 1.03 }}
                       transition={{ duration: 0.3 }}
-                      className="group bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 md:p-6 hover:bg-[#eb255a] transition-all duration-500"
+                      className="group bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-4 hover:bg-[#2563eb] transition-all duration-300"
                     >
-                      <div className="inline-flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-xl bg-white/20 text-white mb-4 group-hover:bg-white group-hover:text-[#eb255a] transition-all duration-500">
-                        <Icon className="h-5 w-5 md:h-6 md:w-6" />
+                      <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/20 text-white mb-3 group-hover:bg-white group-hover:text-[#2563eb] transition-all duration-300">
+                        <Icon className="h-4 w-4" />
                       </div>
-                      <h3 className="text-sm md:text-base font-bold text-white group-hover:text-white transition-colors duration-300">
+                      <h3 className="text-xs md:text-sm font-bold text-white font-sans">
                         {item.name}
                       </h3>
                     </motion.div>
@@ -844,55 +801,53 @@ function SubgeoIndustrial() {
       </ParallaxSection>
 
       {/* Why Choose Us */}
-      <section className="py-24 md:py-32 lg:py-40 bg-gray-50">
+      <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>
               <FadeInSection>
-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#eb255a] mb-4">
+                <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
                   Why Choose Us
                 </p>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1628] leading-[1.15] mb-8">
-                  The Subgeo
-                  <br />
-                  <span className="text-[#eb255a]">advantage</span>
+                <h2 className="font-display text-[clamp(24px,2.5vw,36px)] font-bold text-[#1e293b] leading-[1.15] mb-6">
+                  The Subgeo <span className="text-[#2563eb]">advantage</span>
                 </h2>
               </FadeInSection>
 
               <FadeInSection delay={0.1}>
-                <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-8 md:mb-10">
+                <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-6 font-sans line-clamp-2">
                   We combine technical expertise with unwavering commitment to safety,
                   quality, and client satisfaction. Every project reflects our dedication
                   to excellence.
                 </p>
               </FadeInSection>
 
-              <div className="space-y-5 md:space-y-6">
+              <div className="space-y-3">
                 {whyChooseUs.map((item, index) => {
                   const Icon = item.icon;
                   return (
                     <FadeInSection key={item.title} delay={0.2 + index * 0.1}>
                       <motion.div
-                        whileHover={{ x: 8 }}
-                        className="flex items-start gap-4 md:gap-5 p-5 md:p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300"
+                        whileHover={{ x: 4 }}
+                        className="flex items-start gap-3 p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-all duration-300"
                       >
                         <div className="flex-shrink-0">
-                          <div className="h-12 w-12 md:h-14 md:w-14 rounded-2xl bg-[#eb255a] flex items-center justify-center">
-                            <Icon className="h-6 w-6 md:h-7 md:w-7 text-white" />
+                          <div className="h-10 w-10 rounded-lg bg-[#2563eb] flex items-center justify-center">
+                            <Icon className="h-5 w-5 text-white" />
                           </div>
                         </div>
                         <div className="flex-grow">
-                          <h3 className="text-xl md:text-2xl font-bold text-[#0a1628] mb-2">
+                          <h3 className="font-display text-base font-bold text-[#1e293b] mb-1">
                             {item.title}
                           </h3>
-                          <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-3">
+                          <p className="text-sm text-gray-500 leading-relaxed mb-2 font-sans line-clamp-2">
                             {item.description}
                           </p>
-                          <div className="flex items-center gap-3">
-                            <span className="text-2xl md:text-3xl font-bold text-[#eb255a]">
+                          <div className="flex items-center gap-2">
+                            <span className="text-lg font-bold text-[#2563eb]">
                               {item.stat}
                             </span>
-                            <span className="text-xs md:text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                            <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider font-sans">
                               {item.statLabel}
                             </span>
                           </div>
@@ -906,14 +861,14 @@ function SubgeoIndustrial() {
 
             <FadeInSection delay={0.3}>
               <div className="relative">
-                <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+                <div className="aspect-[4/5] rounded-lg overflow-hidden shadow-lg">
                   <img
                     src={teamWorkingImg}
                     alt="Subgeo team at work"
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1e293b]/60 via-transparent to-transparent" />
                 </div>
 
                 <motion.div
@@ -921,18 +876,18 @@ function SubgeoIndustrial() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 }}
-                  className="absolute -bottom-6 md:-bottom-10 -left-4 md:-left-10 bg-white rounded-2xl p-6 md:p-8 shadow-2xl max-w-[260px] md:max-w-xs"
+                  className="absolute -bottom-4 md:-bottom-6 -left-3 md:-left-6 bg-white rounded-lg p-4 shadow-lg max-w-[220px]"
                 >
-                  <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
-                    <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-[#eb255a] flex items-center justify-center">
-                      <Award className="h-5 w-5 md:h-6 md:w-6 text-white" />
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="h-8 w-8 rounded-full bg-[#2563eb] flex items-center justify-center">
+                      <Award className="h-4 w-4 text-white" />
                     </div>
                     <div>
-                      <p className="text-2xl md:text-3xl font-bold text-[#0a1628]">12+</p>
-                      <p className="text-xs md:text-sm text-gray-600">Years Experience</p>
+                      <p className="text-xl font-bold text-[#1e293b]">12+</p>
+                      <p className="text-[11px] text-gray-500 font-sans">Years Experience</p>
                     </div>
                   </div>
-                  <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
+                  <p className="text-[11px] text-gray-500 leading-relaxed font-sans line-clamp-2">
                     Trusted by leading companies across Kenya for industrial plumbing excellence
                   </p>
                 </motion.div>
@@ -943,16 +898,15 @@ function SubgeoIndustrial() {
       </section>
 
       {/* Chapter 04: Services */}
-      <section id="services" className="py-24 md:py-32 lg:py-40 bg-white">
+      <section id="services" className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <FadeInSection>
-            <div className="text-center mb-16 md:mb-20">
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#eb255a] mb-4">
+            <div className="text-center mb-12">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
                 Core Services
               </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1628] leading-[1.15]">
-                End-to-end plumbing
-                <br className="hidden md:block" /> and industrial maintenance
+              <h2 className="font-display text-[clamp(24px,2.5vw,36px)] font-bold text-[#1e293b] leading-[1.15]">
+                End-to-end plumbing and industrial maintenance
               </h2>
             </div>
           </FadeInSection>
@@ -988,7 +942,7 @@ function SubgeoIndustrial() {
                           transition={{ duration: 1.2 }}
                         />
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a1628]/50 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#1e293b]/50 via-transparent to-transparent" />
                       <div className="absolute top-6 md:top-8 left-6 md:left-8">
                         <span className="text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-white/90">
                           0{index + 1}
@@ -998,17 +952,17 @@ function SubgeoIndustrial() {
 
                     {/* Content Side */}
                     <div
-                      className={`flex flex-col justify-center p-8 md:p-10 lg:p-14 xl:p-16 ${
+                      className={`flex flex-col justify-center p-6 md:p-8 lg:p-10 ${
                         isEven ? "" : "lg:order-1"
                       }`}
                     >
-                      <div className="inline-flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl bg-[#eb255a] text-white mb-6">
-                        <Icon className="h-6 w-6 md:h-7 md:w-7" />
+                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#2563eb] text-white mb-4">
+                        <Icon className="h-5 w-5" />
                       </div>
-                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#0a1628] mb-4 md:mb-5">
+                      <h3 className="font-display text-lg md:text-xl font-bold text-[#1e293b] mb-2">
                         {service.title}
                       </h3>
-                      <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
+                      <p className="text-sm text-gray-600 leading-relaxed mb-4 font-sans line-clamp-2">
                         {service.description}
                       </p>
 
@@ -1030,7 +984,7 @@ function SubgeoIndustrial() {
                                     key={idx}
                                     className="flex items-start gap-3 md:gap-4 text-gray-600"
                                   >
-                                    <CheckCircle2 className="h-5 w-5 text-[#eb255a] flex-shrink-0 mt-0.5" />
+                                    <CheckCircle2 className="h-5 w-5 text-[#2563eb] flex-shrink-0 mt-0.5" />
                                     <span className="text-sm md:text-base">{feature}</span>
                                   </li>
                                 ))}
@@ -1042,7 +996,7 @@ function SubgeoIndustrial() {
 
                       <button
                         onClick={() => setActiveService(isOpen ? null : index)}
-                        className="mt-4 inline-flex items-center gap-2 md:gap-3 text-xs md:text-sm font-bold text-[#eb255a] hover:text-[#d11f4e] transition-colors uppercase tracking-widest"
+                        className="mt-4 inline-flex items-center gap-2 md:gap-3 text-xs md:text-sm font-bold text-[#2563eb] hover:text-[#1d4ed8] transition-colors uppercase tracking-widest"
                       >
                         {isOpen ? "Show Less" : "Learn More"}
                         <ArrowRight
@@ -1062,17 +1016,15 @@ function SubgeoIndustrial() {
       </section>
 
       {/* Chapter 05: Projects - Enhanced with detailed descriptions */}
-      <section id="projects" className="py-24 md:py-32 lg:py-40 bg-[#0a1628] text-white">
+      <section id="projects" className="py-16 md:py-20 bg-[#1e293b] text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <FadeInSection>
-            <div className="text-center mb-16 md:mb-20">
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#eb255a] mb-4">
+            <div className="text-center mb-12">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
                 Recent Work
               </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.15]">
-                Projects delivered with
-                <br className="hidden md:block" />
-                <span className="text-[#eb255a]">high technical accuracy</span>
+              <h2 className="font-display text-[clamp(24px,2.5vw,36px)] font-bold leading-[1.15]">
+                Projects delivered with <span className="text-[#2563eb]">high technical accuracy</span>
               </h2>
             </div>
           </FadeInSection>
@@ -1084,21 +1036,21 @@ function SubgeoIndustrial() {
                 <FadeInSection key={project.title} delay={index * 0.12}>
                   <motion.div
                     layout
-                    className="group bg-white/5 rounded-3xl overflow-hidden hover:bg-white/10 transition-all duration-500"
+                    className="group bg-white/5 rounded-lg overflow-hidden hover:bg-white/10 transition-all duration-300"
                   >
                     <div className="grid lg:grid-cols-12 gap-0">
                       {/* Image */}
                       <div className="lg:col-span-4">
-                        <div className="relative aspect-video lg:aspect-auto lg:h-full min-h-[240px] overflow-hidden">
+                        <div className="relative aspect-video lg:aspect-auto lg:h-full min-h-[200px] overflow-hidden">
                           <img
                             src={project.image}
                             alt={project.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             loading="lazy"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent lg:bg-gradient-to-r" />
-                          <div className="absolute top-4 left-4 lg:top-6 lg:left-6">
-                            <span className="inline-flex items-center gap-2 bg-[#eb255a] text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
+                          <div className="absolute top-3 left-3">
+                            <span className="inline-flex items-center bg-[#2563eb] text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                               {project.date}
                             </span>
                           </div>
@@ -1106,22 +1058,22 @@ function SubgeoIndustrial() {
                       </div>
 
                       {/* Content */}
-                      <div className="lg:col-span-8 p-6 md:p-8 lg:p-10 flex flex-col justify-center">
-                        <div className="flex flex-wrap items-center gap-3 md:gap-4 mb-3 md:mb-4">
-                          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#eb255a]">
+                      <div className="lg:col-span-8 p-5 md:p-6 flex flex-col justify-center">
+                        <div className="flex flex-wrap items-center gap-2 mb-2">
+                          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2563eb] font-sans">
                             {project.category}
                           </span>
-                          <span className="w-1.5 h-1.5 rounded-full bg-white/30" />
-                          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
+                          <span className="w-1 h-1 rounded-full bg-white/30" />
+                          <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50 font-sans">
                             {project.subtitle}
                           </span>
                         </div>
 
-                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 group-hover:text-[#eb255a] transition-colors duration-300">
+                        <h3 className="font-display text-lg md:text-xl font-bold mb-2 group-hover:text-[#2563eb] transition-colors duration-300">
                           {project.title}
                         </h3>
 
-                        <p className="text-sm md:text-base text-white/70 leading-relaxed mb-4 md:mb-5">
+                        <p className="text-sm text-white/70 leading-relaxed mb-3 font-sans line-clamp-2">
                           {project.summary}
                         </p>
 
@@ -1132,7 +1084,7 @@ function SubgeoIndustrial() {
                               key={idx}
                               className="inline-flex items-center gap-1.5 text-xs font-medium text-white/80 bg-white/10 border border-white/10 rounded-full px-3 py-1.5"
                             >
-                              <CheckCircle2 className="h-3 w-3 text-[#eb255a]" />
+                              <CheckCircle2 className="h-3 w-3 text-[#2563eb]" />
                               {highlight}
                             </span>
                           ))}
@@ -1158,7 +1110,7 @@ function SubgeoIndustrial() {
 
                         <button
                           onClick={() => setActiveProject(isExpanded ? null : index)}
-                          className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-[#eb255a] hover:text-white transition-colors uppercase tracking-widest self-start"
+                          className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-[#2563eb] hover:text-white transition-colors uppercase tracking-widest self-start"
                         >
                           {isExpanded ? "Show Less" : "Read Full Scope"}
                           <ArrowRight
@@ -1178,25 +1130,21 @@ function SubgeoIndustrial() {
       </section>
 
       {/* Equipment & Safety */}
-      <ParallaxSection image={safetyGearImg} overlayOpacity={0.9}>
+      <ParallaxSection image={safetyGearImg} overlayOpacity={0.9} className="min-h-[60vh]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
             <FadeInSection>
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#eb255a] mb-4">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
                 Safety & Equipment
               </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.15] mb-8">
-                Professional
-                <br />
-                <span className="text-[#eb255a]">grade tools</span>
-                <br />
-                & safety first
+              <h2 className="font-display text-[clamp(26px,3vw,40px)] font-bold text-white leading-[1.15] mb-6">
+                Professional <span className="text-[#2563eb]">grade tools</span> &amp; safety first
               </h2>
             </FadeInSection>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               <FadeInSection delay={0.2}>
-                <p className="text-base md:text-lg text-white/85 leading-relaxed font-light">
+                <p className="text-sm md:text-base text-white/85 leading-relaxed font-sans line-clamp-2">
                   We invest in state-of-the-art equipment and prioritize safety protocols
                   on every job site. Our technicians are equipped with the latest tools
                   and protective gear to ensure efficient, safe service delivery.
@@ -1204,38 +1152,38 @@ function SubgeoIndustrial() {
               </FadeInSection>
 
               <FadeInSection delay={0.3}>
-                <div className="grid grid-cols-2 gap-4 md:gap-5">
-                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 md:p-6 border border-white/20">
-                    <Wrench className="h-8 w-8 md:h-9 md:w-9 text-[#eb255a] mb-3" />
-                    <h4 className="text-base md:text-lg font-bold text-white mb-1.5">
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
+                    <Wrench className="h-6 w-6 text-[#2563eb] mb-2" />
+                    <h4 className="text-sm font-bold text-white mb-1 font-sans">
                       Modern Equipment
                     </h4>
-                    <p className="text-xs md:text-sm text-white/70">
+                    <p className="text-xs text-white/70 font-sans">
                       Latest diagnostic and repair tools
                     </p>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 md:p-6 border border-white/20">
-                    <ShieldCheck className="h-8 w-8 md:h-9 md:w-9 text-[#eb255a] mb-3" />
-                    <h4 className="text-base md:text-lg font-bold text-white mb-1.5">
+                  <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
+                    <ShieldCheck className="h-6 w-6 text-[#2563eb] mb-2" />
+                    <h4 className="text-sm font-bold text-white mb-1 font-sans">
                       Safety Certified
                     </h4>
-                    <p className="text-xs md:text-sm text-white/70">OSHA compliant practices</p>
+                    <p className="text-xs text-white/70 font-sans">OSHA compliant practices</p>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 md:p-6 border border-white/20">
-                    <RefreshCw className="h-8 w-8 md:h-9 md:w-9 text-[#eb255a] mb-3" />
-                    <h4 className="text-base md:text-lg font-bold text-white mb-1.5">
+                  <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
+                    <RefreshCw className="h-6 w-6 text-[#2563eb] mb-2" />
+                    <h4 className="text-sm font-bold text-white mb-1 font-sans">
                       Well Maintained
                     </h4>
-                    <p className="text-xs md:text-sm text-white/70">
+                    <p className="text-xs text-white/70 font-sans">
                       Regular equipment servicing
                     </p>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 md:p-6 border border-white/20">
-                    <BadgeCheck className="h-8 w-8 md:h-9 md:w-9 text-[#eb255a] mb-3" />
-                    <h4 className="text-base md:text-lg font-bold text-white mb-1.5">
+                  <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
+                    <BadgeCheck className="h-6 w-6 text-[#2563eb] mb-2" />
+                    <h4 className="text-sm font-bold text-white mb-1 font-sans">
                       Quality Assured
                     </h4>
-                    <p className="text-xs md:text-sm text-white/70">Premium materials only</p>
+                    <p className="text-xs text-white/70 font-sans">Premium materials only</p>
                   </div>
                 </div>
               </FadeInSection>
@@ -1245,42 +1193,40 @@ function SubgeoIndustrial() {
       </ParallaxSection>
 
       {/* Chapter 06: Contact */}
-      <section id="contact" className="py-24 md:py-32 lg:py-40 bg-white">
+      <section id="contact" className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-16">
+          <div className="grid lg:grid-cols-2 gap-10">
             <div>
               <FadeInSection>
-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#eb255a] mb-4">
+                <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
                   Contact & Location
                 </p>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1628] leading-[1.15] mb-8">
-                  Plan your next
-                  <br />
-                  project with our team
+                <h2 className="font-display text-[clamp(22px,2.5vw,34px)] font-bold text-[#1e293b] leading-[1.15] mb-4">
+                  Plan your next project with our team
                 </h2>
               </FadeInSection>
 
               <FadeInSection delay={0.1}>
-                <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-10 md:mb-12">
+                <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-6 font-sans line-clamp-2">
                   Reach out for a site survey, emergency support, or a preventive
                   maintenance plan tailored to your operation.
                 </p>
               </FadeInSection>
 
-              <div className="space-y-4 md:space-y-5">
+              <div className="space-y-3">
                 <FadeInSection delay={0.2}>
                   <a
                     href="tel:0733699441"
-                    className="flex items-center gap-5 md:gap-6 p-5 md:p-6 rounded-2xl hover:bg-gray-50 transition-all duration-300 group"
+                    className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-50 transition-all duration-300 group"
                   >
-                    <div className="h-12 w-12 md:h-14 md:w-14 rounded-2xl bg-[#eb255a] flex items-center justify-center group-hover:bg-[#d11f4e] transition-colors flex-shrink-0">
-                      <Phone className="h-5 w-5 md:h-6 md:w-6 text-white" />
+                    <div className="h-10 w-10 rounded-lg bg-[#2563eb] flex items-center justify-center group-hover:bg-[#1d4ed8] transition-colors flex-shrink-0">
+                      <Phone className="h-4 w-4 text-white" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-1">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 mb-0.5 font-sans">
                         Phone
                       </p>
-                      <p className="text-lg md:text-xl font-bold text-[#0a1628] group-hover:text-[#eb255a] transition-colors">
+                      <p className="text-sm font-bold text-[#1e293b] group-hover:text-[#2563eb] transition-colors font-sans">
                         0733 699 441
                       </p>
                     </div>
@@ -1290,16 +1236,16 @@ function SubgeoIndustrial() {
                 <FadeInSection delay={0.3}>
                   <a
                     href="mailto:info@subgeo.co.ke"
-                    className="flex items-center gap-5 md:gap-6 p-5 md:p-6 rounded-2xl hover:bg-gray-50 transition-all duration-300 group"
+                    className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-50 transition-all duration-300 group"
                   >
-                    <div className="h-12 w-12 md:h-14 md:w-14 rounded-2xl bg-[#eb255a] flex items-center justify-center group-hover:bg-[#d11f4e] transition-colors flex-shrink-0">
-                      <Mail className="h-5 w-5 md:h-6 md:w-6 text-white" />
+                    <div className="h-10 w-10 rounded-lg bg-[#2563eb] flex items-center justify-center group-hover:bg-[#1d4ed8] transition-colors flex-shrink-0">
+                      <Mail className="h-4 w-4 text-white" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-1">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 mb-0.5 font-sans">
                         Email
                       </p>
-                      <p className="text-lg md:text-xl font-bold text-[#0a1628] group-hover:text-[#eb255a] transition-colors">
+                      <p className="text-sm font-bold text-[#1e293b] group-hover:text-[#2563eb] transition-colors font-sans">
                         info@subgeo.co.ke
                       </p>
                     </div>
@@ -1307,18 +1253,16 @@ function SubgeoIndustrial() {
                 </FadeInSection>
 
                 <FadeInSection delay={0.4}>
-                  <div className="flex items-center gap-5 md:gap-6 p-5 md:p-6 rounded-2xl bg-gray-50">
-                    <div className="h-12 w-12 md:h-14 md:w-14 rounded-2xl bg-[#eb255a] flex items-center justify-center flex-shrink-0">
-                      <MapPin className="h-5 w-5 md:h-6 md:w-6 text-white" />
+                  <div className="flex items-center gap-4 p-4 rounded-lg bg-gray-50">
+                    <div className="h-10 w-10 rounded-lg bg-[#2563eb] flex items-center justify-center flex-shrink-0">
+                      <MapPin className="h-4 w-4 text-white" />
                     </div>
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-1">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 mb-0.5 font-sans">
                         Location
                       </p>
-                      <address className="text-lg md:text-xl font-bold text-[#0a1628] not-italic">
-                        P.O. Box 48230-00100
-                        <br />
-                        Nairobi, Kenya
+                      <address className="text-sm font-bold text-[#1e293b] not-italic font-sans">
+                        P.O. Box 48230-00100, Nairobi, Kenya
                       </address>
                     </div>
                   </div>
@@ -1326,20 +1270,20 @@ function SubgeoIndustrial() {
               </div>
 
               <FadeInSection delay={0.5}>
-                <div className="mt-8 md:mt-10">
+                <div className="mt-6">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 md:gap-3 bg-[#eb255a] hover:bg-[#d11f4e] text-white px-8 md:px-10 py-4 md:py-5 text-xs md:text-sm font-bold uppercase tracking-widest rounded-lg transition-all duration-300"
+                    className="inline-flex items-center gap-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-3 text-xs font-bold uppercase tracking-widest rounded-sm transition-all duration-300 font-sans"
                   >
                     Schedule A Visit
-                    <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
+                    <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
               </FadeInSection>
             </div>
 
             <FadeInSection delay={0.2}>
-              <div className="relative h-full min-h-[500px] md:min-h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+              <div className="relative h-full min-h-[400px] rounded-lg overflow-hidden shadow-lg">
                 <iframe
                   title="Subgeo location map - Nairobi, Kenya"
                   src="https://maps.google.com/maps?q=Nairobi,Kenya&t=&z=13&ie=UTF8&iwloc=&output=embed"
@@ -1351,32 +1295,32 @@ function SubgeoIndustrial() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md p-6 md:p-8 border-t border-gray-200">
-                  <div className="grid grid-cols-3 gap-4 md:gap-6 text-center">
+                <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md p-4 border-t border-gray-200">
+                  <div className="grid grid-cols-3 gap-3 text-center">
                     <div>
-                      <Clock3 className="h-5 w-5 md:h-6 md:w-6 text-[#eb255a] mx-auto mb-2" />
-                      <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] text-gray-500 mb-1">
+                      <Clock3 className="h-4 w-4 text-[#2563eb] mx-auto mb-1" />
+                      <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-0.5 font-sans">
                         Hours
                       </p>
-                      <p className="text-xs md:text-sm font-bold text-[#0a1628]">
+                      <p className="text-[11px] font-bold text-[#1e293b] font-sans">
                         Mon-Fri 7:30-5:30
                       </p>
                     </div>
                     <div>
-                      <Droplets className="h-5 w-5 md:h-6 md:w-6 text-[#eb255a] mx-auto mb-2" />
-                      <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] text-gray-500 mb-1">
+                      <Droplets className="h-4 w-4 text-[#2563eb] mx-auto mb-1" />
+                      <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-0.5 font-sans">
                         Service
                       </p>
-                      <p className="text-xs md:text-sm font-bold text-[#0a1628]">
+                      <p className="text-[11px] font-bold text-[#1e293b] font-sans">
                         Preventive Plans
                       </p>
                     </div>
                     <div>
-                      <ShieldCheck className="h-5 w-5 md:h-6 md:w-6 text-[#eb255a] mx-auto mb-2" />
-                      <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] text-gray-500 mb-1">
+                      <ShieldCheck className="h-4 w-4 text-[#2563eb] mx-auto mb-1" />
+                      <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-0.5 font-sans">
                         Safety
                       </p>
-                      <p className="text-xs md:text-sm font-bold text-[#0a1628]">Compliant</p>
+                      <p className="text-[11px] font-bold text-[#1e293b] font-sans">Compliant</p>
                     </div>
                   </div>
                 </div>
@@ -1387,7 +1331,7 @@ function SubgeoIndustrial() {
       </section>
 
       {/* Final CTA */}
-      <section className="relative min-h-[80vh] md:min-h-screen overflow-hidden">
+      <section className="relative h-[400px] lg:h-[480px] overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={firePumpImg}
@@ -1395,44 +1339,42 @@ function SubgeoIndustrial() {
             className="w-full h-full object-cover"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/95 via-[#0a1628]/90 to-[#0a1628]/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1e293b]/95 via-[#1e293b]/90 to-[#1e293b]/95" />
         </div>
 
-        <div className="relative z-10 h-full flex items-center px-6 md:px-12 lg:px-20 py-24">
-          <div className="max-w-5xl mx-auto text-center">
+        <div className="relative z-10 h-full flex items-center px-6 md:px-12 lg:px-20">
+          <div className="max-w-4xl mx-auto text-center">
             <FadeInSection>
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#eb255a] mb-6 md:mb-8">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-4 font-sans">
                 Need Immediate Assistance?
               </p>
             </FadeInSection>
 
             <FadeInSection delay={0.1}>
-              <h2 className="text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-8 md:mb-10">
-                Book a technical
-                <br />
-                assessment today
+              <h2 className="font-display text-[clamp(26px,3vw,42px)] font-bold text-white leading-[1.1] mb-4">
+                Book a technical assessment today
               </h2>
             </FadeInSection>
 
             <FadeInSection delay={0.2}>
-              <p className="text-base md:text-lg lg:text-xl text-white/85 leading-relaxed mb-10 md:mb-12 max-w-3xl mx-auto font-light">
+              <p className="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl mx-auto font-sans line-clamp-2">
                 Let our engineers assess your current plumbing systems and provide a practical,
                 cost-aware improvement plan.
               </p>
             </FadeInSection>
 
             <FadeInSection delay={0.3}>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 md:gap-3 bg-[#eb255a] hover:bg-[#d11f4e] text-white px-10 md:px-12 py-5 md:py-6 text-xs md:text-sm font-bold uppercase tracking-widest rounded-lg transition-all duration-300"
+                  className="inline-flex items-center gap-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-8 py-3 text-xs font-bold uppercase tracking-widest rounded-sm transition-all duration-300 font-sans"
                 >
                   Schedule Visit
-                  <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
                 <button
                   onClick={() => scrollToSection("services")}
-                  className="inline-flex items-center gap-2 md:gap-3 border-2 border-white text-white hover:bg-white hover:text-[#0a1628] px-10 md:px-12 py-5 md:py-6 text-xs md:text-sm font-bold uppercase tracking-widest rounded-lg transition-all duration-300"
+                  className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#1e293b] px-8 py-3 text-xs font-bold uppercase tracking-widest rounded-sm transition-all duration-300 font-sans"
                 >
                   View Services
                 </button>
@@ -1449,8 +1391,8 @@ function SubgeoIndustrial() {
           scroll-behavior: smooth;
         }
         ::selection {
-          background: rgba(235, 37, 90, 0.3);
-          color: #0a1628;
+          background: rgba(37, 99, 235, 0.2);
+          color: #1e293b;
         }
       `}</style>
     </div>
