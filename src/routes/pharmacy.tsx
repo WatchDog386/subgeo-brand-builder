@@ -459,7 +459,7 @@ function PharmacyPage() {
       </section>
 
       {/* Unlock Better Health Section - Using pharm4.jpeg */}
-      <section className="py-16 lg:py-24 bg-white relative overflow-hidden border-b border-gray-100">
+      <section className="py-0 bg-white relative overflow-hidden">
         <div className="w-full mx-auto relative overflow-hidden bg-[#f0f5f8] min-h-[400px] lg:min-h-[500px] flex items-center">
             
             {/* Top Left Leaves */}
