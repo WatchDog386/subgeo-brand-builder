@@ -173,7 +173,9 @@ function scrollToSection(id: string) {
 
 function SubgeoIndustrial() {
   return (
-    <PageTransition className="relative min-h-screen overflow-x-clip bg-background page-texture text-foreground">
+    <>
+      <Navbar />
+      <PageTransition className="relative min-h-screen overflow-x-clip bg-background page-texture text-foreground">
       <ScrollProgressBar />
       
       <section className="relative overflow-hidden bg-black/90">
@@ -185,10 +187,6 @@ function SubgeoIndustrial() {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/40" />
-        </div>
-
-        <div className="relative z-10">
-          <Navbar />
         </div>
 
         <div className="container-x relative z-10 pt-32 pb-16 md:pb-20">
@@ -610,5 +608,6 @@ function SubgeoIndustrial() {
         <Footer />
       </main>
     </PageTransition>
+    </>
   );
 }
