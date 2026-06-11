@@ -598,7 +598,7 @@ function BeautyPage() {
           
           {/* Header & Controls */}
           <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 relative max-w-5xl mx-auto px-4 lg:px-0">
-            <Reveal className="text-center md:text-left flex-1" style={{ paddingTop: '10px' }}>
+            <Reveal className="text-center md:text-left flex-1">
               <h2 className="text-[#df488b] text-[18px] md:text-[22px] font-display font-medium uppercase tracking-widest mb-2">
                 Gallery
               </h2>

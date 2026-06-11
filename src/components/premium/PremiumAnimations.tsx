@@ -34,7 +34,7 @@ export const RevealOnScroll: React.FC<RevealProps> = ({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration, delay, ease: [0.4, 0, 0.2, 1] }}
+      transition={{ duration, delay, ease: [0.4, 0, 0.2, 1] as const }}
       variants={directions[direction]}
       className={className}
     >
@@ -55,7 +55,7 @@ export const PageTransition: React.FC<PageTransitionProps> = ({ children, classN
       initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       exit={{ opacity: 0, y: -20, filter: "blur(8px)" }}
-      transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+      transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] as const }}
       className={className}
     >
       {children}
@@ -120,7 +120,7 @@ export const StaggerContainer: React.FC<StaggerContainerProps> = ({
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
+      transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] as const },
     },
   };
 
@@ -324,7 +324,7 @@ export const BlurFadeIn: React.FC<BlurFadeProps> = ({
       transition={{
         duration,
         delay,
-        ease: [0.4, 0, 0.2, 1],
+        ease: [0.4, 0, 0.2, 1] as const,
       }}
       className={className}
     >
@@ -360,7 +360,7 @@ export const WordReveal: React.FC<WordRevealProps> = ({ text, className = "" }) 
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.4, 0, 0.2, 1],
+        ease: [0.4, 0, 0.2, 1] as const,
       },
     },
   };
@@ -417,7 +417,7 @@ export const HoverScaleCard: React.FC<HoverScaleCardProps> = ({
   return (
     <motion.div
       whileHover={{ scale }}
-      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] as const }}
       className={`origin-center ${className}`}
     >
       {children}
