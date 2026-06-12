@@ -93,80 +93,80 @@ const trustMetrics = [
 ];
 
 const industries = [
-  { name: "Commercial Buildings", icon: Building2 },
-  { name: "Residential Estates", icon: Home },
-  { name: "Industrial Plants", icon: Factory },
-  { name: "Hospitality Spaces", icon: Building2 },
-  { name: "Educational Campuses", icon: Building2 },
-  { name: "Property Developers", icon: Building2 },
-  { name: "Retail Facilities", icon: Building2 },
-  { name: "Health Institutions", icon: Building2 },
+  { name: "Commercial Industry", icon: Building2 },
+  { name: "Residential Homes", icon: Home },
+  { name: "Industrial Industry", icon: Factory },
+  { name: "Hospitality Industry", icon: Building2 },
+  { name: "Construction Industry", icon: Building2 },
+  { name: "Property Developers", icon: TrendingUp },
+  { name: "Estate & Rental Agents", icon: Building2 },
+  { name: "Fitness Industry", icon: Building2 },
 ];
 
 const valueCards: IconCardItem[] = [
   {
-    title: "Quality First",
-    description: "Every installation, inspection and repair follows strict quality controls for dependable long-term performance.",
+    title: "Quality Service",
+    description: "Quality service is a non-negotiable at Subgeo. Our clients know we deliver right first-time round, every time.",
     icon: BadgeCheck,
   },
   {
-    title: "Rapid Response",
-    description: "Our dispatch-ready teams and dedicated support line keep emergency downtime as low as possible.",
+    title: "24/7 Availability",
+    description: "Our emergency number is manned 24/7 by a dedicated team. Standby teams are ready day or night to attend to your emergencies with a smile.",
     icon: Clock3,
   },
   {
-    title: "Smart Innovation",
-    description: "We combine proven plumbing practice with modern tooling to improve speed, safety and reporting accuracy.",
+    title: "Dynamic & Innovative",
+    description: "Our management team utilizes the very latest systems, methods and tools in the market to ensure speed and efficiency for our clients.",
     icon: Sparkles,
   },
 ];
 
 const services: IconCardItem[] = [
   {
-    title: "Plumbing Maintenance",
-    description: "Routine leak checks, pressure tests, and preventive upkeep for domestic and commercial systems.",
+    title: "All Plumbing Maintenance",
+    description: "Regular, comprehensive maintenance services, including leak checks, pipe inspections, and routine servicing of taps, toilets, and drainage systems.",
     longDescription: "Our comprehensive plumbing maintenance service ensures your systems run smoothly year-round.",
-    features: ["Leak detection and repair", "Pressure testing", "Pipe insulation", "Valve maintenance", "System optimization"],
+    features: ["Leak detection and repair", "Pipe inspections", "Tap and toilet servicing", "Drainage system checks", "Preventive maintenance"],
     icon: Wrench,
     image: plumbingImg,
   },
   {
-    title: "Insurance Support",
-    description: "Technical inspections, reports and approved repair execution for plumbing-related insurance claims.",
+    title: "Insurance Claims Plumbing",
+    description: "Dealing with plumbing issues covered by insurance? We assist homeowners and businesses with all plumbing-related insurance claims.",
     longDescription: "We work directly with insurance companies to provide detailed technical assessments and approved repair services.",
     features: ["Damage assessment", "Insurance-compliant reports", "Direct insurer liaison", "Approved repairs", "Claim documentation"],
     icon: FileText,
     image: commercialImg,
   },
   {
-    title: "Geyser Installation",
-    description: "Safe, code-compliant electric geyser installation, replacement and relocation services.",
+    title: "Electric Geysers Installation",
+    description: "Professional electric geyser installation, relocation and repair services — safe, code-compliant and reliable.",
     longDescription: "Professional geyser installation services that prioritize safety and efficiency.",
-    features: ["Size consultation", "Safe installation", "Electrical connections", "Pressure valve setup", "Warranty registration"],
+    features: ["Safe installation", "Relocation services", "Repair and servicing", "Pressure valve setup", "Warranty registration"],
     icon: Settings,
     image: geyserImg,
   },
   {
-    title: "Kitchen & Bathroom Fitouts",
-    description: "Precise fixture plumbing for upgrades, remodels and full sanitary installation projects.",
-    longDescription: "Transform your kitchen and bathroom with our expert fitout services.",
+    title: "Kitchen & Bathroom Renovations",
+    description: "Planning a kitchen or bathroom upgrade? We provide expert plumbing services for renovations — sinks, taps, toilets, showers and more.",
+    longDescription: "Transform your kitchen and bathroom with our expert renovation services.",
     features: ["Fixture installation", "Pipe rerouting", "Waterproofing", "Drain connections", "Final testing"],
     icon: Home,
     image: bathroomImg,
   },
   {
-    title: "Shower System Servicing",
-    description: "Cleaning, replacement and pressure balancing to keep shower lines efficient and reliable.",
+    title: "Shower Head Cleaning & Replacement",
+    description: "We provide thorough cleaning and replacement services to ensure your shower operates at peak performance — giving you a refreshing bathing experience.",
     longDescription: "Keep your shower systems performing at their best with our specialized servicing.",
     features: ["System cleaning", "Head replacement", "Pressure balancing", "Temperature control", "Leak prevention"],
     icon: RefreshCw,
     image: showerImg,
   },
   {
-    title: "Drainage & Waste Networks",
-    description: "Drain rerouting, waste line diagnostics and leak remediation for healthy drainage performance.",
-    longDescription: "Our drainage specialists diagnose and resolve complex waste network issues.",
-    features: ["CCTV inspection", "Blockage removal", "Pipe relining", "System rerouting", "Preventive maintenance"],
+    title: "Irrigation & Waste Pipe Repairs",
+    description: "Professional leak detection and repair services to keep your irrigation system running smoothly and ensure waste pipes function without leaks or blockages.",
+    longDescription: "Our specialists diagnose and resolve complex waste network and irrigation issues.",
+    features: ["Leak detection", "Pipe relining", "Blockage removal", "Irrigation system repair", "Preventive maintenance"],
     icon: Funnel,
     image: drainageImg,
   },
@@ -264,27 +264,27 @@ const processSteps = [
 const whyChooseUs = [
   {
     icon: Award,
-    title: "Certified Experts",
+    title: "Highly Skilled Team",
     description:
-      "Our team holds industry certifications and undergoes continuous training on latest technologies and safety standards.",
-    stat: "100%",
-    statLabel: "Certified Technicians",
+      "Our team is made up of highly skilled plumbing specialists. All our plumbers have at least 5 years broad onsite plumbing experience.",
+    stat: "5+",
+    statLabel: "Years Experience Avg",
   },
   {
     icon: TrendingUp,
     title: "Proven Track Record",
     description:
-      "Over 240 successful projects across diverse sectors demonstrate our capability to handle complex challenges.",
+      "Over 240 successful projects across diverse sectors demonstrate our capability to handle complex challenges with quality service every time.",
     stat: "240+",
     statLabel: "Projects Delivered",
   },
   {
     icon: Users,
-    title: "Dedicated Teams",
+    title: "Clean & Tidy Work",
     description:
-      "We assign dedicated project managers and technicians who understand your facility's unique needs.",
-    stat: "24/7",
-    statLabel: "Support Available",
+      "We understand our client's need for cleanliness. We confidently keep and leave our work area tidy every single day.",
+    stat: "100%",
+    statLabel: "Tidy Job Sites",
   },
 ];
 
@@ -622,8 +622,9 @@ function SubgeoIndustrial() {
               transition={{ duration: 0.8, delay: 0.9 }}
               className="mt-4 md:mt-6 max-w-xl text-[13px] md:text-[14px] text-white/80 leading-relaxed font-light"
             >
-              We design, install and maintain resilient plumbing and drainage systems
-              for homes, commercial spaces and industrial facilities across Kenya.
+              We specialize in plumbing works, industrial maintenance, and construction
+              works — offering professional diversity of services with 24/7 emergency
+              response across Kenya.
             </motion.p>
 
             <motion.div
@@ -733,9 +734,12 @@ function SubgeoIndustrial() {
         <div className="container-x max-w-[1200px] mx-auto">
           <div className="text-center mb-16 lg:mb-24">
             <h2 className="font-sans font-[900] tracking-tighter text-[clamp(28px,3vw,40px)] leading-[1.04] text-[#1e293b]">
-              Built on Professional<br/>
-              <span className="text-[#0ea5e9]">Discipline since 2012</span>
+              Established in 2012<br/>
+              <span className="text-[#0ea5e9]">Incorporated 24/06/2018</span>
             </h2>
+            <p className="mt-4 text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium max-w-3xl mx-auto">
+              SUBGEO PLUMBING & INDUSTRIAL WORKS is a Private Limited Company registered under the Registrar of Companies. Our business scope includes Plumbing, Sanitary ware Installation, Drainage, Fire fighting System installation, and Regular Service maintenance.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -749,27 +753,27 @@ function SubgeoIndustrial() {
             {/* Right: Feature List */}
             <div className="flex flex-col gap-10">
               <div>
-                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Private Limited <span className="text-[#0ea5e9]">Registration</span></h3>
+                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Dynamic & <span className="text-[#0ea5e9]">Innovative</span></h3>
                 <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">
-                  Subgeo Plumbing & Industrial Works Ltd is a registered private limited company focused on plumbing, sanitary installation, and drainage systems.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Industrial <span className="text-[#f97316]">Maintenance</span></h3>
-                <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">
-                  Fire-fighting infrastructure and recurring maintenance services designed for long-term asset performance.
+                  Our dynamic management team ensures that the company is utilizing the very latest systems, methods and tools in the market to ensure speed and efficiency to clients.
                 </p>
               </div>
               <div>
                 <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Well-maintained <span className="text-[#a855f7]">Fleet</span></h3>
                 <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">
-                  Our fleet of well-maintained, reliable vehicles are company branded and extremely neat for professional site attendance.
+                  Our fleet are well maintained reliable vehicles, company branded and extremely neat — ensuring professional site attendance every time.
                 </p>
               </div>
               <div>
-                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Operational <span className="text-[#22c55e]">Safety</span></h3>
+                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Latest <span className="text-[#22c55e]">Equipment</span></h3>
                 <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">
-                  We align every scope with operational risk, site safety, and realistic maintenance windows so your teams keep moving.
+                  We invest in the very latest equipment and tools to ensure speed and precision in undertaking every project.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Quality <span className="text-[#f97316]">Service</span></h3>
+                <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">
+                  Quality service is a non-negotiable at Subgeo Plumbing Works. Our larger clients know our team members by first name — they know we deliver right first-time round.
                 </p>
               </div>
             </div>
@@ -1114,21 +1118,20 @@ function SubgeoIndustrial() {
           
           <Reveal delay={0.2} className="space-y-6 lg:pl-10">
             <h2 className="text-[clamp(28px,3vw,40px)] font-bold leading-[1.04] mb-6" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
-              <span className="text-[#1d3b4a] block">Professional-grade</span>
-              <span className="text-[#ef6a42] block">tools & safety first</span>
+              <span className="text-[#1d3b4a] block">Latest equipment</span>
+              <span className="text-[#ef6a42] block">& skilled specialists</span>
             </h2>
             <p className="mt-5 text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium mb-8">
-              We invest in state-of-the-art equipment and prioritize safety protocols on every job site. 
-              Our technicians are equipped with the latest tools and protective gear to ensure efficient, safe service delivery.
+              We invest in the very latest equipment and tools to ensure speed and precision in undertaking every project. Our plumbers have at least 5 years of broad onsite plumbing experience.
             </p>
             
             <div className="grid sm:grid-cols-2 gap-y-5 gap-x-6 mb-10">
               {[
-                "Modern Diagnostic Tools",
-                "OSHA Compliant Safety",
-                "Regular Equipment Servicing",
-                "Premium Quality Materials",
-                "Certified Technicians",
+                "Latest Equipment & Tools",
+                "5+ Years Experience Per Plumber",
+                "Well-Maintained Branded Fleet",
+                "Dynamic Management Systems",
+                "Quality Service Non-Negotiable",
                 "24/7 Emergency Response"
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-3">
