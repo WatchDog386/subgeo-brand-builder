@@ -34,6 +34,7 @@ import {
 } from "framer-motion";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
+import { Reveal } from "@/components/site/Reveal";
 import heroImg from "@/assets/corporate-hero.jpeg";
 import industryImg from "@/assets/industry.jpeg";
 import plumbingImg from "@/assets/plumber.jpeg";
@@ -329,7 +330,7 @@ function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; del
 function ParallaxSection({
   image,
   children,
-  overlayColor = "#1e293b",
+  overlayColor = "primary",
   overlayOpacity = 0.85,
   parallaxSpeed = 0.5,
   className = "",
@@ -351,18 +352,18 @@ function ParallaxSection({
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [1, 0.8, 0.3, 0]);
 
   return (
-    <section ref={ref} className={`relative min-h-screen overflow-hidden ${className}`}>
+    <section ref={ref} className={`relative overflow-hidden ${className}`}>
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
-        <img src={image} alt="" className="w-full h-full object-cover" loading="lazy" />
+        {/* Removed Image */}
         <div
           className="absolute inset-0"
           style={{
-            backgroundColor: overlayColor,
+            backgroundColor: "white",
             opacity: overlayOpacity,
           }}
         />
       </motion.div>
-      <div className="relative z-10 h-full flex items-center py-24 md:py-32">
+      <div className="relative z-10 h-full flex items-center py-20 lg:py-32">
         {children}
       </div>
     </section>
@@ -385,7 +386,7 @@ function StickyNavbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-xl shadow-sm py-2"
+          ? "bg-background/95 backdrop-blur-xl shadow-lg shadow-black/10 py-2"
           : "bg-transparent py-4"
       }`}
     >
@@ -411,18 +412,18 @@ function ProcessTimeline() {
   }, [isInView]);
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-20 bg-white overflow-hidden">
+    <section ref={sectionRef} className="py-24 md:py-32 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         <FadeInSection>
-          <div className="text-center mb-12">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
+          <div className="text-center mb-16 md:mb-20">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-4">
               Our Process
             </p>
-            <h2 className="font-display text-[clamp(24px,2.5vw,36px)] font-bold text-[#1e293b] leading-[1.15]">
+            <h2 className="text-[20px] md:text-[24px] font-display font-medium uppercase tracking-widest text-primary">
               How we deliver{" "}
-              <span className="text-[#2563eb]">excellence</span>
+              <span className="text-accent">excellence</span>
             </h2>
-            <p className="mt-4 text-sm md:text-base text-gray-500 max-w-2xl mx-auto leading-relaxed font-sans line-clamp-2">
+            <p className="mt-6 text-[13px] md:text-[14px] text-gray-600 max-w-2xl mx-auto leading-relaxed">
               A structured, transparent approach that keeps every project on time,
               on budget, and built to last.
             </p>
@@ -454,13 +455,13 @@ function ProcessTimeline() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1e293b]/60 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/30 to-transparent" />
                     
                     {/* Step Number Badge */}
                     <div className="absolute top-4 left-4 md:top-6 md:left-6">
                       <motion.div
                         className={`inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full text-white text-lg md:text-2xl font-bold shadow-lg ${
-                          isActive ? "bg-[#2563eb] scale-110" : "bg-white/20 backdrop-blur-md"
+                          isActive ? "bg-accent scale-110" : "bg-white/20 backdrop-blur-md"
                         }`}
                         animate={isActive ? { scale: [1, 1.1, 1] } : {}}
                         transition={{ duration: 2, repeat: Infinity }}
@@ -477,24 +478,24 @@ function ProcessTimeline() {
                     </div>
                   </div>
 
-                    {/* Content Side */}
-                    <div className={`space-y-3 ${index % 2 === 1 ? "md:order-1 md:text-right" : ""}`}>
-                      <div className={`inline-flex items-center gap-2 ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
-                        <div className={`h-8 w-8 rounded-lg ${isActive ? "bg-[#2563eb]" : "bg-[#2563eb]/10"} flex items-center justify-center`}>
-                          <Icon className={`h-4 w-4 ${isActive ? "text-white" : "text-[#2563eb]"}`} />
-                        </div>
-                        <span className={`text-[11px] font-bold uppercase tracking-wider ${isActive ? "text-[#2563eb]" : "text-gray-400"} font-sans`}>
-                          Step {step.number}
-                        </span>
+                  {/* Content Side */}
+                  <div className={`space-y-4 ${index % 2 === 1 ? "md:order-1 md:text-right" : ""}`}>
+                    <div className={`inline-flex items-center gap-2 ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
+                      <div className={`h-10 w-10 rounded-xl ${isActive ? "bg-accent" : "bg-accent/10"} flex items-center justify-center`}>
+                        <Icon className={`h-5 w-5 ${isActive ? "text-white" : "text-accent"}`} />
                       </div>
-                      
-                      <h3 className={`font-display text-xl md:text-2xl font-bold ${isActive ? "text-[#2563eb]" : "text-[#1e293b] group-hover:text-[#2563eb]"} transition-colors`}>
-                        {step.title}
-                      </h3>
-                      
-                      <p className="text-sm md:text-base text-gray-600 leading-relaxed font-sans line-clamp-2">
-                        {step.description}
-                      </p>
+                      <span className={`text-xs font-bold uppercase tracking-wider ${isActive ? "text-accent" : "text-gray-400"}`}>
+                        Step {step.number}
+                      </span>
+                    </div>
+                    
+                    <h3 className={`text-[16px] md:text-[18px] font-display font-semibold ${isActive ? "text-accent" : "text-primary group-hover:text-accent"} transition-colors`}>
+                      {step.title}
+                    </h3>
+                    
+                    <p className="text-[13px] md:text-[14px] text-gray-600 leading-relaxed">
+                      {step.description}
+                    </p>
 
                     {/* Progress Indicator */}
                     <div className="flex items-center gap-2 pt-2">
@@ -503,9 +504,9 @@ function ProcessTimeline() {
                           key={i}
                           className={`h-1.5 rounded-full transition-all duration-500 ${
                             i === index
-                              ? "w-12 bg-[#2563eb]"
+                              ? "w-12 bg-accent"
                               : i < index
-                              ? "w-6 bg-[#2563eb]/40"
+                              ? "w-6 bg-accent/40"
                               : "w-6 bg-gray-200"
                           }`}
                         />
@@ -517,15 +518,15 @@ function ProcessTimeline() {
                 {/* Divider */}
                 {index < processSteps.length - 1 && (
                   <div className="hidden md:flex items-center justify-center py-4">
-                    <div className="w-0.5 h-12 bg-gradient-to-b from-[#2563eb]/40 to-gray-200" />
+                    <div className="w-0.5 h-12 bg-gradient-to-b from-accent/40 to-gray-200" />
                   </div>
                 )}
               </FadeInSection>
             );
           })}
-        </div>
-      </div>
-    </section>
+            </div>
+          </div>
+        </section>
   );
 }
 
@@ -556,12 +557,12 @@ function SubgeoIndustrial() {
   };
 
   return (
-    <div className="relative min-h-screen bg-white text-gray-900 overflow-x-hidden">
+    <div className="relative min-h-screen bg-background text-foreground font-sans overflow-x-hidden">
       {/* Fixed Sticky Navbar - content scrolls behind */}
       <StickyNavbar />
 
-      {/* Hero Section - Reduced height like beauty.tsx */}
-      <section ref={heroRef} className="relative h-[420px] lg:h-[520px] flex items-center overflow-hidden">
+      {/* Hero Section */}
+      <section ref={heroRef} className="relative h-[520px] md:h-[580px] lg:h-[640px] w-full overflow-hidden flex items-center">
         <motion.div style={{ scale: heroScale }} className="absolute inset-0 z-0">
           <img
             src={firePumpImg}
@@ -570,170 +571,239 @@ function SubgeoIndustrial() {
             loading="eager"
             fetchPriority="high"
           />
-          <motion.div
-            style={{ opacity: heroOpacity }}
-            className="absolute inset-0 bg-gradient-to-r from-[#1e293b]/95 via-[#1e293b]/80 to-transparent"
-          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary from-15% via-primary/80 via-60% to-transparent to-80%" />
         </motion.div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-3"
-          >
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2">
-              <span className="flex h-2 w-2 rounded-full bg-[#2563eb] animate-pulse"></span>
-              <span className="text-xs font-semibold text-white uppercase tracking-wider">
-                Available 24/7 for Emergencies
-              </span>
-            </div>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="font-display text-[clamp(28px,3.5vw,48px)] leading-[1.1] font-bold text-white"
-          >
-            Precision <span className="text-[#2563eb]">Plumbing</span>
-            <br />
-            &amp; Industrial Solutions
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="mt-4 max-w-xl text-sm md:text-base text-white/80 leading-relaxed font-sans"
-          >
-            We design, install and maintain resilient plumbing and drainage systems
-            for homes, commercial spaces and industrial facilities across Kenya.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.1 }}
-            className="mt-5 flex flex-col sm:flex-row gap-3"
-          >
-            <button
-              onClick={() => scrollToSection("services")}
-              className="rounded-sm bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-8 py-3 text-xs font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2"
+        <motion.div
+          style={{ y: heroTextY, opacity: heroOpacity }}
+          className="relative z-10 container-x w-full"
+        >
+          <div className="max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mb-4 md:mb-6"
             >
-              Explore Services
-              <ArrowRight className="h-3.5 w-3.5" />
-            </button>
-            <Link
-              to="/contact"
-              className="rounded-sm border-2 border-white text-white hover:bg-white hover:text-[#1e293b] px-8 py-3 text-xs font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2"
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 md:px-6 py-2 md:py-3">
+                <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse"></span>
+                <span className="text-xs md:text-sm font-semibold text-white uppercase tracking-wider">
+                  Available 24/7 for Emergencies
+                </span>
+              </div>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="font-display font-medium text-[40px] md:text-[52px] leading-[1.15] tracking-tight text-white"
             >
-              Request A Quote
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </motion.div>
-        </div>
+              Precision Plumbing &<br />
+              <span className="text-accent">Industrial Solutions</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="mt-4 md:mt-6 max-w-xl text-[13px] md:text-[14px] text-white/80 leading-relaxed font-light"
+            >
+              We design, install and maintain resilient plumbing and drainage systems
+              for homes, commercial spaces and industrial facilities across Kenya.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.1 }}
+              className="mt-5 md:mt-7 flex flex-col sm:flex-row gap-3 md:gap-5"
+            >
+              <button
+                onClick={() => scrollToSection("services")}
+                className="rounded-lg bg-accent hover:bg-accent/90 text-white px-8 md:px-10 py-3.5 md:py-4 text-[11px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-3"
+              >
+                Explore Services
+                <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
+              </button>
+              <Link
+                to="/contact"
+                className="rounded-lg border-2 border-white/80 text-white hover:bg-white hover:text-primary px-8 md:px-10 py-3.5 md:py-4 text-[11px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-3"
+              >
+                Request A Quote
+                <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
+              </Link>
+            </motion.div>
+          </div>
+        </motion.div>
       </section>
 
-      {/* Chapter 01: Trust Metrics */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <FadeInSection>
-            <div className="text-center mb-12">
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
-                Trusted Performance
-              </p>
-              <h2 className="font-display text-[clamp(24px,2.5vw,36px)] font-bold text-[#1e293b] leading-[1.15]">
-                Trusted by teams that cannot afford downtime
-              </h2>
+      {/* Precision Plumbing — Promotional Cards */}
+      <section className="py-16 bg-white overflow-hidden">
+        <div className="container-x w-full max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-[1fr_1fr] gap-6 md:h-[420px]">
+            
+            {/* Left Card */}
+            <div className="bg-[#f0f2f5] p-10 flex flex-col justify-center relative overflow-hidden rounded-[2px] h-[400px] md:h-full group">
+              <div className="relative z-10 w-[60%] ml-auto text-right flex flex-col items-end">
+                <span className="text-[#2563eb] text-[13px] font-semibold mb-2">Precision Work</span>
+                <h3 className="text-[#222] text-[28px] lg:text-[34px] font-black leading-tight mb-3">Plumbing</h3>
+                <p className="text-[#555] text-[13px] mb-8">Expert installation & repair</p>
+                <button className="bg-transparent border-[1.5px] border-[#222] text-[#222] hover:bg-[#222] hover:text-white rounded-full px-7 py-2 h-10 w-fit text-[13px] font-bold transition-colors">
+                  Book Service
+                </button>
+              </div>
+              <div className="absolute left-[-5%] bottom-0 w-[70%] h-[95%] pointer-events-none">
+                <img src={plumbingImg} alt="Plumbing" className="w-full h-full object-cover object-bottom mix-blend-darken group-hover:scale-105 transition-transform duration-700" />
+              </div>
             </div>
-          </FadeInSection>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {trustMetrics.map((item, index) => (
-              <FadeInSection key={item.label} delay={index * 0.12}>
-                <div className="text-center p-5 border border-gray-100 rounded-lg hover:shadow-md transition-shadow duration-300">
-                  <p className="text-3xl md:text-4xl font-bold text-[#2563eb] mb-2">
-                    <AnimatedCounter value={item.value} suffix={item.suffix} />
-                  </p>
-                  <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-widest font-sans">
-                    {item.label}
-                  </p>
+            {/* Right Column */}
+            <div className="flex flex-col gap-6 h-full">
+              
+              {/* Top Row */}
+              <div className="grid grid-cols-2 gap-6 h-[200px] md:h-[calc(50%-12px)]">
+                
+                {/* Drainage */}
+                <div className="bg-[#bdae9c] p-6 relative overflow-hidden rounded-[2px] flex flex-col justify-start group">
+                  <div className="bg-[#2563eb] text-white text-[10px] font-bold px-2.5 py-1 rounded-[2px] w-fit mb-3 relative z-10 tracking-widest">
+                    24/7
+                  </div>
+                  <h4 className="text-white text-[20px] font-bold mb-3 relative z-10">Drainage</h4>
+                  <a href="#" className="text-white text-[12px] font-bold flex items-center gap-1 hover:gap-2 transition-all relative z-10">
+                    Get Details <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                  </a>
+                  <div className="absolute -right-4 bottom-[-10%] w-[80%] h-[90%] pointer-events-none">
+                    <img src={drainageImg} alt="Drainage" className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700" />
+                  </div>
                 </div>
-              </FadeInSection>
-            ))}
+
+                {/* Geyser */}
+                <div className="bg-[#cfceca] p-6 relative overflow-hidden rounded-[2px] flex flex-col justify-start group">
+                  <div className="bg-[#2563eb] text-white text-[10px] font-bold px-2.5 py-1 rounded-[2px] w-fit mb-3 relative z-10 tracking-widest">
+                    Expert
+                  </div>
+                  <h4 className="text-[#222] text-[20px] font-bold mb-3 relative z-10">Geysers</h4>
+                  <a href="#" className="text-[#222] text-[12px] font-bold flex items-center gap-1 hover:gap-2 transition-all relative z-10">
+                    Get Details <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                  </a>
+                  <div className="absolute -right-6 top-1/2 -translate-y-1/2 w-[85%] h-[120%] pointer-events-none">
+                    <img src={geyserImg} alt="Geyser" className="w-full h-full object-contain mix-blend-darken group-hover:scale-105 transition-transform duration-700" />
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Bottom Row */}
+              <div className="bg-[#a38c78] p-8 relative overflow-hidden rounded-[2px] h-[200px] md:h-[calc(50%-12px)] flex flex-col justify-center group">
+                <div className="relative z-10">
+                  <p className="text-white/80 text-[10px] font-bold uppercase tracking-widest mb-1.5">Full Service</p>
+                  <h4 className="text-white text-[24px] lg:text-[28px] font-bold mb-2">Kitchen & Bathroom</h4>
+                  <p className="text-white/90 text-[11px] font-bold tracking-widest uppercase mb-4">FITOUTS & INSTALLATION</p>
+                  <a href="#" className="text-white text-[13px] font-bold flex items-center gap-1 hover:gap-2 transition-all">
+                    View Offers <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                  </a>
+                </div>
+                <div className="absolute right-[-5%] top-1/2 -translate-y-1/2 w-[55%] h-[120%] pointer-events-none">
+                  <img src={bathroomImg} alt="Kitchen and Bathroom" className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700" />
+                </div>
+              </div>
+
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* Chapter 02: About */}
-      <ParallaxSection image={pumpRoomImg} overlayOpacity={0.9} className="min-h-[60vh]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <FadeInSection>
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
-                About Subgeo Industrial
-              </p>
-              <h2 className="font-display text-[clamp(26px,3vw,40px)] font-bold text-white leading-[1.15] mb-6">
-                Built on professional <span className="text-[#2563eb]">discipline</span> since 2012
-              </h2>
-            </FadeInSection>
+      <section className="py-20 lg:py-32 bg-white">
+        <div className="container-x max-w-[1200px] mx-auto">
+          <div className="text-center mb-16 lg:mb-24">
+            <h2 className="font-sans font-[900] tracking-tighter text-[clamp(28px,3vw,40px)] leading-[1.04] text-[#1e293b]">
+              Built on Professional<br/>
+              <span className="text-[#0ea5e9]">Discipline since 2012</span>
+            </h2>
+          </div>
 
-            <div className="space-y-4">
-              <FadeInSection delay={0.2}>
-                <p className="text-sm md:text-base text-white/85 leading-relaxed font-sans line-clamp-2">
-                  Subgeo Plumbing & Industrial Works Ltd is a registered private limited company
-                  focused on plumbing, sanitary installation, drainage systems, fire-fighting
-                  infrastructure and recurring maintenance services for long-term asset performance.
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Left: Image */}
+            <div className="flex justify-center relative order-last lg:order-first">
+              <div className="relative w-full max-w-[450px] aspect-[4/3] overflow-hidden shadow-lg">
+                <img src={pumpRoomImg} alt="Plumbing" className="w-full h-full object-cover" />
+              </div>
+            </div>
+
+            {/* Right: Feature List */}
+            <div className="flex flex-col gap-10">
+              <div>
+                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Private Limited <span className="text-[#0ea5e9]">Registration</span></h3>
+                <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">
+                  Subgeo Plumbing & Industrial Works Ltd is a registered private limited company focused on plumbing, sanitary installation, and drainage systems.
                 </p>
-              </FadeInSection>
-
-              <FadeInSection delay={0.3}>
-                <p className="text-sm md:text-base text-white/85 leading-relaxed font-sans line-clamp-2">
-                  Our fleet of well-maintained, reliable vehicles are company branded and extremely neat.
-                  We align every scope with operational risk, site safety and realistic maintenance
-                  windows so your teams keep moving.
+              </div>
+              <div>
+                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Industrial <span className="text-[#f97316]">Maintenance</span></h3>
+                <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">
+                  Fire-fighting infrastructure and recurring maintenance services designed for long-term asset performance.
                 </p>
-              </FadeInSection>
-
-              <FadeInSection delay={0.4}>
-                <div className="inline-flex items-center gap-3 bg-[#2563eb] px-5 py-3 rounded-sm">
-                  <p className="text-2xl font-bold text-white">12+</p>
-                  <div>
-                    <p className="text-[11px] font-semibold text-white/90 uppercase tracking-widest font-sans">
-                      Years of reliable delivery
-                    </p>
-                  </div>
-                </div>
-              </FadeInSection>
+              </div>
+              <div>
+                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Well-maintained <span className="text-[#a855f7]">Fleet</span></h3>
+                <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">
+                  Our fleet of well-maintained, reliable vehicles are company branded and extremely neat for professional site attendance.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Operational <span className="text-[#22c55e]">Safety</span></h3>
+                <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">
+                  We align every scope with operational risk, site safety, and realistic maintenance windows so your teams keep moving.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </ParallaxSection>
+      </section>
 
-      {/* Value Cards */}
-      <section className="py-16 md:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="grid md:grid-cols-3 gap-5 md:gap-6">
-            {valueCards.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <FadeInSection key={item.title} delay={index * 0.12}>
-                  <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 h-full group">
-                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#2563eb] text-white mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <h3 className="font-display text-lg font-bold text-[#1e293b] mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed font-sans line-clamp-2">
-                      {item.description}
-                    </p>
-                  </div>
-                </FadeInSection>
-              );
-            })}
+      {/* System Integrity — Features Row */}
+      <section className="py-16 bg-white overflow-hidden">
+        <div className="container-x w-full max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12 pb-12 border-b border-gray-100">
+            <div className="flex items-center gap-4">
+              <div className="text-[#2563eb] shrink-0">
+                <BadgeCheck className="w-9 h-9" strokeWidth={1.2} />
+              </div>
+              <div className="flex flex-col">
+                <h4 className="font-bold text-[14px] text-[#222]">Quality First</h4>
+                <p className="text-[#777] text-[11px]">Dependable long-term performance</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="text-[#2563eb] shrink-0">
+                <Clock3 className="w-9 h-9" strokeWidth={1.2} />
+              </div>
+              <div className="flex flex-col">
+                <h4 className="font-bold text-[14px] text-[#222]">Rapid Response</h4>
+                <p className="text-[#777] text-[11px]">24/7 emergency dispatch</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="text-[#2563eb] shrink-0">
+                <Sparkles className="w-9 h-9" strokeWidth={1.2} />
+              </div>
+              <div className="flex flex-col">
+                <h4 className="font-bold text-[14px] text-[#222]">Smart Innovation</h4>
+                <p className="text-[#777] text-[11px]">Modern tooling & reporting</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="text-[#2563eb] shrink-0">
+                <ShieldCheck className="w-9 h-9" strokeWidth={1.2} />
+              </div>
+              <div className="flex flex-col">
+                <h4 className="font-bold text-[14px] text-[#222]">Fully Insured</h4>
+                <p className="text-[#777] text-[11px]">Licensed & safety compliant</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -742,32 +812,36 @@ function SubgeoIndustrial() {
       <ProcessTimeline />
 
       {/* Chapter 03: Industries */}
-      <ParallaxSection image={constructionSiteImg} overlayOpacity={0.85} className="min-h-[60vh]">
+      <ParallaxSection image={constructionSiteImg} overlayOpacity={0.85}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full">
-          <div className="grid lg:grid-cols-2 gap-10 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-start">
             <div>
               <FadeInSection>
-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
+                <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-4">
                   Industries We Serve
                 </p>
-                <h2 className="font-display text-[clamp(26px,3vw,40px)] font-bold text-white leading-[1.15] mb-6">
-                  Reliable solutions across critical <span className="text-[#2563eb]">sectors</span>
+                <h2 className="text-[20px] md:text-[24px] font-display font-medium uppercase tracking-widest text-white mb-8">
+                  Reliable solutions
+                  <br />
+                  across critical
+                  <br />
+                  <span className="text-accent">sectors</span>
                 </h2>
               </FadeInSection>
 
               <FadeInSection delay={0.2}>
-                <p className="text-sm md:text-base text-white/85 leading-relaxed font-sans line-clamp-2 mb-6">
+                <p className="text-[13px] md:text-[14px] text-white/85 leading-relaxed font-light mb-8 md:mb-10">
                   Subgeo supports multi-site operators and independent property owners
                   with tailored plumbing, drainage and maintenance programs.
                 </p>
               </FadeInSection>
 
               <FadeInSection delay={0.3}>
-                <div className="border-l-4 border-[#2563eb] pl-5 bg-white/10 backdrop-blur-sm p-5 rounded-sm">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2563eb] mb-2 font-sans">
+                <div className="border-l-4 border-accent pl-6 md:pl-8 bg-white/10 backdrop-blur-sm p-6 md:p-8 rounded-r-2xl">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-3">
                     Service Promise
                   </p>
-                  <p className="text-sm md:text-base text-white/90 leading-relaxed font-sans line-clamp-2">
+                  <p className="text-[13px] md:text-[14px] text-white/90 leading-relaxed">
                     We align every scope with operational risk, site safety and realistic
                     maintenance windows so your teams keep moving.
                   </p>
@@ -775,20 +849,20 @@ function SubgeoIndustrial() {
               </FadeInSection>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 md:gap-3">
+            <div className="grid grid-cols-2 gap-3 md:gap-4">
               {industries.map((item, index) => {
                 const Icon = item.icon;
                 return (
                   <FadeInSection key={item.name} delay={0.4 + index * 0.06}>
                     <motion.div
-                      whileHover={{ scale: 1.03 }}
+                      whileHover={{ scale: 1.05, y: -5 }}
                       transition={{ duration: 0.3 }}
-                      className="group bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-4 hover:bg-[#2563eb] transition-all duration-300"
+                      className="group bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 md:p-6 hover:bg-accent transition-all duration-500"
                     >
-                      <div className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/20 text-white mb-3 group-hover:bg-white group-hover:text-[#2563eb] transition-all duration-300">
-                        <Icon className="h-4 w-4" />
+                      <div className="inline-flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-xl bg-white/20 text-white mb-4 group-hover:bg-white group-hover:text-accent transition-all duration-500">
+                        <Icon className="h-5 w-5 md:h-6 md:w-6" />
                       </div>
-                      <h3 className="text-xs md:text-sm font-bold text-white font-sans">
+                      <h3 className="text-[12px] md:text-[13px] font-display font-semibold text-white group-hover:text-white transition-colors duration-300">
                         {item.name}
                       </h3>
                     </motion.div>
@@ -800,433 +874,281 @@ function SubgeoIndustrial() {
         </div>
       </ParallaxSection>
 
-      {/* Why Choose Us */}
-      <section className="py-16 md:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <div>
-              <FadeInSection>
-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
-                  Why Choose Us
-                </p>
-                <h2 className="font-display text-[clamp(24px,2.5vw,36px)] font-bold text-[#1e293b] leading-[1.15] mb-6">
-                  The Subgeo <span className="text-[#2563eb]">advantage</span>
-                </h2>
-              </FadeInSection>
+      {/* Why Choose Us - Subgeo Advantage */}
+      <section className="relative">
+        <div className="relative min-h-[350px] md:min-h-[400px] overflow-hidden bg-primary">
+          <div className="absolute inset-0">
+            <img
+              src={constructionSiteImg}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-primary/75 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/60 to-transparent" />
+          </div>
 
-              <FadeInSection delay={0.1}>
-                <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-6 font-sans line-clamp-2">
+          <div className="relative container-x pt-10 md:pt-14 pb-24 md:pb-28">
+            <Reveal>
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-4 text-center">
+                Why Choose Us
+              </p>
+              <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-white text-center">
+                The Subgeo
+                <br />
+                <span className="text-accent">advantage</span>
+              </h2>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <div className="mt-6 md:mt-8 max-w-xl mx-auto md:bg-black/30 md:backdrop-blur-sm p-0 md:p-6 rounded-sm text-center">
+                <p className="text-white/90 text-[13px] leading-relaxed">
                   We combine technical expertise with unwavering commitment to safety,
                   quality, and client satisfaction. Every project reflects our dedication
                   to excellence.
                 </p>
-              </FadeInSection>
+                <div className="mt-5 flex justify-center">
+                  <a
+                    href="#services"
+                    className="bg-white text-primary px-8 py-3.5 text-sm font-bold tracking-widest hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
+                  >
+                    OUR SERVICES
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
 
-              <div className="space-y-3">
-                {whyChooseUs.map((item, index) => {
-                  const Icon = item.icon;
-                  return (
-                    <FadeInSection key={item.title} delay={0.2 + index * 0.1}>
-                      <motion.div
-                        whileHover={{ x: 4 }}
-                        className="flex items-start gap-3 p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-all duration-300"
-                      >
-                        <div className="flex-shrink-0">
-                          <div className="h-10 w-10 rounded-lg bg-[#2563eb] flex items-center justify-center">
-                            <Icon className="h-5 w-5 text-white" />
-                          </div>
-                        </div>
-                        <div className="flex-grow">
-                          <h3 className="font-display text-base font-bold text-[#1e293b] mb-1">
-                            {item.title}
-                          </h3>
-                          <p className="text-sm text-gray-500 leading-relaxed mb-2 font-sans line-clamp-2">
-                            {item.description}
-                          </p>
-                          <div className="flex items-center gap-2">
-                            <span className="text-lg font-bold text-[#2563eb]">
+        <div className="relative -mt-16 md:-mt-20 pb-16 md:pb-24">
+          <div className="container-x">
+            <div className="relative z-10 space-y-8 md:space-y-0 md:grid md:grid-cols-3 md:gap-8 max-w-sm md:max-w-none mx-auto">
+              {whyChooseUs.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.title} className="relative bg-white shadow-2xl">
+                    <div
+                      className="absolute top-0 left-0 right-0 h-3 -translate-y-1/2"
+                      style={{
+                        background:
+                          "radial-gradient(circle at 10px 0, transparent 8px, white 8px) repeat-x",
+                        backgroundSize: "20px 12px",
+                      }}
+                    />
+
+                    <div className="px-6 pt-8 pb-6 md:px-8 md:pt-10 md:pb-8 text-center">
+                      <div className="inline-flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl bg-accent text-white mb-4">
+                        <Icon className="h-6 w-6 md:h-7 md:w-7" />
+                      </div>
+                      <h3 className="text-xl md:text-[1.7rem] font-bold md:font-extrabold text-primary leading-tight">
+                        {item.title}
+                      </h3>
+
+                      <div className="mt-4 md:mt-6 -mx-2 md:-mx-4 flex justify-center">
+                        <div className="relative">
+                          <div
+                            className="bg-primary text-white py-2.5 px-10 md:py-4 md:px-8 flex items-center justify-center font-display"
+                            style={{
+                              clipPath:
+                                "polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%)",
+                            }}
+                          >
+                            <span className="text-xl md:text-3xl font-bold pr-2">
                               {item.stat}
                             </span>
-                            <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider font-sans">
+                            <span className="text-xs md:text-sm font-semibold uppercase tracking-wider">
                               {item.statLabel}
                             </span>
                           </div>
                         </div>
-                      </motion.div>
-                    </FadeInSection>
-                  );
-                })}
-              </div>
-            </div>
+                      </div>
 
-            <FadeInSection delay={0.3}>
-              <div className="relative">
-                <div className="aspect-[4/5] rounded-lg overflow-hidden shadow-lg">
-                  <img
-                    src={teamWorkingImg}
-                    alt="Subgeo team at work"
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1e293b]/60 via-transparent to-transparent" />
-                </div>
+                      <p className="mt-4 text-[13px] md:text-[14px] text-gray-600 leading-relaxed">
+                        {item.description}
+                      </p>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 }}
-                  className="absolute -bottom-4 md:-bottom-6 -left-3 md:-left-6 bg-white rounded-lg p-4 shadow-lg max-w-[220px]"
-                >
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="h-8 w-8 rounded-full bg-[#2563eb] flex items-center justify-center">
-                      <Award className="h-4 w-4 text-white" />
+                      <a
+                        href="#services"
+                        className="w-[85%] md:w-full inline-flex justify-center items-center mt-6 bg-accent hover:bg-accent/90 text-white h-11 md:h-12 font-bold text-sm tracking-wider transition-colors gap-2"
+                      >
+                        LEARN MORE
+                        <ArrowRight className="h-4 w-4" />
+                      </a>
                     </div>
-                    <div>
-                      <p className="text-xl font-bold text-[#1e293b]">12+</p>
-                      <p className="text-[11px] text-gray-500 font-sans">Years Experience</p>
-                    </div>
+
+                    <div
+                      className="absolute bottom-0 left-0 right-0 h-3 translate-y-1/2"
+                      style={{
+                        background:
+                          "radial-gradient(circle at 10px 100%, transparent 8px, white 8px) repeat-x",
+                        backgroundSize: "20px 12px",
+                      }}
+                    />
                   </div>
-                  <p className="text-[11px] text-gray-500 leading-relaxed font-sans line-clamp-2">
-                    Trusted by leading companies across Kenya for industrial plumbing excellence
-                  </p>
-                </motion.div>
-              </div>
-            </FadeInSection>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Chapter 04: Services */}
-      <section id="services" className="py-16 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <FadeInSection>
-            <div className="text-center mb-12">
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
-                Core Services
-              </p>
-              <h2 className="font-display text-[clamp(24px,2.5vw,36px)] font-bold text-[#1e293b] leading-[1.15]">
-                End-to-end plumbing and industrial maintenance
-              </h2>
-            </div>
-          </FadeInSection>
+      {/* Services — Card Grid */}
+      <section id="services" className="py-24 bg-white overflow-hidden">
+        <div className="container-x">
+          
+          <Reveal className="text-center mb-16">
+            <h2 className="text-[#333] text-[20px] md:text-[24px] font-display font-medium uppercase tracking-widest">
+              End-to-end plumbing &amp; industrial maintenance
+            </h2>
+          </Reveal>
 
-          <div className="space-y-0">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              const isOpen = activeService === index;
-              const isEven = index % 2 === 0;
-
-              return (
-                <FadeInSection key={service.title} delay={index * 0.08}>
-                  <div
-                    className={`grid lg:grid-cols-2 gap-0 border-t border-gray-200 ${
-                      isEven ? "" : "lg:flex-row-reverse"
-                    }`}
-                  >
-                    {/* Image Side */}
-                    <div
-                      className={`relative aspect-[4/3] lg:aspect-auto lg:h-[450px] xl:h-[500px] overflow-hidden ${
-                        isEven ? "" : "lg:order-2"
-                      }`}
-                    >
+          <Reveal delay={0.2} className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
+              
+              {services.map((service, index) => {
+                const Icon = service.icon;
+                return (
+                  <div key={service.title} className="flex flex-col sm:flex-row gap-6 items-start">
+                    <div className="w-full sm:w-[220px] h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
                       {service.image && (
-                        <motion.img
-                          src={service.image}
-                          alt={service.title}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                          initial={{ scale: 1.1 }}
-                          whileInView={{ scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.2 }}
-                        />
+                        <img src={service.image} alt={service.title} className="w-full h-full object-cover bg-gray-50" />
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#1e293b]/50 via-transparent to-transparent" />
-                      <div className="absolute top-6 md:top-8 left-6 md:left-8">
-                        <span className="text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-white/90">
-                          0{index + 1}
-                        </span>
-                      </div>
                     </div>
-
-                    {/* Content Side */}
-                    <div
-                      className={`flex flex-col justify-center p-6 md:p-8 lg:p-10 ${
-                        isEven ? "" : "lg:order-1"
-                      }`}
-                    >
-                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#2563eb] text-white mb-4">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <h3 className="font-display text-lg md:text-xl font-bold text-[#1e293b] mb-2">
-                        {service.title}
-                      </h3>
-                      <p className="text-sm text-gray-600 leading-relaxed mb-4 font-sans line-clamp-2">
+                    <div className="flex flex-col items-start">
+                      <h3 className="text-[#df488b] text-[14px] font-medium mb-3">{service.title}</h3>
+                      <p className="text-[#666] text-[12px] leading-relaxed mb-5">
                         {service.description}
                       </p>
-
-                      <AnimatePresence>
-                        {isOpen && service.longDescription && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="overflow-hidden mb-6"
-                          >
-                            <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-5">
-                              {service.longDescription}
-                            </p>
-                            {service.features && (
-                              <ul className="space-y-2 md:space-y-3">
-                                {service.features.map((feature, idx) => (
-                                  <li
-                                    key={idx}
-                                    className="flex items-start gap-3 md:gap-4 text-gray-600"
-                                  >
-                                    <CheckCircle2 className="h-5 w-5 text-[#2563eb] flex-shrink-0 mt-0.5" />
-                                    <span className="text-sm md:text-base">{feature}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-
-                      <button
-                        onClick={() => setActiveService(isOpen ? null : index)}
-                        className="mt-4 inline-flex items-center gap-2 md:gap-3 text-xs md:text-sm font-bold text-[#2563eb] hover:text-[#1d4ed8] transition-colors uppercase tracking-widest"
-                      >
-                        {isOpen ? "Show Less" : "Learn More"}
-                        <ArrowRight
-                          className={`h-4 w-4 md:h-5 md:w-5 transition-transform ${
-                            isOpen ? "rotate-90" : ""
-                          }`}
-                        />
+                      <button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-6 py-4 h-8 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto">
+                        Learn More
                       </button>
                     </div>
                   </div>
-                </FadeInSection>
-              );
-            })}
-            <div className="border-t border-gray-200" />
-          </div>
+                );
+              })}
+
+            </div>
+          </Reveal>
+
         </div>
       </section>
 
-      {/* Chapter 05: Projects - Enhanced with detailed descriptions */}
-      <section id="projects" className="py-16 md:py-20 bg-[#1e293b] text-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <FadeInSection>
-            <div className="text-center mb-12">
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
-                Recent Work
-              </p>
-              <h2 className="font-display text-[clamp(24px,2.5vw,36px)] font-bold leading-[1.15]">
-                Projects delivered with <span className="text-[#2563eb]">high technical accuracy</span>
-              </h2>
+      {/* Recent Projects & Insights — Promo Banners */}
+      <section className="py-12 bg-white">
+        <div className="container-x w-full max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+            
+            {/* Project 1 */}
+            <div className="bg-[#e4e8eb] h-[220px] rounded-[2px] overflow-hidden relative flex items-center group">
+              <div className="pl-10 relative z-10 w-[55%] font-sans">
+                <p className="text-[#555] text-[11px] mb-1 font-medium">{projects[0].date} · {projects[0].category}</p>
+                <h3 className="text-[#222] font-black text-[24px] lg:text-[28px] leading-tight mb-1">{projects[0].title}</h3>
+                <p className="text-[#2563eb] text-[12px] font-semibold mb-6">{projects[0].subtitle}</p>
+                <a href="#" className="text-[#444] text-[11px] font-bold flex items-center hover:text-[#2563eb] transition-colors uppercase tracking-wider">
+                  View Project <svg className="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+              </div>
+              <div className="absolute right-[-5%] bottom-0 top-0 w-[60%] pointer-events-none">
+                <img src={projects[0].image} alt={projects[0].title} className="w-full h-[115%] object-cover object-top mix-blend-darken group-hover:scale-105 transition-transform duration-700 relative top-2" />
+              </div>
             </div>
-          </FadeInSection>
 
-          <div className="space-y-8 md:space-y-10">
-            {projects.map((project, index) => {
-              const isExpanded = activeProject === index;
-              return (
-                <FadeInSection key={project.title} delay={index * 0.12}>
-                  <motion.div
-                    layout
-                    className="group bg-white/5 rounded-lg overflow-hidden hover:bg-white/10 transition-all duration-300"
-                  >
-                    <div className="grid lg:grid-cols-12 gap-0">
-                      {/* Image */}
-                      <div className="lg:col-span-4">
-                        <div className="relative aspect-video lg:aspect-auto lg:h-full min-h-[200px] overflow-hidden">
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            loading="lazy"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent lg:bg-gradient-to-r" />
-                          <div className="absolute top-3 left-3">
-                            <span className="inline-flex items-center bg-[#2563eb] text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                              {project.date}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
+            {/* Project 2 */}
+            <div className="bg-[#e5e1da] h-[220px] rounded-[2px] overflow-hidden relative flex items-center group">
+              <div className="pl-10 relative z-10 w-[55%] font-sans">
+                <p className="text-[#555] text-[11px] mb-1 font-medium">{projects[1].date} · {projects[1].category}</p>
+                <h3 className="text-[#222] font-black text-[24px] lg:text-[28px] leading-tight mb-1">{projects[1].title}</h3>
+                <p className="text-[#2563eb] text-[12px] font-semibold mb-6">{projects[1].subtitle}</p>
+                <a href="#" className="text-[#444] text-[11px] font-bold flex items-center hover:text-[#2563eb] transition-colors uppercase tracking-wider">
+                  View Project <svg className="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+              </div>
+              <div className="absolute right-0 bottom-0 top-0 w-[55%] pointer-events-none">
+                <img src={projects[1].image} alt={projects[1].title} className="w-full h-full object-cover object-center mix-blend-darken group-hover:scale-105 transition-transform duration-700" />
+              </div>
+            </div>
 
-                      {/* Content */}
-                      <div className="lg:col-span-8 p-5 md:p-6 flex flex-col justify-center">
-                        <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2563eb] font-sans">
-                            {project.category}
-                          </span>
-                          <span className="w-1 h-1 rounded-full bg-white/30" />
-                          <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50 font-sans">
-                            {project.subtitle}
-                          </span>
-                        </div>
-
-                        <h3 className="font-display text-lg md:text-xl font-bold mb-2 group-hover:text-[#2563eb] transition-colors duration-300">
-                          {project.title}
-                        </h3>
-
-                        <p className="text-sm text-white/70 leading-relaxed mb-3 font-sans line-clamp-2">
-                          {project.summary}
-                        </p>
-
-                        {/* Highlights */}
-                        <div className="flex flex-wrap gap-2 md:gap-3 mb-5">
-                          {project.highlights.map((highlight, idx) => (
-                            <span
-                              key={idx}
-                              className="inline-flex items-center gap-1.5 text-xs font-medium text-white/80 bg-white/10 border border-white/10 rounded-full px-3 py-1.5"
-                            >
-                              <CheckCircle2 className="h-3 w-3 text-[#2563eb]" />
-                              {highlight}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* Expandable Details */}
-                        <AnimatePresence>
-                          {isExpanded && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              className="overflow-hidden"
-                            >
-                              <div className="pt-4 md:pt-5 border-t border-white/10">
-                                <p className="text-sm md:text-base text-white/65 leading-relaxed">
-                                  {project.details}
-                                </p>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-
-                        <button
-                          onClick={() => setActiveProject(isExpanded ? null : index)}
-                          className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-[#2563eb] hover:text-white transition-colors uppercase tracking-widest self-start"
-                        >
-                          {isExpanded ? "Show Less" : "Read Full Scope"}
-                          <ArrowRight
-                            className={`h-4 w-4 transition-transform ${
-                              isExpanded ? "rotate-90" : ""
-                            }`}
-                          />
-                        </button>
-                      </div>
-                    </div>
-                  </motion.div>
-                </FadeInSection>
-              );
-            })}
           </div>
         </div>
       </section>
 
       {/* Equipment & Safety */}
-      <ParallaxSection image={safetyGearImg} overlayOpacity={0.9} className="min-h-[60vh]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <FadeInSection>
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
-                Safety & Equipment
-              </p>
-              <h2 className="font-display text-[clamp(26px,3vw,40px)] font-bold text-white leading-[1.15] mb-6">
-                Professional <span className="text-[#2563eb]">grade tools</span> &amp; safety first
-              </h2>
-            </FadeInSection>
-
-            <div className="space-y-4">
-              <FadeInSection delay={0.2}>
-                <p className="text-sm md:text-base text-white/85 leading-relaxed font-sans line-clamp-2">
-                  We invest in state-of-the-art equipment and prioritize safety protocols
-                  on every job site. Our technicians are equipped with the latest tools
-                  and protective gear to ensure efficient, safe service delivery.
-                </p>
-              </FadeInSection>
-
-              <FadeInSection delay={0.3}>
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
-                    <Wrench className="h-6 w-6 text-[#2563eb] mb-2" />
-                    <h4 className="text-sm font-bold text-white mb-1 font-sans">
-                      Modern Equipment
-                    </h4>
-                    <p className="text-xs text-white/70 font-sans">
-                      Latest diagnostic and repair tools
-                    </p>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
-                    <ShieldCheck className="h-6 w-6 text-[#2563eb] mb-2" />
-                    <h4 className="text-sm font-bold text-white mb-1 font-sans">
-                      Safety Certified
-                    </h4>
-                    <p className="text-xs text-white/70 font-sans">OSHA compliant practices</p>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
-                    <RefreshCw className="h-6 w-6 text-[#2563eb] mb-2" />
-                    <h4 className="text-sm font-bold text-white mb-1 font-sans">
-                      Well Maintained
-                    </h4>
-                    <p className="text-xs text-white/70 font-sans">
-                      Regular equipment servicing
-                    </p>
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
-                    <BadgeCheck className="h-6 w-6 text-[#2563eb] mb-2" />
-                    <h4 className="text-sm font-bold text-white mb-1 font-sans">
-                      Quality Assured
-                    </h4>
-                    <p className="text-xs text-white/70 font-sans">Premium materials only</p>
-                  </div>
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="container-x grid lg:grid-cols-2 gap-16 items-center">
+          <Reveal className="h-[380px] lg:h-[440px] w-full shadow-lg">
+            <img src={safetyGearImg} alt="Industry competence" className="w-full h-full object-cover" />
+          </Reveal>
+          
+          <Reveal delay={0.2} className="space-y-6 lg:pl-10">
+            <h2 className="text-[clamp(28px,3vw,40px)] font-bold leading-[1.04] mb-6" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+              <span className="text-[#1d3b4a] block">Professional-grade</span>
+              <span className="text-[#ef6a42] block">tools & safety first</span>
+            </h2>
+            <p className="mt-5 text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium mb-8">
+              We invest in state-of-the-art equipment and prioritize safety protocols on every job site. 
+              Our technicians are equipped with the latest tools and protective gear to ensure efficient, safe service delivery.
+            </p>
+            
+            <div className="grid sm:grid-cols-2 gap-y-5 gap-x-6 mb-10">
+              {[
+                "Modern Diagnostic Tools",
+                "OSHA Compliant Safety",
+                "Regular Equipment Servicing",
+                "Premium Quality Materials",
+                "Certified Technicians",
+                "24/7 Emergency Response"
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-[#ef6a42] flex-shrink-0" strokeWidth={2.5} />
+                  <span className="text-[12px] lg:text-[14px] text-[#4a5568] font-bold">{item}</span>
                 </div>
-              </FadeInSection>
+              ))}
             </div>
-          </div>
+            
+            <button className="bg-[#ef6a42] hover:bg-[#d95d3a] text-white px-8 py-3.5 rounded-none text-[13px] uppercase tracking-widest font-bold transition-all shadow-none mt-4">
+              Get A Quote
+            </button>
+          </Reveal>
         </div>
-      </ParallaxSection>
+      </section>
 
       {/* Chapter 06: Contact */}
-      <section id="contact" className="py-16 md:py-20 bg-white">
+      <section id="contact" className="py-24 md:py-32 lg:py-40 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="grid lg:grid-cols-2 gap-10">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-16">
             <div>
               <FadeInSection>
-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-3 font-sans">
+                <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-4">
                   Contact & Location
                 </p>
-                <h2 className="font-display text-[clamp(22px,2.5vw,34px)] font-bold text-[#1e293b] leading-[1.15] mb-4">
-                  Plan your next project with our team
+                <h2 className="text-[20px] md:text-[24px] font-display font-medium uppercase tracking-widest text-primary mb-8">
+                  Plan your next
+                  <br />
+                  project with our team
                 </h2>
               </FadeInSection>
 
               <FadeInSection delay={0.1}>
-                <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-6 font-sans line-clamp-2">
+                <p className="text-[13px] md:text-[14px] text-gray-600 leading-relaxed mb-10 md:mb-12">
                   Reach out for a site survey, emergency support, or a preventive
                   maintenance plan tailored to your operation.
                 </p>
               </FadeInSection>
 
-              <div className="space-y-3">
+              <div className="space-y-4 md:space-y-5">
                 <FadeInSection delay={0.2}>
                   <a
                     href="tel:0733699441"
-                    className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-50 transition-all duration-300 group"
+                    className="flex items-center gap-5 md:gap-6 p-5 md:p-6 rounded-2xl hover:bg-gray-50 transition-all duration-300 group"
                   >
-                    <div className="h-10 w-10 rounded-lg bg-[#2563eb] flex items-center justify-center group-hover:bg-[#1d4ed8] transition-colors flex-shrink-0">
-                      <Phone className="h-4 w-4 text-white" />
+                    <div className="h-12 w-12 md:h-14 md:w-14 rounded-2xl bg-accent flex items-center justify-center group-hover:bg-[#d11f4e] transition-colors flex-shrink-0">
+                      <Phone className="h-5 w-5 md:h-6 md:w-6 text-white" />
                     </div>
                     <div>
-                      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 mb-0.5 font-sans">
+                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-1">
                         Phone
                       </p>
-                      <p className="text-sm font-bold text-[#1e293b] group-hover:text-[#2563eb] transition-colors font-sans">
+                      <p className="text-[15px] md:text-[16px] font-display font-semibold text-primary group-hover:text-accent transition-colors">
                         0733 699 441
                       </p>
                     </div>
@@ -1236,16 +1158,16 @@ function SubgeoIndustrial() {
                 <FadeInSection delay={0.3}>
                   <a
                     href="mailto:info@subgeo.co.ke"
-                    className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-50 transition-all duration-300 group"
+                    className="flex items-center gap-5 md:gap-6 p-5 md:p-6 rounded-2xl hover:bg-gray-50 transition-all duration-300 group"
                   >
-                    <div className="h-10 w-10 rounded-lg bg-[#2563eb] flex items-center justify-center group-hover:bg-[#1d4ed8] transition-colors flex-shrink-0">
-                      <Mail className="h-4 w-4 text-white" />
+                    <div className="h-12 w-12 md:h-14 md:w-14 rounded-2xl bg-accent flex items-center justify-center group-hover:bg-[#d11f4e] transition-colors flex-shrink-0">
+                      <Mail className="h-5 w-5 md:h-6 md:w-6 text-white" />
                     </div>
                     <div>
-                      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 mb-0.5 font-sans">
+                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-1">
                         Email
                       </p>
-                      <p className="text-sm font-bold text-[#1e293b] group-hover:text-[#2563eb] transition-colors font-sans">
+                      <p className="text-[15px] md:text-[16px] font-display font-semibold text-primary group-hover:text-accent transition-colors">
                         info@subgeo.co.ke
                       </p>
                     </div>
@@ -1253,16 +1175,18 @@ function SubgeoIndustrial() {
                 </FadeInSection>
 
                 <FadeInSection delay={0.4}>
-                  <div className="flex items-center gap-4 p-4 rounded-lg bg-gray-50">
-                    <div className="h-10 w-10 rounded-lg bg-[#2563eb] flex items-center justify-center flex-shrink-0">
-                      <MapPin className="h-4 w-4 text-white" />
+                  <div className="flex items-center gap-5 md:gap-6 p-5 md:p-6 rounded-2xl bg-gray-50">
+                    <div className="h-12 w-12 md:h-14 md:w-14 rounded-2xl bg-accent flex items-center justify-center flex-shrink-0">
+                      <MapPin className="h-5 w-5 md:h-6 md:w-6 text-white" />
                     </div>
                     <div>
-                      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500 mb-0.5 font-sans">
+                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-1">
                         Location
                       </p>
-                      <address className="text-sm font-bold text-[#1e293b] not-italic font-sans">
-                        P.O. Box 48230-00100, Nairobi, Kenya
+                      <address className="text-[15px] md:text-[16px] font-display font-semibold text-primary not-italic">
+                        P.O. Box 48230-00100
+                        <br />
+                        Nairobi, Kenya
                       </address>
                     </div>
                   </div>
@@ -1270,20 +1194,20 @@ function SubgeoIndustrial() {
               </div>
 
               <FadeInSection delay={0.5}>
-                <div className="mt-6">
+                <div className="mt-8 md:mt-10">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-3 text-xs font-bold uppercase tracking-widest rounded-sm transition-all duration-300 font-sans"
+                    className="inline-flex items-center gap-2 md:gap-3 bg-accent hover:bg-[#d11f4e] text-white px-8 md:px-10 py-4 md:py-5 text-[11px] font-bold uppercase tracking-widest rounded-lg transition-all duration-300"
                   >
                     Schedule A Visit
-                    <ArrowRight className="h-3.5 w-3.5" />
+                    <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
                   </Link>
                 </div>
               </FadeInSection>
             </div>
 
             <FadeInSection delay={0.2}>
-              <div className="relative h-full min-h-[400px] rounded-lg overflow-hidden shadow-lg">
+              <div className="relative h-full min-h-[500px] md:min-h-[600px] rounded-3xl overflow-hidden shadow-2xl">
                 <iframe
                   title="Subgeo location map - Nairobi, Kenya"
                   src="https://maps.google.com/maps?q=Nairobi,Kenya&t=&z=13&ie=UTF8&iwloc=&output=embed"
@@ -1295,32 +1219,32 @@ function SubgeoIndustrial() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md p-4 border-t border-gray-200">
-                  <div className="grid grid-cols-3 gap-3 text-center">
+                <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md p-6 md:p-8 border-t border-gray-200">
+                  <div className="grid grid-cols-3 gap-4 md:gap-6 text-center">
                     <div>
-                      <Clock3 className="h-4 w-4 text-[#2563eb] mx-auto mb-1" />
-                      <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-0.5 font-sans">
+                      <Clock3 className="h-5 w-5 md:h-6 md:w-6 text-accent mx-auto mb-2" />
+                      <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] text-gray-500 mb-1">
                         Hours
                       </p>
-                      <p className="text-[11px] font-bold text-[#1e293b] font-sans">
+                      <p className="text-xs md:text-sm font-bold text-primary">
                         Mon-Fri 7:30-5:30
                       </p>
                     </div>
                     <div>
-                      <Droplets className="h-4 w-4 text-[#2563eb] mx-auto mb-1" />
-                      <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-0.5 font-sans">
+                      <Droplets className="h-5 w-5 md:h-6 md:w-6 text-accent mx-auto mb-2" />
+                      <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] text-gray-500 mb-1">
                         Service
                       </p>
-                      <p className="text-[11px] font-bold text-[#1e293b] font-sans">
+                      <p className="text-xs md:text-sm font-bold text-primary">
                         Preventive Plans
                       </p>
                     </div>
                     <div>
-                      <ShieldCheck className="h-4 w-4 text-[#2563eb] mx-auto mb-1" />
-                      <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-0.5 font-sans">
+                      <ShieldCheck className="h-5 w-5 md:h-6 md:w-6 text-accent mx-auto mb-2" />
+                      <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] text-gray-500 mb-1">
                         Safety
                       </p>
-                      <p className="text-[11px] font-bold text-[#1e293b] font-sans">Compliant</p>
+                      <p className="text-xs md:text-sm font-bold text-primary">Compliant</p>
                     </div>
                   </div>
                 </div>
@@ -1331,7 +1255,7 @@ function SubgeoIndustrial() {
       </section>
 
       {/* Final CTA */}
-      <section className="relative h-[400px] lg:h-[480px] overflow-hidden">
+      <section className="relative min-h-[80vh] md:min-h-screen overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={firePumpImg}
@@ -1339,42 +1263,44 @@ function SubgeoIndustrial() {
             className="w-full h-full object-cover"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1e293b]/95 via-[#1e293b]/90 to-[#1e293b]/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/95 via-primary/90 to-primary/95" />
         </div>
 
-        <div className="relative z-10 h-full flex items-center px-6 md:px-12 lg:px-20">
-          <div className="max-w-4xl mx-auto text-center">
+        <div className="relative z-10 h-full flex items-center px-6 md:px-12 lg:px-20 py-24">
+          <div className="max-w-5xl mx-auto text-center">
             <FadeInSection>
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#2563eb] mb-4 font-sans">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-6 md:mb-8">
                 Need Immediate Assistance?
               </p>
             </FadeInSection>
 
             <FadeInSection delay={0.1}>
-              <h2 className="font-display text-[clamp(26px,3vw,42px)] font-bold text-white leading-[1.1] mb-4">
-                Book a technical assessment today
+              <h2 className="text-[20px] md:text-[24px] font-display font-medium uppercase tracking-widest text-white mb-8 md:mb-10">
+                Book a technical
+                <br />
+                assessment today
               </h2>
             </FadeInSection>
 
             <FadeInSection delay={0.2}>
-              <p className="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl mx-auto font-sans line-clamp-2">
+              <p className="text-[13px] md:text-[14px] text-white/85 leading-relaxed mb-10 md:mb-12 max-w-3xl mx-auto font-light">
                 Let our engineers assess your current plumbing systems and provide a practical,
                 cost-aware improvement plan.
               </p>
             </FadeInSection>
 
             <FadeInSection delay={0.3}>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-8 py-3 text-xs font-bold uppercase tracking-widest rounded-sm transition-all duration-300 font-sans"
+                  className="inline-flex items-center gap-2 md:gap-3 bg-accent hover:bg-[#d11f4e] text-white px-10 md:px-12 py-5 md:py-6 text-[11px] font-bold uppercase tracking-widest rounded-lg transition-all duration-300"
                 >
                   Schedule Visit
-                  <ArrowRight className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
                 </Link>
                 <button
                   onClick={() => scrollToSection("services")}
-                  className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#1e293b] px-8 py-3 text-xs font-bold uppercase tracking-widest rounded-sm transition-all duration-300 font-sans"
+                  className="inline-flex items-center gap-2 md:gap-3 border-2 border-white text-white hover:bg-white hover:text-primary px-10 md:px-12 py-5 md:py-6 text-[11px] font-bold uppercase tracking-widest rounded-lg transition-all duration-300"
                 >
                   View Services
                 </button>
@@ -1391,8 +1317,8 @@ function SubgeoIndustrial() {
           scroll-behavior: smooth;
         }
         ::selection {
-          background: rgba(37, 99, 235, 0.2);
-          color: #1e293b;
+          background: rgba(235, 37, 90, 0.3);
+          color: primary;
         }
       `}</style>
     </div>
