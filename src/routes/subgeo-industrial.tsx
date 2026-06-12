@@ -23,6 +23,7 @@ import {
   Award,
   TrendingUp,
   Target,
+  MessageCircle,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -54,6 +55,12 @@ import siteAssessmentImg from "@/assets/siteassessment.png";
 import planningImg from "@/assets/planning.png";
 import expertExecutionImg from "@/assets/expertexecution.png";
 import handoverImg from "@/assets/handover.png";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
+import { Toaster } from "@/components/ui/sonner";
+import whyImg from "@/assets/why.png";
 
 export const Route = createFileRoute("/subgeo-industrial")({
   head: () => ({
@@ -533,7 +540,13 @@ function ProcessTimeline() {
 function SubgeoIndustrial() {
   const [activeService, setActiveService] = useState<number | null>(null);
   const [activeProject, setActiveProject] = useState<number | null>(null);
+  const [branch, setBranch] = useState<string>("");
   const heroRef = useRef<HTMLDivElement>(null);
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast.success("Message received — we'll get back to you within one business day.");
+  };
 
   const { scrollYProgress: heroScroll } = useScroll({
     target: heroRef,
@@ -811,68 +824,88 @@ function SubgeoIndustrial() {
       {/* Our Process - Enhanced Timeline with Vertical Layout */}
       <ProcessTimeline />
 
-      {/* Chapter 03: Industries */}
-      <ParallaxSection image={constructionSiteImg} overlayOpacity={0.85}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-start">
-            <div>
-              <FadeInSection>
-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-4">
-                  Industries We Serve
-                </p>
-                <h2 className="text-[20px] md:text-[24px] font-display font-medium uppercase tracking-widest text-white mb-8">
-                  Reliable solutions
-                  <br />
-                  across critical
-                  <br />
-                  <span className="text-accent">sectors</span>
-                </h2>
-              </FadeInSection>
+      {/* Reliable Solutions Across Critical Sectors */}
+      <section className="py-24 bg-white overflow-hidden">
+        <div className="container-x">
+          
+          <Reveal className="text-center mb-16">
+            <h2 className="text-[#333] text-[20px] md:text-[24px] font-display font-medium uppercase tracking-widest">
+              Reliable solutions
+              <br />
+              across critical
+              <br />
+              sectors
+            </h2>
+          </Reveal>
 
-              <FadeInSection delay={0.2}>
-                <p className="text-[13px] md:text-[14px] text-white/85 leading-relaxed font-light mb-8 md:mb-10">
-                  Subgeo supports multi-site operators and independent property owners
-                  with tailored plumbing, drainage and maintenance programs.
-                </p>
-              </FadeInSection>
-
-              <FadeInSection delay={0.3}>
-                <div className="border-l-4 border-accent pl-6 md:pl-8 bg-white/10 backdrop-blur-sm p-6 md:p-8 rounded-r-2xl">
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent mb-3">
-                    Service Promise
-                  </p>
-                  <p className="text-[13px] md:text-[14px] text-white/90 leading-relaxed">
-                    We align every scope with operational risk, site safety and realistic
-                    maintenance windows so your teams keep moving.
-                  </p>
+          <Reveal delay={0.2} className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
+              
+              <div className="flex flex-col sm:flex-row gap-6 items-start">
+                <div className="w-full sm:w-[220px] h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
+                  <img src={commercialImg} alt="Commercial Buildings" className="w-full h-full object-cover bg-gray-50" />
                 </div>
-              </FadeInSection>
-            </div>
+                <div className="flex flex-col items-start">
+                  <h3 className="text-[#df488b] text-[14px] font-medium mb-3">Commercial Buildings</h3>
+                  <p className="text-[#666] text-[12px] leading-relaxed mb-5">
+                    Comprehensive plumbing and drainage solutions for office complexes, retail centers, and multi-tenant commercial properties.
+                  </p>
+                  <button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-6 py-4 h-8 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto">
+                    Learn More
+                  </button>
+                </div>
+              </div>
 
-            <div className="grid grid-cols-2 gap-3 md:gap-4">
-              {industries.map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <FadeInSection key={item.name} delay={0.4 + index * 0.06}>
-                    <motion.div
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      transition={{ duration: 0.3 }}
-                      className="group bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-5 md:p-6 hover:bg-accent transition-all duration-500"
-                    >
-                      <div className="inline-flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-xl bg-white/20 text-white mb-4 group-hover:bg-white group-hover:text-accent transition-all duration-500">
-                        <Icon className="h-5 w-5 md:h-6 md:w-6" />
-                      </div>
-                      <h3 className="text-[12px] md:text-[13px] font-display font-semibold text-white group-hover:text-white transition-colors duration-300">
-                        {item.name}
-                      </h3>
-                    </motion.div>
-                  </FadeInSection>
-                );
-              })}
+              <div className="flex flex-col sm:flex-row gap-6 items-start">
+                <div className="w-full sm:w-[220px] h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
+                  <img src={industrialImg} alt="Industrial Plants" className="w-full h-full object-cover bg-gray-50" />
+                </div>
+                <div className="flex flex-col items-start">
+                  <h3 className="text-[#df488b] text-[14px] font-medium mb-3">Industrial Plants</h3>
+                  <p className="text-[#666] text-[12px] leading-relaxed mb-5">
+                    Heavy-duty pipework, fire suppression systems, and maintenance programs tailored for manufacturing and processing facilities.
+                  </p>
+                  <button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-6 py-4 h-8 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto">
+                    Learn More
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-6 items-start">
+                <div className="w-full sm:w-[220px] h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
+                  <img src={plumbingImg} alt="Residential Estates" className="w-full h-full object-cover bg-gray-50" />
+                </div>
+                <div className="flex flex-col items-start">
+                  <h3 className="text-[#df488b] text-[14px] font-medium mb-3">Residential Estates</h3>
+                  <p className="text-[#666] text-[12px] leading-relaxed mb-5">
+                    Reliable plumbing installation and maintenance for housing developments, apartment complexes, and gated communities.
+                  </p>
+                  <button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-6 py-4 h-8 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto">
+                    Learn More
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-6 items-start">
+                <div className="w-full sm:w-[220px] h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
+                  <img src={constructionSiteImg} alt="Hospitality Spaces" className="w-full h-full object-cover bg-gray-50" />
+                </div>
+                <div className="flex flex-col items-start">
+                  <h3 className="text-[#df488b] text-[14px] font-medium mb-3">Hospitality Spaces</h3>
+                  <p className="text-[#666] text-[12px] leading-relaxed mb-5">
+                    Specialized plumbing and fire safety solutions for hotels, restaurants, and resorts requiring uninterrupted guest comfort.
+                  </p>
+                  <button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-6 py-4 h-8 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto">
+                    Learn More
+                  </button>
+                </div>
+              </div>
+
             </div>
-          </div>
+          </Reveal>
+
         </div>
-      </ParallaxSection>
+      </section>
 
       {/* Why Choose Us - Subgeo Advantage */}
       <section className="relative">
@@ -1112,150 +1145,101 @@ function SubgeoIndustrial() {
         </div>
       </section>
 
-      {/* Chapter 06: Contact */}
-      <section id="contact" className="py-24 md:py-32 lg:py-40 bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-16">
-            <div>
-              <FadeInSection>
-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-4">
-                  Contact & Location
-                </p>
-                <h2 className="text-[20px] md:text-[24px] font-display font-medium uppercase tracking-widest text-primary mb-8">
-                  Plan your next
-                  <br />
-                  project with our team
-                </h2>
-              </FadeInSection>
-
-              <FadeInSection delay={0.1}>
-                <p className="text-[13px] md:text-[14px] text-gray-600 leading-relaxed mb-10 md:mb-12">
-                  Reach out for a site survey, emergency support, or a preventive
-                  maintenance plan tailored to your operation.
-                </p>
-              </FadeInSection>
-
-              <div className="space-y-4 md:space-y-5">
-                <FadeInSection delay={0.2}>
-                  <a
-                    href="tel:0733699441"
-                    className="flex items-center gap-5 md:gap-6 p-5 md:p-6 rounded-2xl hover:bg-gray-50 transition-all duration-300 group"
-                  >
-                    <div className="h-12 w-12 md:h-14 md:w-14 rounded-2xl bg-accent flex items-center justify-center group-hover:bg-[#d11f4e] transition-colors flex-shrink-0">
-                      <Phone className="h-5 w-5 md:h-6 md:w-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-1">
-                        Phone
-                      </p>
-                      <p className="text-[15px] md:text-[16px] font-display font-semibold text-primary group-hover:text-accent transition-colors">
-                        0733 699 441
-                      </p>
-                    </div>
-                  </a>
-                </FadeInSection>
-
-                <FadeInSection delay={0.3}>
-                  <a
-                    href="mailto:info@subgeo.co.ke"
-                    className="flex items-center gap-5 md:gap-6 p-5 md:p-6 rounded-2xl hover:bg-gray-50 transition-all duration-300 group"
-                  >
-                    <div className="h-12 w-12 md:h-14 md:w-14 rounded-2xl bg-accent flex items-center justify-center group-hover:bg-[#d11f4e] transition-colors flex-shrink-0">
-                      <Mail className="h-5 w-5 md:h-6 md:w-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-1">
-                        Email
-                      </p>
-                      <p className="text-[15px] md:text-[16px] font-display font-semibold text-primary group-hover:text-accent transition-colors">
-                        info@subgeo.co.ke
-                      </p>
-                    </div>
-                  </a>
-                </FadeInSection>
-
-                <FadeInSection delay={0.4}>
-                  <div className="flex items-center gap-5 md:gap-6 p-5 md:p-6 rounded-2xl bg-gray-50">
-                    <div className="h-12 w-12 md:h-14 md:w-14 rounded-2xl bg-accent flex items-center justify-center flex-shrink-0">
-                      <MapPin className="h-5 w-5 md:h-6 md:w-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-1">
-                        Location
-                      </p>
-                      <address className="text-[15px] md:text-[16px] font-display font-semibold text-primary not-italic">
-                        P.O. Box 48230-00100
-                        <br />
-                        Nairobi, Kenya
-                      </address>
-                    </div>
-                  </div>
-                </FadeInSection>
+      {/* Contact Section — Form & Image Layout */}
+      <section className="pt-16 lg:pt-24 pb-0 bg-white relative z-10" id="contact">
+        <div className="container-x max-w-[1100px] mx-auto relative z-10 flex flex-col lg:flex-row items-end gap-16 lg:gap-12">
+          
+          {/* Left Side : Image & Info Box */}
+          <div className="w-full lg:w-[45%] relative flex items-end justify-center lg:justify-end pt-32 lg:pt-0">
+            
+            {/* Floating Info Box */}
+            <div className="absolute top-10 lg:-top-10 left-0 lg:left-0 xl:left-[-20px] z-10 bg-[#fc584e] rounded-[24px] text-white p-8 w-[240px] sm:w-[280px] shadow-2xl">
+              <div className="bg-white text-[#fc584e] w-14 h-14 rounded-full flex items-center justify-center mb-6 mx-auto">
+                <MessageCircle className="w-6 h-6 fill-current" />
               </div>
-
-              <FadeInSection delay={0.5}>
-                <div className="mt-8 md:mt-10">
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center gap-2 md:gap-3 bg-accent hover:bg-[#d11f4e] text-white px-8 md:px-10 py-4 md:py-5 text-[11px] font-bold uppercase tracking-widest rounded-lg transition-all duration-300"
-                  >
-                    Schedule A Visit
-                    <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
-                  </Link>
-                </div>
-              </FadeInSection>
+              <h3 className="text-center font-bold text-[18px] mb-3">Get A Free Quote</h3>
+              <p className="text-center text-[11px] leading-relaxed text-white/90 mb-8 pt-2">
+                Request a site assessment or preventive maintenance plan tailored to your operation.
+              </p>
+              <div className="flex justify-center">
+                <a href="tel:0733699441" className="bg-white text-[#fc584e] hover:bg-gray-100 rounded-full px-6 py-2 h-9 text-[10px] font-extrabold uppercase tracking-widest inline-flex items-center">
+                  CALL NOW
+                </a>
+              </div>
             </div>
 
-            <FadeInSection delay={0.2}>
-              <div className="relative h-full min-h-[500px] md:min-h-[600px] rounded-3xl overflow-hidden shadow-2xl">
-                <iframe
-                  title="Subgeo location map - Nairobi, Kenya"
-                  src="https://maps.google.com/maps?q=Nairobi,Kenya&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                  width="100%"
-                  height="100%"
-                  className="absolute inset-0 w-full h-full"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md p-6 md:p-8 border-t border-gray-200">
-                  <div className="grid grid-cols-3 gap-4 md:gap-6 text-center">
-                    <div>
-                      <Clock3 className="h-5 w-5 md:h-6 md:w-6 text-accent mx-auto mb-2" />
-                      <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] text-gray-500 mb-1">
-                        Hours
-                      </p>
-                      <p className="text-xs md:text-sm font-bold text-primary">
-                        Mon-Fri 7:30-5:30
-                      </p>
-                    </div>
-                    <div>
-                      <Droplets className="h-5 w-5 md:h-6 md:w-6 text-accent mx-auto mb-2" />
-                      <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] text-gray-500 mb-1">
-                        Service
-                      </p>
-                      <p className="text-xs md:text-sm font-bold text-primary">
-                        Preventive Plans
-                      </p>
-                    </div>
-                    <div>
-                      <ShieldCheck className="h-5 w-5 md:h-6 md:w-6 text-accent mx-auto mb-2" />
-                      <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] text-gray-500 mb-1">
-                        Safety
-                      </p>
-                      <p className="text-xs md:text-sm font-bold text-primary">Compliant</p>
-                    </div>
-                  </div>
-                </div>
+            {/* The Image */}
+            <div className="relative z-20 w-[260px] md:w-[320px] max-w-[380px] lg:mr-8 xl:mr-16">
+               <img src={whyImg} alt="Customer Service" className="w-full h-auto object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)] block" />
+            </div>
+            
+          </div>
+
+          {/* Right Side : The Form */}
+          <div className="w-full lg:w-[55%] flex flex-col justify-center pb-12 lg:pb-16">
+            
+            <Reveal>
+              <div className="inline-flex items-center gap-2 text-[#fc584e] text-[10px] font-bold uppercase tracking-wider mb-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#fc584e]"></span>
+                CONTACT US
+                <span className="w-1.5 h-1.5 rounded-full bg-[#fc584e]"></span>
               </div>
-            </FadeInSection>
+              <h2 className="text-[#202742] font-display font-[900] text-[32px] md:text-[42px] leading-[1.1] mb-10">
+                <span className="text-[#fc584e]">Plan</span> Your Next Project<br />
+                With Our Team !
+              </h2>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <form onSubmit={onSubmit} className="flex flex-col gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <Input 
+                    placeholder="Your name*" 
+                    className="bg-[#f7f8f9] border-none rounded-full h-12 px-6 text-[13px] placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-[#fc584e]" 
+                    required 
+                  />
+                  <Input 
+                    placeholder="Your Email*" 
+                    type="email" 
+                    className="bg-[#f7f8f9] border-none rounded-full h-12 px-6 text-[13px] placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-[#fc584e]" 
+                    required 
+                  />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <Input 
+                    placeholder="Your number*" 
+                    className="bg-[#f7f8f9] border-none rounded-full h-12 px-6 text-[13px] placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-[#fc584e]" 
+                  />
+                  <Input 
+                    placeholder="Service Needed*" 
+                    className="bg-[#f7f8f9] border-none rounded-full h-12 px-6 text-[13px] placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-[#fc584e]" 
+                  />
+                </div>
+                <Textarea 
+                  placeholder="Tell us about your project" 
+                  rows={5} 
+                  className="bg-[#f7f8f9] border-none rounded-[20px] p-6 text-[13px] placeholder:text-gray-400 resize-none focus-visible:ring-1 focus-visible:ring-[#fc584e]" 
+                />
+                
+                <div className="mt-2 text-left">
+                  <Button 
+                    type="submit" 
+                    className="bg-[#fc584e] hover:bg-[#eb4a40] text-white rounded-full px-8 py-6 h-12 text-[11px] font-extrabold uppercase tracking-widest shadow-md transition-transform hover:-translate-y-0.5 w-[200px]"
+                  >
+                    SEND MESSAGE
+                  </Button>
+                </div>
+              </form>
+            </Reveal>
+            
           </div>
         </div>
       </section>
 
+      <Toaster />
+
       {/* Final CTA */}
-      <section className="relative min-h-[80vh] md:min-h-screen overflow-hidden">
+      <section className="relative min-h-[50vh] md:min-h-[60vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={firePumpImg}
