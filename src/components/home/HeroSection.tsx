@@ -175,14 +175,14 @@ export function HeroSection() {
       <div className="container-x pt-36 pb-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
           <div className="pt-20 lg:pt-32">
-            <h1 className="font-sans text-[clamp(28px,3vw,52px)] leading-[1.1] font-medium text-primary mb-1">
+            <h1 className="font-display font-medium text-[40px] md:text-[52px] leading-[1.15] tracking-tight text-primary mb-1">
               Providing Kenyans
             </h1>
-            <h2 className="font-sans text-[clamp(28px,4vw,60px)] leading-[1.1] tracking-tighter font-[900] text-primary">
+            <h2 className="font-display font-medium text-[40px] md:text-[52px] leading-[1.15] tracking-tight text-primary">
               With Reliable and <br />
-              Quality Services
+              <span className="text-accent">Quality Services</span>
             </h2>
-            <p className="mt-5 text-[13px] md:text-[15px] font-sans text-gray-600 max-w-xl">
+            <p className="mt-4 md:mt-6 max-w-xl text-[13px] md:text-[14px] text-gray-500 leading-relaxed font-light">
              As a premier holding company based in Kenya, Subgeo Holding Limited delivers comprehensive, high-quality services and infrastructure solutions tailored to drive progress, reliability, and innovation across the region.
             </p>
             <div className="mt-7 flex flex-col sm:flex-row gap-4">

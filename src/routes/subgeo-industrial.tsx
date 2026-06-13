@@ -47,10 +47,10 @@ import commercialImg from "@/assets/corporate-hero.jpeg";
 import industrialImg from "@/assets/industry.jpeg";
 import firePumpImg from "@/assets/industry.jpeg";
 import pumpRoomImg from "@/assets/industry.jpeg";
-import constructionSiteImg from "@/assets/industry.jpeg";
+import constructionSiteImg from "@/assets/completeprjct.jpg";
 import teamWorkingImg from "@/assets/work.jpeg";
 import equipmentImg from "@/assets/service.jpeg";
-import safetyGearImg from "@/assets/industry.jpeg";
+import safetyGearImg from "@/assets/industry2.jpeg";
 import siteAssessmentImg from "@/assets/siteassessment.png";
 import planningImg from "@/assets/planning.png";
 import expertExecutionImg from "@/assets/expertexecution.png";
@@ -65,11 +65,11 @@ import whyImg from "@/assets/why.png";
 export const Route = createFileRoute("/subgeo-industrial")({
   head: () => ({
     meta: [
-      { title: "Subgeo Plumbing & Industrial Works Ltd | Professional Plumbing Services Nairobi" },
+      { title: "Subgeo Plumbing And Industrial Works Ltd" },
       {
         name: "description",
         content:
-          "Subgeo Plumbing & Industrial Works Ltd delivers reliable plumbing, drainage and industrial maintenance services across Nairobi and beyond. 24/7 emergency response.",
+          "SUBGEO PLUMBING & INDUSTRIAL WORKS is a Private Limited Company providing Plumbing, Sanitary ware Installation, Drainage, Fire fighting System installation, and Regular Service maintenance.",
       },
     ],
   }),
@@ -86,7 +86,7 @@ type IconCardItem = {
 };
 
 const trustMetrics = [
-  { value: 12, suffix: "+", label: "Years of delivery" },
+  { value: 14, suffix: "+", label: "Years of delivery" },
   { value: 240, suffix: "+", label: "Projects completed" },
   { value: 24, suffix: "/7", label: "Emergency response" },
   { value: 99, suffix: "%", label: "Client satisfaction" },
@@ -100,38 +100,39 @@ const industries = [
   { name: "Construction Industry", icon: Building2 },
   { name: "Property Developers", icon: TrendingUp },
   { name: "Estate & Rental Agents", icon: Building2 },
+  { name: "Landlords", icon: Building2 },
   { name: "Fitness Industry", icon: Building2 },
 ];
 
 const valueCards: IconCardItem[] = [
   {
     title: "Quality Service",
-    description: "Quality service is a non-negotiable at Subgeo. Our clients know we deliver right first-time round, every time.",
+    description: "Quality service is a non-negotiable at Subgeo Plumbing Works. Many of our larger clients know our team members by first name already – they know we will be there on time and we will sort out their plumbing issues right first-time round.",
     icon: BadgeCheck,
   },
   {
     title: "24/7 Availability",
-    description: "Our emergency number is manned 24/7 by a dedicated team. Standby teams are ready day or night to attend to your emergencies with a smile.",
+    description: "Our emergency number is manned 24/7 by a dedicated team member. Our standby teams are ready day or night to attend to your plumbing emergencies with a smile!",
     icon: Clock3,
   },
   {
     title: "Dynamic & Innovative",
-    description: "Our management team utilizes the very latest systems, methods and tools in the market to ensure speed and efficiency for our clients.",
+    description: "Our dynamic management team ensures that the company is utilizing the very latest systems, methods and tools in the market to ensure speed and efficiency to clients.",
     icon: Sparkles,
   },
 ];
 
 const services: IconCardItem[] = [
   {
-    title: "All Plumbing Maintenance",
-    description: "Regular, comprehensive maintenance services, including leak checks, pipe inspections, and routine servicing of taps, toilets, and drainage systems.",
+    title: "All Plumbing Maintenance Requirements",
+    description: "We offer Regular, comprehensive maintenance services, including leak checks, pipe inspections, and routine servicing of taps, toilets, and drainage systems.",
     longDescription: "Our comprehensive plumbing maintenance service ensures your systems run smoothly year-round.",
     features: ["Leak detection and repair", "Pipe inspections", "Tap and toilet servicing", "Drainage system checks", "Preventive maintenance"],
     icon: Wrench,
     image: plumbingImg,
   },
   {
-    title: "Insurance Claims Plumbing",
+    title: "Plumbing for Insurance Claims",
     description: "Dealing with plumbing issues covered by insurance? We assist homeowners and businesses with all plumbing-related insurance claims.",
     longDescription: "We work directly with insurance companies to provide detailed technical assessments and approved repair services.",
     features: ["Damage assessment", "Insurance-compliant reports", "Direct insurer liaison", "Approved repairs", "Claim documentation"],
@@ -139,7 +140,7 @@ const services: IconCardItem[] = [
     image: commercialImg,
   },
   {
-    title: "Electric Geysers Installation",
+    title: "Electric Geysers Installation, Relocation, Repair",
     description: "Professional electric geyser installation, relocation and repair services — safe, code-compliant and reliable.",
     longDescription: "Professional geyser installation services that prioritize safety and efficiency.",
     features: ["Safe installation", "Relocation services", "Repair and servicing", "Pressure valve setup", "Warranty registration"],
@@ -147,8 +148,8 @@ const services: IconCardItem[] = [
     image: geyserImg,
   },
   {
-    title: "Kitchen & Bathroom Renovations",
-    description: "Planning a kitchen or bathroom upgrade? We provide expert plumbing services for renovations — sinks, taps, toilets, showers and more.",
+    title: "Kitchen & Bathroom Installations/Renovations",
+    description: "Planning a kitchen or bathroom upgrade? We provide expert plumbing services for renovations, ensuring proper installation of sinks, taps, toilets, showers, and more.",
     longDescription: "Transform your kitchen and bathroom with our expert renovation services.",
     features: ["Fixture installation", "Pipe rerouting", "Waterproofing", "Drain connections", "Final testing"],
     icon: Home,
@@ -156,15 +157,15 @@ const services: IconCardItem[] = [
   },
   {
     title: "Shower Head Cleaning & Replacement",
-    description: "We provide thorough cleaning and replacement services to ensure your shower operates at peak performance — giving you a refreshing bathing experience.",
+    description: "We provide thorough cleaning and replacement services to ensure your shower operates at peak performance, giving you a refreshing and uninterrupted bathing experience.",
     longDescription: "Keep your shower systems performing at their best with our specialized servicing.",
     features: ["System cleaning", "Head replacement", "Pressure balancing", "Temperature control", "Leak prevention"],
     icon: RefreshCw,
     image: showerImg,
   },
   {
-    title: "Irrigation & Waste Pipe Repairs",
-    description: "Professional leak detection and repair services to keep your irrigation system running smoothly and ensure waste pipes function without leaks or blockages.",
+    title: "Irrigation & Waste Pipe Leak Repairs",
+    description: "We offer professional leak detection and repair services to keep your irrigation system running smoothly and ensure waste pipes function properly without leaks or blockages.",
     longDescription: "Our specialists diagnose and resolve complex waste network and irrigation issues.",
     features: ["Leak detection", "Pipe relining", "Blockage removal", "Irrigation system repair", "Preventive maintenance"],
     icon: Funnel,
@@ -174,13 +175,30 @@ const services: IconCardItem[] = [
 
 const projects = [
   {
+    date: "2018",
+    title: "GLEE HOTEL",
+    subtitle: "Installation of Fire Pump",
+    summary:
+      "Full plumbing and drainage overhaul with integrated fire-fighting lines for a high-occupancy hospitality site, ensuring compliance with safety standards and operational reliability.",
+    details:
+      "In 2018, we undertook a major renovation for a luxury residence, which involved extensive plumbing, drainage, and sanitary installations. Our team reworked the entire plumbing system to accommodate new fixtures in the kitchen, bathrooms, and laundry room. We also installed a state-of-the-art drainage system to ensure smooth water flow throughout the property. Additionally, we worked closely with fire safety experts to implement a robust fire fighting system, including fire sprinklers and emergency water supply lines. The project was completed on time, and the homeowner praised our meticulous attention to detail and the seamless integration of all systems.",
+    image: industrialImg,
+    category: "Hospitality",
+    highlights: [
+      "Full plumbing overhaul",
+      "Drainage system upgrade",
+      "Fire-fighting line integration",
+      "Fire sprinklers & emergency water supply",
+    ],
+  },
+  {
     date: "2023",
     title: "Qwetu Catholic University",
-    subtitle: "Water Reservoir Tanks & Plumbing Upgrade",
+    subtitle: "Installation of Water Reservoir Tanks",
     summary:
       "Contracted to deliver a comprehensive water storage and plumbing upgrade. The assignment involved installation of water reservoir tanks and modernization of existing plumbing systems to improve efficiency and sustainability.",
     details:
-      "Our team implemented durable water storage solutions, upgraded sanitary systems, and installed water-saving fixtures to enhance resource management. Additionally, we designed and integrated a fire protection system featuring automatic fire suppression components and emergency water reserves. The successful completion strengthened the institution's water management capacity while ensuring compliance with safety and operational standards.",
+      "In 2023, we were contracted for a large-scale plumbing and drainage upgrade in a commercial office building. Our team was tasked with replacing outdated piping and improving the drainage system to meet modern standards. We installed new sanitary systems across multiple floors, including eco-friendly solutions like low-flow toilets and water-saving faucets. As part of the building's fire safety compliance, we also designed and implemented a new fire fighting system, incorporating automatic fire suppression and emergency water supplies. The successful completion of this project ensured that the building met both safety regulations and efficiency standards.",
     image: commercialImg,
     category: "Education",
     highlights: [
@@ -197,7 +215,7 @@ const projects = [
     summary:
       "Completed a large-scale plumbing, drainage, sanitary, and fire-fighting installation project involving extensive underground plumbing and drainage works with detailed hydraulic calculations.",
     details:
-      "The project involved installation of high-quality sanitary fixtures across residential, commercial, and public-use facilities. Our team also designed and implemented a comprehensive fire protection system, including sprinklers, fire hose reels, and emergency water supply lines to safeguard occupants and infrastructure. Delivered on time and to the highest industry standards, showcasing our ability to execute complex integrated mechanical and plumbing solutions.",
+      "In 2024, we completed the plumbing, drainage, sanitary, and fire fighting installations for a mixed-use complex, combining residential and commercial spaces. This ambitious project involved extensive underground plumbing and drainage work, with precise calculations for water pressure and flow rates. Our team handled the installation of high-quality sanitary fixtures across apartments, office spaces, and retail areas. We also designed and installed an advanced fire fighting system, including sprinklers, fire hose reels, and emergency water lines to ensure the safety of all building occupants. The project was delivered on schedule, and the client was extremely satisfied with our integrated approach and the overall quality of the installations.",
     image: constructionSiteImg,
     category: "Industrial",
     highlights: [
@@ -205,23 +223,6 @@ const projects = [
       "Hydraulic calculations",
       "Sanitary fixtures installation",
       "Fire protection system (sprinklers, hose reels)",
-    ],
-  },
-  {
-    date: "2018",
-    title: "GLEE HOTEL",
-    subtitle: "Fire Pump Retrofit & Full Overhaul",
-    summary:
-      "Full plumbing and drainage overhaul with integrated fire-fighting lines for a high-occupancy hospitality site, ensuring compliance with safety standards and operational reliability.",
-    details:
-      "The project required careful coordination to minimize disruption to hotel operations while delivering comprehensive plumbing upgrades, drainage improvements, and a fully integrated fire suppression system. All work was completed within tight timelines to maintain the property's operational schedule.",
-    image: industrialImg,
-    category: "Hospitality",
-    highlights: [
-      "Full plumbing overhaul",
-      "Drainage system upgrade",
-      "Fire-fighting line integration",
-      "Minimal operational disruption",
     ],
   },
 ];
@@ -271,20 +272,20 @@ const whyChooseUs = [
     statLabel: "Years Experience Avg",
   },
   {
-    icon: TrendingUp,
-    title: "Proven Track Record",
-    description:
-      "Over 240 successful projects across diverse sectors demonstrate our capability to handle complex challenges with quality service every time.",
-    stat: "240+",
-    statLabel: "Projects Delivered",
-  },
-  {
     icon: Users,
     title: "Clean & Tidy Work",
     description:
-      "We understand our client's need for cleanliness. We confidently keep and leave our work area tidy every single day.",
+      "We understand our client's need for cleanliness from their preferred plumber. We confidently state that our jobs are extremely neat; we keep and leave our work area tidy every single day.",
     stat: "100%",
     statLabel: "Tidy Job Sites",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Quality Service",
+    description:
+      "Quality service is a non-negotiable at Subgeo Plumbing Works. Many of our larger clients know our team members by first name already — they know right first-time round.",
+    stat: "99%",
+    statLabel: "Client Satisfaction",
   },
 ];
 
@@ -592,57 +593,41 @@ function SubgeoIndustrial() {
           className="relative z-10 container-x w-full"
         >
           <div className="max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-4 md:mb-6"
-            >
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 md:px-6 py-2 md:py-3">
-                <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse"></span>
-                <span className="text-xs md:text-sm font-semibold text-white uppercase tracking-wider">
-                  Available 24/7 for Emergencies
-                </span>
-              </div>
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
+              transition={{ duration: 1, delay: 0.4 }}
               className="font-display font-medium text-[40px] md:text-[52px] leading-[1.15] tracking-tight text-white"
             >
-              Precision Plumbing &<br />
-              <span className="text-accent">Industrial Solutions</span>
+              Subgeo Plumbing &<br />
+              <span className="text-accent">Industrial Works Ltd</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
               className="mt-4 md:mt-6 max-w-xl text-[13px] md:text-[14px] text-white/80 leading-relaxed font-light"
             >
-              We specialize in plumbing works, industrial maintenance, and construction
-              works — offering professional diversity of services with 24/7 emergency
-              response across Kenya.
+              SUBGEO PLUMBING & INDUSTRIAL WORKS is a Private Limited Company. Our business scope includes Plumbing, Sanitary ware Installation, Drainage, Fire fighting System installation, and Regular Service maintenance — with 24/7 emergency response across Kenya.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.1 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
               className="mt-5 md:mt-7 flex flex-col sm:flex-row gap-3 md:gap-5"
             >
               <button
                 onClick={() => scrollToSection("services")}
-                className="rounded-lg bg-accent hover:bg-accent/90 text-white px-8 md:px-10 py-3.5 md:py-4 text-[11px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-3"
+                className="bg-accent hover:bg-accent/90 text-white px-8 md:px-10 py-3.5 md:py-4 text-[11px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-3"
               >
                 Explore Services
                 <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
               </button>
               <Link
                 to="/contact"
-                className="rounded-lg border-2 border-white/80 text-white hover:bg-white hover:text-primary px-8 md:px-10 py-3.5 md:py-4 text-[11px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-3"
+                className="border-2 border-white/80 text-white hover:bg-white hover:text-primary px-8 md:px-10 py-3.5 md:py-4 text-[11px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-3"
               >
                 Request A Quote
                 <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
@@ -660,7 +645,7 @@ function SubgeoIndustrial() {
             {/* Left Card */}
             <div className="bg-[#f0f2f5] p-10 flex flex-col justify-center relative overflow-hidden rounded-[2px] h-[400px] md:h-full group">
               <div className="relative z-10 w-[60%] ml-auto text-right flex flex-col items-end">
-                <span className="text-[#2563eb] text-[13px] font-semibold mb-2">Precision Work</span>
+                <span className="text-accent text-[13px] font-semibold mb-2">Precision Work</span>
                 <h3 className="text-[#222] text-[28px] lg:text-[34px] font-black leading-tight mb-3">Plumbing</h3>
                 <p className="text-[#555] text-[13px] mb-8">Expert installation & repair</p>
                 <button className="bg-transparent border-[1.5px] border-[#222] text-[#222] hover:bg-[#222] hover:text-white rounded-full px-7 py-2 h-10 w-fit text-[13px] font-bold transition-colors">
@@ -680,7 +665,7 @@ function SubgeoIndustrial() {
                 
                 {/* Drainage */}
                 <div className="bg-[#bdae9c] p-6 relative overflow-hidden rounded-[2px] flex flex-col justify-start group">
-                  <div className="bg-[#2563eb] text-white text-[10px] font-bold px-2.5 py-1 rounded-[2px] w-fit mb-3 relative z-10 tracking-widest">
+                  <div className="bg-accent text-white text-[10px] font-bold px-2.5 py-1 rounded-[2px] w-fit mb-3 relative z-10 tracking-widest">
                     24/7
                   </div>
                   <h4 className="text-white text-[20px] font-bold mb-3 relative z-10">Drainage</h4>
@@ -694,7 +679,7 @@ function SubgeoIndustrial() {
 
                 {/* Geyser */}
                 <div className="bg-[#cfceca] p-6 relative overflow-hidden rounded-[2px] flex flex-col justify-start group">
-                  <div className="bg-[#2563eb] text-white text-[10px] font-bold px-2.5 py-1 rounded-[2px] w-fit mb-3 relative z-10 tracking-widest">
+                  <div className="bg-accent text-white text-[10px] font-bold px-2.5 py-1 rounded-[2px] w-fit mb-3 relative z-10 tracking-widest">
                     Expert
                   </div>
                   <h4 className="text-[#222] text-[20px] font-bold mb-3 relative z-10">Geysers</h4>
@@ -735,10 +720,10 @@ function SubgeoIndustrial() {
           <div className="text-center mb-16 lg:mb-24">
             <h2 className="font-sans font-[900] tracking-tighter text-[clamp(28px,3vw,40px)] leading-[1.04] text-[#1e293b]">
               Established in 2012<br/>
-              <span className="text-[#0ea5e9]">Incorporated 24/06/2018</span>
+              <span className="text-accent">Incorporated 24/06/2018</span>
             </h2>
             <p className="mt-4 text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium max-w-3xl mx-auto">
-              SUBGEO PLUMBING & INDUSTRIAL WORKS is a Private Limited Company registered under the Registrar of Companies. Our business scope includes Plumbing, Sanitary ware Installation, Drainage, Fire fighting System installation, and Regular Service maintenance.
+              SUBGEO PLUMBING & INDUSTRIAL WORKS is a Private Limited Company registered under the Registrar of Companies. Its business scope includes Plumbing, Sanitary ware Installation, Drainage, Fire fighting System installation, and Regular Service maintenance. To all the services provided have been of high standard and quality, satisfactory to all involved parties that include Project Managers, Engineers, Architects, various consultants and the clients.
             </p>
           </div>
 
@@ -753,27 +738,27 @@ function SubgeoIndustrial() {
             {/* Right: Feature List */}
             <div className="flex flex-col gap-10">
               <div>
-                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Dynamic & <span className="text-[#0ea5e9]">Innovative</span></h3>
+                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Dynamic & <span className="text-accent">Innovative</span></h3>
                 <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">
                   Our dynamic management team ensures that the company is utilizing the very latest systems, methods and tools in the market to ensure speed and efficiency to clients.
                 </p>
               </div>
               <div>
-                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Well-maintained <span className="text-[#a855f7]">Fleet</span></h3>
+                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Well-maintained <span className="text-accent">Fleet</span></h3>
                 <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">
-                  Our fleet are well maintained reliable vehicles, company branded and extremely neat — ensuring professional site attendance every time.
+                  Our fleet are well maintained reliable vehicles, company branded and extremely neat.
                 </p>
               </div>
               <div>
-                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Latest <span className="text-[#22c55e]">Equipment</span></h3>
+                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Latest <span className="text-accent">Equipment</span></h3>
                 <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">
-                  We invest in the very latest equipment and tools to ensure speed and precision in undertaking every project.
+                  We invest in the very latest equipment/tools to ensure speed in undertaking Projects.
                 </p>
               </div>
               <div>
-                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Quality <span className="text-[#f97316]">Service</span></h3>
+                <h3 className="text-[14px] md:text-[15px] font-sans font-[900] tracking-tight text-[#1e293b] mb-2">Highly Skilled <span className="text-accent">Team</span></h3>
                 <p className="text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">
-                  Quality service is a non-negotiable at Subgeo Plumbing Works. Our larger clients know our team members by first name — they know we deliver right first-time round.
+                  Our team is made up of highly skilled plumbing specialists. All our plumbers have at least 5 years broad onsite plumbing experience.
                 </p>
               </div>
             </div>
@@ -786,7 +771,7 @@ function SubgeoIndustrial() {
         <div className="container-x w-full max-w-6xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12 pb-12 border-b border-gray-100">
             <div className="flex items-center gap-4">
-              <div className="text-[#2563eb] shrink-0">
+              <div className="text-accent shrink-0">
                 <BadgeCheck className="w-9 h-9" strokeWidth={1.2} />
               </div>
               <div className="flex flex-col">
@@ -795,7 +780,7 @@ function SubgeoIndustrial() {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <div className="text-[#2563eb] shrink-0">
+              <div className="text-accent shrink-0">
                 <Clock3 className="w-9 h-9" strokeWidth={1.2} />
               </div>
               <div className="flex flex-col">
@@ -804,7 +789,7 @@ function SubgeoIndustrial() {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <div className="text-[#2563eb] shrink-0">
+              <div className="text-accent shrink-0">
                 <Sparkles className="w-9 h-9" strokeWidth={1.2} />
               </div>
               <div className="flex flex-col">
@@ -813,7 +798,7 @@ function SubgeoIndustrial() {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <div className="text-[#2563eb] shrink-0">
+              <div className="text-accent shrink-0">
                 <ShieldCheck className="w-9 h-9" strokeWidth={1.2} />
               </div>
               <div className="flex flex-col">
@@ -834,11 +819,9 @@ function SubgeoIndustrial() {
           
           <Reveal className="text-center mb-16">
             <h2 className="text-[#333] text-[20px] md:text-[24px] font-display font-medium uppercase tracking-widest">
-              Reliable solutions
+              Industries we
               <br />
-              across critical
-              <br />
-              sectors
+              Serve!
             </h2>
           </Reveal>
 
@@ -850,11 +833,11 @@ function SubgeoIndustrial() {
                   <img src={commercialImg} alt="Commercial Buildings" className="w-full h-full object-cover bg-gray-50" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <h3 className="text-[#df488b] text-[14px] font-medium mb-3">Commercial Buildings</h3>
+                  <h3 className="text-accent text-[14px] font-medium mb-3">Commercial Industry</h3>
                   <p className="text-[#666] text-[12px] leading-relaxed mb-5">
                     Comprehensive plumbing and drainage solutions for office complexes, retail centers, and multi-tenant commercial properties.
                   </p>
-                  <button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-6 py-4 h-8 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto">
+                  <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-6 py-2.5 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
                     Learn More
                   </button>
                 </div>
@@ -865,11 +848,11 @@ function SubgeoIndustrial() {
                   <img src={industrialImg} alt="Industrial Plants" className="w-full h-full object-cover bg-gray-50" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <h3 className="text-[#df488b] text-[14px] font-medium mb-3">Industrial Plants</h3>
+                  <h3 className="text-accent text-[14px] font-medium mb-3">Industrial Industry</h3>
                   <p className="text-[#666] text-[12px] leading-relaxed mb-5">
                     Heavy-duty pipework, fire suppression systems, and maintenance programs tailored for manufacturing and processing facilities.
                   </p>
-                  <button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-6 py-4 h-8 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto">
+                  <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-6 py-2.5 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
                     Learn More
                   </button>
                 </div>
@@ -880,11 +863,11 @@ function SubgeoIndustrial() {
                   <img src={plumbingImg} alt="Residential Estates" className="w-full h-full object-cover bg-gray-50" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <h3 className="text-[#df488b] text-[14px] font-medium mb-3">Residential Estates</h3>
+                  <h3 className="text-accent text-[14px] font-medium mb-3">Residential Homes</h3>
                   <p className="text-[#666] text-[12px] leading-relaxed mb-5">
                     Reliable plumbing installation and maintenance for housing developments, apartment complexes, and gated communities.
                   </p>
-                  <button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-6 py-4 h-8 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto">
+                  <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-6 py-2.5 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
                     Learn More
                   </button>
                 </div>
@@ -895,11 +878,11 @@ function SubgeoIndustrial() {
                   <img src={constructionSiteImg} alt="Hospitality Spaces" className="w-full h-full object-cover bg-gray-50" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <h3 className="text-[#df488b] text-[14px] font-medium mb-3">Hospitality Spaces</h3>
+                  <h3 className="text-accent text-[14px] font-medium mb-3">Hospitality Industry</h3>
                   <p className="text-[#666] text-[12px] leading-relaxed mb-5">
                     Specialized plumbing and fire safety solutions for hotels, restaurants, and resorts requiring uninterrupted guest comfort.
                   </p>
-                  <button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-6 py-4 h-8 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto">
+                  <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-6 py-2.5 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
                     Learn More
                   </button>
                 </div>
@@ -939,9 +922,7 @@ function SubgeoIndustrial() {
             <Reveal delay={0.15}>
               <div className="mt-6 md:mt-8 max-w-xl mx-auto md:bg-black/30 md:backdrop-blur-sm p-0 md:p-6 rounded-sm text-center">
                 <p className="text-white/90 text-[13px] leading-relaxed">
-                  We combine technical expertise with unwavering commitment to safety,
-                  quality, and client satisfaction. Every project reflects our dedication
-                  to excellence.
+                  All the services provided by Subgeo Plumbing & Industrial Works Ltd have been of high standard and quality, satisfactory to all involved parties that include Project Managers, Engineers, Architects, various consultants and the clients.
                 </p>
                 <div className="mt-5 flex justify-center">
                   <a
@@ -1035,7 +1016,7 @@ function SubgeoIndustrial() {
           
           <Reveal className="text-center mb-16">
             <h2 className="text-[#333] text-[20px] md:text-[24px] font-display font-medium uppercase tracking-widest">
-              End-to-end plumbing &amp; industrial maintenance
+              Our Services
             </h2>
           </Reveal>
 
@@ -1052,11 +1033,11 @@ function SubgeoIndustrial() {
                       )}
                     </div>
                     <div className="flex flex-col items-start">
-                      <h3 className="text-[#df488b] text-[14px] font-medium mb-3">{service.title}</h3>
+                      <h3 className="text-accent text-[14px] font-medium mb-3">{service.title}</h3>
                       <p className="text-[#666] text-[12px] leading-relaxed mb-5">
                         {service.description}
                       </p>
-                      <button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-6 py-4 h-8 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto">
+                      <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-6 py-2.5 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
                         Learn More
                       </button>
                     </div>
@@ -1080,8 +1061,8 @@ function SubgeoIndustrial() {
               <div className="pl-10 relative z-10 w-[55%] font-sans">
                 <p className="text-[#555] text-[11px] mb-1 font-medium">{projects[0].date} · {projects[0].category}</p>
                 <h3 className="text-[#222] font-black text-[24px] lg:text-[28px] leading-tight mb-1">{projects[0].title}</h3>
-                <p className="text-[#2563eb] text-[12px] font-semibold mb-6">{projects[0].subtitle}</p>
-                <a href="#" className="text-[#444] text-[11px] font-bold flex items-center hover:text-[#2563eb] transition-colors uppercase tracking-wider">
+                <p className="text-accent text-[12px] font-semibold mb-6">{projects[0].subtitle}</p>
+                <a href="#" className="text-[#444] text-[11px] font-bold flex items-center hover:text-accent transition-colors uppercase tracking-wider">
                   View Project <svg className="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7"></path></svg>
                 </a>
               </div>
@@ -1095,8 +1076,8 @@ function SubgeoIndustrial() {
               <div className="pl-10 relative z-10 w-[55%] font-sans">
                 <p className="text-[#555] text-[11px] mb-1 font-medium">{projects[1].date} · {projects[1].category}</p>
                 <h3 className="text-[#222] font-black text-[24px] lg:text-[28px] leading-tight mb-1">{projects[1].title}</h3>
-                <p className="text-[#2563eb] text-[12px] font-semibold mb-6">{projects[1].subtitle}</p>
-                <a href="#" className="text-[#444] text-[11px] font-bold flex items-center hover:text-[#2563eb] transition-colors uppercase tracking-wider">
+                <p className="text-accent text-[12px] font-semibold mb-6">{projects[1].subtitle}</p>
+                <a href="#" className="text-[#444] text-[11px] font-bold flex items-center hover:text-accent transition-colors uppercase tracking-wider">
                   View Project <svg className="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7"></path></svg>
                 </a>
               </div>
@@ -1118,11 +1099,11 @@ function SubgeoIndustrial() {
           
           <Reveal delay={0.2} className="space-y-6 lg:pl-10">
             <h2 className="text-[clamp(28px,3vw,40px)] font-bold leading-[1.04] mb-6" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
-              <span className="text-[#1d3b4a] block">Latest equipment</span>
-              <span className="text-[#ef6a42] block">& skilled specialists</span>
+              <span className="text-[#1d3b4a] block">Latest Equipment</span>
+              <span className="text-accent block">& Skilled Specialists</span>
             </h2>
             <p className="mt-5 text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium mb-8">
-              We invest in the very latest equipment and tools to ensure speed and precision in undertaking every project. Our plumbers have at least 5 years of broad onsite plumbing experience.
+              We invest in the very latest equipment/tools to ensure speed in undertaking Projects. Our team is made up of highly skilled plumbing specialists. All our plumbers have at least 5 years broad onsite plumbing experience.
             </p>
             
             <div className="grid sm:grid-cols-2 gap-y-5 gap-x-6 mb-10">
@@ -1135,13 +1116,13 @@ function SubgeoIndustrial() {
                 "24/7 Emergency Response"
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-[#ef6a42] flex-shrink-0" strokeWidth={2.5} />
+                  <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0" strokeWidth={2.5} />
                   <span className="text-[12px] lg:text-[14px] text-[#4a5568] font-bold">{item}</span>
                 </div>
               ))}
             </div>
             
-            <button className="bg-[#ef6a42] hover:bg-[#d95d3a] text-white px-8 py-3.5 rounded-none text-[13px] uppercase tracking-widest font-bold transition-all shadow-none mt-4">
+            <button className="bg-accent hover:bg-accent/90 text-white px-8 py-3.5 rounded-none text-[13px] uppercase tracking-widest font-bold transition-all shadow-none mt-4">
               Get A Quote
             </button>
           </Reveal>
@@ -1156,16 +1137,16 @@ function SubgeoIndustrial() {
           <div className="w-full lg:w-[45%] relative flex items-end justify-center lg:justify-end pt-32 lg:pt-0">
             
             {/* Floating Info Box */}
-            <div className="absolute top-10 lg:-top-10 left-0 lg:left-0 xl:left-[-20px] z-10 bg-[#fc584e] rounded-[24px] text-white p-8 w-[240px] sm:w-[280px] shadow-2xl">
-              <div className="bg-white text-[#fc584e] w-14 h-14 rounded-full flex items-center justify-center mb-6 mx-auto">
+            <div className="absolute top-10 lg:-top-10 left-0 lg:left-0 xl:left-[-20px] z-10 bg-accent text-white p-8 w-[240px] sm:w-[280px] shadow-2xl">
+              <div className="bg-white text-accent w-14 h-14 flex items-center justify-center mb-6 mx-auto">
                 <MessageCircle className="w-6 h-6 fill-current" />
               </div>
-              <h3 className="text-center font-bold text-[18px] mb-3">Get A Free Quote</h3>
-              <p className="text-center text-[11px] leading-relaxed text-white/90 mb-8 pt-2">
+              <h3 className="text-center font-bold text-[16px] mb-3">Get A Free Quote</h3>
+              <p className="text-center text-[12px] leading-relaxed text-white/90 mb-8 pt-2">
                 Request a site assessment or preventive maintenance plan tailored to your operation.
               </p>
               <div className="flex justify-center">
-                <a href="tel:0733699441" className="bg-white text-[#fc584e] hover:bg-gray-100 rounded-full px-6 py-2 h-9 text-[10px] font-extrabold uppercase tracking-widest inline-flex items-center">
+                <a href="tel:0733699441" className="bg-white text-accent hover:bg-gray-100 px-6 py-2.5 text-[11px] font-bold uppercase tracking-widest inline-flex items-center transition-colors">
                   CALL NOW
                 </a>
               </div>
@@ -1182,14 +1163,14 @@ function SubgeoIndustrial() {
           <div className="w-full lg:w-[55%] flex flex-col justify-center pb-12 lg:pb-16">
             
             <Reveal>
-              <div className="inline-flex items-center gap-2 text-[#fc584e] text-[10px] font-bold uppercase tracking-wider mb-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#fc584e]"></span>
+              <div className="inline-flex items-center gap-2 text-accent text-[11px] font-bold uppercase tracking-[0.2em] mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
                 CONTACT US
-                <span className="w-1.5 h-1.5 rounded-full bg-[#fc584e]"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
               </div>
-              <h2 className="text-[#202742] font-display font-[900] text-[32px] md:text-[42px] leading-[1.1] mb-10">
-                <span className="text-[#fc584e]">Plan</span> Your Next Project<br />
-                With Our Team !
+              <h2 className="text-[#333] text-[20px] md:text-[24px] font-display font-medium uppercase tracking-widest mb-10">
+                <span className="text-accent">Plan</span> Your Next Project<br />
+                With Our Team
               </h2>
             </Reveal>
 
@@ -1198,38 +1179,39 @@ function SubgeoIndustrial() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Input 
                     placeholder="Your name*" 
-                    className="bg-[#f7f8f9] border-none rounded-full h-12 px-6 text-[13px] placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-[#fc584e]" 
+                    className="bg-[#f7f8f9] border border-gray-200 rounded-none h-12 px-6 text-[13px] placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-accent" 
                     required 
                   />
                   <Input 
                     placeholder="Your Email*" 
                     type="email" 
-                    className="bg-[#f7f8f9] border-none rounded-full h-12 px-6 text-[13px] placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-[#fc584e]" 
+                    className="bg-[#f7f8f9] border border-gray-200 rounded-none h-12 px-6 text-[13px] placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-accent" 
                     required 
                   />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Input 
                     placeholder="Your number*" 
-                    className="bg-[#f7f8f9] border-none rounded-full h-12 px-6 text-[13px] placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-[#fc584e]" 
+                    className="bg-[#f7f8f9] border border-gray-200 rounded-none h-12 px-6 text-[13px] placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-accent" 
                   />
                   <Input 
                     placeholder="Service Needed*" 
-                    className="bg-[#f7f8f9] border-none rounded-full h-12 px-6 text-[13px] placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-[#fc584e]" 
+                    className="bg-[#f7f8f9] border border-gray-200 rounded-none h-12 px-6 text-[13px] placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-accent" 
                   />
                 </div>
                 <Textarea 
                   placeholder="Tell us about your project" 
                   rows={5} 
-                  className="bg-[#f7f8f9] border-none rounded-[20px] p-6 text-[13px] placeholder:text-gray-400 resize-none focus-visible:ring-1 focus-visible:ring-[#fc584e]" 
+                  className="bg-[#f7f8f9] border border-gray-200 rounded-none p-6 text-[13px] placeholder:text-gray-400 resize-none focus-visible:ring-1 focus-visible:ring-accent" 
                 />
                 
                 <div className="mt-2 text-left">
                   <Button 
                     type="submit" 
-                    className="bg-[#fc584e] hover:bg-[#eb4a40] text-white rounded-full px-8 py-6 h-12 text-[11px] font-extrabold uppercase tracking-widest shadow-md transition-transform hover:-translate-y-0.5 w-[200px]"
+                    className="bg-accent hover:bg-accent/90 text-white rounded-none px-8 py-3.5 text-[11px] font-bold uppercase tracking-widest transition-all duration-300"
                   >
                     SEND MESSAGE
+                    <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
                 </div>
               </form>
@@ -1280,7 +1262,7 @@ function SubgeoIndustrial() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 md:gap-3 bg-accent hover:bg-[#d11f4e] text-white px-10 md:px-12 py-5 md:py-6 text-[11px] font-bold uppercase tracking-widest rounded-lg transition-all duration-300"
+                  className="inline-flex items-center gap-2 md:gap-3 bg-accent hover:bg-accent/90 text-white px-10 md:px-12 py-5 md:py-6 text-[11px] font-bold uppercase tracking-widest rounded-lg transition-all duration-300"
                 >
                   Schedule Visit
                   <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
@@ -1304,7 +1286,7 @@ function SubgeoIndustrial() {
           scroll-behavior: smooth;
         }
         ::selection {
-          background: rgba(235, 37, 90, 0.3);
+          background: rgba(224, 41, 46, 0.3);
           color: primary;
         }
       `}</style>
