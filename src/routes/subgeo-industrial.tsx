@@ -24,6 +24,8 @@ import {
   TrendingUp,
   Target,
   MessageCircle,
+  Eye,
+  Heart,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -34,7 +36,6 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { Navbar } from "@/components/site/Navbar";
-import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import heroImg from "@/assets/corporate-hero.jpeg";
 import industryImg from "@/assets/industry.jpeg";
@@ -766,6 +767,58 @@ function SubgeoIndustrial() {
         </div>
       </section>
 
+      {/* Mission Vision Values */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="container-x max-w-[1200px] mx-auto">
+          <FadeInSection>
+            <div className="text-center mb-16 md:mb-20">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-4">
+                Our Mission, Vision
+              </p>
+              <h2 className="text-[20px] md:text-[24px] font-display font-medium uppercase tracking-widest text-primary">
+                Values & <span className="text-accent">Motto</span>
+              </h2>
+            </div>
+          </FadeInSection>
+
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
+            {[
+              {
+                icon: Target,
+                label: "Our Mission",
+                desc: "To deliver high-standard plumbing, drainage, sanitary, and fire-fighting solutions with precision, safety, and reliability — exceeding expectations on every project.",
+                color: "var(--accent)"
+              },
+              {
+                icon: Eye,
+                label: "Our Vision",
+                desc: "To be Kenya's most trusted partner in plumbing and industrial works — known for quality workmanship, 24/7 readiness, and enduring client partnerships.",
+                color: "var(--primary)"
+              },
+              {
+                icon: Heart,
+                label: "Our Values & Motto",
+                desc: "\"Quality Service. 24/7 Readiness. Innovative Solutions.\" We serve with integrity, respond with urgency, and deliver excellence on every job — big or small.",
+                color: "var(--accent)"
+              }
+            ].map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <FadeInSection key={idx} delay={idx * 0.1}>
+                  <div className="bg-[#f8f9fb] p-8 lg:p-10 shadow-sm border-t-4 h-full" style={{ borderTopColor: item.color }}>
+                    <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 shadow-sm border" style={{ backgroundColor: `${item.color}15`, color: item.color, borderColor: `${item.color}30` }}>
+                      <Icon className="w-6 h-6" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-primary font-display font-semibold text-[16px] mb-4">{item.label}</h3>
+                    <p className="text-[13px] text-gray-600 leading-relaxed">{item.desc}</p>
+                  </div>
+                </FadeInSection>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* System Integrity — Features Row */}
       <section className="py-16 bg-white overflow-hidden">
         <div className="container-x w-full max-w-6xl mx-auto">
@@ -1278,8 +1331,6 @@ function SubgeoIndustrial() {
           </div>
         </div>
       </section>
-
-      <Footer />
 
       <style>{`
         html {

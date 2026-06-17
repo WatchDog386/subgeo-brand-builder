@@ -40,32 +40,32 @@ export function Navbar() {
       />
 
       <header className="fixed top-0 inset-x-0 z-50">
-      {/* Top Bar - White Background (Original height kept at h-20) */}
-      <div className="bg-white border-b border-gray-200">
+  {/* Top Bar - Match footer social icon section color */}
+  <div className="bg-[#1e2532]">
         <div className="container-x h-16 flex items-center justify-between px-4 lg:px-8">
-          {/* Company Name (Logo removed) */}
-          <Link to="/" className="flex items-center no-underline">
-            <span className="text-[#be232a] text-[20px] lg:text-[24px] font-bold tracking-[0.02em] leading-none" style={{ fontFamily: "'Oswald', sans-serif", transform: "scaleY(1.15)", transformOrigin: "bottom" }}>
-              SUBGEO HOLDING COMPANY LTD.
-            </span>
-          </Link>
+        {/* Company Name (Logo removed) */}
+        <Link to="/" className="flex items-center no-underline">
+          <span className="text-white text-[20px] lg:text-[24px] font-bold tracking-[0.02em] leading-none" style={{ fontFamily: "'Oswald', sans-serif", transform: "scaleY(1.15)", transformOrigin: "bottom" }}>
+            SUBGEO HOLDING COMPANY LTD. 
+          </span>
+        </Link>
 
-          {/* Phone Numbers - Desktop */}
-          <div className="hidden lg:flex items-center gap-6">
-            {phoneTiles.map((tile) => (
-              <div key={tile.phone} className="flex items-center gap-2.5">
-                <div className="h-8 w-8 rounded-full bg-red-600 flex items-center justify-center text-white flex-shrink-0">
-                  <Phone className="h-3.5 w-3.5" />
-                </div>
-                <div className="flex flex-col">
-                  <div className="text-[13px] font-semibold text-gray-900 leading-tight">{tile.phone}</div>
-                  <div className="text-[10px] text-gray-500 flex items-center gap-1 leading-tight">
-                    <MapPin className="h-2.5 w-2.5" /> {tile.location}
-                  </div>
-                </div>
+      {/* Phone Numbers - Desktop */}
+      <div className="hidden lg:flex items-center gap-6">
+        {phoneTiles.map((tile) => (
+          <div key={tile.phone} className="flex items-center gap-2.5">
+            <div className="h-8 w-8 rounded-full bg-red-600 flex items-center justify-center text-white flex-shrink-0">
+              <Phone className="h-3.5 w-3.5" />
+            </div>
+            <div className="flex flex-col">
+              <div className="text-[13px] font-semibold text-white leading-tight">{tile.phone}</div>
+              <div className="text-[10px] text-gray-300 flex items-center gap-1 leading-tight">
+                <MapPin className="h-2.5 w-2.5" /> {tile.location}
               </div>
-            ))}
+            </div>
           </div>
+        ))}
+      </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -79,20 +79,20 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Bottom Bar - Dark Navy Background (Height increased to h-16) */}
-      <div className="bg-[#1e3a5f] relative">
+  {/* Bottom Bar - Dark Navy Background (Height increased to h-16) */}
+  <div className="bg-[#1e3a5f] relative">
         <div className="container-x min-h-[64px] py-3 lg:py-0 lg:h-16 flex items-center justify-between px-2 lg:px-8 relative z-50">
           {/* Navigation - Desktop */}
           <nav className="hidden lg:flex items-center gap-5 h-full">
             {nav.map((item) => (
               item.links ? (
-                <div 
+                <div
                   key={item.label}
                   onMouseEnter={() => setActiveMegaMenu(item.label)}
                   onMouseLeave={() => setActiveMegaMenu(null)}
                   className="flex items-center h-full py-4 lg:py-0"
-                >
-                  <button className="text-white/90 hover:text-white text-[11px] font-semibold flex items-center gap-1 uppercase tracking-[0.05em] focus:outline-none cursor-pointer h-full">
+                  >
+                  <button className="text-white text-[11px] font-semibold flex items-center gap-1 uppercase tracking-[0.05em] focus:outline-none cursor-pointer h-full">
                     {item.label}
                     <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${activeMegaMenu === item.label ? 'rotate-180' : ''}`} />
                   </button>
@@ -157,8 +157,8 @@ export function Navbar() {
           <div className="hidden lg:flex items-center">
             <Link
               to="/contact"
-              className="text-white hover:text-white/90 text-[11px] font-semibold no-underline flex items-center gap-1.5 tracking-[0.05em]"
-            >
+              className="bg-[#e0292e] text-white text-[11px] font-semibold no-underline flex items-center gap-1.5 tracking-[0.05em] px-4 py-2 rounded-md hover:bg-[#c42428] transition-colors"
+              >
               CONTACT US
               <ArrowRight className="h-4 w-4" />
             </Link>

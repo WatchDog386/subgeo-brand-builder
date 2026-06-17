@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
-import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowUpRight, Play, Star, Sparkles, Clock, Phone, Check } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Play, Star, Sparkles, Clock, Phone, Check, Target, Eye, Heart } from "lucide-react";
 import { branches } from "@/lib/branches";
 import beautyImg from "@/assets/salon.jpeg";
 import salon2 from "@/assets/salon2.jpeg";
@@ -509,6 +508,56 @@ function BeautyPage() {
         </div>
       </section>
 
+      {/* Mission Vision Values */}
+      <section className="py-20 lg:py-28 bg-[#fafafa]">
+        <div className="container-x w-full max-w-6xl mx-auto">
+          <Reveal className="text-center mb-14">
+            <h2 className="text-[#df488b] text-[20px] md:text-[24px] font-display font-medium uppercase tracking-widest mb-3">
+              Our Mission, Vision
+            </h2>
+            <p className="text-[#4986c7] text-[13px] md:text-[14px] max-w-2xl mx-auto font-semibold uppercase tracking-wider">
+              Values & Motto
+            </p>
+          </Reveal>
+
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
+            {[
+              {
+                icon: Target,
+                label: "Our Mission",
+                desc: "To empower individuals with expert grooming and styling that enhances confidence, celebrates individuality, and delivers a premium beauty experience for everyone.",
+                color: "#4986c7"
+              },
+              {
+                icon: Eye,
+                label: "Our Vision",
+                desc: "To be the premier unisex beauty destination where every client walks out feeling their absolute best — redefining salon standards across Kenya.",
+                color: "#df488b"
+              },
+              {
+                icon: Heart,
+                label: "Our Values & Motto",
+                desc: "Passion for precision. Commitment to care. We treat every client like family, ensuring a welcoming, relaxing environment with top-tier service every time.",
+                color: "#f06292"
+              }
+            ].map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <Reveal key={idx} delay={idx * 0.1}>
+                  <div className="bg-white p-8 lg:p-10 shadow-sm border-t-4 h-full" style={{ borderTopColor: item.color }}>
+                    <div className="w-14 h-14 rounded-full flex items-center justify-center mb-6" style={{ backgroundColor: `${item.color}15`, color: item.color }}>
+                      <Icon className="w-6 h-6" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-[#333] font-display font-medium uppercase text-[14px] tracking-widest mb-4">{item.label}</h3>
+                    <p className="text-[13px] text-gray-500 leading-relaxed font-medium">{item.desc}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* 7. NEWS & EVENTS (Screenshot 8 Replica) */}
       <section className="py-24 bg-white overflow-hidden">
         <div className="container-x">
@@ -701,7 +750,6 @@ function BeautyPage() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

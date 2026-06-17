@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
-import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowUpRight, Check, Clock, Phone, Pill, Heart, Shield, TrendingUp, Play, Facebook, Twitter, Instagram, Linkedin, ClipboardList, Briefcase, Users, Globe } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Clock, Phone, Pill, Heart, Shield, TrendingUp, Play, Facebook, Twitter, Instagram, Linkedin, ClipboardList, Briefcase, Users, Globe, Target, Eye } from "lucide-react";
 import { branches } from "@/lib/branches";
 import { PremiumHero, PremiumSection, PremiumButton } from "@/components/premium/PremiumLayout";
 import { GridContainer } from "@/components/premium/PremiumGrid";
@@ -256,6 +255,54 @@ function PharmacyPage() {
                 Our platform of qualified experts allows you to easily share medical reports and collaborate on health goals with our registered pharmacists. Receive accurate wellness counseling with just one visit.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission Vision Values */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="container-x max-w-[1200px] mx-auto">
+          <Reveal className="text-center mb-14">
+            <h2 className="font-sans font-[900] tracking-tighter text-[clamp(28px,3vw,40px)] leading-[1.04] text-[#1e293b]">
+              Our Mission, Vision
+              <span className="text-[#0ea5e9] block">Values & Motto</span>
+            </h2>
+          </Reveal>
+
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
+            {[
+              {
+                icon: Target,
+                label: "Our Mission",
+                desc: "To provide accessible, high-quality pharmaceutical care and wellness products through professional expertise and compassionate service to every community we serve.",
+                color: "#0ea5e9"
+              },
+              {
+                icon: Eye,
+                label: "Our Vision",
+                desc: "To be the most trusted pharmacy partner in Kenya — where every customer receives expert care, genuine medications, and the comfort of knowing they matter.",
+                color: "#4b8bf4"
+              },
+              {
+                icon: Heart,
+                label: "Our Values & Motto",
+                desc: "\"We Treat But God Heals.\" We uphold integrity, compassion, and excellence — ensuring every prescription, every interaction, and every life we touch is handled with the utmost care.",
+                color: "#22c55e"
+              }
+            ].map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <Reveal key={idx} delay={idx * 0.1}>
+                  <div className="bg-[#f8fafc] p-8 lg:p-10 shadow-sm border-t-4 h-full" style={{ borderTopColor: item.color }}>
+                    <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-6 shadow-sm border" style={{ backgroundColor: `${item.color}15`, color: item.color, borderColor: `${item.color}30` }}>
+                      <Icon className="w-6 h-6" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-[#0d173d] font-sans font-[900] tracking-tight text-[16px] mb-4">{item.label}</h3>
+                    <p className="text-[13px] text-gray-500 leading-relaxed font-medium">{item.desc}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -712,7 +759,6 @@ function PharmacyPage() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

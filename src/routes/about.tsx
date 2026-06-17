@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
-import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, PhoneCall, Globe, Clock, Briefcase, CheckCircle2, Plane } from "lucide-react";
+import { ArrowRight, PhoneCall, Globe, Clock, Briefcase, CheckCircle2, Plane, Target, Eye, Heart } from "lucide-react";
 import aboutImg from "@/assets/about.png";
 import serviceImg from "@/assets/service.jpeg";
 import communityImg from "@/assets/community.jpeg";
@@ -175,7 +174,54 @@ function AboutPage() {
         </div>
       </section>
 
-      <Footer />
+      {/* Mission Vision Values */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="container-x">
+          <Reveal className="text-center mb-14">
+            <h2 className="text-[clamp(28px,3vw,40px)] font-bold leading-[1.04]" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+              <span className="text-[#1d3b4a]">Our Mission, Vision</span>
+              <span className="text-[#ef6a42] block">Values & Motto</span>
+            </h2>
+          </Reveal>
+
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
+            {[
+              {
+                icon: Target,
+                label: "Our Mission",
+                desc: "To provide comprehensive industry solutions with innovation, reliability, and an unwavering commitment to customer satisfaction across every business division we operate.",
+                color: "#ef6a42"
+              },
+              {
+                icon: Eye,
+                label: "Our Vision",
+                desc: "To be the premier provider of integrated services across multiple sectors in Kenya and beyond, setting the benchmark for quality and excellence.",
+                color: "#41949e"
+              },
+              {
+                icon: Heart,
+                label: "Our Values & Motto",
+                desc: "Excellence, Integrity, and Innovation in everything we do. We build lasting partnerships based on trust, quality assurance, and superior service delivery.",
+                color: "#1d3b4a"
+              }
+            ].map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <Reveal key={idx} delay={idx * 0.1}>
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-full border border-orange-200 bg-white flex items-center justify-center text-[#ef6a42] mb-6 shadow-sm">
+                <Icon className="w-5 h-5" strokeWidth={1.5} />
+              </div>
+              <h3 className="text-[#1d3b4a] font-bold text-[16px] xl:text-[18px] leading-tight" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>{item.label}</h3>
+              <p className="mt-5 text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">{item.desc}</p>
+            </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

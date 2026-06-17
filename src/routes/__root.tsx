@@ -1,5 +1,6 @@
-import React from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Footer } from "@/components/site/Footer";
+import type { QueryClient } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
@@ -99,9 +100,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <React.Fragment>
-        <Outlet />
-      </React.Fragment>
+      <div className="flex min-h-screen flex-col">
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </QueryClientProvider>
   );
 }
+
+

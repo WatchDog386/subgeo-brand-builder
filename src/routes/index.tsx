@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageTransition, ScrollProgressBar } from "@/components/premium/PremiumAnimations";
-import { Footer } from "@/components/site/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
 import { StorySection } from "@/components/home/StorySection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
@@ -47,16 +46,15 @@ function Home() {
         <TestimonialsSection />
         <ValuesMissionSection />
         
-       
         
         <BranchesGridSection />
-     
+      
         
         <NewsAndInsightsSection />
-           
+            
         <PremiumCTASection />
-        <Footer />
       </div>
     </PageTransition>
   );
 }
+
