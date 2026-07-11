@@ -37,21 +37,21 @@ import {
 } from "framer-motion";
 import { Navbar } from "@/components/site/Navbar";
 import { Reveal } from "@/components/site/Reveal";
-import heroImg from "@/assets/corporate-hero.jpeg";
+import heroImg from "@/assets/image5.jpeg";
 import industryImg from "@/assets/industry.jpeg";
-import plumbingImg from "@/assets/plumber.jpeg";
+import plumbingImg from "@/assets/image2.jpeg";
 import drainageImg from "@/assets/drainage.png";
 import geyserImg from "@/assets/geyserinstall.png";
 import bathroomImg from "@/assets/kitchenfitouts.png";
 import showerImg from "@/assets/showerservice.png";
-import commercialImg from "@/assets/corporate-hero.jpeg";
+import commercialImg from "@/assets/image4.jpeg";
 import industrialImg from "@/assets/industry.jpeg";
 import firePumpImg from "@/assets/industry.jpeg";
-import pumpRoomImg from "@/assets/industry.jpeg";
-import constructionSiteImg from "@/assets/completeprjct.jpg";
+import pumpRoomImg from "@/assets/image6.jpeg";
+import constructionSiteImg from "@/assets/image7.jpeg";
 import teamWorkingImg from "@/assets/work.jpeg";
 import equipmentImg from "@/assets/service.jpeg";
-import safetyGearImg from "@/assets/industry2.jpeg";
+import safetyGearImg from "@/assets/image3.jpeg";
 import siteAssessmentImg from "@/assets/siteassessment.png";
 import planningImg from "@/assets/planning.png";
 import expertExecutionImg from "@/assets/expertexecution.png";
@@ -62,6 +62,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import whyImg from "@/assets/why.png";
+import qwetuImg1 from "@/assets/image1.jpeg";
+import qwetuImg2 from "@/assets/image2.jpeg";
+import qwetuImg3 from "@/assets/image3.jpeg";
+import qwetuImg4 from "@/assets/image4.jpeg";
+import qwetuImg5 from "@/assets/image5.jpeg";
+import qwetuImg6 from "@/assets/image6.jpeg";
+import qwetuImg7 from "@/assets/image7.jpeg";
+import qwetuImg8 from "@/assets/image8.jpeg";
 
 export const Route = createFileRoute("/subgeo-industrial")({
   head: () => ({
@@ -200,7 +208,7 @@ const projects = [
       "Contracted to deliver a comprehensive water storage and plumbing upgrade. The assignment involved installation of water reservoir tanks and modernization of existing plumbing systems to improve efficiency and sustainability.",
     details:
       "In 2023, we were contracted for a large-scale plumbing and drainage upgrade in a commercial office building. Our team was tasked with replacing outdated piping and improving the drainage system to meet modern standards. We installed new sanitary systems across multiple floors, including eco-friendly solutions like low-flow toilets and water-saving faucets. As part of the building's fire safety compliance, we also designed and implemented a new fire fighting system, incorporating automatic fire suppression and emergency water supplies. The successful completion of this project ensured that the building met both safety regulations and efficiency standards.",
-    image: commercialImg,
+    image: qwetuImg1,
     category: "Education",
     highlights: [
       "Water reservoir tank installation",
@@ -208,6 +216,7 @@ const projects = [
       "Water-saving fixtures",
       "Fire protection system integration",
     ],
+    gallery: [qwetuImg1, qwetuImg2, qwetuImg3, qwetuImg4, qwetuImg5, qwetuImg6, qwetuImg7, qwetuImg8],
   },
   {
     date: "2024",
@@ -1143,6 +1152,39 @@ function SubgeoIndustrial() {
         </div>
       </section>
 
+      {/* Qwetu Project Gallery */}
+      <section className="py-16 lg:py-24 bg-[#f8f9fa]">
+        <div className="container-x max-w-6xl mx-auto">
+          <Reveal>
+            <div className="text-center mb-12">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-4">Project Gallery</p>
+              <h2 className="text-[clamp(24px,3vw,36px)] font-bold leading-tight text-[#1d3b4a]">
+                Qwetu Catholic University
+              </h2>
+              <p className="text-[13px] text-gray-500 mt-3 max-w-xl mx-auto">
+                Installation of Water Reservoir Tanks — 2023
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+            {[qwetuImg1, qwetuImg2, qwetuImg3, qwetuImg4, qwetuImg5, qwetuImg6, qwetuImg7, qwetuImg8].map((img, idx) => (
+              <Reveal key={idx} delay={idx * 0.05}>
+                <div className="group relative overflow-hidden rounded-sm shadow-md hover:shadow-xl transition-all duration-500 aspect-[4/3]">
+                  <img
+                    src={img}
+                    alt={`Qwetu project photo ${idx + 1}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Equipment & Safety */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="container-x grid lg:grid-cols-2 gap-16 items-center">
@@ -1187,7 +1229,7 @@ function SubgeoIndustrial() {
         <div className="container-x max-w-[1100px] mx-auto relative z-10 flex flex-col lg:flex-row items-end gap-16 lg:gap-12">
           
           {/* Left Side : Image & Info Box */}
-          <div className="w-full lg:w-[45%] relative flex items-end justify-center lg:justify-end pt-32 lg:pt-0">
+          <div className="w-full lg:w-[45%] relative flex items-center justify-center lg:justify-end pt-32 lg:pt-0">
             
             {/* Floating Info Box */}
             <div className="absolute top-10 lg:-top-10 left-0 lg:left-0 xl:left-[-20px] z-10 bg-accent text-white p-8 w-[240px] sm:w-[280px] shadow-2xl">
@@ -1206,7 +1248,7 @@ function SubgeoIndustrial() {
             </div>
 
             {/* The Image */}
-            <div className="relative z-20 w-[260px] md:w-[320px] max-w-[380px] lg:mr-8 xl:mr-16">
+            <div className="relative z-20 w-[320px] md:w-[400px] max-w-[480px] lg:mr-8 xl:mr-16">
                <img src={whyImg} alt="Customer Service" className="w-full h-auto object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)] block" />
             </div>
             

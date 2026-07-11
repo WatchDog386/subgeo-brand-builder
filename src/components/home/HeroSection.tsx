@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/site/Navbar";
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/why.png";
+import heroImg from "@/assets/hero.png";
 import { AnimatedFireElement } from "@/components/home/AnimatedFireElement";
 import { useState } from "react";
 
@@ -221,7 +221,7 @@ className="h-9 w-9 rounded-full bg-primary text-white text-xs flex items-center 
 {/* Image section */}
 <div className="relative flex justify-center min-h-[400px] lg:min-h-[500px] mt-10 lg:mt-0">
 {/* Blue Circle */}
-<div className="absolute top-10 lg:top-16 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-12 h-[220px] w-[220px] lg:h-[320px] lg:w-[320px] rounded-full bg-[#223a5c] z-0" />
+<div className="absolute top-16 lg:top-24 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-12 h-[220px] w-[220px] lg:h-[320px] lg:w-[320px] rounded-full bg-[#223a5c] z-0" />
 
 {/* Red Vertical Ribbon - wider, extends from navbar to cards */}
 <div className="absolute -top-20 lg:-top-32 right-4 lg:right-20 w-24 lg:w-40 h-[400px] lg:h-[600px] bg-[#e0292e] z-0" />
@@ -256,7 +256,7 @@ className="h-9 w-9 rounded-full bg-primary text-white text-xs flex items-center 
 <motion.img
 src={heroImg}
 alt="Technician"
-className="absolute z-10 bottom-0 left-1/2 -translate-x-1/2 h-[400px] lg:h-[600px] w-full max-w-[280px] lg:max-w-[440px] object-contain object-bottom"
+className="absolute z-10 -bottom-24 left-1/2 -translate-x-1/2 h-[500px] lg:h-[750px] w-full max-w-[360px] lg:max-w-[560px] object-contain object-bottom"
 initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
 transition={{ duration: 0.8, delay: 0.2 }}

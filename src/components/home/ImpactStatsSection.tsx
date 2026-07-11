@@ -1,5 +1,4 @@
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
-import community from "@/assets/community.jpeg"; 
 
 export function ImpactStatsSection() {
   return (
@@ -9,9 +8,9 @@ export function ImpactStatsSection() {
         {/* Main Container */}
         <div className="flex flex-col md:flex-row items-stretch">
           
-          {/* Left: Red Box */}
+          {/* Left: Green Box */}
           <RevealOnScroll direction="right" className="w-full md:w-[50%] lg:w-[55%] flex">
-            <div className="bg-[#e31837] text-white p-8 md:p-10 lg:p-14 xl:p-16 h-full flex flex-col justify-center w-full z-10 lg:-mr-10">
+            <div className="bg-[#00b853] text-white p-8 md:p-10 lg:p-14 xl:p-16 h-full flex flex-col justify-center w-full z-10 lg:-mr-10">
               <h2 className="font-display font-medium text-[28px] md:text-[34px] xl:text-[40px] leading-[1.1] mb-5">
                 Empowering Communities<br/>
                 Across Kenya
@@ -26,9 +25,9 @@ export function ImpactStatsSection() {
               </p>
               
               <div className="mt-auto">
-                <button className="bg-white text-[#e31837] font-bold text-[12px] tracking-wider py-3.5 px-6 inline-flex items-center hover:bg-gray-100 transition-colors">
+                <button className="bg-white text-[#00b853] font-bold text-[12px] tracking-wider py-3.5 px-6 inline-flex items-center hover:bg-gray-100 transition-colors">
                   DISCOVER MORE
-                  <svg className="w-4 h-4 ml-3 text-[#e31837]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
@@ -36,47 +35,10 @@ export function ImpactStatsSection() {
             </div>
           </RevealOnScroll>
 
-          {/* Right: Image and Controls */}
-          <RevealOnScroll direction="left" className="w-full md:w-[50%] lg:w-[45%] flex flex-col pt-0 md:pt-10">
-            <div className="h-full w-full flex flex-col">
-              
-              {/* Image Container */}
-              <div className="relative w-full h-[300px] md:h-full min-h-[350px] lg:min-h-[420px] border-[12px] border-white bg-gray-100 shadow-sm z-20">
-                <img
-                  src={community}
-                  alt="Service professional"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-
-                {/* Watch Video Red Play Box (Bottom Left, overlapping border) */}
-                <div className="absolute left-[-12px] bottom-[-12px] w-[130px] h-[150px] bg-[#e31837] flex flex-col items-center justify-center cursor-pointer group z-10">
-                  <div className="bg-white w-[50px] h-[50px] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
-                    <div className="w-[16px] h-[16px] ml-1 bg-[#e31837]" style={{ clipPath: 'polygon(0 0, 0 100%, 100% 50%)' }}></div>
-                  </div>
-                  <span className="text-white font-bold text-[11px] mt-4 tracking-widest text-center">
-                    WATCH<br/>VIDEO
-                  </span>
-                </div>
-              </div>
-              
-              {/* Navigation Arrows Row below the image */}
-              <div className="flex justify-end gap-4 items-center bg-white py-4 pr-2">
-                {/* Left Arrow (Gray) */}
-                <button aria-label="Previous slide" className="flex items-center group relative w-20 hover:opacity-80 transition-opacity">
-                  <div className="absolute left-0 top-1/2 -mt-[5px] border-y-[5px] border-y-transparent border-r-[8px] border-r-gray-300"></div>
-                  <div className="w-full h-[2px] bg-gray-300 ml-1"></div>
-                </button>
-                
-                {/* Right Arrow (Red) */}
-                <button aria-label="Next slide" className="flex items-center group relative w-20 hover:opacity-80 transition-opacity">
-                  <div className="w-full h-[2px] bg-[#e31837] mr-1"></div>
-                  <div className="absolute right-0 top-1/2 -mt-[5px] border-y-[5px] border-y-transparent border-l-[8px] border-l-[#e31837]"></div>
-                </button>
-              </div>
-
-            </div>
+          {/* Right: Image */}
+          <RevealOnScroll direction="left" className="w-full md:w-[50%] lg:w-[45%] flex">
+            <div className="w-full h-[300px] md:h-full bg-cover bg-center" style={{ backgroundImage: "url('https://placehold.co/800x600/06392b/00b853?text=Subgeo+Impact')" }} />
           </RevealOnScroll>
-          
         </div>
       </div>
     </section>
