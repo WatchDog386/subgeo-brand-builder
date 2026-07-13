@@ -8,6 +8,7 @@ import {
   Wrench, 
   Gauge 
 } from "lucide-react";
+import subgeo2Img from "@/assets/subgeo2.jpeg";
 
 const caseStudies = [
   {
@@ -58,6 +59,11 @@ export function BranchesGridSection() {
                   {/* Banner Image */}
                   <div 
                     className={`relative ${study.bannerBg} overflow-hidden mb-6 aspect-[4/3]`}
+                    style={{
+                      backgroundImage: index === 0 ? `url(${subgeo2Img})` : index === 1 ? `url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPSng9IGFdWfGE8ao8hzAnLaHEgF0aLmtDsyPHby7v3-VuTZXm3w0GpY01&s=10)` : index === 2 ? `url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhX5iKhaPXggpzUsTPzlGcPpGeMRQi5Q6sSJb1bamj8Q3vuOnULH4NYG8&s=10)` : undefined,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
                   >
                     {/* Decorative curved lines - top left */}
                     <svg 

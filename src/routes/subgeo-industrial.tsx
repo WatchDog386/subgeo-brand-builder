@@ -219,7 +219,7 @@ const projects = [
   },
   {
     date: "2023",
-    title: "Qwetu Catholic University",
+    title: "Qwetu Hostel Jogoo Road",
     subtitle: "Installation of Water Reservoir Tanks",
     summary:
       "Contracted to deliver a comprehensive water storage and plumbing upgrade. The assignment involved installation of water reservoir tanks and modernization of existing plumbing systems to improve efficiency and sustainability.",
@@ -1314,7 +1314,7 @@ function SubgeoIndustrial() {
             <div className="text-center mb-12">
               <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-4">Project Gallery</p>
               <h2 className="text-[clamp(24px,3vw,36px)] font-bold leading-tight text-[#1d3b4a]">
-                Qwetu Catholic University
+                Qwetu Hostel Jogoo Road
               </h2>
               <p className="text-[13px] text-gray-500 mt-3 max-w-xl mx-auto">
                 Installation of Water Reservoir Tanks — 2023
