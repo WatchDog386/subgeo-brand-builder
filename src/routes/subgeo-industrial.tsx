@@ -57,6 +57,14 @@ import handoverImg from "@/assets/handover.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import whyImg from "@/assets/why.png";
@@ -68,6 +76,17 @@ import qwetuImg5 from "@/assets/image5.jpeg";
 import qwetuImg6 from "@/assets/image6.jpeg";
 import qwetuImg7 from "@/assets/image7.jpeg";
 import qwetuImg8 from "@/assets/image8.jpeg";
+import subgeoImg from "@/assets/subgeo.jpeg";
+import subgeo1Img from "@/assets/subgeo1.jpeg";
+import subgeo2Img from "@/assets/subgeo2.jpeg";
+import subgeo3Img from "@/assets/subgeo3.jpeg";
+import subgeo4Img from "@/assets/subgeo4.jpeg";
+import subgeo5Img from "@/assets/subgeo5.jpeg";
+import subgeo6Img from "@/assets/subgeo6.jpeg";
+import subgeo7Img from "@/assets/subgeo7.jpeg";
+import subgeo8Img from "@/assets/subgeo8.jpeg";
+import subgeo9Img from "@/assets/subgeo9.jpeg";
+import suggeoImg from "@/assets/suggeo.jpeg";
 
 export const Route = createFileRoute("/subgeo-industrial")({
   head: () => ({
@@ -296,6 +315,79 @@ const whyChooseUs = [
     statLabel: "Client Satisfaction",
   },
 ];
+
+const galleryImages = [
+  qwetuImg1, qwetuImg2, qwetuImg3, qwetuImg4,
+  qwetuImg5, qwetuImg6, qwetuImg7, qwetuImg8,
+  subgeoImg, subgeo1Img, subgeo2Img, subgeo3Img,
+  subgeo4Img, subgeo5Img, subgeo6Img, subgeo7Img,
+  subgeo8Img, subgeo9Img, suggeoImg,
+];
+
+const autoSlideInterval = 3000;
+
+function GalleryCarousel() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  useEffect(() => {
+    if (!api) return;
+    const timer = setInterval(() => {
+      if (current === count - 1) {
+        api.scrollTo(0);
+      } else {
+        api.scrollNext();
+      }
+    }, autoSlideInterval);
+    return () => clearInterval(timer);
+  }, [api, current, count]);
+
+  return (
+    <div className="relative px-2 md:px-10">
+      <Carousel setApi={setApi} opts={{ loop: true, align: "center" }} className="w-full">
+        <CarouselContent>
+          {galleryImages.map((img, idx) => (
+            <CarouselItem key={idx} className="basis-full">
+              <div className="group relative overflow-hidden shadow-md aspect-[16/10] mx-1">
+                <img
+                  src={img}
+                  alt={`Gallery photo ${idx + 1}`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="hidden md:flex -left-1 md:-left-3 lg:-left-4 bg-white/90 border-0 shadow-md hover:bg-white" />
+        <CarouselNext className="hidden md:flex -right-1 md:-right-3 lg:-right-4 bg-white/90 border-0 shadow-md hover:bg-white" />
+      </Carousel>
+
+      <div className="flex justify-center gap-2 mt-6">
+        {Array.from({ length: count }).map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => api?.scrollTo(idx)}
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+              idx === current ? "bg-accent w-6" : "bg-gray-300 hover:bg-gray-400"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function AnimatedCounter({ value, suffix = "", duration = 2 }: { value: number; suffix?: string; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -1215,7 +1307,7 @@ function SubgeoIndustrial() {
         </div>
       </section>
 
-      {/* Qwetu Project Gallery */}
+      {/* Qwetu Project Gallery - Carousel */}
       <section className="py-16 lg:py-24 bg-[#f8f9fa]">
         <div className="container-x max-w-6xl mx-auto">
           <Reveal>
@@ -1230,21 +1322,9 @@ function SubgeoIndustrial() {
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-            {[qwetuImg1, qwetuImg2, qwetuImg3, qwetuImg4, qwetuImg5, qwetuImg6, qwetuImg7, qwetuImg8].map((img, idx) => (
-              <Reveal key={idx} delay={idx * 0.05}>
-                <div className="group relative overflow-hidden rounded-sm shadow-md hover:shadow-xl transition-all duration-500 aspect-[4/3]">
-                  <img
-                    src={img}
-                    alt={`Qwetu project photo ${idx + 1}`}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={0.1}>
+            <GalleryCarousel />
+          </Reveal>
         </div>
       </section>
 
