@@ -1274,7 +1274,7 @@ function SubgeoIndustrial() {
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             
             {/* Project 1 */}
-            <div className="bg-[#e4e8eb] h-[220px] rounded-[2px] overflow-hidden relative flex items-center group">
+            <div id="glee-hotel" className="bg-[#e4e8eb] h-[220px] rounded-[2px] overflow-hidden relative flex items-center group">
               <div className="pl-10 relative z-10 w-[55%] font-sans">
                 <p className="text-[#555] text-[11px] mb-1 font-medium">{projects[0].date} · {projects[0].category}</p>
                 <h3 className="text-[#222] font-black text-[24px] lg:text-[28px] leading-tight mb-1">{projects[0].title}</h3>
@@ -1289,7 +1289,7 @@ function SubgeoIndustrial() {
             </div>
 
             {/* Project 2 */}
-            <div className="bg-[#e5e1da] h-[220px] rounded-[2px] overflow-hidden relative flex items-center group">
+            <div id="qwetu-hostel" className="bg-[#e5e1da] h-[220px] rounded-[2px] overflow-hidden relative flex items-center group">
               <div className="pl-10 relative z-10 w-[55%] font-sans">
                 <p className="text-[#555] text-[11px] mb-1 font-medium">{projects[1].date} · {projects[1].category}</p>
                 <h3 className="text-[#222] font-black text-[24px] lg:text-[28px] leading-tight mb-1">{projects[1].title}</h3>
@@ -1308,7 +1308,7 @@ function SubgeoIndustrial() {
       </section>
 
       {/* Qwetu Project Gallery - Carousel */}
-      <section className="py-16 lg:py-24 bg-[#f8f9fa]">
+      <section id="qwetu-gallery" className="py-16 lg:py-24 bg-[#f8f9fa]">
         <div className="container-x max-w-6xl mx-auto">
           <Reveal>
             <div className="text-center mb-12">

@@ -8,6 +8,7 @@ import {
   Wrench, 
   Gauge 
 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import subgeo2Img from "@/assets/subgeo2.jpeg";
 
 const caseStudies = [
@@ -16,7 +17,7 @@ const caseStudies = [
     description: "Subgeo scaled deliverables using our proven techniques—providing on-time results that keep clients returning.",
     logo: "SUBGEO",
     logoHasIcon: true,
-    href: "/case-studies/subgeo-plumbing",
+    href: "/subgeo-industrial",
     bannerBg: "bg-[#2dd4a8]",
     bannerTextColor: "text-white",
     accentColor: "purple",
@@ -27,7 +28,7 @@ const caseStudies = [
     description: "Glee Hotel used Subgeo for robust plumbing across projects—faster, maintaining safety control and quality.",
     logo: "GLEE HOTEL",
     logoHasIcon: true,
-    href: "/case-studies/glee-hotel",
+    href: "/subgeo-industrial#glee-hotel",
     bannerBg: "bg-[#1a1a1a]",
     bannerTextColor: "text-white",
     accentColor: "orange",
@@ -39,7 +40,7 @@ const caseStudies = [
     logo: "QWETU",
     logoSubtext: "UNIVERSITY",
     logoHasIcon: false,
-    href: "/case-studies/qwetu",
+    href: "/subgeo-industrial#qwetu-gallery",
     bannerBg: "bg-[#fdf6f0]",
     bannerTextColor: "text-gray-900",
     accentColor: "orange",
@@ -111,7 +112,6 @@ export function BranchesGridSection() {
 
                     {index === 2 && (
                       <>
-                        <div className="absolute top-0 right-0 w-48 h-48 bg-orange-500 opacity-90"></div>
 
                       </>
                     )}
@@ -167,12 +167,13 @@ export function BranchesGridSection() {
                     </div>
 
                     {/* See Case Study Button */}
-                    <Button 
-                      className="rounded-none bg-[#e31837] hover:bg-red-700 text-white font-bold uppercase tracking-widest px-6 py-3 transition-colors text-sm whitespace-nowrap"
-                      onClick={() => window.location.href = study.href}
-                    >
-                      See Project
-                    </Button>
+                    <Link to={study.href}>
+                      <Button 
+                        className="rounded-none bg-[#e31837] hover:bg-red-700 text-white font-bold uppercase tracking-widest px-6 py-3 transition-colors text-sm whitespace-nowrap"
+                      >
+                        See Project
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </RevealOnScroll>
