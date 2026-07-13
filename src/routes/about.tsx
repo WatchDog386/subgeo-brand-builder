@@ -189,13 +189,13 @@ function AboutPage() {
               {
                 icon: Target,
                 label: "Our Mission",
-                desc: "To provide comprehensive industry solutions with innovation, reliability, and an unwavering commitment to customer satisfaction across every business division we operate.",
+                desc: "To deliver high-standard plumbing, drainage, sanitary, and fire-fighting solutions with precision, safety, and reliability — exceeding expectations on every project.",
                 color: "#ef6a42"
               },
               {
                 icon: Eye,
                 label: "Our Vision",
-                desc: "To be the premier provider of integrated services across multiple sectors in Kenya and beyond, setting the benchmark for quality and excellence.",
+                desc: "To be Kenya's most trusted partner in plumbing and industrial works — known for quality workmanship, 24/7 readiness, and enduring client partnerships.",
                 color: "#41949e"
               },
               {

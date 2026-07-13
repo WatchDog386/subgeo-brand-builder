@@ -525,13 +525,13 @@ function BeautyPage() {
               {
                 icon: Target,
                 label: "Our Mission",
-                desc: "To empower individuals with expert grooming and styling that enhances confidence, celebrates individuality, and delivers a premium beauty experience for everyone.",
+                desc: "To deliver high-standard plumbing, drainage, sanitary, and fire-fighting solutions with precision, safety, and reliability — exceeding expectations on every project.",
                 color: "#4986c7"
               },
               {
                 icon: Eye,
                 label: "Our Vision",
-                desc: "To be the premier unisex beauty destination where every client walks out feeling their absolute best — redefining salon standards across Kenya.",
+                desc: "To be Kenya's most trusted partner in plumbing and industrial works — known for quality workmanship, 24/7 readiness, and enduring client partnerships.",
                 color: "#df488b"
               },
               {

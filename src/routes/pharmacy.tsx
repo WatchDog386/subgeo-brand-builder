@@ -274,13 +274,13 @@ function PharmacyPage() {
               {
                 icon: Target,
                 label: "Our Mission",
-                desc: "To provide accessible, high-quality pharmaceutical care and wellness products through professional expertise and compassionate service to every community we serve.",
+                desc: "To deliver high-standard plumbing, drainage, sanitary, and fire-fighting solutions with precision, safety, and reliability — exceeding expectations on every project.",
                 color: "#0ea5e9"
               },
               {
                 icon: Eye,
                 label: "Our Vision",
-                desc: "To be the most trusted pharmacy partner in Kenya — where every customer receives expert care, genuine medications, and the comfort of knowing they matter.",
+                desc: "To be Kenya's most trusted partner in plumbing and industrial works — known for quality workmanship, 24/7 readiness, and enduring client partnerships.",
                 color: "#4b8bf4"
               },
               {
