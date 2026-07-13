@@ -1,5 +1,6 @@
 import { Phone, MapPin, ChevronRight } from "lucide-react";
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
+import { Link } from "@tanstack/react-router";
 import bgImg from "@/assets/back.png";
 
 const cards = [
@@ -107,10 +108,12 @@ export function ValuesMissionSection() {
 
                 {/* Book Now button */}
                 <div className="mt-8">
-                  <button className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-[11px] font-bold uppercase tracking-wider px-6 py-3 rounded-[2px] transition-colors">
-                    Book Now
-                    <ChevronRight className="h-4 w-4" />
-                  </button>
+                  <Link to="/contact">
+                    <button className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-[11px] font-bold uppercase tracking-wider px-6 py-3 rounded-[2px] transition-colors">
+                      Book Now
+                      <ChevronRight className="h-4 w-4" />
+                    </button>
+                  </Link>
                 </div>
               </div>
             </RevealOnScroll>

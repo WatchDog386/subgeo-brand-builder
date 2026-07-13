@@ -1,6 +1,7 @@
 import { CheckCircle, Megaphone, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
+import { Link } from "@tanstack/react-router";
 import salonImg from "@/assets/salon.jpeg";
 import plumberImg from "@/assets/plumber.jpeg";
 import salon2Img from "@/assets/salon2.jpeg";
@@ -59,8 +60,8 @@ export function NewsAndInsightsSection() {
                      <img src={plumberImg} alt="Ad right background" className="w-full h-full object-cover"/>
                   </div>
                   <div className="absolute inset-0 flex flex-col justify-center px-8 text-white z-10">
-                      <h4 className="font-sans text-[clamp(18px,2vw,28px)] leading-[1.1] font-medium text-white mb-1">30+ YEARS OF SERVICE.</h4>
-                      <h3 className="font-sans text-[clamp(22px,3vw,36px)] leading-[1.1] tracking-tighter font-[900] text-red-500 mb-2">A LIFETIME OF CARE.</h3>
+                      <h4 className="font-sans text-[clamp(18px,2vw,28px)] leading-[1.1] font-medium text-white mb-1">SINCE 2012.</h4>
+                      <h3 className="font-sans text-[clamp(22px,3vw,36px)] leading-[1.1] tracking-tighter font-[900] text-red-500 mb-2">A DECADE OF CARE.</h3>
                       <p className="text-xs lg:text-sm text-gray-300 max-w-[60%] border-t border-red-500 pt-4 mt-2">Whether it's medicine, wellness, or everyday health needs, we've been here for your family—then, now, and always.</p>
                   </div>
                   <div className="absolute right-[-10%] top-0 h-full w-[50%] bg-gradient-to-l from-yellow-900 to-transparent z-0 skew-x-[-20deg]"></div>
@@ -68,7 +69,7 @@ export function NewsAndInsightsSection() {
                   {/* Decorative badge placeholder right side */}
                   <div className="absolute right-8 top-1/2 -translate-y-1/2 w-[90px] h-[90px] lg:w-[110px] lg:h-[110px] rounded-full border-[1.5px] border-yellow-500/30 flex items-center justify-center z-20 overflow-hidden p-1.5">
                       <div className="w-full h-full border-[1.5px] border-yellow-600 rounded-full flex flex-col items-center justify-center bg-transparent">
-                         <span className="text-3xl lg:text-4xl font-serif text-yellow-500 font-bold">30</span>
+                         <span className="text-3xl lg:text-4xl font-serif text-yellow-500 font-bold">14</span>
                       </div>
                   </div>
                </div>
@@ -119,9 +120,11 @@ export function NewsAndInsightsSection() {
                   </p>
 
                   <div className="flex justify-center w-full mt-auto pt-4 border-t border-gray-100">
-                    <button className="border border-[#dc2626] text-[#dc2626] rounded-full px-8 py-[6px] text-[12px] font-semibold hover:bg-red-50 transition-colors flex items-center gap-1">
-                      Visit now <ChevronRight className="w-3.5 h-3.5 ml-1" strokeWidth={2.5} />
-                    </button>
+                    <Link to={branch.title === "Subgeo Pharmacy" ? "/pharmacy" : branch.title === "Beauty Salon" ? "/beauty" : "/subgeo-industrial"}>
+                      <button className="border border-[#dc2626] text-[#dc2626] rounded-full px-8 py-[6px] text-[12px] font-semibold hover:bg-red-50 transition-colors flex items-center gap-1">
+                        Visit now <ChevronRight className="w-3.5 h-3.5 ml-1" strokeWidth={2.5} />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </RevealOnScroll>

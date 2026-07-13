@@ -1,4 +1,5 @@
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
+import { Link } from "@tanstack/react-router";
 
 export function ImpactStatsSection() {
   return (
@@ -25,12 +26,14 @@ export function ImpactStatsSection() {
               </p>
               
               <div className="mt-auto">
-                <button className="bg-white text-[#00b853] font-bold text-[12px] tracking-wider py-3.5 px-6 inline-flex items-center hover:bg-gray-100 transition-colors">
-                  DISCOVER MORE
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
+                <Link to="/about">
+                  <button className="bg-white text-[#00b853] font-bold text-[12px] tracking-wider py-3.5 px-6 inline-flex items-center hover:bg-gray-100 transition-colors">
+                    DISCOVER MORE
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </Link>
               </div>
             </div>
           </RevealOnScroll>

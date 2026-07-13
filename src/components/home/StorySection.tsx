@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
 import { AnimatedFireElement } from "@/components/home/AnimatedFireElement";
+import { Link } from "@tanstack/react-router";
 import backImg from "@/assets/back.png";
 
 export function StorySection() {
@@ -43,9 +44,9 @@ className="w-full h-full object-cover"
 <AnimatedFireElement delay={0.2} duration={1} className="text-center">
 <RevealOnScroll direction="up">
 <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-white text-center">
-Providing Reliable Services For Over 42:
+Providing Reliable Services Since
 <br />
-<span>35 Years</span>
+<span>2012</span>
 </h2>
 </RevealOnScroll>
 </AnimatedFireElement>
@@ -57,10 +58,12 @@ Providing Reliable Services For Over 42:
 Subgeo Holding Limited is Kenya's trusted partner for integrated pharmacy, beauty, and industrial solutions. Over the years, our dedicated teams have worked tirelessly to deliver outstanding value and reliability to the diverse communities we serve.
 </p>
 <div className="mt-5 flex justify-center">
+<Link to="/about">
 <button className="bg-white text-[#b91c2a] px-8 py-3.5 text-sm font-bold tracking-widest hover:bg-gray-100 transition-colors inline-flex items-center gap-2">
 ABOUT US
 <ArrowRight className="h-4 w-4" />
 </button>
+</Link>
 </div>
 </RevealOnScroll>
 </AnimatedFireElement>
@@ -123,10 +126,12 @@ Confirm locations at subgeo.co.ke
 </div>
 
 {/* Book Now Button */}
+<Link to="/contact">
 <button className="w-[85%] md:w-full mt-6 bg-[#e0292e] md:bg-[#d4202e] hover:bg-[#b91c2a] text-white h-11 md:h-12 font-bold text-sm tracking-wider transition-colors inline-flex items-center justify-center gap-2">
 BOOK NOW
 <ArrowRight className="h-4 w-4" />
 </button>
+</Link>
 
 {/* Disclaimer */}
 <p className="mt-4 text-[11px] text-gray-500 text-center leading-relaxed italic">

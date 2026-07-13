@@ -1,5 +1,6 @@
 import { Check, ArrowRight } from "lucide-react";
 import { RevealOnScroll } from "@/components/premium/PremiumAnimations";
+import { Link } from "@tanstack/react-router";
 import houseImg from "@/assets/hero.jpeg";
 import serviceImg from "@/assets/service.jpeg";
 
@@ -30,7 +31,7 @@ export function ServicesSection() {
 
             {/* "HELPING SINCE 1986" badge */}
             <div className="absolute bottom-[10%] -left-4 lg:left-2 z-30 bg-[#e0292e] text-white px-6 py-3 text-[12px] font-bold uppercase tracking-widest border-[4px] border-white max-w-fit whitespace-nowrap">
-              Helping Since 1986
+              Helping Since 2012
             </div>
 
             {/* Technician image */ }
@@ -63,15 +64,15 @@ export function ServicesSection() {
           {/* Stats Card + Benefits Row */}
           <div className="mt-8 lg:mt-10">
             <div className="flex flex-col sm:flex-row gap-8 items-stretch mb-6 lg:mb-8">
-              {/* 35 Years Of Experience card */}
+              {/* 14+ Years Of Service card */}
               <div className="bg-[#f7f8f9] px-9 py-8 text-center flex flex-col justify-center min-w-[160px]">
                 <div className="text-[4rem] font-bold text-[#e0292e] leading-none tracking-tighter">
-                  35
+                  14+
                 </div>
                 <div className="mt-3 text-[13px] text-[#4a5568] font-bold leading-tight">
                   Years Of
                   <br />
-                  Experience
+                  Service
                 </div>
               </div>
 
@@ -93,10 +94,12 @@ export function ServicesSection() {
             
             {/* Learn More Button - outside the flex row */}
             <div className="pt-2 lg:pt-0">
-              <button className="bg-[#e0292e] hover:bg-[#c42428] text-white w-full lg:w-auto px-8 py-4 lg:py-3.5 text-[13px] font-bold uppercase tracking-widest flex lg:inline-flex items-center justify-center gap-2 transition-colors">
-                Learn More
-                <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-              </button>
+              <Link to="/about">
+                <button className="bg-[#e0292e] hover:bg-[#c42428] text-white w-full lg:w-auto px-8 py-4 lg:py-3.5 text-[13px] font-bold uppercase tracking-widest flex lg:inline-flex items-center justify-center gap-2 transition-colors">
+                  Learn More
+                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                </button>
+              </Link>
             </div>
           </div>
         </RevealOnScroll>
