@@ -358,8 +358,8 @@ function GalleryCarousel() {
       <Carousel setApi={setApi} opts={{ loop: true, align: "center" }} className="w-full">
         <CarouselContent>
           {galleryImages.map((img, idx) => (
-            <CarouselItem key={idx} className="basis-full">
-              <div className="group relative overflow-hidden shadow-md aspect-[16/10] mx-1">
+            <CarouselItem key={idx} className="basis-full md:basis-1/3">
+              <div className="group relative overflow-hidden shadow-md aspect-[4/3] mx-1">
                 <img
                   src={img}
                   alt={`Gallery photo ${idx + 1}`}
