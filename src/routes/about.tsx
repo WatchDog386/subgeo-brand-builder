@@ -176,49 +176,118 @@ function AboutPage() {
 
       {/* Mission Vision Values */}
       <section className="py-20 lg:py-28 bg-white">
-        <div className="container-x">
-          <Reveal className="text-center mb-14">
-            <h2 className="text-[clamp(28px,3vw,40px)] font-bold leading-[1.04]" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
-              <span className="text-[#1d3b4a]">Our Mission, Vision</span>
-              <span className="text-[#ef6a42] block">Values & Motto</span>
-            </h2>
+        <div className="container-x max-w-[1200px] mx-auto">
+
+          <Reveal>
+            <div className="flex flex-col md:flex-row items-center justify-between mb-[60px]">
+
+              {/* Mission */}
+              <div className="flex-1 text-center px-10">
+                <div className="w-[100px] h-[100px] mx-auto mb-[30px] flex items-center justify-center">
+                  <svg viewBox="0 0 100 100" style={{ color: "#f0164c" }} className="w-full h-full">
+                    <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="12" fill="none"/>
+                    <circle cx="50" cy="50" r="22" stroke="currentColor" strokeWidth="12" fill="none"/>
+                    <circle cx="50" cy="50" r="6" fill="currentColor"/>
+                  </svg>
+                </div>
+                <h2 className="text-[1.25rem] font-extrabold text-black mb-4 uppercase tracking-[0.5px]">
+                  OUR <span className="text-[#f0164c]">MISSION</span>
+                </h2>
+                <p className="text-[#888888] text-[0.95rem] leading-relaxed font-normal">
+                  To deliver high-standard plumbing, drainage, sanitary, and fire-fighting solutions with precision, safety, and reliability — exceeding expectations on every project.
+                </p>
+              </div>
+
+              <div className="hidden md:block w-px h-[150px] bg-[#d1d1d1]"></div>
+
+              {/* Vision */}
+              <div className="flex-1 text-center px-10">
+                <div className="w-[100px] h-[100px] mx-auto mb-[30px] flex items-center justify-center">
+                  <svg viewBox="0 0 100 100" style={{ color: "#1e92ec" }} className="w-full h-full">
+                    <path d="M50 25 C 32 25, 25 40, 32 55 C 36 63, 40 68, 40 75 L 60 75 C 60 68, 64 63, 68 55 C 75 40, 68 25, 50 25 Z" stroke="currentColor" strokeWidth="7" fill="none" strokeLinejoin="round"/>
+                    <line x1="42" y1="83" x2="58" y2="83" stroke="currentColor" strokeWidth="7" strokeLinecap="round"/>
+                    <line x1="45" y1="91" x2="55" y2="91" stroke="currentColor" strokeWidth="7" strokeLinecap="round"/>
+                    <line x1="50" y1="12" x2="50" y2="5" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                    <line x1="77" y1="25" x2="83" y2="19" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                    <line x1="88" y1="50" x2="95" y2="50" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                    <line x1="23" y1="25" x2="17" y2="19" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                    <line x1="12" y1="50" x2="5" y2="50" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                <h2 className="text-[1.25rem] font-extrabold text-black mb-4 uppercase tracking-[0.5px]">
+                  OUR <span className="text-[#1e92ec]">VISION</span>
+                </h2>
+                <p className="text-[#888888] text-[0.95rem] leading-relaxed font-normal">
+                  To be Kenya's most trusted partner in plumbing and industrial works — known for quality workmanship, 24/7 readiness, and enduring client partnerships.
+                </p>
+              </div>
+
+              <div className="hidden md:block w-px h-[150px] bg-[#d1d1d1]"></div>
+
+              {/* Values */}
+              <div className="flex-1 text-center px-10">
+                <div className="w-[100px] h-[100px] mx-auto mb-[30px] flex items-center justify-center">
+                  <svg viewBox="0 0 100 100" style={{ color: "#00ce8d" }} className="w-full h-full">
+                    <path d="M50 55 L 46 51 C 30 36, 25 28, 25 18 C 25 8, 33 0, 43 0 C 49 0, 50 4, 50 4 C 50 4, 51 0, 57 0 C 67 0, 75 8, 75 18 C 75 28, 70 36, 54 51 Z" fill="currentColor" transform="translate(0, 10)"/>
+                    <path d="M 15 50 L 15 65 C 15 75, 25 80, 35 85 L 45 90 C 48 91, 52 91, 55 90 L 65 85 C 75 80, 85 75, 85 65 L 85 50 M 30 55 L 30 75 M 70 55 L 70 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M 15 60 C 25 60, 35 70, 40 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round"/>
+                    <path d="M 85 60 C 75 60, 65 70, 60 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                <h2 className="text-[1.25rem] font-extrabold text-black mb-4 uppercase tracking-[0.5px]">
+                  OUR <span className="text-[#00ce8d]">VALUES</span>
+                </h2>
+                <p className="text-[#888888] text-[0.95rem] leading-relaxed font-normal">
+                  &ldquo;Quality Service. 24/7 Readiness. Innovative Solutions.&rdquo; We serve with integrity, respond with urgency, and deliver excellence on every job &mdash; big or small.
+                </p>
+              </div>
+
+            </div>
           </Reveal>
 
-          <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
-            {[
-              {
-                icon: Target,
-                label: "Our Mission",
-                desc: "To deliver high-standard plumbing, drainage, sanitary, and fire-fighting solutions with precision, safety, and reliability — exceeding expectations on every project.",
-                color: "#ef6a42"
-              },
-              {
-                icon: Eye,
-                label: "Our Vision",
-                desc: "To be Kenya's most trusted partner in plumbing and industrial works — known for quality workmanship, 24/7 readiness, and enduring client partnerships.",
-                color: "#41949e"
-              },
-              {
-                icon: Heart,
-                label: "Our Values & Motto",
-                desc: "Excellence, Integrity, and Innovation in everything we do. We build lasting partnerships based on trust, quality assurance, and superior service delivery.",
-                color: "#1d3b4a"
-              }
-            ].map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <Reveal key={idx} delay={idx * 0.1}>
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-full border border-orange-200 bg-white flex items-center justify-center text-[#ef6a42] mb-6 shadow-sm">
-                <Icon className="w-5 h-5" strokeWidth={1.5} />
+          {/* Bottom Row — Small Grey Icons */}
+          <div className="flex items-center justify-center w-[70%] mx-auto">
+            <div className="flex-1 flex justify-center">
+              <div className="w-[50px] h-[50px]">
+                <svg viewBox="0 0 100 100" className="w-full h-full" style={{ color: "#888888" }}>
+                  <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="12" fill="none"/>
+                  <circle cx="50" cy="50" r="22" stroke="currentColor" strokeWidth="12" fill="none"/>
+                  <circle cx="50" cy="50" r="6" fill="#888888"/>
+                </svg>
               </div>
-              <h3 className="text-[#1d3b4a] font-bold text-[16px] xl:text-[18px] leading-tight" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>{item.label}</h3>
-              <p className="mt-5 text-[13px] md:text-sm text-gray-500 leading-relaxed font-medium">{item.desc}</p>
             </div>
-                </Reveal>
-              );
-            })}
+
+            <div className="w-px h-10 bg-[#a8a8a8]"></div>
+
+            <div className="flex-1 flex justify-center">
+              <div className="w-[50px] h-[50px]">
+                <svg viewBox="0 0 100 100" className="w-full h-full" style={{ color: "#888888" }}>
+                  <path d="M50 25 C 32 25, 25 40, 32 55 C 36 63, 40 68, 40 75 L 60 75 C 60 68, 64 63, 68 55 C 75 40, 68 25, 50 25 Z" stroke="currentColor" strokeWidth="7" fill="none" strokeLinejoin="round"/>
+                  <line x1="42" y1="83" x2="58" y2="83" stroke="currentColor" strokeWidth="7" strokeLinecap="round"/>
+                  <line x1="45" y1="91" x2="55" y2="91" stroke="currentColor" strokeWidth="7" strokeLinecap="round"/>
+                  <line x1="50" y1="12" x2="50" y2="5" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                  <line x1="77" y1="25" x2="83" y2="19" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                  <line x1="88" y1="50" x2="95" y2="50" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                  <line x1="23" y1="25" x2="17" y2="19" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                  <line x1="12" y1="50" x2="5" y2="50" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <div className="w-px h-10 bg-[#a8a8a8]"></div>
+
+            <div className="flex-1 flex justify-center">
+              <div className="w-[50px] h-[50px]">
+                <svg viewBox="0 0 100 100" className="w-full h-full" style={{ color: "#888888" }}>
+                  <path d="M50 55 L 46 51 C 30 36, 25 28, 25 18 C 25 8, 33 0, 43 0 C 49 0, 50 4, 50 4 C 50 4, 51 0, 57 0 C 67 0, 75 8, 75 18 C 75 28, 70 36, 54 51 Z" fill="#888888" transform="translate(0, 10)"/>
+                  <path d="M 15 50 L 15 65 C 15 75, 25 80, 35 85 L 45 90 C 48 91, 52 91, 55 90 L 65 85 C 75 80, 85 75, 85 65 L 85 50 M 30 55 L 30 75 M 70 55 L 70 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M 15 60 C 25 60, 35 70, 40 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round"/>
+                  <path d="M 85 60 C 75 60, 65 70, 60 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round"/>
+                </svg>
+              </div>
+            </div>
           </div>
+
         </div>
       </section>
 
