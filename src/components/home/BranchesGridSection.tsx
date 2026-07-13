@@ -85,17 +85,7 @@ export function BranchesGridSection() {
                       <>
                         <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600 rounded-full -translate-y-1/2 translate-x-1/2 opacity-90"></div>
                         <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-600 rounded-full translate-y-1/2 -translate-x-1/2 opacity-90"></div>
-                        {/* Mock cards */}
-                        <div className="absolute right-8 top-1/2 -translate-y-1/2 flex gap-2">
-                          <div className="bg-white shadow-xl p-3 w-28 transform -rotate-3">
-                            <div className="h-2 w-16 bg-gray-300 mb-2"></div>
-                            <div className="h-14 w-full bg-gray-200"></div>
-                          </div>
-                          <div className="bg-white shadow-xl p-3 w-28 transform rotate-3 translate-y-2">
-                            <div className="h-2 w-20 bg-gray-300 mb-2"></div>
-                            <div className="h-14 w-full bg-gray-200"></div>
-                          </div>
-                        </div>
+
                       </>
                     )}
 
@@ -115,35 +105,14 @@ export function BranchesGridSection() {
                             strokeLinecap="round"
                           />
                         </svg>
-                        {/* Mock catalog */}
-                        <div className="absolute right-6 top-1/2 -translate-y-1/2">
-                          <div className="bg-white shadow-xl p-3 w-36 transform rotate-2">
-                            <div className="bg-purple-600 text-white text-[8px] font-bold p-1 mb-2 text-center">
-                              QUALITY INSTALLATIONS
-                            </div>
-                            <div className="grid grid-cols-2 gap-1">
-                              <div className="h-10 bg-gray-200"></div>
-                              <div className="h-10 bg-gray-200"></div>
-                              <div className="h-10 bg-gray-200"></div>
-                              <div className="h-10 bg-gray-200"></div>
-                            </div>
-                          </div>
-                        </div>
+
                       </>
                     )}
 
                     {index === 2 && (
                       <>
                         <div className="absolute top-0 right-0 w-48 h-48 bg-orange-500 opacity-90"></div>
-                        {/* Tote bag mock */}
-                        <div className="absolute right-12 top-1/2 -translate-y-1/2">
-                          <div className="bg-white shadow-xl p-4 w-28 h-36 flex flex-col items-center justify-center">
-                            <div className="w-8 h-10 border-2 border-orange-500 mb-2"></div>
-                            <div className="text-orange-600 font-bold text-[10px] text-center leading-tight">
-                              QWETU<br/>UNIVERSITY
-                            </div>
-                          </div>
-                        </div>
+
                       </>
                     )}
 
