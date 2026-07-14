@@ -10,9 +10,9 @@ const nav: { label: string; to?: string; links?: { label: string; to: string }[]
   { 
     label: "Our Branches", 
     links: [
-      { to: "/pharmacy", label: "Pharmacy" },
+      { to: "/subgeo-industrial", label: "Subgeo Industrial" },
       { to: "/beauty", label: "Beauty" },
-      { to: "/subgeo-industrial", label: "Subgeo Industrial" }
+      { to: "/pharmacy", label: "Pharmacy" }
     ] 
   },
   { to: "/contact", label: "Contact" },
@@ -148,13 +148,13 @@ export function Navbar() {
 
         {/* Mobile Menu Backdrop */}
         <div 
-          className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden transition-opacity duration-300 ${open ? 'opacity-100 visible' : 'opacity-0 invisible'}`} 
+          className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden transition-opacity duration-300 ${open ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`} 
           onClick={() => setOpen(false)} 
         />
 
         {/* Mobile Menu - Full height side drawer */}
         <div 
-          className={`fixed top-0 right-0 bottom-0 w-[85%] max-w-[340px] bg-white z-[60] lg:hidden shadow-2xl transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : 'translate-x-full'}`}
+          className={`fixed top-0 right-0 bottom-0 w-[85%] max-w-[340px] bg-white z-[60] lg:hidden shadow-2xl transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : 'translate-x-full pointer-events-none'}`}
         >
           <div className="h-full w-full flex flex-col overflow-y-auto">
             {/* Drawer Top bar */}

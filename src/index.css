@@ -1123,9 +1123,9 @@ header.fixed {
   .px-6 { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
 
   /* ─── Navbar ─── */
-  .container-x.h-16 { height: 2.25rem !important; }
-  .h-16 { height: 2.25rem !important; }
-  .min-h-\[64px\] { min-height: 2.25rem !important; height: auto !important; }
+  .container-x.h-16 { height: 3rem !important; }
+  header .h-16 { height: 3rem !important; }
+  .min-h-\[64px\] { min-height: 3rem !important; height: auto !important; }
   nav a { font-size: 0.6rem !important; }
 
   /* ─── Hero decorative elements ─── */
