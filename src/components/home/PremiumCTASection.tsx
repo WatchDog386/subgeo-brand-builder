@@ -58,7 +58,7 @@ export function PremiumCTASection() {
           {/* --- Content --- */}
           <div className="relative z-10 px-8 py-16 md:py-20 flex flex-col items-center justify-center text-center">
             
-            <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-white mb-5 max-w-4xl">
+            <h2 className="font-display text-[40px] md:text-[52px] leading-[1.04] text-white mb-5 max-w-4xl">
               Ready to experience Subgeo?
             </h2>
             

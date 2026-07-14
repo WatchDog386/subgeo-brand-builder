@@ -88,7 +88,7 @@ export function TestimonialsSection() {
       <div className="container-x grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
         {/* Left Column */}
         <RevealOnScroll direction="left">
-          <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-primary">
+          <h2 className="font-display text-[40px] md:text-[52px] leading-[1.04] text-primary">
             Our Clients Speaks
             <br />
             Highly Of Us

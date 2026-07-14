@@ -49,7 +49,7 @@ export function ServicesSection() {
         {/* ───────── RIGHT: Content ───────── */}
         <RevealOnScroll direction="right">
           {/* Heading */}
-          <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-primary">
+          <h2 className="font-display text-[40px] md:text-[52px] leading-[1.04] text-primary">
             Elevating Lifestyles <br/> Across Kenya
           </h2>
 

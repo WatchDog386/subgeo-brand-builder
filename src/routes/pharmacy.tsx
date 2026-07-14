@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/site/Navbar";
 import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,14 @@ import { ArrowRight, ArrowUpRight, Check, Clock, Phone, Pill, Heart, Shield, Tre
 import { branches } from "@/lib/branches";
 import { PremiumHero, PremiumSection, PremiumButton } from "@/components/premium/PremiumLayout";
 import { GridContainer } from "@/components/premium/PremiumGrid";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import pharmacyImg from "@/assets/pharmacy.jpg";
 import labImg from "@/assets/lab.jpg";
 // Imported new images
@@ -35,6 +44,28 @@ export const Route = createFileRoute("/pharmacy")({
 });
 
 function PharmacyPage() {
+  const [servicesApi, setServicesApi] = useState<CarouselApi>();
+  const [mvApi, setMvApi] = useState<CarouselApi>();
+  const [cardsApi, setCardsApi] = useState<CarouselApi>();
+
+  useEffect(() => {
+    if (!servicesApi) return;
+    const timer = setInterval(() => { servicesApi.scrollNext(); }, 3000);
+    return () => clearInterval(timer);
+  }, [servicesApi]);
+
+  useEffect(() => {
+    if (!mvApi) return;
+    const timer = setInterval(() => { mvApi.scrollNext(); }, 3000);
+    return () => clearInterval(timer);
+  }, [mvApi]);
+
+  useEffect(() => {
+    if (!cardsApi) return;
+    const timer = setInterval(() => { cardsApi.scrollNext(); }, 3000);
+    return () => clearInterval(timer);
+  }, [cardsApi]);
+
   const branch = {
     slug: "pharmacy",
     name: "Subgeo Pharmacy",
@@ -225,7 +256,49 @@ function PharmacyPage() {
             support your wellbeing
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 text-left relative z-10">
+          {/* Mobile: Carousel */}
+          <div className="block md:hidden relative z-10">
+            <Carousel setApi={setServicesApi} opts={{ loop: true }}>
+              <CarouselContent>
+                <CarouselItem>
+                  <div className="flex flex-col items-center text-center bg-white rounded-xl shadow-md border border-gray-100 p-6 mx-2">
+                    <div className="w-14 h-14 bg-[#e0f2fe] rounded-lg flex items-center justify-center mb-4 shadow-sm border border-[#bae6fd]">
+                      <Pill className="text-[#0ea5e9] w-7 h-7" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-[14px] font-sans font-[900] tracking-tight text-[#1e293b] mb-3">Quality Assured</h3>
+                    <p className="text-[13px] text-gray-500 leading-relaxed font-medium">
+                      Subgeo makes it easy to add necessary medications to your daily regimen as well as pass important health information along to our team. Every medication is checked and properly stored right here at our pharmacy facility.
+                    </p>
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="flex flex-col items-center text-center bg-white rounded-xl shadow-md border border-gray-100 p-6 mx-2">
+                    <div className="w-14 h-14 bg-[#f3e8ff] rounded-lg flex items-center justify-center mb-4 shadow-sm border border-[#e9d5ff]">
+                      <Clock className="text-[#a855f7] w-7 h-7" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-[14px] font-sans font-[900] tracking-tight text-[#1e293b] mb-3">Stay healthy</h3>
+                    <p className="text-[13px] text-gray-500 leading-relaxed font-medium">
+                      We know how difficult it is to manage multiple prescriptions, chronic conditions and wellness programs for your family. With our extended hours (7am to 11pm), you can easily get all your health needs addressed in one organized place.
+                    </p>
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="flex flex-col items-center text-center bg-white rounded-xl shadow-md border border-gray-100 p-6 mx-2">
+                    <div className="w-14 h-14 bg-[#dcfce7] rounded-lg flex items-center justify-center mb-4 shadow-sm border border-[#bbf7d0]">
+                      <Heart className="text-[#22c55e] w-7 h-7" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-[14px] font-sans font-[900] tracking-tight text-[#1e293b] mb-3">Professional Care</h3>
+                    <p className="text-[13px] text-gray-500 leading-relaxed font-medium">
+                      Our platform of qualified experts allows you to easily share medical reports and collaborate on health goals with our registered pharmacists. Receive accurate wellness counseling with just one visit.
+                    </p>
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+            </Carousel>
+          </div>
+
+          {/* Desktop: Grid layout */}
+          <div className="hidden md:grid md:grid-cols-3 gap-12 lg:gap-16 text-left relative z-10">
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
               <div className="w-16 h-16 bg-[#e0f2fe] rounded-lg flex items-center justify-center mb-6 shadow-sm border border-[#bae6fd]">
                 <Pill className="text-[#0ea5e9] w-8 h-8" strokeWidth={1.5} />
@@ -264,7 +337,73 @@ function PharmacyPage() {
         <div className="container-x max-w-[1200px] mx-auto">
 
           <Reveal>
-            <div className="flex flex-col md:flex-row items-center justify-between mb-[60px]">
+            {/* Mobile: Carousel */}
+            <div className="block md:hidden mb-10">
+              <Carousel setApi={setMvApi} opts={{ loop: true }}>
+                <CarouselContent>
+                  <CarouselItem>
+                    <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center mx-2 h-full">
+                      <div className="w-[72px] h-[72px] mx-auto mb-4 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" style={{ color: "#f0164c" }} className="w-full h-full">
+                          <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="12" fill="none"/>
+                          <circle cx="50" cy="50" r="22" stroke="currentColor" strokeWidth="12" fill="none"/>
+                          <circle cx="50" cy="50" r="6" fill="currentColor"/>
+                        </svg>
+                      </div>
+                      <h2 className="text-[1rem] font-extrabold text-black mb-3 uppercase tracking-[0.5px]">
+                        OUR <span className="text-[#f0164c]">MISSION</span>
+                      </h2>
+                      <p className="text-[#888888] text-[0.85rem] leading-relaxed font-normal">
+                        To deliver high-standard plumbing, drainage, sanitary, and fire-fighting solutions with precision, safety, and reliability — exceeding expectations on every project.
+                      </p>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center mx-2 h-full">
+                      <div className="w-[72px] h-[72px] mx-auto mb-4 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" style={{ color: "#1e92ec" }} className="w-full h-full">
+                          <path d="M50 25 C 32 25, 25 40, 32 55 C 36 63, 40 68, 40 75 L 60 75 C 60 68, 64 63, 68 55 C 75 40, 68 25, 50 25 Z" stroke="currentColor" strokeWidth="7" fill="none" strokeLinejoin="round"/>
+                          <line x1="42" y1="83" x2="58" y2="83" stroke="currentColor" strokeWidth="7" strokeLinecap="round"/>
+                          <line x1="45" y1="91" x2="55" y2="91" stroke="currentColor" strokeWidth="7" strokeLinecap="round"/>
+                          <line x1="50" y1="12" x2="50" y2="5" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                          <line x1="77" y1="25" x2="83" y2="19" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                          <line x1="88" y1="50" x2="95" y2="50" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                          <line x1="23" y1="25" x2="17" y2="19" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                          <line x1="12" y1="50" x2="5" y2="50" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                        </svg>
+                      </div>
+                      <h2 className="text-[1rem] font-extrabold text-black mb-3 uppercase tracking-[0.5px]">
+                        OUR <span className="text-[#1e92ec]">VISION</span>
+                      </h2>
+                      <p className="text-[#888888] text-[0.85rem] leading-relaxed font-normal">
+                        To be Kenya's most trusted partner in plumbing and industrial works — known for quality workmanship, 24/7 readiness, and enduring client partnerships.
+                      </p>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center mx-2 h-full">
+                      <div className="w-[72px] h-[72px] mx-auto mb-4 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" style={{ color: "#00ce8d" }} className="w-full h-full">
+                          <path d="M50 55 L 46 51 C 30 36, 25 28, 25 18 C 25 8, 33 0, 43 0 C 49 0, 50 4, 50 4 C 50 4, 51 0, 57 0 C 67 0, 75 8, 75 18 C 75 28, 70 36, 54 51 Z" fill="currentColor" transform="translate(0, 10)"/>
+                          <path d="M 15 50 L 15 65 C 15 75, 25 80, 35 85 L 45 90 C 48 91, 52 91, 55 90 L 65 85 C 75 80, 85 75, 85 65 L 85 50 M 30 55 L 30 75 M 70 55 L 70 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M 15 60 C 25 60, 35 70, 40 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round"/>
+                          <path d="M 85 60 C 75 60, 65 70, 60 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round"/>
+                        </svg>
+                      </div>
+                      <h2 className="text-[1rem] font-extrabold text-black mb-3 uppercase tracking-[0.5px]">
+                        OUR <span className="text-[#00ce8d]">VALUES</span>
+                      </h2>
+                      <p className="text-[#888888] text-[0.85rem] leading-relaxed font-normal">
+                        &ldquo;Quality Service. 24/7 Readiness. Innovative Solutions.&rdquo; We serve with integrity, respond with urgency, and deliver excellence on every job &mdash; big or small.
+                      </p>
+                    </div>
+                  </CarouselItem>
+                </CarouselContent>
+              </Carousel>
+            </div>
+
+            {/* Desktop: Row layout */}
+            <div className="hidden md:flex flex-row items-center justify-between mb-[60px]">
 
               {/* Mission */}
               <div className="flex-1 text-center px-10">
@@ -558,7 +697,7 @@ function PharmacyPage() {
 
       {/* Unlock Better Health Section - Using pharm4.jpeg */}
       <section className="py-0 bg-white relative overflow-hidden">
-        <div className="w-full mx-auto relative overflow-hidden bg-[#f0f5f8] min-h-[400px] lg:min-h-[500px] flex items-center">
+        <div className="w-full mx-auto relative overflow-hidden bg-[#f0f5f8] min-h-[350px] lg:min-h-[500px] flex items-center">
             
             {/* Top Left Leaves */}
             <div className="absolute top-0 left-4 lg:left-10 w-24 h-24 pointer-events-none opacity-80">
@@ -579,7 +718,7 @@ function PharmacyPage() {
             </div>
 
             {/* Huge Blue Circle mask for Right Image - Using pharm4.jpeg */}
-            <div className="absolute top-[-20%] bottom-[-20%] right-[-10%] w-[60%] lg:w-[45%] bg-[#a5c2d3] rounded-full z-0 overflow-hidden shadow-2xl border-8 border-white/20">
+            <div className="hidden md:block absolute top-[-20%] bottom-[-20%] right-[-10%] w-[60%] lg:w-[45%] bg-[#a5c2d3] rounded-full z-0 overflow-hidden shadow-2xl border-8 border-white/20">
                <img 
                  src={pharm4Img} 
                  alt="Radiant skin" 
@@ -587,32 +726,32 @@ function PharmacyPage() {
                />
             </div>
 
-            <div className="container-x max-w-[1400px] w-full mx-auto relative z-10 flex flex-col md:flex-row items-stretch lg:px-16 py-12">
+            <div className="container-x max-w-[1400px] w-full mx-auto relative z-10 flex flex-col md:flex-row items-stretch lg:px-16 py-10 md:py-12">
                
                {/* Left Text Content */}
-               <div className="w-full md:w-[45%] flex flex-col items-start justify-center pl-4 lg:pl-0 mb-8 md:mb-0 mt-4 md:mt-0">
-                  <h3 className="font-sans text-[clamp(24px,3vw,36px)] leading-[1.1] font-medium text-[#6495ca] mb-1">
+               <div className="w-full md:w-[45%] flex flex-col items-start justify-center px-4 md:pl-4 lg:pl-0 mb-4 md:mb-0 mt-4 md:mt-0">
+                  <h3 className="font-sans text-[clamp(20px,3vw,36px)] leading-[1.1] font-medium text-[#6495ca] mb-1">
                     Unlock Better Health
                   </h3>
-                  <h2 className="font-sans text-[clamp(28px,3.5vw,48px)] leading-[1.1] tracking-tighter font-[900] text-[#3b71ad] mb-8">
+                  <h2 className="font-sans text-[clamp(22px,3.5vw,48px)] leading-[1.1] tracking-tighter font-[900] text-[#3b71ad] mb-6 md:mb-8">
                     Discover The Transformative Power of Subgeo Pharmacy!
                   </h2>
                   
                   {/* Badge with Shield Icon */}
-                  <div className="relative inline-flex items-center mt-2 pl-4 pointer-events-none">
+                  <div className="relative inline-flex items-center mt-1 md:mt-2 pl-4 pointer-events-none">
                      {/* Icon Circle overlay */}
-                     <div className="absolute left-[-5px] w-[54px] h-[54px] bg-white rounded-full flex items-center justify-center shadow-md z-10 border border-gray-100">
-                        <Shield className="w-6 h-6 text-[#3b71ad]" strokeWidth={2} />
+                     <div className="absolute left-[-5px] w-[46px] md:w-[54px] h-[46px] md:h-[54px] bg-white rounded-full flex items-center justify-center shadow-md z-10 border border-gray-100">
+                        <Shield className="w-5 h-5 md:w-6 md:h-6 text-[#3b71ad]" strokeWidth={2} />
                      </div>
                      {/* Pill Badge background */}
-                     <div className="bg-[#467ab6] text-white font-bold text-[14px] lg:text-[15px] tracking-widest uppercase pl-[56px] pr-8 py-3.5 lg:py-4 rounded-r-full rounded-l-full shadow-lg relative z-0">
+                     <div className="bg-[#467ab6] text-white font-bold text-[12px] md:text-[15px] tracking-widest uppercase pl-[48px] md:pl-[56px] pr-6 md:pr-8 py-3 md:py-4 rounded-r-full rounded-l-full shadow-lg relative z-0">
                         Trusted Care
                      </div>
                   </div>
                </div>
 
-               {/* Center Products Podium */}
-               <div className="w-full md:w-[35%] flex items-end justify-center relative mt-16 md:mt-0 z-10">
+               {/* Center Products Podium - hidden on mobile */}
+               <div className="hidden md:flex md:w-[35%] items-end justify-center relative mt-16 md:mt-0 z-10">
                   <div className="relative w-[300px] lg:w-[400px] h-full flex flex-col items-center justify-end pb-8">
                      
                      {/* Placeholder blocks mimicking the CeraVe bottles layout */}
@@ -647,7 +786,80 @@ function PharmacyPage() {
         </div>
 
         <div className="container-x max-w-[1200px] mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {/* Mobile: Carousel */}
+          <div className="block md:hidden">
+            <Carousel setApi={setCardsApi} opts={{ loop: true }}>
+              <CarouselContent>
+                <CarouselItem>
+                  <div className="bg-white px-6 pt-10 pb-8 flex flex-col items-center text-center relative shadow-xl rounded-sm mx-2">
+                    <div className="w-20 h-20 bg-[#f8fdf4] rounded-full border-4 border-white shadow-[0_0_20px_rgba(0,0,0,0.08)] flex items-center justify-center mb-6">
+                       <ClipboardList className="text-[#71d340] w-8 h-8" />
+                    </div>
+                    <h3 className="text-[#1a202c] font-sans font-[900] tracking-tight text-[16px] leading-[1.3] mb-4">Regulatory Decisions</h3>
+                    <p className="text-[#4b5563] text-[13px] leading-relaxed mb-8 flex-grow">
+                      List of Products, Premises, Professionals, Clinical Trials, Safety Reports
+                    </p>
+                    <Link to="/about" className="flex items-center justify-center gap-2 text-[#71d340] font-sans font-[900] tracking-tight text-[13px] hover:text-[#5ab132] transition-colors uppercase">
+                      <ArrowRight className="w-4 h-4" />
+                      LEARN MORE
+                    </Link>
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#71d340]"></div>
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-white px-6 pt-10 pb-8 flex flex-col items-center text-center relative shadow-xl rounded-sm mx-2">
+                    <div className="w-20 h-20 bg-[#f8fdf4] rounded-full border-4 border-white shadow-[0_0_20px_rgba(0,0,0,0.08)] flex items-center justify-center mb-6">
+                       <Briefcase className="text-[#71d340] w-8 h-8" />
+                    </div>
+                    <h3 className="text-[#1a202c] font-sans font-[900] tracking-tight text-[16px] leading-[1.3] mb-4">Legal Provisions,<br/>Guidelines, and<br/>Procedures</h3>
+                    <p className="text-[#4b5563] text-[13px] leading-relaxed mb-8 flex-grow">
+                      Policy Documents, Laws, Processes, Instructions to Applicants
+                    </p>
+                    <Link to="/about" className="flex items-center justify-center gap-2 text-[#71d340] font-sans font-[900] tracking-tight text-[13px] hover:text-[#5ab132] transition-colors uppercase">
+                      <ArrowRight className="w-4 h-4" />
+                      LEARN MORE
+                    </Link>
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#71d340]"></div>
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-white px-6 pt-10 pb-8 flex flex-col items-center text-center relative shadow-xl rounded-sm mx-2">
+                    <div className="w-20 h-20 bg-[#f8fdf4] rounded-full border-4 border-white shadow-[0_0_20px_rgba(0,0,0,0.08)] flex items-center justify-center mb-6">
+                       <Users className="text-[#71d340] w-8 h-8" />
+                    </div>
+                    <h3 className="text-[#1a202c] font-sans font-[900] tracking-tight text-[16px] leading-[1.3] mb-4">Stakeholder<br/>Consultations</h3>
+                    <p className="text-[#4b5563] text-[13px] leading-relaxed mb-8 flex-grow">
+                      Support for public participation in governance ascribed to by the Constitution of Kenya 2010
+                    </p>
+                    <Link to="/about" className="flex items-center justify-center gap-2 text-[#71d340] font-sans font-[900] tracking-tight text-[13px] hover:text-[#5ab132] transition-colors uppercase">
+                      <ArrowRight className="w-4 h-4" />
+                      LEARN MORE
+                    </Link>
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#71d340]"></div>
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="bg-white px-6 pt-10 pb-8 flex flex-col items-center text-center relative shadow-xl rounded-sm mx-2">
+                    <div className="w-20 h-20 bg-[#f8fdf4] rounded-full border-4 border-white shadow-[0_0_20px_rgba(0,0,0,0.08)] flex items-center justify-center mb-6">
+                       <Globe className="text-[#71d340] w-8 h-8" />
+                    </div>
+                    <h3 className="text-[#1a202c] font-sans font-[900] tracking-tight text-[16px] leading-[1.3] mb-4">Online Services</h3>
+                    <p className="text-[#4b5563] text-[13px] leading-relaxed mb-8 flex-grow">
+                      PRIMS, Practice, CPD, Clinical Trials, Pharmacovigilance, Transporters
+                    </p>
+                    <Link to="/about" className="flex items-center justify-center gap-2 text-[#71d340] font-sans font-[900] tracking-tight text-[13px] hover:text-[#5ab132] transition-colors uppercase">
+                      <ArrowRight className="w-4 h-4" />
+                      LEARN MORE
+                    </Link>
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#71d340]"></div>
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+            </Carousel>
+          </div>
+
+          {/* Desktop: Grid */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             
               {/* Card 1 */}
             <div className="bg-white px-6 pt-10 pb-8 flex flex-col items-center text-center relative shadow-xl rounded-sm">

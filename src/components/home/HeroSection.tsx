@@ -174,7 +174,7 @@ return (
 <section className="relative section-slab">
 <Navbar />
 
-<div className="container-x pt-36 pb-10">
+<div className="container-x pt-[38px] md:pt-36 pb-10">
 <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
 <div className="pt-20 lg:pt-32">
 <h1 className="font-display font-medium text-[40px] md:text-[52px] leading-[1.15] tracking-tight text-primary mb-1">
@@ -224,12 +224,12 @@ className="h-9 w-9 rounded-full bg-primary text-white text-xs flex items-center 
 </div>
 
 {/* Image section */}
-<div className="relative flex justify-center min-h-[400px] lg:min-h-[500px] mt-10 lg:mt-0">
+<div className="relative flex justify-center min-h-[400px] lg:min-h-[500px] mt-6 lg:mt-0">
 {/* Blue Circle */}
-<div className="absolute top-16 lg:top-24 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-12 h-[220px] w-[220px] lg:h-[320px] lg:w-[320px] rounded-full bg-[#223a5c] z-0" />
+<div className="absolute top-16 lg:top-24 right-24 lg:left-12 lg:right-auto h-[220px] w-[220px] lg:h-[320px] lg:w-[320px] rounded-full bg-[#223a5c] z-0" />
 
 {/* Red Vertical Ribbon - wider, extends from navbar to cards */}
-<div className="absolute -top-20 lg:-top-32 right-4 lg:right-20 w-24 lg:w-40 h-[400px] lg:h-[600px] bg-[#e0292e] z-0" />
+<div className="hidden lg:block absolute -top-20 lg:-top-32 right-4 lg:right-20 w-24 lg:w-40 h-[400px] lg:h-[600px] bg-[#e0292e] z-0" />
 
 {/* Fire Animated Elements - Parallax Background Effect */}
 <motion.div 
@@ -261,7 +261,7 @@ className="h-9 w-9 rounded-full bg-primary text-white text-xs flex items-center 
 <motion.img
 src={heroImg}
 alt="Technician"
-className="absolute z-10 -bottom-24 left-1/2 -translate-x-1/2 h-[500px] lg:h-[750px] w-full max-w-[360px] lg:max-w-[560px] object-contain object-bottom"
+className="absolute z-10 -bottom-16 lg:-bottom-24 left-1/2 -translate-x-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:right-auto h-[500px] lg:h-[750px] w-full max-w-[360px] lg:max-w-[560px] object-contain object-bottom"
 initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
 transition={{ duration: 0.8, delay: 0.2 }}

@@ -34,7 +34,7 @@ export function ValuesMissionSection() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
               {/* Left heading */}
               <div>
-                <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-white">
+                <h2 className="font-display text-[40px] md:text-[52px] leading-[1.04] text-white">
                   Serving Kenya Nationwide
                 </h2>
               </div>

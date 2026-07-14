@@ -554,7 +554,7 @@ function ProcessTimeline() {
                   transition={{ duration: 0.3 }}
                 >
                   {/* Image Side */}
-                  <div className={`relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl ${
+                  <div className={`relative aspect-[4/3] md:aspect-auto max-h-[100px] md:max-h-none rounded-2xl overflow-hidden shadow-xl ${
                     index % 2 === 1 ? "md:order-2" : ""
                   }`}>
                     <img
@@ -643,6 +643,15 @@ function SubgeoIndustrial() {
   const [activeProject, setActiveProject] = useState<number | null>(null);
   const [branch, setBranch] = useState<string>("");
   const heroRef = useRef<HTMLDivElement>(null);
+  const [mvApi, setMvApi] = useState<CarouselApi>();
+
+  useEffect(() => {
+    if (!mvApi) return;
+    const timer = setInterval(() => {
+      mvApi.scrollNext();
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [mvApi]);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -676,7 +685,7 @@ function SubgeoIndustrial() {
       <StickyNavbar />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative h-[520px] md:h-[580px] lg:h-[640px] w-full overflow-hidden flex items-center">
+      <section ref={heroRef} className="relative h-[520px] md:h-[580px] lg:h-[640px] w-full overflow-hidden flex items-center pt-16 md:pt-0">
         <motion.div style={{ scale: heroScale }} className="absolute inset-0 z-0">
           <img
             src={firePumpImg}
@@ -871,7 +880,73 @@ function SubgeoIndustrial() {
         <div className="container-x max-w-[1200px] mx-auto">
 
           <FadeInSection>
-            <div className="flex flex-col md:flex-row items-center justify-between mb-[60px]">
+            {/* Mobile: Carousel */}
+            <div className="block md:hidden mb-10">
+              <Carousel setApi={setMvApi} opts={{ loop: true }}>
+                <CarouselContent>
+                  <CarouselItem>
+                    <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center mx-2 h-full">
+                      <div className="w-[72px] h-[72px] mx-auto mb-4 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" style={{ color: "#f0164c" }} className="w-full h-full">
+                          <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="12" fill="none"/>
+                          <circle cx="50" cy="50" r="22" stroke="currentColor" strokeWidth="12" fill="none"/>
+                          <circle cx="50" cy="50" r="6" fill="currentColor"/>
+                        </svg>
+                      </div>
+                      <h2 className="text-[1rem] font-extrabold text-black mb-3 uppercase tracking-[0.5px]">
+                        OUR <span className="text-[#f0164c]">MISSION</span>
+                      </h2>
+                      <p className="text-[#888888] text-[0.85rem] leading-relaxed font-normal">
+                        To deliver high-standard plumbing, drainage, sanitary, and fire-fighting solutions with precision, safety, and reliability — exceeding expectations on every project.
+                      </p>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center mx-2 h-full">
+                      <div className="w-[72px] h-[72px] mx-auto mb-4 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" style={{ color: "#1e92ec" }} className="w-full h-full">
+                          <path d="M50 25 C 32 25, 25 40, 32 55 C 36 63, 40 68, 40 75 L 60 75 C 60 68, 64 63, 68 55 C 75 40, 68 25, 50 25 Z" stroke="currentColor" strokeWidth="7" fill="none" strokeLinejoin="round"/>
+                          <line x1="42" y1="83" x2="58" y2="83" stroke="currentColor" strokeWidth="7" strokeLinecap="round"/>
+                          <line x1="45" y1="91" x2="55" y2="91" stroke="currentColor" strokeWidth="7" strokeLinecap="round"/>
+                          <line x1="50" y1="12" x2="50" y2="5" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                          <line x1="77" y1="25" x2="83" y2="19" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                          <line x1="88" y1="50" x2="95" y2="50" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                          <line x1="23" y1="25" x2="17" y2="19" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                          <line x1="12" y1="50" x2="5" y2="50" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                        </svg>
+                      </div>
+                      <h2 className="text-[1rem] font-extrabold text-black mb-3 uppercase tracking-[0.5px]">
+                        OUR <span className="text-[#1e92ec]">VISION</span>
+                      </h2>
+                      <p className="text-[#888888] text-[0.85rem] leading-relaxed font-normal">
+                        To be Kenya's most trusted partner in plumbing and industrial works — known for quality workmanship, 24/7 readiness, and enduring client partnerships.
+                      </p>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center mx-2 h-full">
+                      <div className="w-[72px] h-[72px] mx-auto mb-4 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" style={{ color: "#00ce8d" }} className="w-full h-full">
+                          <path d="M50 55 L 46 51 C 30 36, 25 28, 25 18 C 25 8, 33 0, 43 0 C 49 0, 50 4, 50 4 C 50 4, 51 0, 57 0 C 67 0, 75 8, 75 18 C 75 28, 70 36, 54 51 Z" fill="currentColor" transform="translate(0, 10)"/>
+                          <path d="M 15 50 L 15 65 C 15 75, 25 80, 35 85 L 45 90 C 48 91, 52 91, 55 90 L 65 85 C 75 80, 85 75, 85 65 L 85 50 M 30 55 L 30 75 M 70 55 L 70 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M 15 60 C 25 60, 35 70, 40 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round"/>
+                          <path d="M 85 60 C 75 60, 65 70, 60 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round"/>
+                        </svg>
+                      </div>
+                      <h2 className="text-[1rem] font-extrabold text-black mb-3 uppercase tracking-[0.5px]">
+                        OUR <span className="text-[#00ce8d]">VALUES</span>
+                      </h2>
+                      <p className="text-[#888888] text-[0.85rem] leading-relaxed font-normal">
+                        &ldquo;Quality Service. 24/7 Readiness. Innovative Solutions.&rdquo; We serve with integrity, respond with urgency, and deliver excellence on every job &mdash; big or small.
+                      </p>
+                    </div>
+                  </CarouselItem>
+                </CarouselContent>
+              </Carousel>
+            </div>
+
+            {/* Desktop: Row layout */}
+            <div className="hidden md:flex flex-row items-center justify-between mb-[60px]">
 
               {/* Mission */}
               <div className="flex-1 text-center px-10">
@@ -1043,63 +1118,63 @@ function SubgeoIndustrial() {
           </Reveal>
 
           <Reveal delay={0.2} className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-x-4 gap-y-8 md:gap-x-12 md:gap-y-12">
               
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className="w-full sm:w-[220px] h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
+              <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-start">
+                <div className="w-full md:w-[220px] h-[80px] md:h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
                   <img src={commercialImg} alt="Commercial Buildings" className="w-full h-full object-cover bg-gray-50" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <h3 className="text-accent text-[14px] font-medium mb-3">Commercial Industry</h3>
-                  <p className="text-[#666] text-[12px] leading-relaxed mb-5">
+                  <h3 className="text-accent text-[11px] md:text-[14px] font-medium mb-1 md:mb-3">Commercial Industry</h3>
+                  <p className="text-[#666] text-[10px] md:text-[12px] leading-relaxed mb-2 md:mb-5">
                     Comprehensive plumbing and drainage solutions for office complexes, retail centers, and multi-tenant commercial properties.
                   </p>
-                  <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-6 py-2.5 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
+                  <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-3 md:px-6 py-1.5 md:py-2.5 text-[9px] md:text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
                     Learn More
                   </button>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className="w-full sm:w-[220px] h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
+              <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-start">
+                <div className="w-full md:w-[220px] h-[80px] md:h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
                   <img src={industrialImg} alt="Industrial Plants" className="w-full h-full object-cover bg-gray-50" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <h3 className="text-accent text-[14px] font-medium mb-3">Industrial Industry</h3>
-                  <p className="text-[#666] text-[12px] leading-relaxed mb-5">
+                  <h3 className="text-accent text-[11px] md:text-[14px] font-medium mb-1 md:mb-3">Industrial Industry</h3>
+                  <p className="text-[#666] text-[10px] md:text-[12px] leading-relaxed mb-2 md:mb-5">
                     Heavy-duty pipework, fire suppression systems, and maintenance programs tailored for manufacturing and processing facilities.
                   </p>
-                  <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-6 py-2.5 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
+                  <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-3 md:px-6 py-1.5 md:py-2.5 text-[9px] md:text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
                     Learn More
                   </button>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className="w-full sm:w-[220px] h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
+              <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-start">
+                <div className="w-full md:w-[220px] h-[80px] md:h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
                   <img src={plumbingImg} alt="Residential Estates" className="w-full h-full object-cover bg-gray-50" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <h3 className="text-accent text-[14px] font-medium mb-3">Residential Homes</h3>
-                  <p className="text-[#666] text-[12px] leading-relaxed mb-5">
+                  <h3 className="text-accent text-[11px] md:text-[14px] font-medium mb-1 md:mb-3">Residential Homes</h3>
+                  <p className="text-[#666] text-[10px] md:text-[12px] leading-relaxed mb-2 md:mb-5">
                     Reliable plumbing installation and maintenance for housing developments, apartment complexes, and gated communities.
                   </p>
-                  <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-6 py-2.5 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
+                  <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-3 md:px-6 py-1.5 md:py-2.5 text-[9px] md:text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
                     Learn More
                   </button>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className="w-full sm:w-[220px] h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
+              <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-start">
+                <div className="w-full md:w-[220px] h-[80px] md:h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
                   <img src={constructionSiteImg} alt="Hospitality Spaces" className="w-full h-full object-cover bg-gray-50" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <h3 className="text-accent text-[14px] font-medium mb-3">Hospitality Industry</h3>
-                  <p className="text-[#666] text-[12px] leading-relaxed mb-5">
+                  <h3 className="text-accent text-[11px] md:text-[14px] font-medium mb-1 md:mb-3">Hospitality Industry</h3>
+                  <p className="text-[#666] text-[10px] md:text-[12px] leading-relaxed mb-2 md:mb-5">
                     Specialized plumbing and fire safety solutions for hotels, restaurants, and resorts requiring uninterrupted guest comfort.
                   </p>
-                  <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-6 py-2.5 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
+                  <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-3 md:px-6 py-1.5 md:py-2.5 text-[9px] md:text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
                     Learn More
                   </button>
                 </div>
@@ -1238,23 +1313,23 @@ function SubgeoIndustrial() {
           </Reveal>
 
           <Reveal delay={0.2} className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-x-4 gap-y-8 md:gap-x-12 md:gap-y-12">
               
               {services.map((service, index) => {
                 const Icon = service.icon;
                 return (
-                  <div key={service.title} className="flex flex-col sm:flex-row gap-6 items-start">
-                    <div className="w-full sm:w-[220px] h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
+                  <div key={service.title} className="flex flex-col md:flex-row gap-2 md:gap-6 items-start">
+                    <div className="w-full md:w-[220px] h-[80px] md:h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
                       {service.image && (
                         <img src={service.image} alt={service.title} className="w-full h-full object-cover bg-gray-50" />
                       )}
                     </div>
                     <div className="flex flex-col items-start">
-                      <h3 className="text-accent text-[14px] font-medium mb-3">{service.title}</h3>
-                      <p className="text-[#666] text-[12px] leading-relaxed mb-5">
+                      <h3 className="text-accent text-[11px] md:text-[14px] font-medium mb-1 md:mb-3">{service.title}</h3>
+                      <p className="text-[#666] text-[10px] md:text-[12px] leading-relaxed mb-2 md:mb-5">
                         {service.description}
                       </p>
-                      <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-6 py-2.5 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
+                      <button className="bg-accent hover:bg-accent/90 text-white rounded-none px-3 md:px-6 py-1.5 md:py-2.5 text-[9px] md:text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto inline-flex items-center justify-center">
                         Learn More
                       </button>
                     </div>

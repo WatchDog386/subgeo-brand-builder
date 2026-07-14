@@ -43,7 +43,7 @@ className="w-full h-full object-cover"
 <div className="relative container-x pt-10 md:pt-14 pb-24 md:pb-28">
 <AnimatedFireElement delay={0.2} duration={1} className="text-center">
 <RevealOnScroll direction="up">
-<h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-white text-center">
+<h2 className="font-display text-[40px] md:text-[52px] leading-[1.04] text-white text-center">
 Providing Reliable Services Since
 <br />
 <span>2012</span>

@@ -1,9 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/site/Navbar";
 import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowUpRight, Play, Star, Sparkles, Clock, Phone, Check, Target, Eye, Heart } from "lucide-react";
 import { branches } from "@/lib/branches";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import beautyImg from "@/assets/salon.jpeg";
 import salon2 from "@/assets/salon2.jpeg";
 import salon3 from "@/assets/salon3.jpeg";
@@ -37,6 +46,16 @@ export const Route = createFileRoute("/beauty")({
 });
 
 function BeautyPage() {
+  const [mvApi, setMvApi] = useState<CarouselApi>();
+
+  useEffect(() => {
+    if (!mvApi) return;
+    const timer = setInterval(() => {
+      mvApi.scrollNext();
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [mvApi]);
+
   const branch = {
     slug: "beauty",
     name: "Subgeo Unisex Barber & Salon",
@@ -76,7 +95,7 @@ function BeautyPage() {
       <Navbar />
 
       {/* 1. HERO SECTION (Light Theme Hairdressing Replica) */}
-      <section className="relative w-full bg-white flex flex-col pt-[72px]">
+      <section className="relative w-full bg-white flex flex-col pt-[80px] md:pt-[72px]">
         {/* Top Hero Splash */}
         <div className="relative w-full h-[400px] lg:h-[500px] flex items-center bg-gray-50 border-b border-gray-100 overflow-hidden">
           {/* Background Image */}
@@ -198,25 +217,25 @@ function BeautyPage() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
               
               {/* Course 1 */}
               <div className="flex flex-col group shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="w-full h-[250px] md:h-[300px] overflow-hidden">
+                <div className="w-full h-[120px] md:h-[300px] overflow-hidden">
                    <img 
                      src={salon3}
                      alt="Hairdressing Setup" 
                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                    />
                 </div>
-                <div className="bg-[#f5f5f5] p-8 pb-10 flex flex-col items-center text-center">
-                   <h3 className="text-[#333] text-[12px] font-bold uppercase tracking-wider mb-3">
+                <div className="bg-[#f5f5f5] p-3 md:p-8 md:pb-10 flex flex-col items-center text-center">
+                   <h3 className="text-[#333] text-[10px] md:text-[12px] font-bold uppercase tracking-wider mb-1 md:mb-3">
                      Executive Barbering & Grooming
                    </h3>
-                   <div className="text-[#df488b] text-[13px] md:text-[14px] leading-relaxed mb-6 px-4">
+                   <div className="text-[#df488b] text-[10px] md:text-[14px] leading-relaxed mb-2 md:mb-6 px-1 md:px-4">
                      Expert fades, classic gentleman cuts, hot-towel shaves, and precise beard line-ups for a sharp, refined look.
                    </div>
-                   <Button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-8 py-5 text-[11px] font-bold uppercase tracking-widest transition-colors w-[150px]">
+                   <Button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-3 md:px-8 py-1.5 md:py-5 text-[9px] md:text-[11px] font-bold uppercase tracking-widest transition-colors w-auto md:w-[150px]">
                      Book Service
                    </Button>
                 </div>
@@ -224,21 +243,21 @@ function BeautyPage() {
 
               {/* Course 2 */}
               <div className="flex flex-col group shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="w-full h-[250px] md:h-[300px] overflow-hidden">
+                <div className="w-full h-[120px] md:h-[300px] overflow-hidden">
                    <img 
                      src={salon4}
                      alt="Hair Salon Working" 
                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                    />
                 </div>
-                <div className="bg-[#f5f5f5] p-8 pb-10 flex flex-col items-center text-center">
-                   <h3 className="text-[#333] text-[12px] font-bold uppercase tracking-wider mb-3">
+                <div className="bg-[#f5f5f5] p-3 md:p-8 md:pb-10 flex flex-col items-center text-center">
+                   <h3 className="text-[#333] text-[10px] md:text-[12px] font-bold uppercase tracking-wider mb-1 md:mb-3">
                      Advanced Hair Styling & Care
                    </h3>
-                   <div className="text-[#df488b] text-[13px] md:text-[14px] leading-relaxed mb-6 px-4">
+                   <div className="text-[#df488b] text-[10px] md:text-[14px] leading-relaxed mb-2 md:mb-6 px-1 md:px-4">
                      Bespoke coloring, silk presses, protective braiding, balayage, and deep conditioning treatments for healthy, flawless hair.
                    </div>
-                   <Button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-8 py-5 text-[11px] font-bold uppercase tracking-widest transition-colors w-[150px]">
+                   <Button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-3 md:px-8 py-1.5 md:py-5 text-[9px] md:text-[11px] font-bold uppercase tracking-widest transition-colors w-auto md:w-[150px]">
                      Book Service
                    </Button>
                 </div>
@@ -513,7 +532,73 @@ function BeautyPage() {
         <div className="container-x max-w-[1200px] mx-auto">
 
           <Reveal>
-            <div className="flex flex-col md:flex-row items-center justify-between mb-[60px]">
+            {/* Mobile: Carousel */}
+            <div className="block md:hidden mb-10">
+              <Carousel setApi={setMvApi} opts={{ loop: true }}>
+                <CarouselContent>
+                  <CarouselItem>
+                    <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center mx-2 h-full">
+                      <div className="w-[72px] h-[72px] mx-auto mb-4 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" style={{ color: "#f0164c" }} className="w-full h-full">
+                          <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="12" fill="none"/>
+                          <circle cx="50" cy="50" r="22" stroke="currentColor" strokeWidth="12" fill="none"/>
+                          <circle cx="50" cy="50" r="6" fill="currentColor"/>
+                        </svg>
+                      </div>
+                      <h2 className="text-[1rem] font-extrabold text-black mb-3 uppercase tracking-[0.5px]">
+                        OUR <span className="text-[#f0164c]">MISSION</span>
+                      </h2>
+                      <p className="text-[#888888] text-[0.85rem] leading-relaxed font-normal">
+                        To deliver high-standard plumbing, drainage, sanitary, and fire-fighting solutions with precision, safety, and reliability — exceeding expectations on every project.
+                      </p>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center mx-2 h-full">
+                      <div className="w-[72px] h-[72px] mx-auto mb-4 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" style={{ color: "#1e92ec" }} className="w-full h-full">
+                          <path d="M50 25 C 32 25, 25 40, 32 55 C 36 63, 40 68, 40 75 L 60 75 C 60 68, 64 63, 68 55 C 75 40, 68 25, 50 25 Z" stroke="currentColor" strokeWidth="7" fill="none" strokeLinejoin="round"/>
+                          <line x1="42" y1="83" x2="58" y2="83" stroke="currentColor" strokeWidth="7" strokeLinecap="round"/>
+                          <line x1="45" y1="91" x2="55" y2="91" stroke="currentColor" strokeWidth="7" strokeLinecap="round"/>
+                          <line x1="50" y1="12" x2="50" y2="5" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                          <line x1="77" y1="25" x2="83" y2="19" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                          <line x1="88" y1="50" x2="95" y2="50" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                          <line x1="23" y1="25" x2="17" y2="19" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                          <line x1="12" y1="50" x2="5" y2="50" stroke="currentColor" strokeWidth="6" strokeLinecap="round"/>
+                        </svg>
+                      </div>
+                      <h2 className="text-[1rem] font-extrabold text-black mb-3 uppercase tracking-[0.5px]">
+                        OUR <span className="text-[#1e92ec]">VISION</span>
+                      </h2>
+                      <p className="text-[#888888] text-[0.85rem] leading-relaxed font-normal">
+                        To be Kenya's most trusted partner in plumbing and industrial works — known for quality workmanship, 24/7 readiness, and enduring client partnerships.
+                      </p>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center mx-2 h-full">
+                      <div className="w-[72px] h-[72px] mx-auto mb-4 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" style={{ color: "#00ce8d" }} className="w-full h-full">
+                          <path d="M50 55 L 46 51 C 30 36, 25 28, 25 18 C 25 8, 33 0, 43 0 C 49 0, 50 4, 50 4 C 50 4, 51 0, 57 0 C 67 0, 75 8, 75 18 C 75 28, 70 36, 54 51 Z" fill="currentColor" transform="translate(0, 10)"/>
+                          <path d="M 15 50 L 15 65 C 15 75, 25 80, 35 85 L 45 90 C 48 91, 52 91, 55 90 L 65 85 C 75 80, 85 75, 85 65 L 85 50 M 30 55 L 30 75 M 70 55 L 70 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M 15 60 C 25 60, 35 70, 40 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round"/>
+                          <path d="M 85 60 C 75 60, 65 70, 60 75" stroke="currentColor" strokeWidth="7" fill="none" strokeLinecap="round"/>
+                        </svg>
+                      </div>
+                      <h2 className="text-[1rem] font-extrabold text-black mb-3 uppercase tracking-[0.5px]">
+                        OUR <span className="text-[#00ce8d]">VALUES</span>
+                      </h2>
+                      <p className="text-[#888888] text-[0.85rem] leading-relaxed font-normal">
+                        &ldquo;Quality Service. 24/7 Readiness. Innovative Solutions.&rdquo; We serve with integrity, respond with urgency, and deliver excellence on every job &mdash; big or small.
+                      </p>
+                    </div>
+                  </CarouselItem>
+                </CarouselContent>
+              </Carousel>
+            </div>
+
+            {/* Desktop: Row layout */}
+            <div className="hidden md:flex flex-row items-center justify-between mb-[60px]">
 
               {/* Mission */}
               <div className="flex-1 text-center px-10">
@@ -636,67 +721,67 @@ function BeautyPage() {
           </Reveal>
 
           <Reveal delay={0.2} className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-x-12 gap-y-12">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-x-4 gap-y-8 md:gap-x-12 md:gap-y-12">
               
               {/* Event 1 */}
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className="w-full sm:w-[220px] h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
+              <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-start">
+                <div className="w-full md:w-[220px] h-[80px] md:h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
                   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPejGHZ9V4Q-O_b5kl_UBvQxiIr8Jwyck8UA&s" alt="Community Involvement" className="w-full h-full object-contain bg-gray-50" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <h3 className="text-[#df488b] text-[14px] font-medium mb-3">Community Styling Days</h3>
-                  <p className="text-[#666] text-[12px] leading-relaxed mb-5">
+                  <h3 className="text-[#df488b] text-[11px] md:text-[14px] font-medium mb-1 md:mb-3">Community Styling Days</h3>
+                  <p className="text-[#666] text-[10px] md:text-[12px] leading-relaxed mb-2 md:mb-5">
                     Our team participates in local styling and grooming events, providing complimentary cuts and giving back to our vibrant community.
                   </p>
-                  <Button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-6 py-4 h-8 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto">
+                  <Button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-3 md:px-6 py-1.5 md:py-4 text-[9px] md:text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto h-auto md:h-8">
                     Read More
                   </Button>
                 </div>
               </div>
 
               {/* Event 2 */}
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className="w-full sm:w-[220px] h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
+              <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-start">
+                <div className="w-full md:w-[220px] h-[80px] md:h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
                   <img src="https://i.pinimg.com/736x/1a/0b/eb/1a0bebe35a895a17acba70615e4ef0e4.jpg" alt="Matric 2018" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <h3 className="text-[#df488b] text-[14px] font-medium mb-3">Barber Battles 2026</h3>
-                  <p className="text-[#666] text-[12px] leading-relaxed mb-5">
+                  <h3 className="text-[#df488b] text-[11px] md:text-[14px] font-medium mb-1 md:mb-3">Barber Battles 2026</h3>
+                  <p className="text-[#666] text-[10px] md:text-[12px] leading-relaxed mb-2 md:mb-5">
                     Watch our master barbers compete in regional showcases featuring precision fades, intricate linework, and creative styling.
                   </p>
-                  <Button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-6 py-4 h-8 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto">
+                  <Button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-3 md:px-6 py-1.5 md:py-4 text-[9px] md:text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto h-auto md:h-8">
                     Read More
                   </Button>
                 </div>
               </div>
 
               {/* Event 3 */}
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className="w-full sm:w-[220px] h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
+              <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-start">
+                <div className="w-full md:w-[220px] h-[80px] md:h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
                   <img src="https://i.ytimg.com/vi/bTUY8upDbI8/maxresdefault.jpg" alt="Hair demo" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <h3 className="text-[#df488b] text-[14px] font-medium mb-3">Bridal Showcases</h3>
-                  <p className="text-[#666] text-[12px] leading-relaxed mb-5">
+                  <h3 className="text-[#df488b] text-[11px] md:text-[14px] font-medium mb-1 md:mb-3">Bridal Showcases</h3>
+                  <p className="text-[#666] text-[10px] md:text-[12px] leading-relaxed mb-2 md:mb-5">
                     A demonstration of our premium bridal and groom packages, highlighting flawless makeup, updos, and expert detailing.
                   </p>
-                  <Button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-6 py-4 h-8 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto">
+                  <Button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-3 md:px-6 py-1.5 md:py-4 text-[9px] md:text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto h-auto md:h-8">
                     Read More
                   </Button>
                 </div>
               </div>
 
               {/* Event 4 */}
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className="w-full sm:w-[220px] h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
+              <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-start">
+                <div className="w-full md:w-[220px] h-[80px] md:h-[160px] shrink-0 border border-gray-100 p-1 bg-white">
                   <img src="https://i0.wp.com/therighthairstyles.com/wp-content/uploads/2025/05/13-feed-in-braid-styles-with-beads.jpg?fit=688%2C843&ssl=1" alt="Battle of the Colleges 2020" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="flex flex-col items-start">
-                  <h3 className="text-[#df488b] text-[14px] font-medium mb-3">Color Mastery Workshop</h3>
-                  <p className="text-[#666] text-[12px] leading-relaxed mb-5">
+                  <h3 className="text-[#df488b] text-[11px] md:text-[14px] font-medium mb-1 md:mb-3">Color Mastery Workshop</h3>
+                  <p className="text-[#666] text-[10px] md:text-[12px] leading-relaxed mb-2 md:mb-5">
                     An in-house showcase of modern coloring techniques, featuring live transformations by our top hair colorists.
                   </p>
-                  <Button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-6 py-4 h-8 text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto">
+                  <Button className="bg-[#6196d2] hover:bg-[#4a7eb5] text-white rounded-none px-3 md:px-6 py-1.5 md:py-4 text-[9px] md:text-[10px] font-bold uppercase tracking-wider transition-colors mt-auto h-auto md:h-8">
                     Read More
                   </Button>
                 </div>

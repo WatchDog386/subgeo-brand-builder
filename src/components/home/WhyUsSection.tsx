@@ -83,7 +83,7 @@ export function WhyUsSection() {
       <div className="container-x grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
         {/* Left: Title */}
         <RevealOnScroll direction="left">
-          <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-[1.04] text-primary text-center lg:text-left">
+          <h2 className="font-display text-[40px] md:text-[52px] leading-[1.04] text-primary text-center lg:text-left">
             The Subgeo
             <br className="hidden lg:block"/> Way
           </h2>
