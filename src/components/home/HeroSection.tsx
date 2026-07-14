@@ -174,7 +174,7 @@ return (
 <section className="relative section-slab">
 <Navbar />
 
-<div className="container-x pt-[38px] md:pt-36 pb-10">
+<div className="container-x pt-[76px] md:pt-36 pb-10">
 <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
 <div className="pt-20 lg:pt-32">
 <h1 className="font-display font-medium text-[40px] md:text-[52px] leading-[1.15] tracking-tight text-primary mb-1">
@@ -196,9 +196,9 @@ As a premier holding company based in Kenya, Subgeo Holding Limited delivers com
                 </svg>
               </Button>
             </Link>
-            <Link to="/contact">
+            <Link to="/subgeo-industrial">
               <Button variant="outline" className="rounded-none border-[#e0292e] text-[#e0292e] hover:bg-[#e0292e] hover:text-white h-[50px] w-full sm:w-auto px-8 font-semibold text-[13px] uppercase tracking-wider flex items-center justify-center gap-2">
-                Get A Free Quote
+                Our Branches
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -261,7 +261,7 @@ className="h-9 w-9 rounded-full bg-primary text-white text-xs flex items-center 
 <motion.img
 src={heroImg}
 alt="Technician"
-className="absolute z-10 -bottom-16 lg:-bottom-24 left-1/2 -translate-x-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:right-auto h-[500px] lg:h-[750px] w-full max-w-[360px] lg:max-w-[560px] object-contain object-bottom"
+className="absolute z-10 top-[30%] -translate-y-1/2 left-1/2 -translate-x-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:right-auto h-[600px] lg:h-[850px] w-full max-w-[420px] lg:max-w-[640px] object-contain object-bottom"
 initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
 transition={{ duration: 0.8, delay: 0.2 }}

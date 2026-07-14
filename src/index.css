@@ -1148,11 +1148,6 @@ header.fixed {
   .badge-chip, .pill-label { font-size: 0.5rem !important; padding: 0.2rem 0.4rem !important; }
 
   /* ─── Footer ─── */
-  footer .text-\[18px\] { font-size: 13px !important; }
-  footer .text-\[14px\] { font-size: 10px !important; }
-  footer .text-\[13px\] { font-size: 9px !important; }
-  footer .text-\[12px\] { font-size: 8px !important; }
-  footer .text-\[10px\], footer .text-\[8px\] { font-size: 7px !important; }
 
   /* ─── Icon sizes ─── */
   .text-\[1\.25rem\] { font-size: 0.9rem !important; }
@@ -1161,8 +1156,7 @@ header.fixed {
   .w-\[50px\].h-\[50px\] { width: 30px !important; height: 30px !important; }
   .h-\[150px\] { height: 80px !important; }
   .w-\[60\%\].sm\:w-\[60\%\] { width: 50% !important; }
-  .aspect-\[4\/3\] { aspect-ratio: auto !important; }
-  .aspect-\[5\/4\] { aspect-ratio: auto !important; }
+
 
   /* ─── Cards and sections padding ─── */
   .pt-36 { padding-top: 6rem !important; }

@@ -38,79 +38,76 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Location & Info Cards - side by side on mobile */}
-        <div className="grid grid-cols-2 gap-3 mb-4">
-          {/* Location 1: Pharmacy */}
-          <div className="bg-[#1a1e23] p-4 rounded-sm border border-gray-800/50">
-            <h3 className="text-white font-bold text-[14px] mb-4">Subgeo Pharmacy</h3>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-[12px] text-gray-300">
-                <div className="h-6 w-6 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0">
-                  <PhoneCall className="h-3 w-3 text-red-500" />
-                </div>
-                <span className="font-semibold tracking-wide">+254 700 000 002</span>
-              </li>
-              <li className="flex items-start gap-2 text-[12px] text-gray-300">
-                <div className="h-6 w-6 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <MapPin className="h-3 w-3 text-red-500" />
-                </div>
-                <span className="leading-snug underline decoration-gray-600 underline-offset-4 decoration-1">Nairobi Central<br />Nairobi, Kenya</span>
-              </li>
-              <li className="pt-1">
-                <a href="/pharmacy" className="text-[11px] font-bold uppercase tracking-widest text-[#e0292e] flex items-center gap-1">
-                  Book Now 
-                  <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Location 2: Industrial */}
-          <div className="bg-[#1a1e23] p-4 rounded-sm border border-gray-800/50">
-            <h3 className="text-white font-bold text-[14px] mb-4">Subgeo Industrial</h3>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-[12px] text-gray-300">
-                <div className="h-6 w-6 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0">
-                  <PhoneCall className="h-3 w-3 text-red-500" />
-                </div>
-                <span className="font-semibold tracking-wide">0733 699 441</span>
-              </li>
-              <li className="flex items-start gap-2 text-[12px] text-gray-300">
-                <div className="h-6 w-6 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <MapPin className="h-3 w-3 text-red-500" />
-                </div>
-                <span className="leading-snug underline decoration-gray-600 underline-offset-4 decoration-1">P.O. Box, 48230-00100<br />Nairobi, Kenya</span>
-              </li>
-              <li className="pt-1">
-                <a href="/subgeo-industrial" className="text-[11px] font-bold uppercase tracking-widest text-[#e0292e] flex items-center gap-1">
-                  Book Now 
-                  <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Hours */}
-          <div className="bg-[#1a1e23] p-4 rounded-sm border border-gray-800/50">
-            <h3 className="text-white font-bold text-[14px] mb-4">Hours</h3>
-            <div className="flex items-center gap-2 text-[12px] text-gray-300">
-              <div className="h-6 w-6 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0">
-                <Clock className="h-3 w-3 text-red-500" />
+        {/* Location 1: Pharmacy */}
+        <div className="bg-[#1a1e23] p-6 mb-4 rounded-sm border border-gray-800/50">
+          <h3 className="text-white font-bold text-[18px] mb-6">Subgeo Pharmacy</h3>
+          <ul className="space-y-5">
+            <li className="flex items-center gap-4 text-[14px] text-gray-300">
+              <div className="h-8 w-8 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0">
+                <PhoneCall className="h-3.5 w-3.5 text-red-500" />
               </div>
-              <span className="tracking-wide">Monday - Friday<br />7.30 AM - 5.30 PM</span>
-            </div>
-          </div>
+              <span className="font-semibold tracking-wide">+254 700 000 002</span>
+            </li>
+            <li className="flex items-start gap-4 text-[14px] text-gray-300">
+              <div className="h-8 w-8 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <MapPin className="h-3.5 w-3.5 text-red-500" />
+              </div>
+              <span className="leading-snug underline decoration-gray-600 underline-offset-4 decoration-1">Nairobi Central<br />Nairobi, Kenya</span>
+            </li>
+            <li className="pt-2">
+              <a href="/pharmacy" className="text-[12px] font-bold uppercase tracking-widest text-[#e0292e] flex items-center gap-2">
+                Book Now 
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
 
-          {/* Connect (Socials) */}
-          <div className="bg-[#1a1e23] p-4 rounded-sm border border-gray-800/50">
-            <h3 className="text-white font-bold text-[14px] mb-4">Connect</h3>
-            <div className="flex flex-wrap gap-2">
-              {socials.map((s, i) => (
-                <a key={i} href="#" className="h-8 w-8 rounded-full border border-gray-600 flex items-center justify-center hover:bg-gray-800 transition-colors">
-                  <s.Icon className="h-3.5 w-3.5 text-gray-400" />
-                </a>
-              ))}
+        {/* Location 2: Industrial */}
+        <div className="bg-[#1a1e23] p-6 mb-4 rounded-sm border border-gray-800/50">
+          <h3 className="text-white font-bold text-[18px] mb-6">Subgeo Industrial</h3>
+          <ul className="space-y-5">
+            <li className="flex items-center gap-4 text-[14px] text-gray-300">
+              <div className="h-8 w-8 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0">
+                <PhoneCall className="h-3.5 w-3.5 text-red-500" />
+              </div>
+              <span className="font-semibold tracking-wide">0733 699 441</span>
+            </li>
+            <li className="flex items-start gap-4 text-[14px] text-gray-300">
+              <div className="h-8 w-8 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <MapPin className="h-3.5 w-3.5 text-red-500" />
+              </div>
+              <span className="leading-snug underline decoration-gray-600 underline-offset-4 decoration-1">P.O. Box, 48230-00100<br />Nairobi, Kenya</span>
+            </li>
+            <li className="pt-2">
+              <a href="/subgeo-industrial" className="text-[12px] font-bold uppercase tracking-widest text-[#e0292e] flex items-center gap-2">
+                Book Now 
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Hours */}
+        <div className="bg-[#1a1e23] p-6 mb-4 rounded-sm border border-gray-800/50">
+          <h3 className="text-white font-bold text-[18px] mb-6">Hours</h3>
+          <div className="flex items-center gap-4 text-[14px] text-gray-300">
+            <div className="h-8 w-8 rounded-full border border-gray-700 flex items-center justify-center flex-shrink-0">
+              <Clock className="h-3.5 w-3.5 text-red-500" />
             </div>
+            <span className="tracking-wide">Monday - Friday<br />7.30 AM - 5.30 PM</span>
+          </div>
+        </div>
+
+        {/* Connect (Socials) */}
+        <div className="bg-[#1a1e23] p-6 mb-4 rounded-sm border border-gray-800/50">
+          <h3 className="text-white font-bold text-[18px] mb-6">Connect</h3>
+          <div className="flex flex-wrap gap-3">
+            {socials.map((s, i) => (
+              <a key={i} href="#" className="h-10 w-10 rounded-full border border-gray-600 flex items-center justify-center hover:bg-gray-800 transition-colors">
+                <s.Icon className="h-4 w-4 text-gray-400" />
+              </a>
+            ))}
           </div>
         </div>
 
